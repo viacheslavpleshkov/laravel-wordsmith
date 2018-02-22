@@ -1,5 +1,6 @@
 <?php
  namespace frontend\models;
+
  use Yii;
      class News{
          public static function getNewsList(){
