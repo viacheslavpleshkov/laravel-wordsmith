@@ -4,12 +4,7 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
-use common\widgets\Alert;
-
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -27,53 +22,68 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
+    <nav class="navbar navbar-expand-lg navbar-dark  bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="<?php echo Yii::$app->urlManager->createUrl('site/index')?>">
+                <img src="http://www.pikanakondy.com.ua/wp-content/uploads/2014/08/Flag.jpg" width="100" height="45" alt="" title="<?= Yii::$app->params['siteName']?>">
+            </a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo Yii::$app->urlManager->createUrl('site/index')?>">Головна <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo Yii::$app->urlManager->createUrl('site/about')?>">Про нас</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo Yii::$app->urlManager->createUrl('site/rules')?>">Правила куба</a>
+                </li>                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo Yii::$app->urlManager->createUrl('site/photo-gallery')?>">Фото шалерея</a>
+                </li>                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo Yii::$app->urlManager->createUrl('news/index')?>">Новини</a>
+                </li>                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo Yii::$app->urlManager->createUrl('site/contacts')?>">Написати нам</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <div class="dropdown">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Акаунт
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Вхід</a>
+                        <a class="dropdown-item" href="#">Регистрація</a>
+                        <a class="dropdown-item" href="#">Забули пароль</a>
+                    </div>
+                </div>
+                <p>.</p>
+                <div class="dropdown">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Мова сайту
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Укріїнська(UA)</a>
+                        <a class="dropdown-item" href="#">Російська(RU)</a>
+                    </div>
+                </div>
+                <p>.</p>
+                <input class="form-control mr-sm-2" type="search" placeholder="Пошук" aria-label="Search">
+<!--                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Пошук</button>-->
+            </form>
+        </div>
+    </nav>
 
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
         <?= $content ?>
     </div>
 </div>
 
-<footer class="footer">
+<footer class="card-footer">
     <div class="container">
-        <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
+        <p class="text-center"><?= Yii::$app->params['siteName']?><?= Yii::$app->params['copyright']?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
 
