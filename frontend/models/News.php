@@ -1,8 +1,8 @@
 <?php
  namespace frontend\models;
-
+ use yii\base\Model;
  use Yii;
-     class News{
+     class News extends Model{
          public static function getNewsList(){
              return Yii::$app->db->createCommand('SELECT * FROM news')->queryAll();
          }

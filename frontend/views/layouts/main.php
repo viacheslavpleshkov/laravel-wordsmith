@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use frontend\assets\AppAsset;
 AppAsset::register($this);
 ?>
@@ -27,7 +28,7 @@ AppAsset::register($this);
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="<?php echo Yii::$app->urlManager->createUrl('site/index')?>">
+            <a class="navbar-brand" href="<?php echo Url::to('site/index')?>">
                 <img src="http://www.pikanakondy.com.ua/wp-content/uploads/2014/08/Flag.jpg" width="100" height="45" alt="" title="<?= Yii::$app->params['siteName']?>">
             </a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -44,7 +45,7 @@ AppAsset::register($this);
                 </li>                <li class="nav-item">
                     <a class="nav-link" href="<?php echo Yii::$app->urlManager->createUrl('news/index')?>">Новини</a>
                 </li>                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo Yii::$app->urlManager->createUrl('site/contacts')?>">Написати нам</a>
+                    <a class="nav-link" href="<?php echo Yii::$app->urlManager->createUrl(['post/contacts'])?>">Написати нам</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">

@@ -52,4 +52,8 @@ return [
 
     ],
     'params' => $params,
+    'aliases' => [
+        '@images' => '/images/',
+        '@bar' => 'http://www.example.com',
+    ],
 ];

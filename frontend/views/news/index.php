@@ -3,7 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
-
+use yii\helpers\Url;
 $this->title = 'Новини';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?php echo Yii::$app->urlManager->createUrl('site/index')?>">Головна</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo Url::to('site/index')?>">Головна</a></li>
             <li class="breadcrumb-item active" aria-current="page"><?php echo $this->title?></li>
         </ol>
     </nav>

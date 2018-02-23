@@ -20,7 +20,7 @@ class m180222_141403_create_news_table extends Migration
             'images' => $this->string(60),
             'date' => $this->date()->notNull(),
             'url' => $this->string(256)->unique()->notNull(),
-            'status' => $this->string(256)->notNull(),
+            'status' => $this->integer(2)->notNull(),
             'user' => $this->string(256)->notNull(),
         ]);
     }
