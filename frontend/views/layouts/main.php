@@ -28,24 +28,24 @@ AppAsset::register($this);
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="<?php echo Url::to('site/index')?>">
+            <a class="navbar-brand" href="<?php echo Url::to(['site/index'])?>">
                 <img src="http://www.pikanakondy.com.ua/wp-content/uploads/2014/08/Flag.jpg" width="100" height="45" alt="" title="<?= Yii::$app->params['siteName']?>">
             </a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo Yii::$app->urlManager->createUrl('site/index')?>">Головна <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="<?php echo Url::to(['site/index'])?>">Головна <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo Yii::$app->urlManager->createUrl('site/about')?>">Про нас</a>
+                    <a class="nav-link" href="<?php echo Url::to(['site/about'])?>">Про нас</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo Yii::$app->urlManager->createUrl('site/rules')?>">Правила куба</a>
+                    <a class="nav-link" href="<?php echo Url::to(['site/rules'])?>">Правила куба</a>
                 </li>                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo Yii::$app->urlManager->createUrl('site/photo-gallery')?>">Фото шалерея</a>
+                    <a class="nav-link" href="<?php echo Url::to(['site/photo-gallery'])?>">Фото шалерея</a>
                 </li>                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo Yii::$app->urlManager->createUrl('news/index')?>">Новини</a>
+                    <a class="nav-link" href="<?php echo Url::to(['news/index'])?>">Новини</a>
                 </li>                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo Yii::$app->urlManager->createUrl(['post/contacts'])?>">Написати нам</a>
+                    <a class="nav-link" href="<?php echo Url::to(['site/contacts'])?>">Написати нам</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -54,9 +54,9 @@ AppAsset::register($this);
                         Акаунт
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Вхід</a>
-                        <a class="dropdown-item" href="#">Регистрація</a>
-                        <a class="dropdown-item" href="#">Забули пароль</a>
+                        <a class="dropdown-item" href="<?php echo Url::to(['account/login'])?>">Вхід</a>
+                        <a class="dropdown-item" href="<?php echo Url::to(['account/signup'])?>">Регистрація</a>
+                        <a class="dropdown-item" href="<?php echo Url::to(['account/resetpassword']);?>">Забули пароль</a>
                     </div>
                 </div>
                 <p>.</p>
@@ -65,8 +65,8 @@ AppAsset::register($this);
                         Мова сайту
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Укріїнська(UA)</a>
-                        <a class="dropdown-item" href="#">Російська(RU)</a>
+                        <a class="dropdown-item" href="<?php echo Url::to(['news/index']); ?>">Укріїнська(UA)</a>
+                        <a class="dropdown-item" href="<?php echo Url::to(['news/index']); ?>">Російська(RU)</a>
                     </div>
                 </div>
                 <p>.</p>

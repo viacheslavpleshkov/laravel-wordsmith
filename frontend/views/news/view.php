@@ -15,4 +15,4 @@ $this->params['breadcrumbs'][] = $this->title;
 <h1><?php echo $item['title']; ?></h1>
 <p><?php echo $item['content']; ?></p>
 
-<a href="<?php echo Url::to(['news/index']); ?>" class="btn btn-info">Назадgit </a>
+<a href="<?php echo Url::to(['news/index']); ?>" class="btn btn-info">Назад</a>

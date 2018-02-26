@@ -47,6 +47,9 @@ return [
                 'news'=>'news/index',
                 'news/<id:.*>' => 'news/view',
                 'contacts'=>'site/contacts',
+                'login'=>'account/login',
+                'signup'=>'account/signup',
+                'resetpassword'=>'account/resetpassword',
             ],
         ],
 
