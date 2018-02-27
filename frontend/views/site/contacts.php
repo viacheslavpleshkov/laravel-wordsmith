@@ -16,29 +16,28 @@ $this->params['breadcrumbs'][] = $this->title;
         </ol>
     </nav>
         <div class="text-center">
-            <form>
+            <form action="#" method="post">
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Ім'я </label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Михайло">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Михайло" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Email Адрес</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Телефон (Не обовязково)</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="+380998877665">
+                    <input type="tel" class="form-control" id="exampleFormControlInput1" placeholder="+380998877665">
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Тема</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Повідомлення</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary mb-2">Відправити</button>
-
+                <input type="submit" name="submit" class="btn btn-primary mb-2" value="Відправити">
             </form>
 
         </div>
