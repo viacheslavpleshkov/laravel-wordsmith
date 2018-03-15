@@ -108,6 +108,12 @@ class ArticleController extends Controller
 
         return $this->redirect(['index']);
     }
+    public function actionSetImage($id)
+    {
+        $model = new ImageUpload;
+        return $this->render('image',['model'=>$model]);
+
+    }
 
     /**
      * Finds the Article model based on its primary key value.

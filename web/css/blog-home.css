@@ -1,9 +1,3 @@
-/*!
- * Start Bootstrap - Blog Home (https://startbootstrap.com/template-overviews/blog-home)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-blog-home/blob/master/LICENSE)
- */
-
 body {
   padding-top: 54px;
 }
@@ -12,4 +6,9 @@ body {
   body {
     padding-top: 56px;
   }
+}
+
+.fa, .fas, .fab, .far {
+  font-weight: 900;
+  margin-right: 3px;
 }

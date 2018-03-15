@@ -18,6 +18,9 @@
         "yiisoft/yii2": "~2.0.14",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "twbs/bootstrap": "4.0.0",
+        "components/jquery": "1.12.4",
+        "components/font-awesome": "^5.0",
         "codemix/yii2-localeurls": "^1.7"
     },
     "require-dev": {

@@ -125,4 +125,12 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+    public function actionRules()
+    {
+        return $this->render('rules');
+    }
+    public function actionPhotoGallery()
+    {
+        return $this->render('photo-gallery');
+    }
 }

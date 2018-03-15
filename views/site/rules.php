@@ -4,7 +4,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Про нас';
+$this->title = 'Правила';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about col-lg-12">

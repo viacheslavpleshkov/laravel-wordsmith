@@ -50,17 +50,17 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-//            'class' => 'codemix\localeurls\UrlManager',
-//            'languages' => ['en' =>'en-US', 'ru' =>'ru-RU','uk' =>'uk-UA'],
-//            'enableDefaultLanguageUrlCode' => true,
+            'class' => 'codemix\localeurls\UrlManager',
+            'languages' => ['en' =>'en-US', 'ru' =>'ru-RU','uk' =>'uk-UA'],
+            'enableDefaultLanguageUrlCode' => true,
+            'suffix'=>'/',
             'rules' => [
-                '/'=>'news/index',
-                'news/<id:.*>' => 'news/view',
-                'about'=>'site/about',
-                'rules'=>'site/rules',
-                'photo-gallery'=>'site/photo-gallery',
-                'contact'=>'site/contact',
+                ''=>'site/index',
             ],
+        ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            // 'cache' => 'cache',
         ],
     ],
     'modules' => [
