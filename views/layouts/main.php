@@ -24,7 +24,7 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Пік Анаконди</a>
+        <a class="navbar-brand" href="<?=Url::to(['news/index'])?>"><img src="http://www.pikanakondy.com.ua/wp-content/uploads/2014/08/Flag.jpg"  alt="<?=Yii::$app->name?>" width="80px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,7 +33,7 @@ AppAsset::register($this);
                 'options' => ['class' => 'navbar-nav ml-auto'],
                 'items' => [
                     ['label' => 'Новини',
-                        'url' => ['site/index'],
+                        'url' => ['news/index'],
                         'icon'=>'fa fa-home',
                         'options'=>['class'=>'nav-item'],
                         'template' => '<a href="{url}" class="nav-link"><i class="fas fa-newspaper"></i>{label}</a>',
@@ -48,7 +48,7 @@ AppAsset::register($this);
                         'options'=>['class'=>'nav-item'],
                         'template' => '<a href="{url}" class="nav-link"><i class="fas fa-bullhorn"></i>{label}</a>',
                     ],
-                    ['label' => 'Фото шалерея',
+                    ['label' => 'Фото галерея',
                         'url' => ['site/photo-gallery'],
                         'options'=>['class'=>'nav-item'],
                         'template' => '<a href="{url}" class="nav-link"><i class="fas fa-images"></i>{label}</a>',
@@ -59,15 +59,33 @@ AppAsset::register($this);
                         'template' => '<a href="{url}" class="nav-link"><i class="fas fa-envelope"></i>{label}</a>',
                     ],
                     ['label' => 'Профіль',
-                        'url' => ['site/login'],
-                        'options'=>['class'=>'nav-item'],
-                        'template' => '<a href="{url}" class="nav-link dropdown-toggle"><i class="fas fa-user"></i>{label}</a>',
+                        'options'=>['class'=>'dropdown'],
+                        'template' => '<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>{label}</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="login">Вхід</a>
+            <a class="dropdown-item" href="#">Реєстрація</a>
+            <a class="dropdown-item" href="#">Нагадати пароль</a>
+        </div>
+    </li>',
                     ],
-                    ['label' => 'Мова сайту ('.Yii::$app->language.')',
-                        'url' => ['site/language'],
-                        'options'=>['class'=>'nav-item'],
-                        'template' => '<a href="{url}" class="nav-link dropdown-toggle"><i class="fas fa-language"></i>{label}</a>',
+                    ['label' => 'Мова сайту (Українська)',
+                        'url' => Url::to(['news/index', 'language' => 'uk-UA']),
+                        'options'=>['class'=>'dropdown'],
+                        'template' => '<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{label}</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{url}">Українська (UK)</a>
+            <a class="dropdown-item" href="#">Російська (RU)</a>
+            <a class="dropdown-item" href="#">Англійська (EN)</a>
+        </div>
+    </li>',
                     ],
+//                    ['label' => 'Мова сайту (Українська)',
+//                        'url' => ['site/language'],
+//                        'options'=>['class'=>'nav-item'],
+//                        'template' => '<a href="{url}" class="nav-link dropdown-toggle"><i class="fas fa-language"></i>{label}</a>',
+//                    ],
                 ],
                 'activeCssClass'=>'active',
                 'itemOptions'=>['class'=>'nav-item'],
@@ -92,7 +110,7 @@ AppAsset::register($this);
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Шукати...">
                         <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Пошук</button>
+                  <button class="btn btn-danger" type="button">Пошук</button>
                 </span>
                     </div>
                 </div>
@@ -141,7 +159,7 @@ AppAsset::register($this);
 </div>
 <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Слава Плешков ©2016-<?=date('Y')?>. Всі права захищені.</p>
+        <p class="m-0 text-center text-white">Пік Анаконди ©2013-<?=date('Y')?>. Всі права захищені.</p>
     </div>
 </footer>
     <?php $this->endBody() ?>

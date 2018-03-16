@@ -53,9 +53,10 @@ $config = [
             'class' => 'codemix\localeurls\UrlManager',
             'languages' => ['en' =>'en-US', 'ru' =>'ru-RU','uk' =>'uk-UA'],
             'enableDefaultLanguageUrlCode' => true,
-            'suffix'=>'/',
             'rules' => [
-                ''=>'site/index',
+                ''=>'news/index',
+                'news-prostr/<id:.*>'=>'news/view',
+                '<action>'=>'site/<action>',
             ],
         ],
         'authManager' => [

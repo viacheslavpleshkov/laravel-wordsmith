@@ -7,8 +7,13 @@ body {
     padding-top: 56px;
   }
 }
-
+a, .navbar-dark .navbar-nav .active>.nav-link{
+  color: #dc3545;
+}
 .fa, .fas, .fab, .far {
   font-weight: 900;
   margin-right: 3px;
+}
+.bg-dark {
+  background-color: #1b1e21!important;
 }
