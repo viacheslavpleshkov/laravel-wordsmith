@@ -14,10 +14,9 @@ class News
     public static function getNewsList()
     {
         $sql = 'SELECT * FROM article';
-        
-        $result = Yii::$app->db->createCommand($sql)->queryAll();
 
-        return $result;        
+        return Yii::$app->db->createCommand($sql)->queryAll();
+
     }
     
     /**
@@ -31,6 +30,12 @@ class News
         
         return Yii::$app->db->createCommand($sql)->queryOne();
     }
-    
+    public static function getNewsListTree()
+    {
+        $sql = 'SELECT * FROM article LIMIT 3';
+        $result = Yii::$app->db->createCommand($sql)->queryAll();
+
+        return $result;
+    }
     
 }

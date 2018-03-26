@@ -25,7 +25,6 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => false,
-            'loginUrl'=>['auth/login']
        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -55,7 +54,8 @@ $config = [
             'enableDefaultLanguageUrlCode' => true,
             'rules' => [
                 ''=>'news/index',
-                'news-prostr/<id:.*>'=>'news/view',
+                'news/<id:.*>'=>'news/view',
+                'category/<id:.*>'=>'category/view',
                 '<action>'=>'site/<action>',
             ],
         ],
@@ -73,7 +73,7 @@ $config = [
 //        'translations' => [
 //            'common*'=>[
 //                'class' => 'yii\i18n\PhpMessageSource',
-//                'basePath' => '@common/translation',
+//                'basePath' => '@app/translation',
 //            ],
 //        ],
 //    ],

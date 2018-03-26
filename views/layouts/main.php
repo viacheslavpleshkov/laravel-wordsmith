@@ -29,69 +29,60 @@ AppAsset::register($this);
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <?=Menu::widget([
-                'options' => ['class' => 'navbar-nav ml-auto'],
-                'items' => [
-                    ['label' => 'Новини',
-                        'url' => ['news/index'],
-                        'icon'=>'fa fa-home',
-                        'options'=>['class'=>'nav-item'],
-                        'template' => '<a href="{url}" class="nav-link"><i class="fas fa-newspaper"></i>{label}</a>',
-                    ],
-                    ['label' => 'Про нас',
-                        'url' => ['site/about'],
-                        'options'=>['class'=>'nav-item'],
-                        'template' => '<a href="{url}" class="nav-link"><i class="fas fa-align-center"></i>{label}</a>',
-                    ],
-                    ['label' => 'Правила',
-                        'url' => ['site/rules'],
-                        'options'=>['class'=>'nav-item'],
-                        'template' => '<a href="{url}" class="nav-link"><i class="fas fa-bullhorn"></i>{label}</a>',
-                    ],
-                    ['label' => 'Фото галерея',
-                        'url' => ['site/photo-gallery'],
-                        'options'=>['class'=>'nav-item'],
-                        'template' => '<a href="{url}" class="nav-link"><i class="fas fa-images"></i>{label}</a>',
-                    ],
-                    ['label' => 'Написати нам',
-                        'url' => ['site/contact'],
-                        'options'=>['class'=>'nav-item'],
-                        'template' => '<a href="{url}" class="nav-link"><i class="fas fa-envelope"></i>{label}</a>',
-                    ],
-                    ['label' => 'Профіль',
-                        'options'=>['class'=>'dropdown'],
-                        'template' => '<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>{label}</a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="login">Вхід</a>
-            <a class="dropdown-item" href="#">Реєстрація</a>
-            <a class="dropdown-item" href="#">Нагадати пароль</a>
-        </div>
-    </li>',
-                    ],
-                    ['label' => 'Мова сайту (Українська)',
-                        'url' => Url::to(['news/index', 'language' => 'uk-UA']),
-                        'options'=>['class'=>'dropdown'],
-                        'template' => '<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{label}</a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="{url}">Українська (UK)</a>
-            <a class="dropdown-item" href="#">Російська (RU)</a>
-            <a class="dropdown-item" href="#">Англійська (EN)</a>
-        </div>
-    </li>',
-                    ],
-//                    ['label' => 'Мова сайту (Українська)',
-//                        'url' => ['site/language'],
-//                        'options'=>['class'=>'nav-item'],
-//                        'template' => '<a href="{url}" class="nav-link dropdown-toggle"><i class="fas fa-language"></i>{label}</a>',
-//                    ],
-                ],
-                'activeCssClass'=>'active',
-                'itemOptions'=>['class'=>'nav-item'],
-                'submenuTemplate' => "\n<div class='dropdown-menu'>\n{items}\n</div>\n",
-            ]);
-            ?>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=Url::to(['news/index'])?>"><i class="fas fa-newspaper"></i>Новини</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-align-center"></i>Про нас</a>
+                    <div class="dropdown-menu">
+                        <?= Html::a('Про нас', ['site/about'], ['class'=>'dropdown-item']) ?>
+                        <?= Html::a('Правила клубу', ['site/rules'], ['class'=>'dropdown-item']) ?>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=Url::to(['site/photo-gallery'])?>"><i class="fas fa-users"></i>Спорцмени</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=Url::to(['site/photo-gallery'])?>"><i class="fas fa-images"></i>Фото шалерея</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=Url::to(['site/contacts'])?>"><i class="fas fa-envelope"></i>Написати нам</a>
+                </li>
+                <?php if (Yii::$app->user->identity->username=='')
+                { ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>Профіль</a>
+                        <div class="dropdown-menu">
+                            <?= Html::a('Вхід', ['site/login'], ['class'=>'dropdown-item']) ?>
+                            <?= Html::a('Реєстрація', ['site/action'], ['class'=>'dropdown-item']) ?>
+                            <?= Html::a('Нагадати пароль', ['site/action'], ['class'=>'dropdown-item']) ?>
+                        </div>
+                    </li>
+                    <?php
+                }else{
+                    ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i><?=Yii::$app->user->identity->username?></a>
+                        <div class="dropdown-menu">
+                            <?= Html::a('Профіль', ['demo/action'], ['class'=>'dropdown-item']) ?>
+                            <?= Html::a('Налаштування', ['demo/action'], ['class'=>'dropdown-item']) ?>
+                            <?= Html::a('Вихід', ['demo/action'], ['class'=>'dropdown-item']) ?>
+
+                        </div>
+                    </li>
+                    <?php
+                }
+                ?>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-language"></i>Мова сайту</a>
+                    <div class="dropdown-menu">
+                        <?= Html::a('Українська (UK)', ['news/index', 'language' => 'uk-UA'], ['class'=>'dropdown-item']) ?>
+                        <?= Html::a('Російська (RU)', ['news/index', 'language' => 'ru-RU'], ['class'=>'dropdown-item']) ?>
+                        <?= Html::a('Англійська (EN)', ['news/index', 'language' => 'en-US'], ['class'=>'dropdown-item']) ?>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
@@ -99,8 +90,10 @@ AppAsset::register($this);
     <div class="row">
         <div class="col-md-8">
             <div class="row">
-            <h1 class="my-4"><?=$this->title?></h1>
+                <div class="col-lg-12">
+                <h1 class="my-4"><?=$this->title?></h1>
             <?= $content ?>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
@@ -117,36 +110,7 @@ AppAsset::register($this);
             </div>
             <div class="card my-4">
                 <h5 class="card-header"><i class="fas fa-list-ul"></i>Категорії</h5>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled mb-0">
-                                <li>
-                                    <a href="#">Web Design</a>
-                                </li>
-                                <li>
-                                    <a href="#">HTML</a>
-                                </li>
-                                <li>
-                                    <a href="#">Freebies</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled mb-0">
-                                <li>
-                                    <a href="#">JavaScript</a>
-                                </li>
-                                <li>
-                                    <a href="#">CSS</a>
-                                </li>
-                                <li>
-                                    <a href="#">Tutorials</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <?=\app\widgets\CategoryList::widget()?>
             </div>
             <div class="card my-4">
                 <h5 class="card-header"><i class="far fa-calendar-alt"></i>Календарь</h5>

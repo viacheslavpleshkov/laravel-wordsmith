@@ -2,43 +2,22 @@
 
 namespace app\models;
 
+use yii\base\Model;
 use Yii;
 
-/**
- * This is the model class for table "category".
- *
- * @property int $id
- * @property string $title
- */
-class Category extends \yii\db\ActiveRecord
+class Category extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
+    public static function getCategoryList()
     {
-        return 'category';
-    }
+        $sql='SELECT * FROM category';
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['title'], 'required'],
-            [['title'], 'string', 'max' => 255],
-        ];
+        return Yii::$app->db->createCommand($sql)->queryAll();
     }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
+    public static function getItem($id)
     {
-        return [
-            'id' => 'ID',
-            'title' => 'Title',
-        ];
+        $id = intval($id);
+        $sql = "SELECT * FROM category WHERE id = $id";
+
+        return Yii::$app->db->createCommand($sql)->queryOne();
     }
 }
