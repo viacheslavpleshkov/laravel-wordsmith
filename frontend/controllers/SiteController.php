@@ -144,6 +144,36 @@ class SiteController extends Controller
     }
 
     /**
+     * Displays rules page.
+     *
+     * @return mixed
+     */
+    public function actionRules()
+    {
+        return $this->render('rules');
+    }
+
+    /**
+     * Displays photo-gallery page.
+     *
+     * @return mixed
+     */
+    public function actionPhotoGallery()
+    {
+        return $this->render('photo-gallery');
+    }
+
+    /**
+     * Displays rules page.
+     *
+     * @return mixed
+     */
+    public function actionAthletes()
+    {
+        return $this->render('athletes');
+    }
+
+    /**
      * Signs user up.
      *
      * @return mixed

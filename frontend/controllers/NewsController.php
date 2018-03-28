@@ -9,7 +9,15 @@ class NewsController extends Controller
 {
     public function actionIndex()
     {
-        $news=News::getNewsList();
+        $news= (new News())->getNewsList();
         return $this->render('index',['news' => $news]);
+    }
+
+    public function actionView($id)
+    {
+        $news = (new News())->getItem($id);
+        return $this->render('view', [
+            'news' => $news
+        ]);
     }
 }

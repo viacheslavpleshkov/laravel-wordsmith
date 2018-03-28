@@ -41,7 +41,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 ''=>'news/index',
-                'news-privet/<id:.*>'=>'news/view',
+                'news/<id:.*>'=>'news/view',
                 'category/<id:.*>'=>'category/view',
                 'search/<id:.*>'=>'search/view',
                 '<action>'=>'site/<action>',

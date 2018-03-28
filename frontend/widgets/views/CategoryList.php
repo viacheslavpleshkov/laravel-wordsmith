@@ -1,6 +1,6 @@
 <div class="card-body">
     <div class="row">
-        <?php foreach ($list as $item): ?>
+        <?php foreach ($categorylist as $item): ?>
         <div class="col-lg-6">
             <ul class="list-unstyled mb-0">
                 <li>

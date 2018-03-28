@@ -2,18 +2,37 @@
 
 namespace frontend\models;
 
-use Yii;
 use yii\base\Model;
 use yii\db\Query;
 
 class News extends Model
 {
-    public static function getNewsList()
+    public function getNewsList()
     {
-        $query = new Query();
-        $query->select('*')
-            ->from(’news’);
-        return Yii::$app->db->$query->createCommand()->queryAll();
-
+        $command = (new Query())
+            ->select('*')
+            ->from('news')
+            ->orderBy('id DESC')
+            ->all();
+        return $command;
+    }
+    public function getItem($id)
+    {
+        $command = (new Query())
+            ->select('*')
+            ->from('news')
+            ->where("id=$id")
+            ->all();
+        return $command;
+    }
+    public function getNewsWidgetListTree()
+    {
+        $command = (new Query())
+            ->select('*')
+            ->from('news')
+            ->orderBy('id DESC')
+            ->limit(3)
+            ->all();
+        return $command;
     }
 }

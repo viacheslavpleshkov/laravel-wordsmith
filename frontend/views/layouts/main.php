@@ -6,6 +6,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use frontend\assets\AppAsset;
+use frontend\widgets\CategoryList;
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -40,13 +41,13 @@ AppAsset::register($this);
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?=Url::to(['site/photo-gallery'])?>"><i class="fas fa-users"></i>Спорцмени</a>
+                    <a class="nav-link" href="<?=Url::to(['site/athletes'])?>"><i class="fas fa-users"></i>Cпортсмени</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?=Url::to(['site/photo-gallery'])?>"><i class="fas fa-images"></i>Фото шалерея</a>
+                    <a class="nav-link" href="<?=Url::to(['site/photo-gallery'])?>"><i class="fas fa-images"></i>Фото галерея</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?=Url::to(['site/contacts'])?>"><i class="fas fa-envelope"></i>Написати нам</a>
+                    <a class="nav-link" href="<?=Url::to(['site/contact'])?>"><i class="fas fa-envelope"></i>Написати нам</a>
                 </li>
                 <?php if (Yii::$app->user->identity->username=='')
                 { ?>
@@ -109,7 +110,7 @@ AppAsset::register($this);
             </div>
             <div class="card my-4">
                 <h5 class="card-header"><i class="fas fa-list-ul"></i>Категорії</h5>
-<!--                --><?//=\app\widgets\CategoryList::widget()?>
+                <?=CategoryList::widget()?>
             </div>
             <div class="card my-4">
                 <h5 class="card-header"><i class="far fa-calendar-alt"></i>Календарь</h5>

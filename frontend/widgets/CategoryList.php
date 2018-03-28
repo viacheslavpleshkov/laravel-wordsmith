@@ -1,17 +1,17 @@
 <?php
 
-namespace app\widgets;
+namespace frontend\widgets;
 
 use yii\base\Widget;
-use app\models\Category;
+use frontend\models\Category;
 
 class CategoryList extends Widget
 {
     public function run()
     {
-        $list=Category::getCategoryList();
+        $categorylist=(new Category)->getCategoryList();
         return $this->render('CategoryList', [
-            'list' => $list,
+            'categorylist' => $categorylist,
         ]);
     }
 }
