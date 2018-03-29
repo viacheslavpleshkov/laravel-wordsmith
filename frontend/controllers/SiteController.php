@@ -12,7 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
-
+use frontend\models\Athletes;
 /**
  * Site controller
  */
@@ -170,7 +170,8 @@ class SiteController extends Controller
      */
     public function actionAthletes()
     {
-        return $this->render('athletes');
+        $athletes= (new Athletes())->getAthletesList();
+        return $this->render('athletes',['athletes'=>$athletes]);
     }
 
     /**

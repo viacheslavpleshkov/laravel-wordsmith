@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 
+use yii\widgets\LinkPager;
 $this->title = 'Новини';
 ?>
 <?php
@@ -22,5 +23,9 @@ $this->title = 'Новини';
             <a href="#">User</a>
         </div>
     </div>
-<?php endforeach;
+<?php endforeach; ?>
+
+<? echo LinkPager::widget([
+    'pagination' => $pagination,
+]);?>
 

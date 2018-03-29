@@ -4,17 +4,24 @@ namespace frontend\models;
 
 use yii\base\Model;
 use yii\db\Query;
+use yii\db\QueryBuilder;
+use yii\data\Pagination;
 
 class News extends Model
 {
     public function getNewsList()
     {
-        $command = (new Query())
-            ->select('*')
-            ->from('news')
-            ->orderBy('id DESC')
+        $query = News::find();
+        $count = $query->count();
+        $pagination = new Pagination(['totalCount' => $count, 'pageSize'=>2]);
+        $news = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
             ->all();
-        return $command;
+
+        $data['news'] = $news;
+        $data['pagination'] = $pagination;
+
+        return $data;
     }
     public function getItem($id)
     {

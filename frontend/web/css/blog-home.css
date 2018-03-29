@@ -7,6 +7,9 @@ body {
     padding-top: 56px;
   }
 }
+.h5, h5 {
+    font-size: 1.10rem;
+}
 a, .navbar-dark .navbar-nav .active>.nav-link{
   color: #dc3545;
 }
@@ -16,4 +19,12 @@ a, .navbar-dark .navbar-nav .active>.nav-link{
 }
 .bg-dark {
   background-color: #1b1e21!important;
+}
+.card-columns {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 1.10rem;
+    -moz-column-gap: 1.10rem;
+    column-gap: 1.10rem;
 }
