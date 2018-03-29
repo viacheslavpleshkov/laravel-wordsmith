@@ -2,44 +2,61 @@
 
 namespace frontend\models;
 
-use yii\base\Model;
-use yii\db\Query;
-use yii\db\QueryBuilder;
-use yii\data\Pagination;
+use yii\db\ActiveRecord;
 
-class News extends Model
+/**
+ * This is the model class for table "news".
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $description
+ * @property string $content
+ * @property string $date
+ * @property string $url
+ * @property int $category_id
+ * @property string $tag
+ * @property int $user_id
+ */
+class News extends ActiveRecord
 {
-    public function getNewsList()
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
     {
-        $query = News::find();
-        $count = $query->count();
-        $pagination = new Pagination(['totalCount' => $count, 'pageSize'=>2]);
-        $news = $query->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->all();
-
-        $data['news'] = $news;
-        $data['pagination'] = $pagination;
-
-        return $data;
+        return 'news';
     }
-    public function getItem($id)
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
     {
-        $command = (new Query())
-            ->select('*')
-            ->from('news')
-            ->where("id=$id")
-            ->all();
-        return $command;
+        return [
+            [['title', 'description', 'content', 'date', 'url', 'user_id'], 'required'],
+            [['content'], 'string'],
+            [['date'], 'safe'],
+            [['category_id', 'user_id'], 'integer'],
+            [['title', 'description', 'tag'], 'string', 'max' => 255],
+            [['url'], 'string', 'max' => 256],
+        ];
     }
-    public function getNewsWidgetListTree()
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
     {
-        $command = (new Query())
-            ->select('*')
-            ->from('news')
-            ->orderBy('id DESC')
-            ->limit(3)
-            ->all();
-        return $command;
+        return [
+            'id' => 'ID',
+            'title' => 'Title',
+            'description' => 'Description',
+            'content' => 'Content',
+            'date' => 'Date',
+            'url' => 'Url',
+            'category_id' => 'Category ID',
+            'tag' => 'Tag',
+            'user_id' => 'User ID',
+        ];
     }
 }

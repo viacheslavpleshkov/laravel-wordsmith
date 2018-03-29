@@ -3,7 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
-use app\widgets\NewsList;
+use frontend\widgets\NewsList;
 
 $this->title = 'Фото галерея';
 $this->params['breadcrumbs'][] = $this->title;

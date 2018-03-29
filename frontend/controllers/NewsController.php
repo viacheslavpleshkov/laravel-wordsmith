@@ -4,21 +4,27 @@ namespace frontend\controllers;
 
 use yii\web\Controller;
 use frontend\models\News;
+use yii\data\Pagination;
 
 class NewsController extends Controller
 {
     public function actionIndex()
     {
-        $data= (new News())->getNewsList();
+        $query = News::find()->orderBy(['id' => SORT_DESC]);
+        $count = $query->count();
+        $pagination = new Pagination(['totalCount' => $count, 'pageSize'=>10]);
+        $news = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
         return $this->render('index',[
-            'news'=>$data['news'],
-            'pagination'=>$data['pagination'],
+            'news'=> $news,
+            'pagination'=> $pagination,
             ]);
     }
 
     public function actionView($id)
     {
-        $news = (new News())->getItem($id);
+        $news= News::find()->where("id=$id")->one();
         return $this->render('view', [
             'news' => $news
         ]);

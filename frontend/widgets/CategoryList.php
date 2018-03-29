@@ -9,7 +9,7 @@ class CategoryList extends Widget
 {
     public function run()
     {
-        $categorylist=(new Category)->getCategoryList();
+        $categorylist=Category::find()->all();
         return $this->render('CategoryList', [
             'categorylist' => $categorylist,
         ]);

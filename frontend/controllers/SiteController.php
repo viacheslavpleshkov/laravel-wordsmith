@@ -13,6 +13,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\Athletes;
+use yii\data\Pagination;
 /**
  * Site controller
  */
@@ -170,8 +171,16 @@ class SiteController extends Controller
      */
     public function actionAthletes()
     {
-        $athletes= (new Athletes())->getAthletesList();
-        return $this->render('athletes',['athletes'=>$athletes]);
+        $query = Athletes::find();
+        $count = $query->count();
+        $pagination = new Pagination(['totalCount' => $count, 'pageSize'=>10]);
+        $athletes = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        return $this->render('athletes',[
+            'athletes'=>$athletes,
+            'pagination'=> $pagination
+        ]);
     }
 
     /**

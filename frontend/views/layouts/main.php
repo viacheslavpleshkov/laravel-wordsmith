@@ -24,7 +24,7 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="<?=Url::to(['news/index'])?>"><img src="http://www.pikanakondy.com.ua/wp-content/uploads/2014/08/Flag.jpg"  alt="<?=Yii::$app->name?>" width="80px"></a>
+        <a class="navbar-brand" href="<?=Url::to(['news/index'])?>"><img src="/images/logo.png"  alt="<?=Yii::$app->name?>" width="85px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,12 +33,11 @@ AppAsset::register($this);
                 <li class="nav-item">
                     <a class="nav-link" href="<?=Url::to(['news/index'])?>"><i class="fas fa-newspaper"></i>Новини</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-align-center"></i>Про нас</a>
-                    <div class="dropdown-menu">
-                        <?= Html::a('Про нас', ['site/about'], ['class'=>'dropdown-item']) ?>
-                        <?= Html::a('Правила клубу', ['site/rules'], ['class'=>'dropdown-item']) ?>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=Url::to(['site/about'])?>"><i class="fas fa-bars"></i></i>Про нас</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=Url::to(['site/rules'])?>"><i class="fas fa-lock"></i>Правила клубу</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?=Url::to(['site/athletes'])?>"><i class="fas fa-users"></i>Cпортсмени</a>
@@ -74,14 +73,6 @@ AppAsset::register($this);
                     <?php
                 }
                 ?>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-language"></i>Мова сайту</a>
-                    <div class="dropdown-menu">
-                        <?= Html::a('Українська (UK)', ['news/index', 'language' => 'uk-UA'], ['class'=>'dropdown-item']) ?>
-                        <?= Html::a('Російська (RU)', ['news/index', 'language' => 'ru-RU'], ['class'=>'dropdown-item']) ?>
-                        <?= Html::a('Англійська (EN)', ['news/index', 'language' => 'en-US'], ['class'=>'dropdown-item']) ?>
-                    </div>
-                </li>
             </ul>
         </div>
     </div>
@@ -113,9 +104,21 @@ AppAsset::register($this);
                 <?=CategoryList::widget()?>
             </div>
             <div class="card my-4">
+                <h5 class="card-header"><i class="far fa-bullhorn"></i>Наш флаг</h5>
+                <div class="card-body text-center">
+                    <img src="/images/logo-flag.png" width="300">
+                </div>
+            </div>
+            <div class="card my-4">
                 <h5 class="card-header"><i class="far fa-calendar-alt"></i>Календарь</h5>
                 <div class="card-body">
                     You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                </div>
+            </div>
+            <div class="card my-4">
+                <h5 class="card-header"><i class="far fa-medkit"></i>При підтримці</h5>
+                <div class="card-body text-center">
+                    <a href="http://www.fstu.com.ua/"><img src="/images/fstu.jpg" target="_blank" ></a>
                 </div>
             </div>
         </div>
@@ -124,6 +127,7 @@ AppAsset::register($this);
 <footer class="py-5 bg-dark">
     <div class="container">
         <p class="m-0 text-center text-white">Пік Анаконди ©2013-<?=date('Y')?>. Всі права захищені.</p>
+        <p class="m-0 text-center text-white">Сайт створив <a href="https://slavapleshkov.com/uk" target="_blank">Слава Плешков</a></p>
     </div>
 </footer>
 <?php $this->endBody() ?>

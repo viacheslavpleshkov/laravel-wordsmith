@@ -1,19 +1,16 @@
 <?php
 
-namespace app\widgets;
+namespace frontend\widgets;
 
 use yii\base\Widget;
 use frontend\models\News;
 
-/**
- * @author admin
- */
 class NewsList extends Widget
 {
     public function run()
     {
-        $NewsWidgetListTree = (new News())->getNewsWidgetListTree();
-                
+        $NewsWidgetListTree=News::find()->orderBy(['id' => SORT_DESC])->limit(3)->all();
+
         return $this->render('NewsList', [
             'NewsWidgetListTree' => $NewsWidgetListTree,
         ]);
