@@ -4,6 +4,7 @@
 
 use yii\widgets\LinkPager;
 use yii\helpers\Url;
+use yii\helpers\Html;
 
 $this->title = 'Новини';
 ?>
@@ -17,8 +18,9 @@ $this->title = 'Новини';
             <a href="<?=Url::to(['news/view', 'id' => $item->id]); ?>" class="btn btn-danger">Детальніше <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="card-footer text-muted">
-            Опубликовано: <?=$item->date ?> Автор:
-            <a href="#"><?=$item->user_id ?></a>
+            Автор:<a href="#"><?=$item->user_id ?></a>
+            Категорія: <a href=""><?=$item->category_id?></a>
+            Опубликовано: <?=$item->date ?>
         </div>
     </div>
 <?php endforeach; ?>

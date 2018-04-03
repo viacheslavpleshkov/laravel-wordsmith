@@ -14,11 +14,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-contact">
 
     <p>
-        If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
+        Якщо у вас є ділові запити чи інші питання, заповніть наступну форму, щоб зв'язатися з нами. Дякую.
     </p>
 
     <div class="row">
-        <div class="col-lg-5">
+        <div class="col-lg-12">
             <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 
                 <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>

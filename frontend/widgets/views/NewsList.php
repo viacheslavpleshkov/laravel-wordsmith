@@ -12,10 +12,6 @@ use yii\helpers\Url;
             <p class="card-text"><?=$item->description ?></p>
             <a href="<?=Url::to(['news/view', 'id' => $item->id]); ?>" class="btn btn-danger">Детальніше <i class="fas fa-arrow-right"></i></a>
         </div>
-            <div class="card-footer text-muted">
-                Опубликовано <?=$item->date ?> Автор:
-                <a href="#"><?=$item->user_id ?></a>
-            </div>
     </div>
     <?php endforeach;?>
 </div>

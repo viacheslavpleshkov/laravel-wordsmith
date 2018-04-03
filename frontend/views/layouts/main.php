@@ -7,6 +7,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use frontend\assets\AppAsset;
 use frontend\widgets\CategoryList;
+use frontend\widgets\Search;
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -90,14 +91,7 @@ AppAsset::register($this);
         <div class="col-md-4">
             <div class="card my-4">
                 <h5 class="card-header"><i class="far fa-search"></i>Пошук</h5>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Шукати...">
-                        <span class="input-group-btn">
-                  <button class="btn btn-danger" type="button">Пошук</button>
-                </span>
-                    </div>
-                </div>
+                <?=Search::widget()?>
             </div>
             <div class="card my-4">
                 <h5 class="card-header"><i class="fas fa-list-ul"></i>Категорії</h5>

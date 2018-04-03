@@ -20,7 +20,9 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "twbs/bootstrap": "4.0.0",
         "components/jquery": "1.12.4",
-        "components/font-awesome": "^5.0
+        "components/font-awesome": "^5.0",
+        "vova07/yii2-imperavi-widget": "*",
+        "kartik-v/yii2-widget-typeahead": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
