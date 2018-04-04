@@ -13,7 +13,9 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\Athletes;
+use frontend\models\News;
 use yii\data\Pagination;
+use frontend\models\SearchForm;
 /**
  * Site controller
  */
@@ -74,6 +76,29 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    /**
+     * Displays homepage.
+     *
+     * @return mixed
+     */
+    public function actionSearch()
+    {
+        $search=Yii::$app->request->get()["SearchForm"]['search'];
+        $search = str_replace(' ', '', $search);
+        $query = News::find()->orderBy(['id' => SORT_DESC])->where(['like', 'replace(title, " ", "")', $search]);
+        //Pagination
+        $count = $query->count();
+        $pagination = new Pagination(['totalCount' => $count, 'pageSize'=>10]);
+        $news = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        return $this->render('search',[
+            'news'=> $news,
+            'pagination'=> $pagination,
+        ]);
+
     }
 
     /**

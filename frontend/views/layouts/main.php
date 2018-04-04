@@ -100,7 +100,7 @@ AppAsset::register($this);
             <div class="card my-4">
                 <h5 class="card-header"><i class="far fa-bullhorn"></i>Наш флаг</h5>
                 <div class="card-body text-center">
-                    <img src="/images/logo-flag.png" width="300">
+                    <img src="/images/logo-flag.png" width="100%">
                 </div>
             </div>
             <div class="card my-4">
@@ -112,7 +112,7 @@ AppAsset::register($this);
             <div class="card my-4">
                 <h5 class="card-header"><i class="far fa-medkit"></i>При підтримці</h5>
                 <div class="card-body text-center">
-                    <a href="http://www.fstu.com.ua/"><img src="/images/fstu.jpg" target="_blank" ></a>
+                    <a href="http://www.fstu.com.ua/"><img src="/images/fstu.jpg" width="100%" target="_blank" ></a>
                 </div>
             </div>
         </div>
