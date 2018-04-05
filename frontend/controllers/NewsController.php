@@ -10,7 +10,7 @@ class NewsController extends Controller
 {
     public function actionIndex()
     {
-        $query = News::find()->orderBy(['id' => SORT_DESC]);
+        $query = News::find()->where(['status'=>'1'])->orderBy(['id' => SORT_DESC]);
         $count = $query->count();
         $pagination = new Pagination(['totalCount' => $count, 'pageSize'=>10]);
         $news = $query->offset($pagination->offset)
@@ -22,9 +22,9 @@ class NewsController extends Controller
             ]);
     }
 
-    public function actionView($id)
+    public function actionView($url)
     {
-        $news= News::find()->where("id=$id")->one();
+        $news= News::find()->where(['status'=>'1'])->andWhere("url=$url")->one();
         return $this->render('view', [
             'news' => $news
         ]);

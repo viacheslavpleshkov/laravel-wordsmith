@@ -9,7 +9,7 @@ class NewsList extends Widget
 {
     public function run()
     {
-        $NewsWidgetListTree=News::find()->orderBy(['id' => SORT_DESC])->limit(3)->all();
+        $NewsWidgetListTree=News::find()->where(['status'=>'1'])->orderBy(['id' => SORT_DESC])->limit(3)->all();
 
         return $this->render('NewsList', [
             'NewsWidgetListTree' => $NewsWidgetListTree,

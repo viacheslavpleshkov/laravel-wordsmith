@@ -79,29 +79,6 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays homepage.
-     *
-     * @return mixed
-     */
-    public function actionSearch()
-    {
-        $search=Yii::$app->request->get()["SearchForm"]['search'];
-        $search = str_replace(' ', '', $search);
-        $query = News::find()->orderBy(['id' => SORT_DESC])->where(['like', 'replace(title, " ", "")', $search]);
-        //Pagination
-        $count = $query->count();
-        $pagination = new Pagination(['totalCount' => $count, 'pageSize'=>10]);
-        $news = $query->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->all();
-        return $this->render('search',[
-            'news'=> $news,
-            'pagination'=> $pagination,
-        ]);
-
-    }
-
-    /**
      * Logs in a user.
      *
      * @return mixed

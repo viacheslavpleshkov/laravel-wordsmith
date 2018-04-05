@@ -41,9 +41,9 @@ return [
             'showScriptName' => false,
             'rules' => [
                 ''=>'news/index',
-                'news/<id:.*>'=>'news/view',
+                'news/<url:.*>'=>'news/view',
                 'category/<id:.*>'=>'category/view',
-                'search/<id:.*>'=>'search/view',
+                'search'=>'search/index',
                 '<action>'=>'site/<action>',
             ],
         ],
