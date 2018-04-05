@@ -15,7 +15,7 @@ $this->title = 'Пошук';
         <div class="card-body">
             <h2 class="card-title"><?=$item->title ?></h2>
             <p class="card-text"><?=$item->description ?></p>
-            <a href="<?=Url::to(['news/view', 'id' => $item->id]); ?>" class="btn btn-danger">Детальніше <i class="fas fa-arrow-right"></i></a>
+            <?=Html::a('Детальніше <i class="fas fa-arrow-right"></i>', Url::to(['news/view', 'url' => $item->url]),['class'=>'btn btn-danger'])?>
         </div>
         <div class="card-footer text-muted">
             Автор:<a href="#"><?=$item->user_id ?></a>

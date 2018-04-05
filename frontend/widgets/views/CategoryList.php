@@ -7,7 +7,7 @@ use yii\helpers\Url;
         <div class="col-lg-6">
             <ul class="list-unstyled mb-0">
                 <li>
-                    <a href="<?=Url::to(['category/view', 'id' => $item->id]); ?>"><?=$item->title; ?></a>
+                    <a href="<?=Url::to(['category/view', 'url' => $item->url]); ?>"><?=$item->title; ?></a>
                 </li>
             </ul>
         </div>

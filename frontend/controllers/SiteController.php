@@ -13,9 +13,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\Athletes;
-use frontend\models\News;
 use yii\data\Pagination;
-use frontend\models\SearchForm;
 /**
  * Site controller
  */

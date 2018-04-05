@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Url;
+use yii\helpers\Html;
 ?>
 <h3 >Недавні статті:</h3>
 <div class="card-group">
@@ -10,7 +11,7 @@ use yii\helpers\Url;
         <div class="card-body">
             <h5 class="card-title"><?=$item->title ?></h5>
             <p class="card-text"><?=$item->description ?></p>
-            <a href="<?=Url::to(['news/view', 'id' => $item->id]); ?>" class="btn btn-danger">Детальніше <i class="fas fa-arrow-right"></i></a>
+            <?=Html::a('Детальніше <i class="fas fa-arrow-right"></i>', Url::to(['news/view', 'url' => $item->url]),['class'=>'btn btn-danger'])?>
         </div>
     </div>
     <?php endforeach;?>

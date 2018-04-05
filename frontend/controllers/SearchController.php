@@ -1,6 +1,7 @@
 <?php
 
 namespace frontend\controllers;
+
 use Yii;
 use frontend\models\News;
 use yii\data\Pagination;
