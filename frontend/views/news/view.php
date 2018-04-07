@@ -3,12 +3,12 @@
 use yii\helpers\Url;
 /* @var $this yii\web\View */
 
-$this->title = $news['title'];
+$this->title = $news->title;
 
 ?>
     <p class="lead">
         Автор:
-        <a href="#"><?=$news->user_id ?></a>
+        <a href="#"><?=$news->user->username ?></a>
     </p>
     <hr>
     <p>Опубликовано: <?=$news->date ?></p>

@@ -2,7 +2,7 @@
 
 namespace frontend\models;
 
-use yii\db\ActiveRecord;
+use Yii;
 
 /**
  * This is the model class for table "athletes".
@@ -15,7 +15,7 @@ use yii\db\ActiveRecord;
  * @property string $judicial
  * @property string $role
  */
-class Athletes extends ActiveRecord
+class Athletes extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

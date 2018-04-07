@@ -17,7 +17,7 @@ $this->title = 'Новини';
             <?=Html::a('Детальніше <i class="fas fa-arrow-right"></i>', Url::to(['news/view', 'url' => $item->url]),['class'=>'btn btn-danger'])?>
         </div>
         <div class="card-footer text-muted">
-            Автор:<a href="#"><?=$item->user_id ?></a>
+            Автор: <a href="#"><?=$item->user->username?></a>
             Категорія: <a href=""><?=$item->category_id?></a>
             Опубликовано: <?=$item->date ?>
             Перегляди: 43

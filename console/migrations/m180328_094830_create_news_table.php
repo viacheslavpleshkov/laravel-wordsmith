@@ -24,6 +24,15 @@ class m180328_094830_create_news_table extends Migration
             'tag' => $this->string(),
             'user_id' => $this->integer()->notNull()
         ]);
+        $this->addForeignKey(
+            'news_user_id_user_id',
+            'news',
+            'user_id',
+            'user',
+            'id',
+            'CASCADE'
+        );
+
     }
 
     /**

@@ -2,15 +2,17 @@
 
 namespace frontend\models;
 
-use yii\db\ActiveRecord;
+use Yii;
+
 /**
  * This is the model class for table "category".
  *
  * @property int $id
  * @property string $title
  * @property string $url
+ * @property int $status
  */
-class Category extends ActiveRecord
+class Category extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -26,7 +28,8 @@ class Category extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'url'], 'required'],
+            [['title', 'url', 'status'], 'required'],
+            [['status'], 'integer'],
             [['title'], 'string', 'max' => 120],
             [['url'], 'string', 'max' => 256],
         ];
@@ -41,6 +44,7 @@ class Category extends ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
             'url' => 'Url',
+            'status' => 'Status',
         ];
     }
 }
