@@ -20,6 +20,7 @@ class m180407_184939_create_news_table extends Migration
             'date' => $this->date()->notNull(),
             'url' => $this->string(256)->notNull(),
             'status' => $this->integer(3)->notNull(),
+            'views' =>$this->integer()->defaultValue(0)->notNull(),
             'category_id' => $this->integer()->notNull(),
             'tag' => $this->string(),
             'user_id' => $this->integer()->notNull()
