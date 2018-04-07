@@ -6,9 +6,7 @@ use yii\helpers\Url;
 $this->title = $news->title;
 
 ?>
-    <p class="lead">
-        Автор:
-        <a href="#"><?=$news->user->username ?></a>
+    <p class="lead">Автор: <a href="#"><?=$news->user->username ?></a>
     </p>
     <hr>
     <p>Опубликовано: <?=$news->date ?></p>

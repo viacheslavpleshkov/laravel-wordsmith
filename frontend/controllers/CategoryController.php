@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function actionView($id)
     {
-        $query = News::find()->where(['status'=>'1'])->andWhere("category_id=$id")->orderBy(['id' => SORT_DESC]);
+        $query = News::find()->where(['status'=>'1','category_id' => $id])->orderBy(['id' => SORT_DESC]);
         $count = $query->count();
         $pagination = new Pagination(['totalCount' => $count, 'pageSize' => 10]);
         $category = $query->offset($pagination->offset)
@@ -19,7 +19,6 @@ class CategoryController extends Controller
         return $this->render('view', [
             'category' => $category,
             'pagination' => $pagination,
-            'id'=>$id
         ]);
     }
 }

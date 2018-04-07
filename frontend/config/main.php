@@ -42,7 +42,7 @@ return [
             'rules' => [
                 ''=>'news/index',
                 'news/<url:.*>'=>'news/view',
-                'category/<url:.*>'=>'category/view',
+                'category/<id:.*>'=>'category/view',
                 'search'=>'search/index',
                 '<action>'=>'site/<action>',
             ],
