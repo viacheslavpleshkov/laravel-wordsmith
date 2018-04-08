@@ -49,8 +49,7 @@ AppAsset::register($this);
                 <li class="nav-item">
                     <a class="nav-link" href="<?=Url::to(['site/contact'])?>"><i class="fas fa-envelope"></i>Написати нам</a>
                 </li>
-                <?php if (Yii::$app->user->identity->username=='')
-                { ?>
+                <?php if (Yii::$app->user->identity->username==''):?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>Профіль</a>
                         <div class="dropdown-menu">
@@ -59,9 +58,7 @@ AppAsset::register($this);
                             <?= Html::a('Нагадати пароль', ['site/request-password-reset'], ['class'=>'dropdown-item']) ?>
                         </div>
                     </li>
-                    <?php
-                }else{
-                    ?>
+                    <?php else:?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i><?=Yii::$app->user->identity->username?></a>
                         <div class="dropdown-menu">
@@ -71,9 +68,7 @@ AppAsset::register($this);
 
                         </div>
                     </li>
-                    <?php
-                }
-                ?>
+                    <?php endif;?>
             </ul>
         </div>
     </div>
@@ -98,9 +93,29 @@ AppAsset::register($this);
                 <?=CategoryList::widget()?>
             </div>
             <div class="card my-4">
-                <h5 class="card-header"><i class="far fa-calendar-alt"></i>Архіви</h5>
+                <h5 class="card-header"><i class="far fa-comment"></i>Недавні коментарі</h5>
                 <div class="card-body">
-                    You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                    <div class="media mb-4">
+                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0">Commenter Name</h5>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        </div>
+                    </div>
+                    <div class="media mb-4">
+                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0">Commenter Name</h5>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        </div>
+                    </div>
+                    <div class="media mb-4">
+                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0">Commenter Name</h5>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="card my-4">
@@ -110,9 +125,9 @@ AppAsset::register($this);
                 </div>
             </div>
             <div class="card my-4">
-                <h5 class="card-header"><i class="far fa-calendar-alt"></i>Календарь</h5>
+                <h5 class="card-header"><i class="far fa-newspaper"></i>Новини від адміністраторів сайту</h5>
                 <div class="card-body">
-                    You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                    Якщо ви побачили якусь помилку сайту просимо повідомити нас на електрону почту <?=Yii::$app->formatter->asEmail('admin@pikanakondy.com.ua');?>
                 </div>
             </div>
             <div class="card my-4">

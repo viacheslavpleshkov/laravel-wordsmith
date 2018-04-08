@@ -10,4 +10,17 @@ class AccountController extends Controller
     {
 
     }
+    public function actionProfile()
+    {
+
+    }
+    public function actionSettings()
+    {
+
+    }
+    public function actionSignup()
+    {
+
+    }
+
 }
