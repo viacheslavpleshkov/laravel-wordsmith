@@ -20,7 +20,7 @@ $this->title = 'Новини';
             Автор: <?=$item->user->username?>
             Категорія: <a href="<?=Url::to(['category/view', 'id' => $item->category->id]); ?>"><?=$item->category->title; ?></a>
             Опубликовано: <?=$item->date ?>
-            Перегляди: 43
+            Перегляди: <?=$item->views ?>
         </div>
     </div>
 <?php endforeach; ?>

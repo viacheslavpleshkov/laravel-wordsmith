@@ -30,7 +30,7 @@ class m180407_202447_create_comment_table extends Migration
         $this->addForeignKey(
             'fk-article_id',
             'comment',
-            'article_id',
+            'news_id',
             'news',
             'id',
             'CASCADE'
