@@ -65,9 +65,9 @@ AppAsset::register($this);
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i><?=Yii::$app->user->identity->username?></a>
                         <div class="dropdown-menu">
-                            <?= Html::a('Профіль', ['demo/action'], ['class'=>'dropdown-item']) ?>
-                            <?= Html::a('Налаштування', ['demo/action'], ['class'=>'dropdown-item']) ?>
-                            <?= Html::a('Вихід', ['demo/action'], ['class'=>'dropdown-item']) ?>
+                            <?= Html::a('Профіль', ['account/profile'], ['class'=>'dropdown-item']) ?>
+                            <?= Html::a('Налаштування', ['account/settings'], ['class'=>'dropdown-item']) ?>
+                            <?= Html::a('Вихід', ['account/signup'], ['class'=>'dropdown-item']) ?>
 
                         </div>
                     </li>

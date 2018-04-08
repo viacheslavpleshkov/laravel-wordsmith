@@ -10,7 +10,7 @@ use yii\helpers\Html;
 
 $this->title = "Категорія:";
 ?>
-
+<?if(count($category)>0):?>
 <?php foreach ($category as $item): ?>
     <div class="card mb-4">
         <img class="card-img-top" src="<? echo Yii::getAlias('@images-news').'/';  echo $item->images?>">
@@ -27,7 +27,9 @@ $this->title = "Категорія:";
         </div>
     </div>
 <?php endforeach; ?>
-
+<? else:
+echo 'Вибачте, але нічого не знайдено.';
+endif;?>
 <div class="text-center">
     <?php echo LinkPager::widget([
         'pagination' => $pagination,
