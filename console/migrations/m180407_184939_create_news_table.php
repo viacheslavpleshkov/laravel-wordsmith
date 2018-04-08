@@ -17,6 +17,7 @@ class m180407_184939_create_news_table extends Migration
             'title' => $this->string()->notNull(),
             'description' => $this->string()->notNull(),
             'content' => $this->text()->notNull(),
+            'images' => $this->string()->defaultValue('default-images.jpg'),
             'date' => $this->date()->notNull(),
             'url' => $this->string(256)->notNull()->unique(),
             'status' => $this->integer(3)->notNull(),

@@ -47,6 +47,15 @@ return [
                 '<action>'=>'site/<action>',
             ],
         ],
+        'formatter' => [
+            'dateFormat' => 'dd-MM-yyyy',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'currencyCode' => 'uk-UA',
+        ],
     ],
     'params' => $params,
+    'aliases' => [
+        '@images-news' => '/images/news/headr',
+    ],
 ];

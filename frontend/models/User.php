@@ -17,6 +17,7 @@ use Yii;
  * @property int $created_at
  * @property int $updated_at
  *
+ * @property Comment[] $comments
  * @property News[] $news
  */
 class User extends \yii\db\ActiveRecord
@@ -61,6 +62,14 @@ class User extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getComments()
+    {
+        return $this->hasMany(Comment::className(), ['user_id' => 'id']);
     }
 
     /**

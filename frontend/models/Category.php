@@ -34,6 +34,7 @@ class Category extends \yii\db\ActiveRecord
             [['status'], 'integer'],
             [['title'], 'string', 'max' => 120],
             [['url'], 'string', 'max' => 256],
+            [['url'], 'unique'],
         ];
     }
 
