@@ -57,6 +57,8 @@ return [
     'params' => $params,
     'aliases' => [
         '@images-news' => '/images/news/headr',
+        '@images-user-default' => '/images/',
+        '@logo' => 'images/logo.png',
         '@images-logo' => 'images/logo-flag.png',
     ],
 ];

@@ -25,6 +25,7 @@ class NewsController extends Controller
     public function actionView($url)
     {
         $news= News::find()->where(['status'=>'1','url'=> $url])->one();
+        $news->viewsCounter();
         return $this->render('view', [
             'news' => $news
         ]);

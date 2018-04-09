@@ -26,7 +26,7 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="<?=Url::to(['news/index'])?>"><img src="/images/logo.png"  alt="<?=Yii::$app->name?>" width="85px"></a>
+        <a class="navbar-brand" href="<?=Url::to(['news/index'])?>"><img src="<?=Yii::getAlias('@logo');?>"  alt="<?=Yii::$app->name?>" width="85px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -99,7 +99,7 @@ AppAsset::register($this);
             <div class="card my-4">
                 <h5 class="card-header"><i class="far fa-bullhorn"></i>Наш прапор</h5>
                 <div class="card-body text-center">
-                    <img src="/images/logo-flag.png" width="100%">
+                    <img src="<?=Yii::getAlias('@images-logo'); ?>" width="100%">
                 </div>
             </div>
             <div class="card my-4">
