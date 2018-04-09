@@ -8,6 +8,7 @@ use yii\helpers\Url;
 use frontend\assets\AppAsset;
 use frontend\widgets\CategoryList;
 use frontend\widgets\Search;
+use frontend\widgets\CommentsList;
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -49,7 +50,7 @@ AppAsset::register($this);
                 <li class="nav-item">
                     <a class="nav-link" href="<?=Url::to(['site/contact'])?>"><i class="fas fa-envelope"></i>Написати нам</a>
                 </li>
-                <?php if (Yii::$app->user->identity->username==''):?>
+                <?php if (Yii::$app->user->isGuest):?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>Профіль</a>
                         <div class="dropdown-menu">
@@ -64,8 +65,7 @@ AppAsset::register($this);
                         <div class="dropdown-menu">
                             <?= Html::a('Профіль', ['account/profile'], ['class'=>'dropdown-item']) ?>
                             <?= Html::a('Налаштування', ['account/settings'], ['class'=>'dropdown-item']) ?>
-                            <?= Html::a('Вихід', ['account/signup'], ['class'=>'dropdown-item']) ?>
-
+                            <?= Html::a("Выход", ['/site/logout'], ['data' => ['method' => 'post'], 'class' => 'dropdown-item']);?>
                         </div>
                     </li>
                     <?php endif;?>
@@ -93,30 +93,8 @@ AppAsset::register($this);
                 <?=CategoryList::widget()?>
             </div>
             <div class="card my-4">
-                <h5 class="card-header"><i class="far fa-comment"></i>Недавні коментарі</h5>
-                <div class="card-body">
-                    <div class="media mb-4">
-                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                        <div class="media-body">
-                            <h5 class="mt-0">Commenter Name</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        </div>
-                    </div>
-                    <div class="media mb-4">
-                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                        <div class="media-body">
-                            <h5 class="mt-0">Commenter Name</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        </div>
-                    </div>
-                    <div class="media mb-4">
-                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                        <div class="media-body">
-                            <h5 class="mt-0">Commenter Name</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        </div>
-                    </div>
-                </div>
+                <h5 class="card-header"><i class="far fa-comment"></i>Останні коментарі</h5>
+                <?=CommentsList::widget()?>
             </div>
             <div class="card my-4">
                 <h5 class="card-header"><i class="far fa-bullhorn"></i>Наш прапор</h5>

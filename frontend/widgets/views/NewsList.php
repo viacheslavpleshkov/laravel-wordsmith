@@ -3,7 +3,7 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 ?>
-<h3 >Недавні статті:</h3>
+<h3>Останні новини:</h3>
 <div class="card-group">
     <?php foreach ($NewsWidgetListTree as $item): ?>
         <div class="card">

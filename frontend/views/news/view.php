@@ -16,8 +16,12 @@ $this->title = $news->title;
     <hr>
     <p><?=$news->content ?></p>
     <hr>
-    <a href="<?=Url::to(['news/index']); ?>" class="btn btn-danger"><i class="fas fa-arrow-left"></i>Назад</a>
-    <!-- Comments Form -->
+     Категорія: <a href="<?=Url::to(['category/view', 'id' => $news->category->id]); ?>"><?=$news->category->title; ?></a>
+<hr>
+<a href="<?=Url::to(['news/index']); ?>" class="btn btn-danger"><i class="fas fa-arrow-left"></i>Назад</a>
+<hr>
+<?php if (!Yii::$app->user->isGuest):?>
+<!-- Comments Form -->
     <div class="card my-4">
         <h5 class="card-header">Залишити коментар:</h5>
         <div class="card-body">
@@ -29,7 +33,10 @@ $this->title = $news->title;
             </form>
         </div>
     </div>
-
+<?php else:?>
+<div class="alert alert-danger text-center" role="alert">
+<p>Вибачте але ви не можете залити коментар тому що ви не зарегестровані, аба не вішли на сайт</p></div>
+<?php endif;?>
     <!-- Single Comment -->
     <div class="media mb-4">
         <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">

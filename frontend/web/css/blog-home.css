@@ -17,6 +17,9 @@ a, .navbar-dark .navbar-nav .active>.nav-link{
   font-weight: 900;
   margin-right: 3px;
 }
+/*.btn, .card, .card-img-top{*/
+    /*border-radius: 0!important;*/
+/*}*/
 .bg-dark {
   background-color: #1b1e21!important;
 }
