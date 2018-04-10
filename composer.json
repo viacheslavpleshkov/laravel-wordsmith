@@ -22,7 +22,11 @@
         "components/jquery": "1.12.4",
         "components/font-awesome": "^5.0",
         "vova07/yii2-imperavi-widget": "*",
-        "kartik-v/yii2-widget-typeahead": "*"
+        "kartik-v/yii2-widget-typeahead": "*",
+        "dmstr/yii2-adminlte-asset": "^2.1",
+        "kartik-v/yii2-widget-datepicker": "@dev",
+        "kartik-v/yii2-widget-select2": "@dev",
+        "kartik-v/yii2-widgets": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
