@@ -59,17 +59,17 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Заголовок',
-            'description' => 'Описания',
-            'content' => 'Текст',
+            'title' => 'Title',
+            'description' => 'Description',
+            'content' => 'Content',
             'images' => 'Images',
-            'date' => 'Дата публікації',
-            'url' => 'УРЛ',
-            'status' => 'Статус',
-            'views' => 'Кількість переглядів',
-            'category_id' => 'Категорія',
-            'tag' => 'Теги',
-            'user_id' => 'Користувач',
+            'date' => 'Date',
+            'url' => 'Url',
+            'status' => 'Status',
+            'views' => 'Views',
+            'category_id' => 'Category ID',
+            'tag' => 'Tag',
+            'user_id' => 'User ID',
         ];
     }
 

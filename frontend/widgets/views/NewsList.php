@@ -1,5 +1,8 @@
 <?php
 
+/* @var $NewsWidgetListTree array|\frontend\models\Comment[]|\yii\db\ActiveRecord[] */
+/* @var $this \yii\web\View */
+
 use yii\helpers\Url;
 use yii\helpers\Html;
 ?>

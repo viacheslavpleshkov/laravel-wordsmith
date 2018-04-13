@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use frontend\models\Comment;
 use yii\web\Controller;
 use frontend\models\News;
 use yii\data\Pagination;
@@ -26,8 +27,11 @@ class NewsController extends Controller
     {
         $news= News::find()->where(['status'=>'1','url'=> $url])->one();
         $news->viewsCounter();
+        $news_id=$news->id;
+        $comments=Comment::find()->where(['status'=>1,'news_id'=>$news_id])->all();
         return $this->render('view', [
-            'news' => $news
+            'news' => $news,
+            'comments' => $comments,
         ]);
     }
 }

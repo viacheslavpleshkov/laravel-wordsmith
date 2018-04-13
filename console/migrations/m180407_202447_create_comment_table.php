@@ -17,6 +17,7 @@ class m180407_202447_create_comment_table extends Migration
             'text' => $this->text()->notNull(),
             'user_id' => $this->integer()->notNull(),
             'news_id' => $this->integer()->notNull(),
+            'datetime' => $this->dateTime(),
             'status' => $this->integer()->defaultValue(1)->notNull()
         ]);
         $this->addForeignKey(

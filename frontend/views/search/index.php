@@ -3,13 +3,16 @@
 /* @var $this yii\web\View */
 /* @var $news array|\frontend\models\News[]|\yii\db\ActiveRecord[] */
 /* @var $pagination \yii\data\Pagination */
+/* @var $search  */
+/* @var $search  */
+/* @var $search  */
 
 use yii\widgets\LinkPager;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use frontend\widgets\Search;
 
-$this->title = 'Пошук';
+$this->title = 'Ви шукали: '.$search;
 ?>
 <?php if (count($news)>0):?>
 <?php foreach ($news as $item):?>

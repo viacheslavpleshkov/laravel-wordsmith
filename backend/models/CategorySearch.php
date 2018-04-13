@@ -5,12 +5,12 @@ namespace backend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\News;
+use backend\models\Category;
 
 /**
- * NewsSearch represents the model behind the search form of `backend\models\News`.
+ * CategorySearch represents the model behind the search form of `backend\models\Category`.
  */
-class NewsSearch extends News
+class CategorySearch extends Category
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class NewsSearch extends News
     public function rules()
     {
         return [
-            [['id', 'status', 'views', 'category_id', 'user_id'], 'integer'],
-            [['title', 'description', 'content', 'images', 'date', 'url', 'tag'], 'safe'],
+            [['id', 'status'], 'integer'],
+            [['title', 'url'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class NewsSearch extends News
      */
     public function search($params)
     {
-        $query = News::find();
+        $query = Category::find();
 
         // add conditions that should always apply here
 
@@ -60,19 +60,11 @@ class NewsSearch extends News
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'date' => $this->date,
             'status' => $this->status,
-            'views' => $this->views,
-            'category_id' => $this->category_id,
-            'user_id' => $this->user_id,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'content', $this->content])
-            ->andFilterWhere(['like', 'images', $this->images])
-            ->andFilterWhere(['like', 'url', $this->url])
-            ->andFilterWhere(['like', 'tag', $this->tag]);
+            ->andFilterWhere(['like', 'url', $this->url]);
 
         return $dataProvider;
     }

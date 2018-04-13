@@ -21,6 +21,7 @@ class SearchController extends Controller
             ->all();
         return $this->render('index', [
             'news' => $news,
+            'search' => $search,
             'pagination' => $pagination,
         ]);
     }

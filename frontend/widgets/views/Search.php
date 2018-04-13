@@ -1,4 +1,8 @@
 <?php
+
+/* @var $data array */
+/* @var $this \yii\web\View */
+/* @var $model \frontend\models\SearchForm */
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
