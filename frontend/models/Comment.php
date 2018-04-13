@@ -11,6 +11,7 @@ use Yii;
  * @property string $text
  * @property int $user_id
  * @property int $news_id
+ * @property string $datetime
  * @property int $status
  *
  * @property News $news
@@ -35,6 +36,7 @@ class Comment extends \yii\db\ActiveRecord
             [['text', 'user_id', 'news_id'], 'required'],
             [['text'], 'string'],
             [['user_id', 'news_id', 'status'], 'integer'],
+            [['datetime'], 'safe'],
             [['news_id'], 'exist', 'skipOnError' => true, 'targetClass' => News::className(), 'targetAttribute' => ['news_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
@@ -46,11 +48,12 @@ class Comment extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'text' => 'Text',
-            'user_id' => 'User ID',
-            'news_id' => 'News ID',
-            'status' => 'Status',
+            'id' => Yii::t('app', 'ID'),
+            'text' => Yii::t('app', 'Text'),
+            'user_id' => Yii::t('app', 'User ID'),
+            'news_id' => Yii::t('app', 'News ID'),
+            'datetime' => Yii::t('app', 'Datetime'),
+            'status' => Yii::t('app', 'Status'),
         ];
     }
 
