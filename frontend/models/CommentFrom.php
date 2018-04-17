@@ -22,7 +22,7 @@ class CommentForm extends Model
         $comment->user_id = Yii::$app->user->id;
         $comment->news_id = $news->id;
         $comment->status = 1;
-        $comment->datetime = date('Y-m-d');
+        $comment->datetime = date('Y-m-d H:i:s');
         return $comment->save();
     }
 }
