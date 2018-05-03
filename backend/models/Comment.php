@@ -49,11 +49,11 @@ class Comment extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'text' => Yii::t('app', 'Text'),
-            'user_id' => Yii::t('app', 'User ID'),
-            'news_id' => Yii::t('app', 'News ID'),
-            'datetime' => Yii::t('app', 'Datetime'),
-            'status' => Yii::t('app', 'Status'),
+            'text' => Yii::t('app', 'Текст'),
+            'user_id' => Yii::t('app', 'Користувач'),
+            'news_id' => Yii::t('app', 'ID Новини'),
+            'datetime' => Yii::t('app', 'Дата публікації'),
+            'status' => Yii::t('app', 'Статус'),
         ];
     }
 

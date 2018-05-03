@@ -32,7 +32,7 @@ use yii\helpers\Url;
                     ['label' => Yii::t('app', 'Коментарі') , 'icon' => 'comments', 'url' => ['comment/index']],
                     ['label' => Yii::t('app', 'Новини') , 'icon' => 'newspaper-o', 'url' => ['news/index']],
                     ['label' => Yii::t('app', 'Категорії') , 'icon' => 'list-ul', 'url' => ['category/index']],
-                    ['label' => Yii::t('app', 'Теги') , 'icon' => 'tags', 'url' => ['tags/index']],
+                    ['label' => Yii::t('app', 'Теги') , 'icon' => 'tags', 'url' => ['tag/index']],
                     ['label' => Yii::t('app', 'При підтримці') , 'icon' => 'medkit', 'url' => ['skills/index']],
                 ],
             ]

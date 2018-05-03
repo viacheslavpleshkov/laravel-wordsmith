@@ -14,6 +14,8 @@ class m180503_075028_create_about_table extends Migration
     {
         $this->createTable('about', [
             'id' => $this->primaryKey(),
+            'text' => $this->text(),
+            'status' => $this->integer(),
         ]);
     }
 

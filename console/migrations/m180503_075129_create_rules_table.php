@@ -14,6 +14,8 @@ class m180503_075129_create_rules_table extends Migration
     {
         $this->createTable('rules', [
             'id' => $this->primaryKey(),
+            'text' => $this->text(),
+            'status' =>$this->integer(),
         ]);
     }
 

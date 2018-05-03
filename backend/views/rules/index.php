@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\CommentSearch */
+/* @var $searchModel backend\models\RulesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Коментарі');
+$this->title = Yii::t('app', 'Rules');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="comment-index">
+<div class="rules-index">
 
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Створити Коментар'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Rules'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -27,10 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'text:ntext',
-            'user_id',
-            'news_id',
-            'datetime',
-            //'status',
+            'status',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

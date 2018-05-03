@@ -50,7 +50,7 @@ return [
                 'athletes' => 'athletes/index',
                 'news' => 'news/index',
                 'category' => 'category/index',
-                'tags' => 'tags/index',
+                'tag' => 'tag/index',
             ],
         ],
     ],

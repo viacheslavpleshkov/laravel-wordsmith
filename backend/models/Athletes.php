@@ -46,12 +46,12 @@ class Athletes extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'username' => Yii::t('app', 'Username'),
-            'date' => Yii::t('app', 'Date'),
-            'images' => Yii::t('app', 'Images'),
-            'discharge' => Yii::t('app', 'Discharge'),
-            'judicial' => Yii::t('app', 'Judicial'),
-            'role' => Yii::t('app', 'Role'),
+            'username' => Yii::t('app', 'П.І.Б'),
+            'date' => Yii::t('app', 'Дата народження'),
+            'images' => Yii::t('app', 'Забраження'),
+            'discharge' => Yii::t('app', 'Розряд'),
+            'judicial' => Yii::t('app', 'Судівська категорія'),
+            'role' => Yii::t('app', 'Роль'),
         ];
     }
 }
