@@ -44,5 +44,9 @@ return [
             ],
         ],
     ],
+    'aliases' => [
+        '@images' => '/path/to/foo',
+        '@site' => 'https://pikanakondy.com.ua/',
+    ],
     'params' => $params,
 ];
