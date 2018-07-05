@@ -13,3 +13,5 @@ let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/site.js', 'public/js')
    .sass('resources/assets/sass/site.scss', 'public/css');
+mix.js('resources/assets/js/errors.js', 'public/js')
+    .sass('resources/assets/sass/errors.scss', 'public/css');

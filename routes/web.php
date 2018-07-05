@@ -1,13 +1,11 @@
 <?php
 
-Route::group(['namespace' => 'Site'], function () {
-    Route::get('/', 'SiteController@index')->name('site.index');
+    Route::get('/', 'NewsController@index')->name('site.index');
     Route::get('about-us', 'SiteController@aboutus')->name('site.about-us');
     Route::get('rules', 'SiteController@rules')->name('site.rules');
-    Route::get('athletes', 'SiteController@aboutus')->name('site.athletes');
+    Route::get('athletes', 'SiteController@athletes')->name('site.athletes');
     Route::get('photo-gallery', 'SiteController@photogallery')->name('site.photo-gallery');
-    Route::get('write-to-us', 'SiteController@write-to-us')->name('site.write-to-us');
-});
+    Route::get('write-to-us', 'SiteController@writetous')->name('site.write-to-us');
 
 Auth::routes();
 

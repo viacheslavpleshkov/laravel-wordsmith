@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title') | Пік Анаконди</title>
-    <link href="{{ asset('css/site.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/errors.css') }}" rel="stylesheet">
 </head>
 <body>
 @include('includes.nav')
@@ -19,9 +19,7 @@
         <div class="col-md-4">
             {{ Widget::Search() }}
             {{ Widget::Flag() }}
-            {{ Widget::Categories() }}
             {{ Widget::Infoadministrator() }}
-            {{ Widget::Withsupport() }}
         </div>
     </div>
 </div>
@@ -30,7 +28,7 @@
         <div class="text-center text-white">Пік Анаконди ©2016-{{ date('Y') }}. Всі права захищені.</div>
     </div>
 </footer>
-<script src="{{ asset('js/site.js') }}"></script>
+<script src="{{ asset('js/errors.js') }}"></script>
 </body>
 </html>
 

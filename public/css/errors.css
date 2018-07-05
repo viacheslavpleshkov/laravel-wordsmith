@@ -14669,3 +14669,9 @@ body {
   }
 }
 
+.text-h1 {
+  font-size: 300px;
+  font-weight: 900;
+  line-height: 300px;
+}
+

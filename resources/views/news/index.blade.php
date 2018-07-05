@@ -4,7 +4,6 @@
 
 @section('content')
     <div class="col-md-8">
-        @include('includes.titile')
         {{--@foreach($main as $item)--}}
             {{--<div class="card mb-4">--}}
                 {{--<img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">--}}
