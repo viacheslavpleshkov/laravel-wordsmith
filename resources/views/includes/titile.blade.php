@@ -1,0 +1,1 @@
+<h1 class="my-4">@yield('title')</h1>
