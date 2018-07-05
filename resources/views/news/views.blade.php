@@ -3,10 +3,7 @@
 @section('title', 'Новини')
 
 @section('content')
-<p class="lead">
-    by
-    <a href="#">{{ $main->user_id }}</a>
-</p>
+<p class="lead">Автор: <a href="#">{{ $main->user->name }}</a></p>
 
 <hr>
 

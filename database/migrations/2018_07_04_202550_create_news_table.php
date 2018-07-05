@@ -19,7 +19,6 @@ class CreateNewsTable extends Migration
             $table->string('description');
             $table->text('content');
             $table->text('images');
-            $table->date('date');
             $table->string('url');
             $table->integer('status');
             $table->integer('views');

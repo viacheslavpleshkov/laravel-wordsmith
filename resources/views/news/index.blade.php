@@ -3,7 +3,6 @@
 @section('title', 'Новини')
 
 @section('content')
-    <div class="col-md-8">
         @foreach($main as $item)
             <div class="card mb-4">
                 <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
@@ -13,13 +12,12 @@
                     <a href="{{ route('news.views',$item->url) }}" class="btn btn-primary">Читати далі &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
-                    Автор: <a href="#">{{ $item->user_id }}</a>
+                    Автор: <a href="#">{{ $item->user->name }}</a>
                     Категорія: <a href="#">{{ $item->category_id }}</a>,
-                    Опубліковано: {{ $item->date }},
+                    Опубліковано: {{ $item->created_at }},
                     Перегляди: {{ $item->views }}.
                 </div>
             </div>
         @endforeach
         {{ $main->links() }}
-    </div>
 @endsection

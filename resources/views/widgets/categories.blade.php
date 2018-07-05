@@ -5,7 +5,7 @@
             @foreach($main as $item)
                 <ul class="col-lg-6 list-unstyled mb-0">
                     <li>
-                        {{--<a href="{{ $item->url }}">{{ $item->title }}</a>--}}
+                        <a href="{{ route('categories.views',$item->url) }}">{{ $item->title }}</a>
                     </li>
 
                 </ul>

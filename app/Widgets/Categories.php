@@ -2,6 +2,7 @@
 
 namespace App\Widgets;
 
+use App\Category;
 use Arrilot\Widgets\AbstractWidget;
 use App\Category as Model;
 class Categories extends AbstractWidget
@@ -19,8 +20,8 @@ class Categories extends AbstractWidget
      */
     public function run()
     {
-        //
-        $main = ['test1','test2','test3','test4','test5'];
+
+        $main = Model::where('status', 1)->get();
         return view('widgets.categories', [
             'config' => $this->config,'main' => $main
         ]);
