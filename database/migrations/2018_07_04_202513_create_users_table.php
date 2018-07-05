@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->integer('google_id')->unique()->nullable();
             $table->integer('facebook_id')->unique()->nullable();
             $table->integer('twitter_id')->unique()->nullable();
-            $table->integer('role_id');
+            $table->unsignedInteger('role_id');
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('role_id')->references('id')->on('roles');
