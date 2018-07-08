@@ -3,8 +3,6 @@
 @section('title', 'Нагадати пароль')
 
 @section('content')
-    <div class="col-md-8">
-        @include('includes.titile')
         <div class="card">
             <div class="card-header">{{ __('Reset Password') }}</div>
 
@@ -45,5 +43,4 @@
                 </form>
             </div>
         </div>
-    </div>
 @endsection

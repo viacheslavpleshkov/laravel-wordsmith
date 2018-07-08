@@ -17,7 +17,7 @@ class CreateAthletesTable extends Migration
             $table->increments('id');
             $table->string('username');
             $table->date('date');
-            $table->string('images');
+            $table->string('images')->nullable();;
             $table->string('discharge');
             $table->string('judicial');
             $table->string('role');

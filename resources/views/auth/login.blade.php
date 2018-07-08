@@ -3,8 +3,6 @@
 @section('title', 'Вхід')
 
 @section('content')
-    <div class="col-md-8">
-        @include('includes.titile')
         <div class="card">
             <div class="card-header">{{ __('Login') }}</div>
 
@@ -70,5 +68,4 @@
                 </form>
             </div>
         </div>
-    </div>
 @endsection

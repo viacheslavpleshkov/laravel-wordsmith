@@ -18,12 +18,12 @@ class CreateNewsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->text('content');
-            $table->text('images');
-            $table->string('url');
+            $table->text('images')->nullable();
+            $table->string('url')->unique();
             $table->integer('status');
             $table->integer('views');
             $table->unsignedInteger('category_id');
-            $table->integer('tag');
+            $table->integer('tag')->nullable();
             $table->unsignedInteger('user_id');
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories');
