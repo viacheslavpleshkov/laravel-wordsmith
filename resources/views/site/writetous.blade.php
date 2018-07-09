@@ -33,4 +33,5 @@
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
     </form>
+    {{ Widget::News() }}
 @endsection

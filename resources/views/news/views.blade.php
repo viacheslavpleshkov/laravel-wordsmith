@@ -7,10 +7,8 @@
     <hr>
     <p>Опубликовано: {{ $main->created_at }}</p>
     <hr>
-
     <!-- Preview Image -->
     <img class="img-fluid rounded" src="{{ $main->images }}" alt="{{ $main->title }}">
-
     <hr>
     {{ $main->content }}
     <hr>

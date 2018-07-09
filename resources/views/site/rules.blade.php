@@ -69,4 +69,5 @@
             </div>
         </div>
     </div>
+    {{ Widget::News() }}
 @endsection

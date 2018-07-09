@@ -3,7 +3,7 @@
     Route::get('/', 'NewsController@index')->name('site.index');
     Route::get('news/{url}', 'NewsController@views')->name('news.views')->where('url', '[\w\d\-\_]+');
     Route::get('author/{url}', 'NewsController@views')->name('author.views')->where('url', '[\w\d\-\_]+');
-    Route::get('categories/{url}', 'NewsController@views')->name('categories.views')->where('url', '[\w\d\-\_]+');
+    Route::get('categories/{url}', 'CategoryController@views')->name('categories.views')->where('url', '[\w\d\-\_]+');
     Route::get('tag/{url}', 'NewsController@views')->name('tag.views')->where('url', '[\w\d\-\_]+');
     Route::get('about-us', 'SiteController@aboutus')->name('site.about-us');
     Route::get('rules', 'SiteController@rules')->name('site.rules');

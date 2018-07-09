@@ -47,4 +47,5 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+    {{ Widget::News() }}
 @endsection
