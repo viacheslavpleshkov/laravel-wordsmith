@@ -14669,3 +14669,48 @@ body {
   }
 }
 
+.group {
+  width: 49%;
+  margin-top: .5rem;
+}
+
+.btn-github {
+  color: #fff;
+  background-color: #292d32;
+  border-color: #292d32;
+}
+
+.btn-github:hover {
+  color: #fff;
+}
+
+.btn-google {
+  color: #fff;
+  background-color: #f6002c;
+  border-color: #f6002c;
+}
+
+.btn-google:hover {
+  color: #fff;
+}
+
+.btn-facebook {
+  color: #fff;
+  background-color: #49459e;
+  border-color: #49459e;
+}
+
+.btn-facebook:hover {
+  color: #fff;
+}
+
+.btn-twitter {
+  color: #fff;
+  background-color: #00a2f0;
+  border-color: #00a2f0;
+}
+
+.btn-twitter:hover {
+  color: #fff;
+}
+

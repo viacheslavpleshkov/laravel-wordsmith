@@ -8,23 +8,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item {{ url()->current() == route('site.index') || Request::is('*news*') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('site.index') }}"><i class="fas fa-newspaper"></i> Новини</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ url()->current() == route('site.about-us') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('site.about-us') }}"><i class="fas fa-bars"></i></i> Про нас</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ url()->current() == route('site.rules') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('site.rules') }}"><i class="fas fa-lock"></i> Правила клубу</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ url()->current() == route('site.athletes') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('site.athletes') }}"><i class="fas fa-users"></i> Cпортсмени</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ url()->current() == route('site.photo-gallery') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('site.photo-gallery') }}"><i class="fas fa-images"></i> Фото
                         галерея</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ url()->current() == route('site.write-to-us') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('site.write-to-us') }}"><i class="fas fa-envelope"></i> Написати
                         нам</a>
                 </li>
@@ -33,9 +33,13 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                            aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> Профіль</a>
                         <div class="dropdown-menu">
-                            <a href="{{ route('login') }}" class="dropdown-item">Вхід</a>
-                            <a href="{{ route('register') }}" class="dropdown-item">Реєстрація</a>
-                            <a href="{{ route('password.request') }}" class="dropdown-item">Нагадати пароль</a>
+                            <a href="{{ route('login') }}"
+                               class="dropdown-item {{ url()->current() == route('login') ? 'active' : '' }}">Вхід</a>
+                            <a href="{{ route('register') }}"
+                               class="dropdown-item {{ url()->current() == route('register') ? 'active' : '' }}">Реєстрація</a>
+                            <a href="{{ route('password.request') }}"
+                               class="dropdown-item {{ url()->current() == route('password.request') ? 'active' : '' }}">Нагадати
+                                пароль</a>
                         </div>
                     </li>
                 @else
