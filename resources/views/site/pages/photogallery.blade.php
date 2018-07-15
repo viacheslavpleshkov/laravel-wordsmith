@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('site.layouts.main')
 
 @section('title', 'Фото галерея')
 

@@ -9,11 +9,11 @@
     <link href="{{ asset('css/errors.css') }}" rel="stylesheet">
 </head>
 <body>
-@include('includes.nav')
+@include('site.includes.nav')
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            @include('includes.titile')
+            @include('site.includes.titile')
             @yield('content')
         </div>
         <div class="col-md-4">

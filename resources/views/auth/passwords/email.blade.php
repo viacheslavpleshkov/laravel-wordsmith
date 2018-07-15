@@ -1,47 +1,48 @@
-@extends('layouts.main')
+@extends('auth.layouts.main')
 
-@section('title', 'Нагадати пароль')
+@section('title', __('auth.reset-password-title'))
 
 @section('content')
-    <div class="card">
-        <div class="card-body">
-            @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
-
-            <form method="POST" action="{{ route('password.email') }}" aria-label="{{ __('Нагадати пароль') }}">
-                @csrf
-
-                <div class="form-group row">
-                    <label for="email"
-                           class="col-md-4 col-form-label text-md-right">{{ __('Адреса електронної пошти') }}</label>
-
-                    <div class="col-md-8">
-                        <input id="email" type="email"
-                               class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
-                               value="{{ old('email') }}" required>
-
-                        @if ($errors->has('email'))
-                            <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group row mb-0">
-                    <div class="col-md-8 offset-md-4">
-                        <button type="submit"
-                                class="btn btn-lg btn-primary btn-block">{{ __('Надіслати посилання видалити пароль') }}</button>
-                        <a class="btn btn-link" href="{{ route('site.index') }}">{{ __('← Назад до сайту') }}</a>
-                        <a class="btn btn-link" href="{{ route('login') }}">{{ __('Увійти') }}</a>
-                        <a class="btn btn-link" href="{{ route('register') }}">{{ __('Зареєструватися') }}</a>
-                    </div>
-                </div>
-            </form>
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
         </div>
-    </div>
-    {{ Widget::News() }}
+    @endif
+
+    <form method="post" action="{{ route('password.email') }}" class="form-signin">
+        @csrf
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">{{ __('auth.e-mail-address') }}</label>
+            <div class="col-sm-8">
+                <input type="email" id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                       name="email" value="{{ old('email') }}" placeholder="{{ __('auth.enter-e-mail-address') }}" required
+                       autofocus>
+                @if ($errors->has('email'))
+                    <span class="text-danger">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-4 col-form-label">{{ __('auth.captcha') }}</label>
+            <div class="col-sm-8">
+                {!! NoCaptcha::display(['data-theme' => 'light','data-size'=>'normal']) !!}
+                @if ($errors->has('g-recaptcha-response'))
+                    <span class="text-danger">
+                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                </span>
+                @endif
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-lg btn-primary btn-block"
+                    type="submit">{{ __('auth.send-password-reset-link') }}</button>
+            <a class="btn btn-link" href="{{ route('site.index') }}">{{ __('auth.back-to-the-site') }}</a>
+            <a class="btn btn-link" href="{{ route('login') }}">{{ __('auth.login') }}</a>
+            <a class="btn btn-link" href="{{ route('register') }}">{{ __('auth.register') }}</a>
+        </div>
+    </form>
 @endsection

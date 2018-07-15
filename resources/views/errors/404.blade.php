@@ -1,4 +1,4 @@
-@extends('layouts.errors')
+@extends('errors.layouts.errors')
 
 @section('title', 'Сторінку не знайдено (#404)')
 

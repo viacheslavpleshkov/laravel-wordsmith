@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title') | Пік Анаконди</title>
-    <link href="{{ asset('css/site.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
+    {!! NoCaptcha::renderJs('uk') !!}
 </head>
 <body>
-@include('includes.nav')
+@include('site.includes.nav')
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            @include('includes.titile')
+            @include('site.includes.titile')
             @yield('content')
         </div>
         <div class="col-md-4">
@@ -30,7 +31,7 @@
         <div class="text-center text-white">Пік Анаконди ©2016-{{ date('Y') }}. Всі права захищені.</div>
     </div>
 </footer>
-<script src="{{ asset('js/site.js') }}"></script>
+<script src="{{ asset('js/auth.js') }}"></script>
 </body>
 </html>
 

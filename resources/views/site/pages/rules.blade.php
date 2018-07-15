@@ -1,6 +1,6 @@
-@extends('layouts.main')
+@extends('site.layouts.main')
 
-@section('title', 'Про нас')
+@section('title', 'Правила клубу')
 
 @section('content')
     <div class="accordion" id="accordionExample">

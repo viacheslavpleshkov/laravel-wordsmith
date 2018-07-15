@@ -1,6 +1,6 @@
-@extends('layouts.main')
+@extends('site.layouts.main')
 
-@section('title', 'Новини')
+@section('title', "$main->title")
 
 @section('content')
     <p class="lead">Автор: <a href="#">{{ $main->user->name }}</a></p>

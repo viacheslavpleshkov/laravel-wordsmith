@@ -1,21 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Site;
 
 use App\News;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class NewsController extends Controller
 {
     public function index()
     {
         $main = News::where('status', 1)->orderBy('id', 'desc')->paginate(10);
-        return view('news.index', compact('main'));
+        return view('site.news.index', compact('main'));
     }
 
     public function views($url)
     {
         $main = News::where('status', 1)->where('url', "$url")->first();
-        return view('news.views', compact('main'));
+        return view('site.news.views', compact('main'));
     }
 }
