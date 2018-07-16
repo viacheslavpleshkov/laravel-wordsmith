@@ -15,8 +15,21 @@ Route::group(['namespace' => 'Auth'], function () {
 Route::group(['prefix' => '/admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'roles'], 'block' => ['User']], function () {
     Route::group(['roles' => ['Author', 'Moderator', 'Admin']], function () {
         Route::get('/', 'AdminController@index')->name('admin.index');
+        Route::get('profile', 'ProfileController@index')->name('profile.index');
+        Route::get('profile/{id}/edit', 'ProfileController@edit')->name('profile.edit');
+        Route::put('profile/{id}/updateedit', 'ProfileController@updateedit')->name('profile.updateedit');
+        Route::get('profile/{id}/password', 'ProfileController@password')->name('profile.password');
+        Route::put('profile/{id}/updatepassword', 'ProfileController@updatepassword')->name('profile.updatepassword');
+        Route::delete('profile/{id}', 'ProfileController@destroy')->name('profile.destroy');
     });
     Route::group(['roles' => ['Moderator', 'Admin']], function () {
+        Route::resource('contact-with-me', 'ContactwithmeController');
+        Route::resource('knowledge-of-languages', 'LanguageknowledgeController');
+        Route::resource('educations', 'EducationController');
+        Route::resource('about-me', 'AboutmeController');
+        Route::resource('experiences', 'ExperienceController');
+        Route::resource('skills', 'SkillController');
+        Route::resource('projects', 'ProjectController');
     });
     Route::group(['roles' => ['Admin']], function () {
         Route::resource('users', 'UserController');

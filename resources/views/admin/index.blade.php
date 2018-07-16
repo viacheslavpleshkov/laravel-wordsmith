@@ -1,7 +1,7 @@
-@extends('admin.layouts.main')
+@extends('admin.layouts.admin')
 
 @section('title', __('admin.home'))
 
 @section('content')
-<h2>Hello</h2>
+<h2>Test</h2>
 @endsection
