@@ -12,9 +12,9 @@ class SearchController extends Controller
     {
         $title = $request->get('search');
         $main = News::where('status', 1)->where('title', 'like', "%$title%")->orderBy('id', 'desc')->paginate(10);
-        if (count($main)>0){
-            return view('site.search.index', compact('title', 'main'));}
-        else{
-            return view('site.search.not-found');}
+        if (count($main) > 0)
+            return view('site.search.index', compact('title', 'main'));
+        else
+            return view('site.search.not-found');
     }
 }

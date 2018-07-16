@@ -15,5 +15,7 @@ mix.js('resources/assets/js/site.js', 'public/js')
    .sass('resources/assets/sass/site.scss', 'public/css');
 mix.js('resources/assets/js/auth.js', 'public/js')
     .sass('resources/assets/sass/auth.scss', 'public/css');
+mix.js('resources/assets/js/admin.js', 'public/js')
+    .sass('resources/assets/sass/admin.scss', 'public/css');
 mix.js('resources/assets/js/errors.js', 'public/js')
     .sass('resources/assets/sass/errors.scss', 'public/css');
