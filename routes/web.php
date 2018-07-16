@@ -19,6 +19,13 @@ Route::group(['prefix' => '/admin', 'namespace' => 'Admin', 'middleware' => ['au
     Route::group(['roles' => ['Moderator', 'Admin']], function () {
     });
     Route::group(['roles' => ['Admin']], function () {
+        Route::resource('users', 'UserController');
+        Route::get('roles', 'RoleController@index')->name('roles.index');
+        Route::get('role/{id}', 'RoleController@show')->name('roles.show');
+        Route::get('roles/{id}/edit', 'RoleController@edit')->name('roles.edit');
+        Route::put('roles/{id}', 'RoleController@update')->name('roles.update');
+        Route::get('settings', 'AdminController@settings')->name('admin.settings');
+        Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('admin.logs');
     });
 });
 Route::group(['namespace' => 'Site'], function () {

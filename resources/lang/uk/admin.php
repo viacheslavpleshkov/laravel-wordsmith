@@ -3,8 +3,7 @@ return [
     //nav
     'home' => 'Головна',
     'edit-site' => 'Редагувати сайт',
-    'contact-with-me' => 'Зв\'яжіться зі мною',
-    'knowledge-of-languages' => 'Знання мов',
+    'news' => 'Новини',
     'educations' => 'Освіти',
     'about-me' => 'Про мене',
     'experiences' => 'Досвіди роботи',

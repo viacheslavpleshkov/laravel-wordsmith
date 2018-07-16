@@ -4,7 +4,7 @@
     "/css/auth.css": "/css/auth.css",
     "/css/admin.css": "/css/admin.css",
     "/css/errors.css": "/css/errors.css",
+    "/js/admin.js": "/js/admin.js",
     "/js/errors.js": "/js/errors.js",
-    "/js/auth.js": "/js/auth.js",
-    "/js/admin.js": "/js/admin.js"
+    "/js/auth.js": "/js/auth.js"
 }
