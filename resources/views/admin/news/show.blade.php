@@ -38,7 +38,7 @@
         </tr>
         <tr>
             <th>{{ __('admin.news-url') }}</th>
-            <td>{{ url('/').'/news/'.$main->url }}</td>
+            <td>{{ route('news.views',$main->url) }}</td>
         </tr>
         <tr>
             <th>{{ __('admin.news-views') }}</th>

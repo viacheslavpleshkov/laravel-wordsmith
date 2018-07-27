@@ -12,7 +12,7 @@
             </button>
         </div>
     @endif
-    <form action="{{ route('profile.updatepassword',$main->id) }}" method="POST">
+    <form action="{{ route('profile.password',$main->id) }}" method="POST">
         @csrf
         @method('PUT')
 

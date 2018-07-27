@@ -151,8 +151,6 @@ return [
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Arrilot\Widgets\ServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
-        RenatoMarinho\LaravelPageSpeed\ServiceProvider::class,
-
 
         /*
          * Package Service Providers...

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Category;
 use App\Http\Requests\Category as Request;
 
+
 class CategoryController extends Controller
 {
     /**
@@ -16,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         $main = Category::all();
-        return view('admin.tags.index', compact('main'));
+        return view('admin.categories.index', compact('main'));
     }
 
     /**
@@ -26,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.tags.create');
+        return view('admin.categories.create');
     }
 
     /**
@@ -37,13 +38,8 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role_id' => $request->role_id
-        ]);
-        return redirect()->route('users.index')->with('success', __('admin.created-success'));
+        Category::create($request->all());
+        return redirect()->route('categories.index')->with('success', __('admin.created-success'));
     }
 
     /**
@@ -54,8 +50,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $main = User::find($id);
-        return view('admin.users.show', compact('main'));
+        $main = Category::find($id);
+        return view('admin.categories.show', compact('main'));
     }
 
     /**
@@ -66,8 +62,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $main = User::find($id);
-        return view('admin.users.edit', compact('main', 'role'));
+        $main = Category::find($id);
+        return view('admin.categories.edit', compact('main'));
     }
 
     /**
@@ -79,13 +75,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        User::find($id)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role_id' => $request->role_id
-        ]);
-        return redirect()->route('users.index')->with('success', __('admin.updated-success'));
+        Category::find($id)->update($request->all());
+        return redirect()->route('categories.index')->with('success', __('admin.updated-success'));
     }
 
     /**
@@ -96,7 +87,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
-        return redirect()->route('users.index')->with('success', __('admin.information-deleted'));
+        Category::find($id)->delete();
+        return redirect()->route('categories.index')->with('success', __('admin.information-deleted'));
     }
 }

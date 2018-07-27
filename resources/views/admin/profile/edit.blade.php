@@ -5,7 +5,7 @@
 @section('content')
     @include('admin.includes.title')
     @include('admin.includes.error')
-    <form action="{{ route('profile.updateedit',$main->id) }}" method="POST">
+    <form action="{{ route('profile.edit',$main->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-group">

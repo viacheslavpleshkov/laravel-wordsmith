@@ -28,7 +28,7 @@
 </main>
 <footer class="footer">
     <div class="container text-center">
-        <span class="text-muted">Слава Плешков ©2016-{{ date('Y') }}. Всі права захищені.</span>
+        <span class="text-muted">Пік Анаконди ©2016-{{ date('Y') }}. Всі права захищені.</span>
     </div>
 </footer>
 <script src="{{ asset('js/admin.js') }}"></script>

@@ -8,13 +8,11 @@
         "php": "^7.1.3",
         "anhskohbo/no-captcha": "^3.0",
         "arrilot/laravel-widgets": "^3.12",
-        "davejamesmiller/laravel-breadcrumbs": "5.x",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.6.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "^1.0",
-        "rap2hpoutre/laravel-log-viewer": "^0.17.0",
-        "renatomarinho/laravel-page-speed": "^1.8"
+        "rap2hpoutre/laravel-log-viewer": "^0.17.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

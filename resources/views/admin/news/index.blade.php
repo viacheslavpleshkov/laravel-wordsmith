@@ -29,7 +29,7 @@
                 <th scope="col">{{ __('admin.news-category') }}</th>
                 <th scope="col">{{ __('admin.news-tags') }}</th>
                 <th scope="col">{{ __('admin.news-author') }}</th>
-                <th scope="col">{{ __('admin.news-status') }}</th>
+                <th scope="col">{{ __('admin.status') }}</th>
                 <th scope="col"></th>
             </tr>
             </thead>

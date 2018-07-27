@@ -23,7 +23,7 @@ return [
     'home-hello' => 'Здравствуйте',
     'home-welcome' => 'Покращуйте свої навички щодня.)',
     'home-url' => 'Перейти на сайт',
-    //Tags
+    //News
     'create-news' => 'Створити новину',
     'show-news' => 'Показати новину',
     'edit-news' => 'Редагувати новину',
@@ -37,6 +37,15 @@ return [
     'news-category' => 'Категорія',
     'news-tags' => 'Теги',
     'news-author' => 'Автор',
+    //categories
+    'create-categories' => 'Створити категорію',
+    'show-categories' => 'Показати категорію',
+    'edit-categories' => 'Редагувати категорію',
+    'categories-id' => 'ID',
+    'categories-title' => 'Заголовок',
+    'categories-url' => 'URL-адрес',
+
+
     //Users
     'create-users' => 'Створити користувача',
     'show-users' => 'Показати користувача',

@@ -1,5 +1,5 @@
 <?php
-Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Auth'], function () {
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login', 'LoginController@login');
     Route::post('logout', 'LoginController@logout')->name('logout');
@@ -17,9 +17,9 @@ Route::group(['prefix' => '/admin', 'namespace' => 'Admin', 'middleware' => ['au
         Route::get('/', 'AdminController@index')->name('admin.index');
         Route::get('profile', 'ProfileController@index')->name('profile.index');
         Route::get('profile/{id}/edit', 'ProfileController@edit')->name('profile.edit');
-        Route::put('profile/{id}/updateedit', 'ProfileController@updateedit')->name('profile.updateedit');
+        Route::put('profile/{id}/edit', 'ProfileController@updateedit');
         Route::get('profile/{id}/password', 'ProfileController@password')->name('profile.password');
-        Route::put('profile/{id}/updatepassword', 'ProfileController@updatepassword')->name('profile.updatepassword');
+        Route::put('profile/{id}/password', 'ProfileController@updatepassword');
         Route::delete('profile/{id}', 'ProfileController@destroy')->name('profile.destroy');
     });
     Route::group(['roles' => ['Moderator', 'Admin']], function () {
@@ -49,12 +49,4 @@ Route::group(['namespace' => 'Site'], function () {
     Route::get('athletes', 'SiteController@athletes')->name('site.athletes');
     Route::get('photo-gallery', 'SiteController@photogallery')->name('site.photo-gallery');
     Route::get('write-to-us', 'SiteController@writetous')->name('site.write-to-us');
-    Route::group(['middleware' => ['auth']], function () {
-        Route::get('profile', 'ProfileController@index')->name('profile.index');
-        Route::get('profile/{id}/edit', 'ProfileController@edit')->name('profile.edit');
-        Route::put('profile/{id}/updateedit', 'ProfileController@updateedit')->name('profile.updateedit');
-        Route::get('profile/{id}/password', 'ProfileController@password')->name('profile.password');
-        Route::put('profile/{id}/updatepassword', 'ProfileController@updatepassword')->name('profile.updatepassword');
-        Route::delete('profile/{id}', 'ProfileController@destroy')->name('profile.destroy');
-    });
 });
