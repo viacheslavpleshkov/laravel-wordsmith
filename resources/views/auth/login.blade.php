@@ -60,7 +60,7 @@
         </div>
 
         <div class="text-center">
-            <button class="btn btn-lg btn-primary btn-block" type="submit">{{ __('auth.login') }}</button>
+            <button class="btn btn-lg btn-original btn-block" type="submit">{{ __('auth.login') }}</button>
             <a href="{{ url('admin/socialite/github') }}"
                class="btn btn-lg btn-github group ml-1">{{ __('auth.login-with-github') }}</a>
             <a href="{{ url('admin/socialite/google') }}"

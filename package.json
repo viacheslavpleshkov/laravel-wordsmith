@@ -16,7 +16,6 @@
         "datatables.net-bs4": "^1.10.19",
         "@fortawesome/fontawesome-free-webfonts": "^1.0.9",
         "tinymce": "^4.7.13",
-        "vue": "^2.5.16",
         "cross-env": "^5.2.0",
         "laravel-mix": "^2.1.11"
     }

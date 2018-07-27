@@ -38,7 +38,7 @@
         </div>
 
         <div class="text-center">
-            <button class="btn btn-lg btn-primary btn-block"
+            <button class="btn btn-lg btn-original btn-block"
                     type="submit">{{ __('auth.send-password-reset-link') }}</button>
             <a class="btn btn-link" href="{{ route('site.index') }}">{{ __('auth.back-to-the-site') }}</a>
             <a class="btn btn-link" href="{{ route('login') }}">{{ __('auth.login') }}</a>

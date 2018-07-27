@@ -3,6 +3,7 @@
 @section('title',__('admin.create-users'))
 
 @section('content')
+    @include('admin.includes.title')
     @include('admin.includes.error')
     <form action="{{ route('users.store') }}" method="POST">
         @csrf
@@ -34,6 +35,6 @@
             </select>
         </div>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">{{ __('admin.create') }}</button>
+        <button class="btn btn-lg btn-original btn-block" type="submit">{{ __('admin.create') }}</button>
     </form>
 @endsection

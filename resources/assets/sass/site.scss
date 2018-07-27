@@ -1,5 +1,5 @@
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;");
+@import "fonts";
 // Variables
 @import "variables";
 // Bootstrap
@@ -10,6 +10,7 @@
 @import '~@fortawesome/fontawesome-free-webfonts/scss/fa-regular';
 //Style
 body {
+  font-family: $font-family-original;
   padding-top: 54px;
 }
 
@@ -18,48 +19,33 @@ body {
     padding-top: 56px;
   }
 }
-//Auth
-.group {
-  width: 49%;
-  margin-top: .5rem;
+
+//dropdown-menu
+.dropdown-item.active, .dropdown-item:active {
+  background-color: $color-original;
 }
 
-.btn-github {
-  color: #fff;
-  background-color: #292d32;
-  border-color: #292d32;
+//pagination
+.page-link {
+  color: $color-original;
 }
 
-.btn-github:hover {
-  color: #fff;
+.page-item.active .page-link {
+  background-color: $color-original;
+  border-color: $color-original;
 }
 
-.btn-google {
-  color: #fff;
-  background-color: #f6002c;
-  border-color: #f6002c;
+.page-link:hover {
+  color: $color-original;
 }
 
-.btn-google:hover {
-  color: #fff;
+//btn
+.btn-original {
+  color: $color-white;
+  background-color: $color-original;
+  border-color: $color-original;
 }
 
-.btn-facebook {
-  color: #fff;
-  background-color: #49459e;
-  border-color: #49459e;
-}
-
-.btn-facebook:hover {
-  color: #fff;
-}
-
-.btn-twitter {
-  color: #fff;
-  background-color: #00a2f0;
-  border-color: #00a2f0;
-}
-
-.btn-twitter:hover {
-  color: #fff;
+.btn-original:hover {
+  color: $color-white;
 }

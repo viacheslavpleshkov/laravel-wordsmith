@@ -3,6 +3,7 @@
 @section('title',__('admin.edit-roles'))
 
 @section('content')
+    @include('admin.includes.title')
     @include('admin.includes.error')
     <form action="{{ route('roles.update',$main->id) }}" method="POST">
         @csrf
@@ -22,6 +23,6 @@
                    placeholder="{{ __('admin.roles-enter-description') }}" required>
         </div>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">{{ __('admin.edit') }}</button>
+        <button class="btn btn-lg btn-original btn-block" type="submit">{{ __('admin.edit') }}</button>
     </form>
 @endsection

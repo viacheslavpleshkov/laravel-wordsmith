@@ -1,14 +1,13 @@
 <?php
+
 return [
     //nav
     'home' => 'Головна',
     'edit-site' => 'Редагувати сайт',
+    'blog' => 'Блог',
     'news' => 'Новини',
-    'educations' => 'Освіти',
-    'about-me' => 'Про мене',
-    'experiences' => 'Досвіди роботи',
-    'skills' => 'Навички та вміння',
-    'projects' => 'Проекти',
+    'categories' => 'Котегорії',
+    'tags' => 'Теги',
     'user-manager' => 'Менеджер користувачів',
     'users' => 'Користувачі',
     'roles' => 'Ролі',
@@ -24,6 +23,20 @@ return [
     'home-hello' => 'Здравствуйте',
     'home-welcome' => 'Покращуйте свої навички щодня.)',
     'home-url' => 'Перейти на сайт',
+    //Tags
+    'create-news' => 'Створити новину',
+    'show-news' => 'Показати новину',
+    'edit-news' => 'Редагувати новину',
+    'news-id' => 'ID',
+    'news-title' => 'Заголовок',
+    'news-description' => 'Опис',
+    'news-content' => 'Зміст',
+    'news-images' => 'Зображення',
+    'news-url' => 'URL-адрес',
+    'news-views' => 'Перегляди',
+    'news-category' => 'Категорія',
+    'news-tags' => 'Теги',
+    'news-author' => 'Автор',
     //Users
     'create-users' => 'Створити користувача',
     'show-users' => 'Показати користувача',
@@ -100,4 +113,7 @@ return [
     'created-success' => 'Створено успішно.',
     'updated-success' => 'Оновлено успішно.',
     'information-deleted' => 'Інформація була знищена.',
+    'status' => 'Статус',
+    'created' => 'Створено',
+    'updated' => 'Змінено',
 ];

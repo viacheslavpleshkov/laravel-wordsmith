@@ -17,9 +17,11 @@ class NewsController extends Controller
     public function views($url)
     {
         $main = News::where('status', 1)->where('url', "$url")->first();
-        if (isset($main))
+        if (isset($main)) {
+            News::where('status', 1)->where('url', "$url")->increment('views');
             return view('site.news.views', compact('main'));
-        else
+        } else {
             return abort(404);
+        }
     }
 }

@@ -1,12 +1,10 @@
-@extends('errors.layouts.errors')
+@extends('errors.layouts.error')
 
-@section('title', 'Сторінку не знайдено (#404)')
+@section('title','404')
 
 @section('content')
-    <div class="text-center">
-        <h1 class="text-h1">404</h1>
-        <p>Запитаний URL-адресу не знайдено на цьому сервері.</p>
-        <a href="{{ route('site.index') }}" class="btn btn-primary btn-lg">Відвези мене додому</a>
-        <a href="{{ route('site.write-to-us') }}" class="btn btn-default btn-lg">Написати нам</a>
-    </div>
+    <h1 class="text-h1">@yield('title')</h1>
+    <h3>{{ __('errors.404title') }}</h3>
+    <p class="text-muted m-t-30 m-b-30">{{ __('errors.404text') }}</p>
+    <a href="{{ URL::previous() }}" class="btn rounded-0 m-b-40">{{ __('errors.back') }}</a>
 @endsection

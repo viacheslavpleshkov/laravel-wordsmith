@@ -15,7 +15,7 @@
     <p>Категорія: <a href="{{ route('categories.views',$main->category->url) }}">{{ $main->category->title }}</a></p>
     <p>Теги: <a href="{{ route('categories.views',$main->category->url) }}">{{ $main->category->title }}</a></p>
     <hr>
-    <a href="{{ URL::previous() }}" class="btn btn-danger"><i class="fas fa-arrow-left"></i>Назад</a>
+    <a href="{{ URL::previous() }}" class="btn btn-original"><i class="fas fa-arrow-left"></i>Назад</a>
     <hr>
     <!-- Post Content -->
     <!-- Comments Form -->
@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <textarea class="form-control" rows="3"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Відправити</button>
+                    <button type="submit" class="btn btn-original">Відправити</button>
                 </form>
             </div>
         </div>

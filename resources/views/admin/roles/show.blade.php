@@ -3,7 +3,7 @@
 @section('title',__('admin.show-roles'))
 
 @section('content')
-    @include('en.admin.includes.title')
+    @include('admin.includes.title')
     <ul class="nav mb-md-3">
         <li>
             <a href="{{ route('roles.index') }}" class="btn btn-dark">{{ __('admin.back') }}</a>

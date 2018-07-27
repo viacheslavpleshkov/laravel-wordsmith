@@ -1,0 +1,117 @@
+// Fonts
+@import "fonts";
+// Variables
+@import "variables";
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import '~datatables.net-bs4/css/dataTables.bootstrap4.min.css';
+@import '~@fortawesome/fontawesome-free-webfonts/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free-webfonts/scss/fa-solid';
+@import '~@fortawesome/fontawesome-free-webfonts/scss/fa-brands';
+@import '~@fortawesome/fontawesome-free-webfonts/scss/fa-regular';
+//Style
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+a, p, h1, h2, .h2, h3, h4, h5, li, ul, th, .dropdown-item {
+  color: $color-original;
+}
+
+body {
+  font-family: $font-family-original;
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: $color-gray-white;
+
+}
+
+body > .container {
+  padding: 60px 15px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+.bg-info {
+  background-color: $color-original !important;
+}
+
+.sidebar {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.btn {
+  font-size: 0.7rem;
+}
+
+.stack {
+  font-size: 0.85em;
+}
+
+.date {
+  min-width: 75px;
+}
+
+.text {
+  word-break: break-all;
+}
+
+a.llv-active {
+  z-index: 2;
+  background-color: $color-gray-white;
+  border-color: $color-original;
+}
+
+.list-group-item {
+  word-wrap: break-word;
+}
+
+//menu
+.bg-dark {
+  background-color: $color-original !important;
+}
+
+//dropdown-menu
+.dropdown-item.active, .dropdown-item:active {
+  background-color: $color-original;
+}
+
+//pagination
+.page-link {
+  color: $color-original;
+}
+
+.page-item.active .page-link {
+  background-color: $color-original;
+  border-color: $color-original;
+}
+
+.page-link:hover {
+  color: $color-original;
+}
+
+.btn-original {
+  color: $color-white;
+  background-color: $color-original;
+  border-color: $color-original;
+}
+
+.btn-original:hover {
+  color: $color-white;
+}

@@ -14,32 +14,29 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-newspaper"></i> {{ __('admin.blog') }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item {{ Request::is('*news*') ? 'active' : '' }}"
+                           href="{{ route('news.index') }}"><i
+                                    class="fas fa-newspaper"></i> {{ __('admin.news') }}</a>
+                        <a class="dropdown-item {{ Request::is('*categories*') ? 'active' : '' }}"
+                           href="{{ route('categories.index') }}"><i
+                                    class="fas fa-list"></i> {{ __('admin.categories') }}</a>
+                        <a class="dropdown-item {{ Request::is('*tags*') ? 'active' : '' }}"
+                           href="{{ route('tags.index') }}"><i
+                                    class="fas fa-tags"></i> {{ __('admin.tags') }}
+                        </a>
+                    </div>
+                </li>
+            @endif
+            @if(in_array(Auth::user()->role->name, ['Moderator','Admin']))
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-edit"></i> {{ __('admin.edit-site') }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item {{ Request::is('*contact-with-me*') ? 'active' : '' }}"
-                           href="{{ route('contact-with-me.index') }}"><i
-                                    class="fas  fa-link"></i> {{ __('admin.contact-with-me') }}</a>
-                        <a class="dropdown-item {{ Request::is('*knowledge-of-languages*') ? 'active' : '' }}"
-                           href="{{ route('knowledge-of-languages.index') }}"><i
-                                    class="fas  fa-language"></i> {{ __('admin.knowledge-of-languages') }}</a>
-                        <a class="dropdown-item {{ Request::is('*educations*') ? 'active' : '' }}"
-                           href="{{ route('educations.index') }}"><i
-                                    class="fas fa-graduation-cap"></i> {{ __('admin.educations') }}
-                        </a>
-                        <a class="dropdown-item {{ Request::is('*about-me*') ? 'active' : '' }}"
-                           href="{{ route('about-me.index') }}"><i class="fas fa-user"></i> {{ __('admin.about-me') }}
-                        </a>
-                        <a class="dropdown-item {{ Request::is('*experiences*') ? 'active' : '' }}"
-                           href="{{ route('experiences.index') }}"><i
-                                    class="fas fa-building"></i> {{ __('admin.experiences') }}
-                        </a>
-                        <a class="dropdown-item {{ Request::is('*skills*') ? 'active' : '' }}"
-                           href="{{ route('skills.index') }}"><i class="fas fa-list"></i> {{ __('admin.skills') }}</a>
-                        <a class="dropdown-item {{ Request::is('*projects*') ? 'active' : '' }}"
-                           href="{{ route('projects.index') }}"><i
-                                    class="fas fa-briefcase"></i> {{ __('admin.projects') }}
-                        </a>
                     </div>
                 </li>
             @endif
@@ -66,27 +63,14 @@
                            href="{{ route('admin.settings') }}"><i
                                     class="fas fa-wrench"></i> {{ __('admin.settings') }}</a>
                         <a class="dropdown-item {{ Request::is('*logs*') ? 'active' : '' }}"
-                           href="{{ route('admin.logs') }}"><fa-cogsi
+                           href="{{ route('admin.logs') }}">
+                            <fa-cogsi
                                     class="fas fa-calendar"></fa-cogsi> {{ __('admin.logs') }}</a>
                     </div>
                 </li>
             @endif
         </ul>
         <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-globe"></i> {{ __('admin.site-language') }}
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item {{ Request::is('en*') ? 'active' : '' }}"
-                       href="{{ url('en/admin') }}">{{ __('admin.english') }}</a>
-                    <a class="dropdown-item {{ Request::is('uk*') ? 'active' : '' }}"
-                       href="{{ url('uk/admin') }}">{{ __('admin.ukrainian') }}</a>
-                    <a class="dropdown-item {{ Request::is('ru*') ? 'active' : '' }}"
-                       href="{{ url('ru/admin') }}">{{ __('admin.russian') }}</a>
-                </div>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

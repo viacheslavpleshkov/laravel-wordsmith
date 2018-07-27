@@ -1,5 +1,5 @@
 <?php
-Route::group(['namespace' => 'Auth'], function () {
+Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login', 'LoginController@login');
     Route::post('logout', 'LoginController@logout')->name('logout');
@@ -23,13 +23,9 @@ Route::group(['prefix' => '/admin', 'namespace' => 'Admin', 'middleware' => ['au
         Route::delete('profile/{id}', 'ProfileController@destroy')->name('profile.destroy');
     });
     Route::group(['roles' => ['Moderator', 'Admin']], function () {
-        Route::resource('contact-with-me', 'ContactwithmeController');
-        Route::resource('knowledge-of-languages', 'LanguageknowledgeController');
-        Route::resource('educations', 'EducationController');
-        Route::resource('about-me', 'AboutmeController');
-        Route::resource('experiences', 'ExperienceController');
-        Route::resource('skills', 'SkillController');
-        Route::resource('projects', 'ProjectController');
+        Route::resource('news', 'NewsController');
+        Route::resource('categories', 'CategoryController');
+        Route::resource('tags', 'TagController');
     });
     Route::group(['roles' => ['Admin']], function () {
         Route::resource('users', 'UserController');

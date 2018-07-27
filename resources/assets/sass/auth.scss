@@ -1,5 +1,5 @@
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;");
+@import "fonts";
 // Variables
 @import "variables";
 // Bootstrap
@@ -10,6 +10,7 @@
 @import '~@fortawesome/fontawesome-free-webfonts/scss/fa-regular';
 //Style
 body {
+  font-family: $font-family-original;
   padding-top: 54px;
 }
 
@@ -44,7 +45,7 @@ body {
   width: 100%;
   margin-bottom: 0; /* Override default `<label>` margin */
   line-height: 1.5;
-  color: #495057;
+  color: $color-original;
   border: 1px solid transparent;
   border-radius: .25rem;
   transition: all .1s ease-in-out;
@@ -89,46 +90,57 @@ body {
 }
 
 .group {
-  width: 48.5%;
+  width: 49%;
   margin-top: .5rem;
 }
 
+//btn
 .btn-github {
-  color: #fff;
-  background-color: #292d32;
-  border-color: #292d32;
+  color: $color-white;
+  background-color: $color-github;
+  border-color: $color-github;
 }
 
 .btn-github:hover {
-  color: #fff;
+  color: $color-white;
 }
 
 .btn-google {
-  color: #fff;
-  background-color: #f6002c;
-  border-color: #f6002c;
+  color: $color-white;
+  background-color: $color-google;
+  border-color: $color-google;
 }
 
 .btn-google:hover {
-  color: #fff;
+  color: $color-white;
 }
 
 .btn-facebook {
-  color: #fff;
-  background-color: #49459e;
-  border-color: #49459e;
+  color: $color-white;
+  background-color: $color-facebook;
+  border-color: $color-facebook;
 }
 
 .btn-facebook:hover {
-  color: #fff;
+  color: $color-white;
 }
 
 .btn-twitter {
-  color: #fff;
-  background-color: #00a2f0;
-  border-color: #00a2f0;
+  color: $color-white;
+  background-color: $color-twitter;
+  border-color: $color-twitter;
 }
 
 .btn-twitter:hover {
-  color: #fff;
+  color: $color-white;
+}
+
+.btn-original {
+  color: $color-white;
+  background-color: $color-original;
+  border-color: $color-original;
+}
+
+.btn-original:hover {
+  color: $color-white;
 }

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('site.index') }}"><img src="{{ asset('img/logo.png') }}"
+        <a class="navbar-brand" href="{{ route('site.index') }}"><img src="{{ asset('images/logo.png') }}"
                                                                       alt="Пік Анаконди" width="85px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

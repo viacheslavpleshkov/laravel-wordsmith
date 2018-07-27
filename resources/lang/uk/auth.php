@@ -1,4 +1,5 @@
 <?php
+
 return [
     //Login
     'login-title' => 'Увійти',

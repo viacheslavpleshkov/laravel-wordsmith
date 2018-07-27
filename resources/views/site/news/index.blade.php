@@ -9,7 +9,7 @@
             <div class="card-body">
                 <h2 class="card-title">{{ $item->title }}</h2>
                 <p class="card-text">{{ $item->description }}</p>
-                <a href="{{ route('news.views',$item->url) }}" class="btn btn-primary">Читати далі &rarr;</a>
+                <a href="{{ route('news.views',$item->url) }}" class="btn btn-original">Читати далі &rarr;</a>
             </div>
             <div class="card-footer text-muted">
                 Автор: <a href="#">{{ $item->user->name }}</a>

@@ -5,11 +5,15 @@
 @section('content')
     <div class="row justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <div class="col-lg-9">
-            {{ Breadcrumbs::render('users') }}
+            <div class="d-flex">
+                <h1 class="h2">@yield('title')</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                </div>
+            </div>
         </div>
         <div class="col-lg-3">
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('users.create') }}">{{ __('admin.create-users') }}</a>
+                <a class="btn btn-original" href="{{ route('users.create') }}">{{ __('admin.create-users') }}</a>
             </div>
         </div>
     </div>

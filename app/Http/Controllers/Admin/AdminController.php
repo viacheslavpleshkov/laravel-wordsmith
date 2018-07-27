@@ -14,11 +14,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        return view('admin.pages.index');
     }
 
     public function settings()
     {
-        return view('admin.settings');
+        return view('admin.pages.settings');
     }
 }
