@@ -12,7 +12,7 @@
                     Sit vel delectus amet officiis repudiandae est voluptatem. Tempora maxime provident nisi et fuga et enim exercitationem ipsam. Culpa error
                     temporibus magnam est voluptatem.</p>
 
-            </div> <!-- end s-footer__about -->
+            </div>
 
             <div class="col-six tab-full s-footer__subscribe">
 
@@ -62,8 +62,7 @@
 
             <div class="col-six">
                 <div class="s-footer__copyright">
-                        <span>
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></span>
+                        <span>Wordsmith ©{{ date('Y') }}. All rights reserved.</span>
                 </div>
             </div>
         </div>

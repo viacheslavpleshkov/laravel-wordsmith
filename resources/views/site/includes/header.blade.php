@@ -1,10 +1,10 @@
 <header class="s-header header">
 
     <div class="header__logo">
-        <a class="logo" href="index.html">
-            <img src="images/logo.svg" alt="Homepage">
+        <a class="logo" href="{{ route('site.index') }}">
+            <img src="{{ asset('images/logo.svg') }}" alt="Homepage">
         </a>
-    </div> <!-- end header__logo -->
+    </div>
 
     <a class="header__search-trigger" href="#0"></a>
     <div class="header__search">
@@ -19,7 +19,7 @@
 
         <a href="#0" title="Close Search" class="header__overlay-close">Close</a>
 
-    </div>  <!-- end header__search -->
+    </div>
 
     <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
     <nav class="header__nav-wrap">
@@ -27,7 +27,7 @@
         <h2 class="header__nav-heading h6">Navigate to</h2>
 
         <ul class="header__nav">
-            <li class="current"><a href="index.html" title="">Home</a></li>
+            <li class="current"><a href="{{ route('site.index') }}" title="">Home</a></li>
             <li class="has-children">
                 <a href="#0" title="">Categories</a>
                 <ul class="sub-menu">
@@ -47,9 +47,16 @@
                     <li><a href="single-standard.html">Standard Post</a></li>
                 </ul>
             </li>
-            <li><a href="style-guide.html" title="">Styles</a></li>
-            <li><a href="page-about.html" title="">About</a></li>
-            <li><a href="page-contact.html" title="">Contact</a></li>
+            <li><a href="{{ route('site.about') }}" title="">About</a></li>
+            <li><a href="{{ route('site.contact') }}" title="">Contact</a></li>
+            <li class="has-children">
+                <a href="#0" title="">Account</a>
+                <ul class="sub-menu">
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Register</a></li>
+                    <li><a href="single-standard.html">Reset Password</a></li>
+                </ul>
+            </li
         </ul>
         <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
     </nav>
