@@ -25,7 +25,7 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -36,4 +36,15 @@ class ResetPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    protected function rules()
+    {
+        return [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:6',
+            'g-recaptcha-response' => 'required|captcha'
+        ];
+    }
+
 }

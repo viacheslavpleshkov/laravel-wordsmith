@@ -9,7 +9,7 @@
         @csrf
         @method('PUT')
         <div class="form-group">
-            <label>{{ __('admin.skills-title') }}</label>
+            <label>{{ __('admin.skills-titles') }}</label>
             <input type="text" class="form-control" name="title" value="{{ $main->title }}"
                    placeholder="{{ __('admin.skills-enter-title') }}" required>
         </div>
@@ -21,7 +21,7 @@
         </div>
 
         <div class="form-group">
-            <label>{{ __('admin.skills-status') }}</label>
+            <label>{{ __('admin.status') }}</label>
             <select class="form-control" name="status" required>
                 @if($main->status)
                     <option value="1">{{ __('admin.enabled') }}</option>

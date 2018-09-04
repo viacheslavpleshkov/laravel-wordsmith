@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',__('admin.skills'))
+@section('title',__('admin.skills-title'))
 
 @section('content')
     <div class="row justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -23,9 +23,9 @@
             <thead>
             <tr>
                 <th scope="col">{{ __('admin.skills-id') }}</th>
-                <th scope="col">{{ __('admin.skills-title') }}</th>
+                <th scope="col">{{ __('admin.skills-titles') }}</th>
                 <th scope="col">{{ __('admin.skills-level') }}</th>
-                <th scope="col">{{ __('admin.skills-status') }}</th>
+                <th scope="col">{{ __('admin.status') }}</th>
                 <th scope="col"></th>
             </tr>
             </thead>

@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',__('admin.home'))
+@section('title',__('admin.home-title'))
 
 @section('content')
     @include('admin.includes.title')

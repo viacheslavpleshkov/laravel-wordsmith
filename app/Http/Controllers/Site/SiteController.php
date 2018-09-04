@@ -4,31 +4,20 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App;
+use App\Aboutme;
+use App\Experience;
+use App\Skill;
+use App\Project;
 
 class SiteController extends Controller
 {
-    public function aboutus()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        return view('site.pages.aboutus');
-    }
-
-    public function rules()
-    {
-        return view('site.pages.rules');
-    }
-
-    public function athletes()
-    {
-        return view('site.pages.athletes');
-    }
-
-    public function photogallery()
-    {
-        return view('site.pages.photogallery');
-    }
-
-    public function writetous()
-    {
-        return view('site.pages.writetous');
+        return view('site.pages.index');
     }
 }

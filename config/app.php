@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'uk',
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -91,7 +91,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'uk',
+    'fallback_locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -107,7 +107,6 @@ return [
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
-
 
     /*
     |--------------------------------------------------------------------------
@@ -147,10 +146,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
-        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
-        Arrilot\Widgets\ServiceProvider::class,
-        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -213,10 +209,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'Widget'       => Arrilot\Widgets\Facade::class,
-        'AsyncWidget'  => Arrilot\Widgets\AsyncFacade::class,
-        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 

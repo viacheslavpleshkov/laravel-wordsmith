@@ -21,7 +21,7 @@
             <td>{{ $main->id }}</td>
         </tr>
         <tr>
-            <th>{{ __('admin.skills-title') }}</th>
+            <th>{{ __('admin.skills-titles') }}</th>
             <td>{{ $main->title }}</td>
         </tr>
         <tr>
@@ -29,7 +29,7 @@
             <td>{{ $main->level }}</td>
         </tr>
         <tr>
-            <th>{{ __('admin.skills-status') }}</th>
+            <th>{{ __('admin.status') }}</th>
             <td>
                 @if($main->status)
                     {{ __('admin.enabled') }}
@@ -37,6 +37,14 @@
                     {{ __('admin.disabled') }}
                 @endif
             </td>
+        </tr>
+        <tr>
+            <th>{{ __('admin.created') }}</th>
+            <td>{{ $main->created_at }}</td>
+        </tr>
+        <tr>
+            <th>{{ __('admin.update') }}</th>
+            <td>{{ $main->updated_at }}</td>
         </tr>
     </table>
 @endsection

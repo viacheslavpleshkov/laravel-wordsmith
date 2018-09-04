@@ -1,10 +1,14 @@
-@extends('auth.layouts.main')
+@extends('auth.layouts.auth')
 
 @section('title', __('auth.login-title'))
 
 @section('content')
     <form method="post" action="{{ route('login') }}" class="form-signin">
         @csrf
+        <div class="text-center mb-4">
+            <img class="mb-4" id="logo" src="{{ asset ('images/logo.jpg')}}" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">@yield('title')</h1>
+        </div>
         @include('auth.includes.success')
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">{{ __('auth.e-mail-address') }}</label>
@@ -60,14 +64,14 @@
         </div>
 
         <div class="text-center">
-            <button class="btn btn-lg btn-original btn-block" type="submit">{{ __('auth.login') }}</button>
-            <a href="{{ url('admin/socialite/github') }}"
+            <button class="btn btn-lg btn-primary btn-block" type="submit">{{ __('auth.login') }}</button>
+            <a href="{{ url('auth/socialite/github') }}"
                class="btn btn-lg btn-github group ml-1">{{ __('auth.login-with-github') }}</a>
-            <a href="{{ url('admin/socialite/google') }}"
+            <a href="{{ url('auth/socialite/google') }}"
                class="btn btn-lg btn-google group ml-1">{{ __('auth.login-with-google+') }}</a>
-            <a href="{{ url('admin/socialite/facebook') }}"
+            <a href="{{ url('auth/socialite/facebook') }}"
                class="btn btn-lg btn-facebook group ml-1">{{ __('auth.login-with-facebook') }}</a>
-            <a href="{{ url('admin/socialite/twitter') }}"
+            <a href="{{ url('auth/socialite/twitter') }}"
                class="btn btn-lg btn-twitter group ml-1">{{ __('auth.login-with-twitter') }}</a>
             <a class="btn btn-link" href="{{ route('site.index') }}">{{ __('auth.back-to-the-site') }}</a>
             <a class="btn btn-link" href="{{ route('register') }}">{{ __('auth.register') }}</a>

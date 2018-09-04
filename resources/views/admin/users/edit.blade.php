@@ -29,7 +29,9 @@
         <div class="form-group">
             <label>{{ __('admin.users-roles') }}</label>
             <select class="form-control" name="role_id" required>
+                <option value="{{ $main->role->id }}">{{ $main->role->name }}</option>
                 @foreach($role as $item)
+                    @if($main->role->id === $item->id) @continue; @endif
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                 @endforeach
             </select>

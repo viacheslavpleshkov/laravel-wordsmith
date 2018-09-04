@@ -8,12 +8,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title') | {{__('admin.admin-panel')}}</title>
     <link rel="author" href="{{ asset ('humans.txt')}}"/>
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset ('apple-touch-icon.png')}}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset ('favicon-32x32.png')}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset ('favicon-16x16.png')}}">
-    <link rel="manifest" href="{{ asset ('site.webmanifest')}}">
-    <link rel="mask-icon" href="{{ asset ('safari-pinned-tab.svg')}}" color="#4a6978">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('icons/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('icons/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('icons/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ asset('icons/safari-pinned-tab.svg') }}" color="#4a6978">
+    <link rel="shortcut icon" href="{{ asset('icons/favicon.ico') }}">
+    <meta name="apple-mobile-web-app-title" content="{{ __('site.name') }}">
+    <meta name="application-name" content="{{ __('site.name') }}">
     <meta name="msapplication-TileColor" content="#4a6978">
+    <meta name="msapplication-TileImage" content="{{ asset('icons/mstile-144x144.png') }}">
+    <meta name="msapplication-config" content="{{ asset('icons/browserconfig.xml') }}">
     <meta name="theme-color" content="#4a6978">
     <link href="{{ asset ('css/logs.css')}}" rel="stylesheet">
 </head>
@@ -28,7 +33,7 @@
 </main>
 <footer class="footer">
     <div class="container text-center">
-        <span class="text-muted">Пік Анаконди ©2016-{{ date('Y') }}. Всі права захищені.</span>
+        <span class="text-muted">Slava Pleshkov ©2016-{{ date('Y') }}. All rights reserved.</span>
     </div>
 </footer>
 <script src="{{ asset('js/logs.js') }}"></script>
@@ -39,24 +44,26 @@
         });
         $('#table-log').DataTable({
             "language": {
-                "sProcessing": "Зачекайте...",
-                "sLengthMenu": "Показати _MENU_ записів",
-                "sZeroRecords": "Записи відсутні.",
-                "sInfo": "Записи з _START_ по _END_ із _TOTAL_ записів",
-                "sInfoEmpty": "Записи з 0 по 0 із 0 записів",
-                "sInfoFiltered": "(відфільтровано з _MAX_ записів)",
+                "sEmptyTable": "No data available in table",
+                "sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+                "sInfoEmpty": "Showing 0 to 0 of 0 entries",
+                "sInfoFiltered": "(filtered from _MAX_ total entries)",
                 "sInfoPostFix": "",
-                "sSearch": "Пошук:",
-                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "Show _MENU_ entries",
+                "sLoadingRecords": "Loading...",
+                "sProcessing": "Processing...",
+                "sSearch": "Search:",
+                "sZeroRecords": "No matching records found",
                 "oPaginate": {
-                    "sFirst": "Перша",
-                    "sPrevious": "Попередня",
-                    "sNext": "Наступна",
-                    "sLast": "Остання"
+                    "sFirst": "First",
+                    "sLast": "Last",
+                    "sNext": "Next",
+                    "sPrevious": "Previous"
                 },
                 "oAria": {
-                    "sSortAscending": ": активувати для сортування стовпців за зростанням",
-                    "sSortDescending": ": активувати для сортування стовпців за спаданням"
+                    "sSortAscending": ": activate to sort column ascending",
+                    "sSortDescending": ": activate to sort column descending"
                 }
             },
             "order": [$('#table-log').data('orderingIndex'), 'desc'],
