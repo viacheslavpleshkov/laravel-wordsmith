@@ -39,14 +39,7 @@
                     <li><a href="category.html">Work</a></li>
                 </ul>
             </li>
-            <li class="has-children">
-                <a href="#0" title="">Blog</a>
-                <ul class="sub-menu">
-                    <li><a href="single-video.html">Video Post</a></li>
-                    <li><a href="single-audio.html">Audio Post</a></li>
-                    <li><a href="single-standard.html">Standard Post</a></li>
-                </ul>
-            </li>
+            <li><a href="{{ route('site.blog') }}" title="">Blog</a></li>
             <li><a href="{{ route('site.about') }}" title="">About</a></li>
             <li><a href="{{ route('site.contact') }}" title="">Contact</a></li>
             <li class="has-children">
@@ -54,7 +47,7 @@
                 <ul class="sub-menu">
                     <li><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="{{ route('register') }}">Register</a></li>
-                    <li><a href="single-standard.html">Reset Password</a></li>
+                    <li><a href="{{ route('password.request') }}">Reset Password</a></li>
                 </ul>
             </li
         </ul>

@@ -3,6 +3,7 @@
 @section('title',__('site.name'))
 
 @section('content')
+    @include(('site.includes.featured'))
     <section class="s-content">
 
         <div class="row entries-wrap wide">

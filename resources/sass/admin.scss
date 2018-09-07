@@ -1,0 +1,143 @@
+// Fonts
+@import "fonts";
+// Variables
+@import "variables";
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import '~datatables.net-bs4/css/dataTables.bootstrap4.min.css';
+@import '~@fortawesome/fontawesome-free-webfonts/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free-webfonts/scss/fa-solid';
+@import '~@fortawesome/fontawesome-free-webfonts/scss/fa-brands';
+@import '~@fortawesome/fontawesome-free-webfonts/scss/fa-regular';
+//Style
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+a, p, h1, h2, .h2, h3, h4, h5, li, ul, th, .dropdown-item {
+  color: $color-original;
+}
+
+body {
+  font-family: $font-family-original;
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: $color-gray-white;
+
+}
+
+form {
+  display: inline;
+}
+
+form button {
+  background: transparent;
+  padding: 0;
+  border: 0;
+  color: $color-original;
+}
+
+body > .container {
+  padding: 60px 15px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+.bg-info {
+  background-color: $color-original !important;
+}
+
+//menu
+.bg-dark {
+  background-color: $color-original !important;
+}
+
+//dropdown-menu
+.dropdown-item.active, .dropdown-item:active {
+  background-color: $color-original;
+}
+
+//pagination
+.page-link {
+  color: $color-original;
+}
+
+.page-item.active .page-link {
+  background-color: $color-original;
+  border-color: $color-original;
+}
+
+.page-link:hover {
+  color: $color-original;
+}
+
+.group {
+  width: 49%;
+  margin-top: .5rem;
+}
+
+//btn
+.btn-github {
+  color: $color-white;
+  background-color: $color-github;
+  border-color: $color-github;
+}
+
+.btn-github:hover {
+  color: $color-white;
+}
+
+.btn-google {
+  color: $color-white;
+  background-color: $color-google;
+  border-color: $color-google;
+}
+
+.btn-google:hover {
+  color: $color-white;
+}
+
+.btn-facebook {
+  color: $color-white;
+  background-color: $color-facebook;
+  border-color: $color-facebook;
+}
+
+.btn-facebook:hover {
+  color: $color-white;
+}
+
+.btn-twitter {
+  color: $color-white;
+  background-color: $color-twitter;
+  border-color: $color-twitter;
+}
+
+.btn-twitter:hover {
+  color: $color-white;
+}
+
+.btn-original {
+  color: $color-white;
+  background-color: $color-original;
+  border-color: $color-original;
+}
+
+.btn-original:hover {
+  color: $color-white;
+}

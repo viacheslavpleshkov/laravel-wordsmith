@@ -1,0 +1,141 @@
+// Fonts
+@import "fonts";
+// Variables
+@import "variables";
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+//Style
+:root {
+  --input-padding-x: .75rem;
+  --input-padding-y: .75rem;
+}
+
+html,
+body {
+  font-family: $font-family-original;
+  height: 100%;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: $color-gray-white;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 500px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group > input,
+.form-label-group > label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
+
+.form-label-group > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0; /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: $color-original;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:placeholder-shown) ~ label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: $color-original;
+}
+
+#logo {
+  border-radius: 200px;
+  width: 100px;
+  height: 100px;
+}
+
+.group {
+  width: 48.5%;
+  margin-top: .5rem;
+}
+
+.btn-github {
+  color: $color-white;
+  background-color: $color-github;
+  border-color: $color-github;
+}
+
+.btn-github:hover {
+  color: $color-white;
+}
+
+.btn-google {
+  color: $color-white;
+  background-color: $color-google;
+  border-color: $color-google;
+}
+
+.btn-google:hover {
+  color: $color-white;
+}
+
+.btn-facebook {
+  color: $color-white;
+  background-color: $color-facebook;
+  border-color: $color-facebook;
+}
+
+.btn-facebook:hover {
+  color: $color-white;
+}
+
+.btn-twitter {
+  color: $color-white;
+  background-color: $color-twitter;
+  border-color: $color-twitter;
+}
+
+.btn-twitter:hover {
+  color: $color-white;
+}
