@@ -1,6 +1,6 @@
 @extends('site.layouts.main')
 
-@section('title',__('site.name'))
+@section('title',__('site.contact-title'))
 
 @section('content')
 <section class="s-content s-content--top-padding s-content--narrow">

@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App;
-use App\Aboutme;
-use App\Experience;
-use App\Skill;
-use App\Project;
+use App\About;
+use phpDocumentor\Reflection\Types\Compound;
 
 class SiteController extends Controller
 {
@@ -19,6 +17,12 @@ class SiteController extends Controller
     public function index()
     {
         return view('site.pages.index');
+    }
+
+    public function about()
+    {
+        $main = About::find(1);
+        return view('site.pages.about', compact('main'));
     }
 
     public function contact()
