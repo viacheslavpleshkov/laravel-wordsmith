@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App;
 use App\About;
-use phpDocumentor\Reflection\Types\Compound;
+use App\Contact;
 
 class SiteController extends Controller
 {
@@ -27,6 +27,7 @@ class SiteController extends Controller
 
     public function contact()
     {
-        return view('site.pages.contact');
+        $main = Contact::find(1);
+        return view('site.pages.contact',compact('main'));
     }
 }
