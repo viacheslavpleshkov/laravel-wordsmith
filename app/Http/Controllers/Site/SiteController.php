@@ -16,7 +16,8 @@ class SiteController extends Controller
      */
     public function index()
     {
-        return view('site.pages.index');
+        $main = App\Setting::find(1);
+        return view('site.pages.index',compact('main'));
     }
 
     public function about()

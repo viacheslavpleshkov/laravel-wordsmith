@@ -1,30 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-param" content="_csrf-frontend">
+    <meta name="viewport" content="width=device-width       , initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title') | {{ __('auth.admin-panel') }}</title>
-    <link rel="author" href="{{ asset ('humans.txt')}}"/>
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('icons/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('icons/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/favicon-16x16.png') }}">
-    <link rel="manifest" href="{{ asset('icons/site.webmanifest') }}">
-    <link rel="mask-icon" href="{{ asset('icons/safari-pinned-tab.svg') }}" color="#4a6978">
-    <link rel="shortcut icon" href="{{ asset('icons/favicon.ico') }}">
-    <meta name="apple-mobile-web-app-title" content="{{ __('site.name') }}">
-    <meta name="application-name" content="{{ __('site.name') }}">
-    <meta name="msapplication-TileColor" content="#4a6978">
-    <meta name="msapplication-TileImage" content="{{ asset('icons/mstile-144x144.png') }}">
-    <meta name="msapplication-config" content="{{ asset('icons/browserconfig.xml') }}">
-    <meta name="theme-color" content="#4a6978">
-    <link href="{{ asset ('css/auth.css')}}" rel="stylesheet">
-    {!! NoCaptcha::renderJs('en') !!}
+    <title>@if(url()->current() != route('site.index')) @yield('title') |  @endif{{__('site.name')}}</title>
+    <meta name="description" content="swsw"/>
+    <meta name="keywords" content="sss"/>
+    <link rel="author" href="{{ asset('humans.txt') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/base.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <script src="{{ asset('js/modernizr.js') }}"></script>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 </head>
-<body>
+<body id="top">
+<div id="preloader">
+    <div id="loader" class="dots-fade">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+@include('site.includes.header')
 @yield('content')
-<script src="{{ asset('js/auth.js')}}"></script>
+@include('site.includes.footer-slide')
+@include('site.includes.footer')
+<script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('js/plugins.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

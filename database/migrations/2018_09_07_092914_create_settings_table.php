@@ -15,6 +15,9 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('seo_description');
+            $table->string('seo_keyword');
+            $table->text('about');
             $table->timestamps();
         });
     }

@@ -27,8 +27,8 @@
         <h2 class="header__nav-heading h6">Navigate to</h2>
 
         <ul class="header__nav">
-            <li class="current"><a href="{{ route('site.index') }}" title="">Home</a></li>
-            <li class="has-children">
+            <li class="{{ url()->current() == route('site.index') ? 'current' : '' }}"><a href="{{ route('site.index') }}" title="">Home</a></li>
+            <li class="has-children {{ Request::is('*categories*') ? 'current' : '' }}">
                 <a href="#0" title="">Categories</a>
                 <ul class="sub-menu">
                     <li><a href="category.html">Lifestyle</a></li>
@@ -39,13 +39,13 @@
                     <li><a href="category.html">Work</a></li>
                 </ul>
             </li>
-            <li><a href="{{ route('site.blog') }}" title="">Blog</a></li>
-            <li><a href="{{ route('site.about') }}" title="">About</a></li>
-            <li><a href="{{ route('site.contact') }}" title="">Contact</a></li>
-            <li class="has-children">
+            <li class="{{ Request::is('*blog*') ? 'current' : '' }}"><a href="{{ route('site.blog') }}" title="">Blog</a></li>
+            <li class="{{ url()->current() == route('site.about') ? 'current' : '' }}"><a href="{{ route('site.about') }}" title="">About</a></li>
+            <li class="{{ url()->current() == route('site.contact') ? 'current' : '' }}"><a href="{{ route('site.contact') }}" title="">Contact</a></li>
+            <li class="has-children {{ Request::is('*auth*') ? 'current' : '' }}" >
                 <a href="#0" title="">Account</a>
                 <ul class="sub-menu">
-                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li class="{{ url()->current() == route('site.contact') ? 'current' : '' }}"><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="{{ route('register') }}">Register</a></li>
                     <li><a href="{{ route('password.request') }}">Reset Password</a></li>
                 </ul>
