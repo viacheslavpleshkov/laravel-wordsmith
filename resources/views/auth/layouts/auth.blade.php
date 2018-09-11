@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width       , initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@if(url()->current() != route('site.index')) @yield('title') |  @endif{{__('site.name')}}</title>
-    <meta name="description" content="swsw"/>
-    <meta name="keywords" content="sss"/>
     <link rel="author" href="{{ asset('humans.txt') }}"/>
     <link rel="stylesheet" href="{{ asset('css/base.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor.css') }}">

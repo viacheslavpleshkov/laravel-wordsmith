@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
-    //
+    protected $fillable = ['seo_description', 'seo_keyword', 'about'];
+
 }

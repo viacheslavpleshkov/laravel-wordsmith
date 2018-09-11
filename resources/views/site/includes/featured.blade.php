@@ -3,7 +3,6 @@
         <div class="col-full">
 
             <div class="featured-slider featured" data-aos="zoom-in">
-
                 <div class="featured__slide">
                     <div class="entry">
 
@@ -27,7 +26,6 @@
 
                     </div>
                 </div>
-
                 <div class="featured__slide">
 
                     <div class="entry">

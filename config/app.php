@@ -148,6 +148,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        Arrilot\Widgets\ServiceProvider::class,
 
 
         /*
@@ -213,7 +214,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
-
+        'Widget'       => Arrilot\Widgets\Facade::class,
+        'AsyncWidget'  => Arrilot\Widgets\AsyncFacade::class,
     ],
 
 ];

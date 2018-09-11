@@ -6,5 +6,6 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
     'about-title' => 'About',
-    'contact-title' => 'Contact'
+    'contact-title' => 'Contact',
+    'footer-about-wordsmith' => 'About Wordsmith'
 ];

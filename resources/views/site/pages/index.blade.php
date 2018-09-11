@@ -16,7 +16,7 @@
                             <a href="single-standard.html" class="item-entry__thumb-link">
                                 <img src="images/thumbs/post/lamp-400.jpg"
                                      srcset="images/thumbs/post/lamp-400.jpg 1x, images/thumbs/post/lamp-800.jpg 2x"
-                                     alt="">
+                                      alt="">
                             </a>
                         </div>
 
