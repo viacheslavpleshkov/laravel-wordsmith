@@ -14,6 +14,7 @@
             <div class="col-full s-content__main">
                 @include('auth.includes.success')
                 <form method="post" id="cForm" action="{{ route('login') }}" class="contact-form">
+                    @csrf
                     <fieldset>
                         <div>
                             <label for="sampleInput">{{ __('auth.e-mail-address') }}</label>
@@ -52,8 +53,7 @@
                                 </div>
                             @endif
                         </div>
-                        <button type="submit"
-                                class="submit btn btn--primary btn--large full-width">{{ __('auth.login') }}</button>
+                        <button type="submit" class="submit btn btn--primary btn--large full-width">{{ __('auth.login') }}</button>
                     </fieldset>
                 </form>
                 <div class="text-center">
