@@ -3,79 +3,70 @@
 @section('title', __('auth.login-title'))
 
 @section('content')
-    <form method="post" action="{{ route('login') }}" class="form-signin">
-        @csrf
-        <div class="text-center mb-4">
-            <img class="mb-4" id="logo" src="{{ asset ('images/logo.jpg')}}" alt="" width="72" height="72">
-            <h1 class="h3 mb-3 font-weight-normal">@yield('title')</h1>
-        </div>
-        @include('auth.includes.success')
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label">{{ __('auth.e-mail-address') }}</label>
-            <div class="col-sm-8">
-                <input type="email" id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                       name="email" value="{{ old('email') }}" placeholder="{{ __('auth.enter-e-mail-address') }}" required
-                       autofocus>
-                @if ($errors->has('email'))
-                    <span class="text-danger">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
-                @endif
+    <section class="s-content s-content--top-padding s-content--narrow">
+
+        <div class="row narrow">
+            <div class="col-full s-content__header">
+                <h1 class="display-1 display-1--with-line-sep">{{ __('auth.login-title') }}</h1>
             </div>
         </div>
+        <div class="row">
+            <div class="col-full s-content__main">
+                @include('auth.includes.success')
+                <form method="post" id="cForm" action="{{ route('login') }}" class="contact-form">
+                    <fieldset>
+                        <div>
+                            <label for="sampleInput">{{ __('auth.e-mail-address') }}</label>
+                            <input name="email" id="cName"
+                                   class="full-width {{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                   value="{{ old('email') }}" placeholder="{{ __('auth.enter-e-mail-address') }}" value=""
+                                   type="email" required>
+                            @if ($errors->has('email'))
+                                <div class="alert-box alert-box--error hideit">
+                                    <p>{{ $errors->first('email') }}</p>
+                                    <i class="fa fa-times alert-box__close"></i>
+                                </div>
+                            @endif
+                        </div>
 
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label">{{ __('auth.password') }}</label>
-            <div class="col-sm-8">
-                <input id="password" type="password"
-                       class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                       name="password" placeholder="{{ __('auth.enter-password') }}" required autofocus>
-                @if ($errors->has('password'))
-                    <span class="text-danger">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                @endif
-            </div>
-        </div>
+                        <div>
+                            <label for="sampleInput">{{ __('auth.password') }}</label>
+                            <input id="password" type="password"
+                                   class="full-width{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                   name="password" placeholder="{{ __('auth.enter-password') }}" required>
+                            @if ($errors->has('password'))
+                                <div class="alert-box alert-box--error hideit">
+                                    <p>{{ $errors->first('password') }}</p>
+                                    <i class="fa fa-times alert-box__close"></i>
+                                </div>
+                            @endif
+                        </div>
 
-        <div class="form-group row">
-            <label for="inputPassword3" class="col-sm-4 col-form-label">{{ __('auth.captcha') }}</label>
-            <div class="col-sm-8">
-                {!! NoCaptcha::display(['data-theme' => 'light','data-size'=>'normal']) !!}
-                @if ($errors->has('g-recaptcha-response'))
-                    <span class="text-danger">
-                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                </span>
-                @endif
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <div class="col-sm-4">{{ __('auth.login-checkbox') }}</div>
-            <div class="col-sm-8">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox"
-                           name="remember" {{ old('remember') ? 'checked' : '' }}>
-                    <label class="form-check-label" for="gridCheck1">
-                        {{ __('auth.remember-me') }}
-                    </label>
+                        <div>
+                            <label for="sampleInput">{{ __('auth.captcha') }}</label>
+                            {!! NoCaptcha::display(['data-theme' => 'light','data-size'=>'normal']) !!}
+                            @if ($errors->has('g-recaptcha-response'))
+                                <div class="alert-box alert-box--error hideit">
+                                    <p>{{ $errors->first('g-recaptcha-response') }}</p>
+                                    <i class="fa fa-times alert-box__close"></i>
+                                </div>
+                            @endif
+                        </div>
+                        <button type="submit"
+                                class="submit btn btn--primary btn--large full-width">{{ __('auth.login') }}</button>
+                    </fieldset>
+                </form>
+                <div class="text-center">
+                    <a href="{{ url('auth/socialite/github') }}"
+                       class="submit btn btn--primary btn--large">{{ __('auth.login-with-github') }}</a>
+                    <a href="{{ url('auth/socialite/google') }}"
+                       class="submit btn btn--primary btn--large">{{ __('auth.login-with-google+') }}</a>
+                    <a href="{{ url('auth/socialite/facebook') }}"
+                       class="submit btn btn--primary btn--large">{{ __('auth.login-with-facebook') }}</a>
+                    <a href="{{ url('auth/socialite/twitter') }}"
+                       class="submit btn btn--primary btn--large ">{{ __('auth.login-with-twitter') }}</a>
                 </div>
             </div>
         </div>
-
-        <div class="text-center">
-            <button class="btn btn-lg btn-primary btn-block" type="submit">{{ __('auth.login') }}</button>
-            <a href="{{ url('auth/socialite/github') }}"
-               class="btn btn-lg btn-github group ml-1">{{ __('auth.login-with-github') }}</a>
-            <a href="{{ url('auth/socialite/google') }}"
-               class="btn btn-lg btn-google group ml-1">{{ __('auth.login-with-google+') }}</a>
-            <a href="{{ url('auth/socialite/facebook') }}"
-               class="btn btn-lg btn-facebook group ml-1">{{ __('auth.login-with-facebook') }}</a>
-            <a href="{{ url('auth/socialite/twitter') }}"
-               class="btn btn-lg btn-twitter group ml-1">{{ __('auth.login-with-twitter') }}</a>
-            <a class="btn btn-link" href="{{ route('site.index') }}">{{ __('auth.back-to-the-site') }}</a>
-            <a class="btn btn-link" href="{{ route('register') }}">{{ __('auth.register') }}</a>
-            <a class="btn btn-link" href="{{ route('password.request') }}">{{ __('auth.forgot-your-password') }}</a>
-        </div>
-    </form>
+    </section>
 @endsection

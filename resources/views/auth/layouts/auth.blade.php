@@ -13,6 +13,7 @@
     <script src="{{ asset('js/modernizr.js') }}"></script>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    {!! NoCaptcha::renderJs('en') !!}
 </head>
 <body id="top">
 <div id="preloader">

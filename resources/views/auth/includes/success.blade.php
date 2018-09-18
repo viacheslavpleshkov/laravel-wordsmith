@@ -1,8 +1,6 @@
 @if (session('success'))
-    <div class="alert alert-danger alert-dismissible fade show">
-        {{ session('success') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="alert-box alert-box--success hideit">
+        <p>{{ session('success') }}</p>
+        <i class="fa fa-times alert-box__close"></i>
     </div>
 @endif

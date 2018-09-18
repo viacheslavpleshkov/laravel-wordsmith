@@ -12,10 +12,35 @@ class SociallinkTableSeeder extends Seeder
      */
     public function run()
     {
-        $role_user = new Sociallink();
-        $role_user->icon = 'User';
-        $role_user->url = 'User';
-        $role_user->status = 1;
-        $role_user->save();
+        $sociallink_facesbook = new Sociallink();
+        $sociallink_facesbook->icon = 'fab fa-facebook';
+        $sociallink_facesbook->url = '#';
+        $sociallink_facesbook->status = 1;
+        $sociallink_facesbook->save();
+
+        $sociallink_twitter = new Sociallink();
+        $sociallink_twitter->icon = 'fab fa-twitter';
+        $sociallink_twitter->url = '#';
+        $sociallink_twitter->status = 1;
+        $sociallink_twitter->save();
+
+        $sociallink_instagram = new Sociallink();
+        $sociallink_instagram->icon = 'fab fa-instagram';
+        $sociallink_instagram->url = '#';
+        $sociallink_instagram->status = 1;
+        $sociallink_instagram->save();
+
+        $sociallink_youtube = new Sociallink();
+        $sociallink_youtube->icon = 'fab fa-youtube';
+        $sociallink_youtube->url = '#';
+        $sociallink_youtube->status = 1;
+        $sociallink_youtube->save();
+
+        $sociallink_pinterest = new Sociallink();
+        $sociallink_pinterest->icon = 'fab fa-pinterest';
+        $sociallink_pinterest->url = '#';
+        $sociallink_pinterest->status = 1;
+        $sociallink_pinterest->save();
+
     }
 }
