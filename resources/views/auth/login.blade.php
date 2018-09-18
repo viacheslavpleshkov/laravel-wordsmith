@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-full s-content__main">
                 @include('auth.includes.success')
-                <form method="post" id="cForm" action="{{ route('login') }}" class="contact-form">
+                <form method="post" action="{{ route('login') }}">
                     @csrf
                     <fieldset>
                         <div>
@@ -46,6 +46,7 @@
                         <div>
                             <label for="sampleInput">{{ __('auth.captcha') }}</label>
                             {!! NoCaptcha::display(['data-theme' => 'light','data-size'=>'normal']) !!}
+                            <br>
                             @if ($errors->has('g-recaptcha-response'))
                                 <div class="alert-box alert-box--error hideit">
                                     <p>{{ $errors->first('g-recaptcha-response') }}</p>

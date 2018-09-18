@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-full s-content__main">
                 @include('auth.includes.success')
-                <form method="post" id="cForm" action="{{ route('register') }}" class="contact-form">
+                <form method="post" action="{{ route('register') }}">
                     @csrf
                     <fieldset>
                         <div>
@@ -64,17 +64,12 @@
                             <input id="password-confirm" type="password" class="full-width"
                                    name="password_confirmation"
                                    placeholder="{{ __('auth.enter-confirm-password') }}" required autofocus>
-                            @if ($errors->has('password'))
-                                <div class="alert-box alert-box--error hideit">
-                                    <p>{{ $errors->first('password') }}</p>
-                                    <i class="fa fa-times alert-box__close"></i>
-                                </div>
-                            @endif
                         </div>
 
                         <div>
                             <label for="sampleInput">{{ __('auth.captcha') }}</label>
                             {!! NoCaptcha::display(['data-theme' => 'light','data-size'=>'normal']) !!}
+                            <br>
                             @if ($errors->has('g-recaptcha-response'))
                                 <div class="alert-box alert-box--error hideit">
                                     <p>{{ $errors->first('g-recaptcha-response') }}</p>
