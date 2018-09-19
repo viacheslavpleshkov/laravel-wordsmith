@@ -11,25 +11,27 @@
 
         <form role="search" method="get" class="header__search-form" action="#">
             <label>
-                <span class="hide-content">Search for:</span>
-                <input type="search" class="search-field" placeholder="Type Keywords" value="" name="s" title="Search for:" autocomplete="off">
+                <span class="hide-content">{{ __('site.nav-search-for') }}</span>
+                <input type="search" class="search-field" placeholder="{{ __('site.nav-type-keywords') }}" value="" name="s"
+                       title="{{ __('site.nav-search-for') }}" autocomplete="off">
             </label>
-            <input type="submit" class="search-submit" value="Search">
+            <input type="submit" class="search-submit" value="{{ __('site.nav-search') }}">
         </form>
 
-        <a href="#0" title="Close Search" class="header__overlay-close">Close</a>
+        <a href="#0" title="Close Search" class="header__overlay-close">{{ __('site.nav-close') }}</a>
 
     </div>
 
-    <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+    <a class="header__toggle-menu" href="#0" title="Menu"><span>{{ __('site.menu') }}</span></a>
     <nav class="header__nav-wrap">
 
-        <h2 class="header__nav-heading h6">Navigate to</h2>
+        <h2 class="header__nav-heading h6">{{ __('site.nav-navigate-to') }}</h2>
 
         <ul class="header__nav">
-            <li class="{{ url()->current() == route('site.index') ? 'current' : '' }}"><a href="{{ route('site.index') }}" title="">Home</a></li>
+            <li class="{{ url()->current() == route('site.index') ? 'current' : '' }}"><a
+                        href="{{ route('site.index') }}" title="">{{ __('site.nav-home') }}</a></li>
             <li class="has-children {{ Request::is('*categories*') ? 'current' : '' }}">
-                <a href="#0" title="">Categories</a>
+                <a href="#0" title="">{{ __('site.nav-categories') }}</a>
                 <ul class="sub-menu">
                     <li><a href="category.html">Lifestyle</a></li>
                     <li><a href="category.html">Health</a></li>
@@ -39,18 +41,36 @@
                     <li><a href="category.html">Work</a></li>
                 </ul>
             </li>
-            <li class="{{ Request::is('*blog*') ? 'current' : '' }}"><a href="{{ route('site.blog') }}" title="">Blog</a></li>
-            <li class="{{ url()->current() == route('site.about') ? 'current' : '' }}"><a href="{{ route('site.about') }}" title="">About</a></li>
-            <li class="{{ url()->current() == route('site.contact') ? 'current' : '' }}"><a href="{{ route('site.contact') }}" title="">Contact</a></li>
-            <li class="has-children {{ Request::is('*auth*') ? 'current' : '' }}" >
-                <a href="#0" title="">Account</a>
-                <ul class="sub-menu">
-                    <li class="{{ url()->current() == route('site.contact') ? 'current' : '' }}"><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
-                    <li><a href="{{ route('password.request') }}">Reset Password</a></li>
-                </ul>
-            </li
+            <li class="{{ Request::is('*blog*') ? 'current' : '' }}"><a href="{{ route('site.blog') }}"
+                                                                        title="">{{ __('site.nav-blog') }}</a></li>
+            <li class="{{ url()->current() == route('site.about') ? 'current' : '' }}"><a
+                        href="{{ route('site.about') }}" title="">{{ __('site.nav-about') }}</a></li>
+            <li class="{{ url()->current() == route('site.contact') ? 'current' : '' }}"><a
+                        href="{{ route('site.contact') }}" title="">{{ __('site.nav-contact') }}</a></li>
+            <li class="has-children {{ Request::is('*auth*') ? 'current' : '' }}">
+                @guest
+                    <a href="#0" title="">Account</a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('login') }}">{{ __('site.nav-login') }}</a></li>
+                        <li><a href="{{ route('register') }}">{{ __('site.nav-register') }}</a></li>
+                        <li><a href="{{ route('password.request') }}">{{ __('site.nav-reset-password') }}</a></li>
+                    </ul>
+                @else
+                    <a href="#0" title="">{{ Auth::user()->name }}</a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('profile.index') }}">{{ __('site.nav-personal-area') }}</a></li>
+                        @if(in_array(Auth::user()->role->name, ['Author','Moderator','Admin']))
+                            <li><a href="{{ route('admin.index') }}">{{ __('site.nav-admin-panel') }}</a></li>
+                        @endif
+                        <li><a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('site.nav-logout') }}</a>
+                        </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">
+                        @csrf
+                    </ul>
+                @endif
+            </li>
         </ul>
-        <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+        <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">{{ __('site.nav-close') }}</a>
     </nav>
 </header>

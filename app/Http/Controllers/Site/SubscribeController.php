@@ -15,7 +15,7 @@ class SubscribeController extends Controller
         ]);
 
         Subscribe::create([
-            'email' => $request['subscribe'],
+            'email' => $request['email'],
             'status' => 1
         ]);
         return redirect()->back()->with('success-submit', __('site.success-submit'));
