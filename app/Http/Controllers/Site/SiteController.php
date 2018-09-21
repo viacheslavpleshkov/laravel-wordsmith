@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App;
 use App\About;
 use App\Contact;
+use App\Seo;
+use Illuminate\Support\Facades\URL;
 
 class SiteController extends Controller
 {
@@ -17,18 +19,20 @@ class SiteController extends Controller
     public function index()
     {
         $main = App\Setting::find(1);
-        return view('site.pages.index',compact('main'));
+        return view('site.pages.index', compact('main'));
     }
 
     public function about()
     {
         $main = About::find(1);
-        return view('site.pages.about', compact('main'));
+        $seo = Seo::where('url', URL::current())->get();
+        return view('site.pages.about', compact('main', 'seo'));
     }
 
     public function contact()
     {
         $main = Contact::find(1);
-        return view('site.pages.contact',compact('main'));
+        $seo = Seo::where('url', URL::current())->get();
+        return view('site.pages.contact', compact('main', 'seo'));
     }
 }

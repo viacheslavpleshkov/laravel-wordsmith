@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App;
-use App\Setting;
+use App\Seo;
 use App\Http\Requests\Setting as SettingRequest;
 
 class AdminController extends Controller
@@ -21,12 +21,12 @@ class AdminController extends Controller
 
     public function settings()
     {
-        $main = Setting::find(1);
+        $main = Seo::find(1);
         return view('admin.pages.settings', compact('main'));
     }
     public function settingsupdate(SettingRequest $request)
     {
-        Setting::find(1)->update($request->all());
+        Seo::find(1)->update($request->all());
         return redirect()->route('admin.settings')->with('success', __('admin.updated-success'));
     }
 }
