@@ -4,6 +4,7 @@ return [
     //nav
     'nav-home' => 'Home',
     'nav-edit-site' => 'Edit site',
+    'nav-about' => 'About',
     'nav-user-manager' => 'User Manager',
     'nav-users' => 'Users',
     'nav-roles' => 'Roles',
@@ -20,6 +21,15 @@ return [
     'home-hello' => 'Hello',
     'home-welcome' => 'Improve your skills every day.)',
     'home-url' => 'Go to the site',
+    //About
+    'about-title' => 'About',
+    'about-content-header' => 'Content header',
+    'about-content' => 'Content',
+    'about-footer' => 'Footer About',
+    'about-enter-content-header' => 'Enter content header',
+    'about-enter-content' => 'Enter content',
+    'about-enter-footer' => 'Enter footer about',
+
     //Projects
     'projects-title' => 'Projects',
     'create-projects' => 'Create project',

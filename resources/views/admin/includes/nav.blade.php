@@ -17,9 +17,8 @@
                         <i class="fas fa-edit"></i> {{ __('admin.nav-edit-site') }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item {{ Request::is('*contact-with-me*') ? 'active' : '' }}"
-                           href=""><i
-                                    class="fas  fa-link"></i> {{ __('admin.nav-contact-with-me') }}</a>
+                        <a class="dropdown-item {{ Request::is('*about*') ? 'active' : '' }}"
+                           href="{{ route('about.index') }}"><i class="fas fa-align-center"></i> {{ __('admin.nav-about') }}</a>
                     </div>
                 </li>
             @endif

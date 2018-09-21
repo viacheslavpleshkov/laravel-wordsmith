@@ -24,9 +24,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     });
     Route::group(['roles' => ['Moderator', 'Admin']], function () {
         Route::get('about', 'AboutController@index')->name('about.index');
-        Route::put('about', 'AboutController@edit');
+        Route::put('about', 'AboutController@update');
         Route::get('contact', 'ContactController@index')->name('contact.index');
-        Route::put('contact', 'ContactController@edit');
+        Route::put('contact', 'ContactController@update');
     });
     Route::group(['roles' => ['Admin']], function () {
         Route::resource('users', 'UserController');
