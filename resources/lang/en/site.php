@@ -38,5 +38,9 @@ return [
     'footer-email-address' => 'Email Address',
     'footer-send' => 'Send',
     'footer-back-to-top' => 'Back to Top',
-    'footer-about-wordsmith' => 'About Wordsmith'
+    'footer-about-wordsmith' => 'About Wordsmith',
+
+    'about-title' => 'About',
+    'contact-title' => 'Contact',
+    'privacy-policy-title' => 'Privacy Policy',
 ];

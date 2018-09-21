@@ -45,7 +45,7 @@ Route::namespace('Site')->group(function () {
     Route::get('styles', 'SiteController@styles')->name('site.styles');
     Route::get('about', 'SiteController@about')->name('site.about');
     Route::get('contact', 'SiteController@contact')->name('site.contact');
-    Route::get('privacy-policy', 'SiteController@privacy-policy')->name('site.privacy-policy');
+    Route::get('privacy-policy', 'SiteController@privacypolicy')->name('site.privacy-policy');
     Route::put('subscribe', 'SubscribeController@subscribe')->name('site.subscribe');
 });
 

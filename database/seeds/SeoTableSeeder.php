@@ -15,13 +15,13 @@ class SeoTableSeeder extends Seeder
         $home = new Seo();
         $home->description = 'Description wordsmith';
         $home->keyword = 'Keyword wordsmith';
-        $home->url = 'http://wordsmith.local/';
+        $home->url = 'http://wordsmith.local';
         $home->save();
 
         $blog = new Seo();
-        $blog->description = 'Description wordsmith';
-        $blog->keyword = 'Keyword wordsmith';
-        $blog->url = '/';
+        $blog->description = 'Description blog';
+        $blog->keyword = 'Keyword blog';
+        $blog->url = 'http://wordsmith.local/blog';
         $blog->save();
 
         $about = new Seo();
@@ -34,6 +34,12 @@ class SeoTableSeeder extends Seeder
         $contact->description = 'Description contact';
         $contact->keyword = 'Keyword contact';
         $contact->url = 'http://wordsmith.local/contact';
+        $contact->save();
+
+        $contact = new Seo();
+        $contact->description = 'Description privacy policy';
+        $contact->keyword = 'Keyword privacy policy';
+        $contact->url = 'http://wordsmith.local/privacy-policy';
         $contact->save();
     }
 }

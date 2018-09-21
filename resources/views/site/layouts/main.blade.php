@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width       , initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@if(url()->current() != route('site.index')) @yield('title') |  @endif{{__('site.name')}}</title>
-    <meta name="description" content="{{ $seo->description }}"/>
-    <meta name="keywords" content="{{ $seo->keyword }}"/>
+    <meta name="description" content="{{ $seo->description ?? 'No description' }}"/>
+    <meta name="keywords" content="{{ $seo->keyword ?? ''}}"/>
     <link rel="author" href="{{ asset('humans.txt') }}"/>
     <link rel="stylesheet" href="{{ asset('css/base.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor.css') }}">

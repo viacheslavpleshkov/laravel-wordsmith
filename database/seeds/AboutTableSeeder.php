@@ -13,8 +13,6 @@ class AboutTableSeeder extends Seeder
     public function run()
     {
         $contact = new About();
-        $contact->seo_description = 'About | Wordsmith';
-        $contact->seo_keyword = 'About, Wordsmith';
         $contact->content_header = 'Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo.';
         $contact->text = '<p>
                 <img src="images/thumbs/about/about-1000.jpg" 

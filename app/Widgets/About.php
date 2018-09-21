@@ -3,7 +3,7 @@
 namespace App\Widgets;
 
 use Arrilot\Widgets\AbstractWidget;
-use App\Setting;
+use App\About as Model;
 
 class About extends AbstractWidget
 {
@@ -20,7 +20,7 @@ class About extends AbstractWidget
      */
     public function run()
     {
-        $main = Setting::find(1);
+        $main = Model::find(1);
         return view('widgets.about', [
             'config' => $this->config, 'main' =>$main
         ]);

@@ -13,8 +13,6 @@ class ContactTableSeeder extends Seeder
     public function run()
     {
         $contact = new Contact();
-        $contact->seo_description = 'Contact | Wordsmith';
-        $contact->seo_keyword = 'Contact, Wordsmith';
         $contact->content_header = 'Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo.';
         $contact->text = '<p>
                 <img src="images/thumbs/contact/contact-1000.jpg" 
