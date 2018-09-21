@@ -18,32 +18,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item {{ Request::is('*contact-with-me*') ? 'active' : '' }}"
-                           href="{{ route('contact-with-me.index') }}"><i
+                           href=""><i
                                     class="fas  fa-link"></i> {{ __('admin.nav-contact-with-me') }}</a>
-                        <a class="dropdown-item {{ Request::is('*knowledge-of-languages*') ? 'active' : '' }}"
-                           href="{{ route('knowledge-of-languages.index') }}"><i
-                                    class="fas  fa-language"></i> {{ __('admin.nav-knowledge-of-languages') }}</a>
-                        <a class="dropdown-item {{ Request::is('*courses*') ? 'active' : '' }}"
-                           href="{{ route('courses.index') }}"><i
-                                    class="fas fa-book-open"></i> {{ __('admin.nav-courses') }}
-                        </a>
-                        <a class="dropdown-item {{ Request::is('*educations*') ? 'active' : '' }}"
-                           href="{{ route('educations.index') }}"><i
-                                    class="fas fa-graduation-cap"></i> {{ __('admin.nav-educations') }}
-                        </a>
-                        <a class="dropdown-item {{ Request::is('*about-me*') ? 'active' : '' }}"
-                           href="{{ route('about-me.index') }}"><i class="fas fa-user"></i> {{ __('admin.nav-about-me') }}
-                        </a>
-                        <a class="dropdown-item {{ Request::is('*experiences*') ? 'active' : '' }}"
-                           href="{{ route('experiences.index') }}"><i
-                                    class="fas fa-building"></i> {{ __('admin.nav-experiences') }}
-                        </a>
-                        <a class="dropdown-item {{ Request::is('*skills*') ? 'active' : '' }}"
-                           href="{{ route('skills.index') }}"><i class="fas fa-list"></i> {{ __('admin.nav-skills') }}</a>
-                        <a class="dropdown-item {{ Request::is('*projects*') ? 'active' : '' }}"
-                           href="{{ route('projects.index') }}"><i
-                                    class="fas fa-briefcase"></i> {{ __('admin.nav-projects') }}
-                        </a>
                     </div>
                 </li>
             @endif

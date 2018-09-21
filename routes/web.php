@@ -23,14 +23,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::delete('profile/{id}', 'ProfileController@destroy')->name('profile.destroy');
     });
     Route::group(['roles' => ['Moderator', 'Admin']], function () {
-        Route::resource('contact-with-me', 'ContactwithmeController');
-        Route::resource('knowledge-of-languages', 'LanguageknowledgeController');
-        Route::resource('courses', 'СourseController');
-        Route::resource('educations', 'EducationController');
-        Route::resource('about-me', 'AboutmeController');
-        Route::resource('experiences', 'ExperienceController');
-        Route::resource('skills', 'SkillController');
-        Route::resource('projects', 'ProjectController');
+        Route::get('about', 'AboutController@index')->name('about.index');
+        Route::put('about', 'AboutController@edit');
+        Route::get('contact', 'ContactController@index')->name('contact.index');
+        Route::put('contact', 'ContactController@edit');
     });
     Route::group(['roles' => ['Admin']], function () {
         Route::resource('users', 'UserController');
