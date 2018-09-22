@@ -9,7 +9,7 @@ class Category extends Model
     /**
      * @var array
      */
-    protected $fillable = ['content_header', 'text', 'footer_about', 'seo_id'];
+    protected $fillable = ['content_header', 'text', 'footer_about', 'seo_id', 'status'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

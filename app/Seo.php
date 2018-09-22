@@ -50,4 +50,12 @@ class Seo extends Model
     {
         return $this->hasMany('App\Article');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function blogs()
+    {
+        return $this->hasMany('App\Blog');
+    }
 }

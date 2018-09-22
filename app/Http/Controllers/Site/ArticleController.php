@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Blog;
 use App\Article;
-use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
@@ -21,9 +20,8 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @param $url
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function view($url)
     {

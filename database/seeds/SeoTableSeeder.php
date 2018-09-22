@@ -41,5 +41,11 @@ class SeoTableSeeder extends Seeder
         $contact->description = 'Description privacy policy';
         $contact->keyword = 'Keyword privacy policy';
         $contact->save();
+
+        $categories = new Seo();
+        $categories->title = 'Categories';
+        $categories->description = 'Description categories';
+        $categories->keyword = 'Keyword categories';
+        $categories->save();
     }
 }
