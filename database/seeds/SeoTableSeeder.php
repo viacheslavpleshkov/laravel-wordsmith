@@ -47,5 +47,11 @@ class SeoTableSeeder extends Seeder
         $categories->description = 'Description categories';
         $categories->keyword = 'Keyword categories';
         $categories->save();
+
+        $article = new Seo();
+        $article->title = 'Article';
+        $article->description = 'Description article';
+        $article->keyword = 'Keyword article';
+        $article->save();
     }
 }

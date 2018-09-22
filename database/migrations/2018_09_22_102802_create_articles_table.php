@@ -18,9 +18,10 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->string('url')->unique();
             $table->string('images');
-            $table->string('text');
+            $table->text('text');
             $table->unsignedInteger('category_id');
             $table->unsignedInteger('seo_id');
+            $table->integer('slide');
             $table->integer('status');
             $table->unsignedInteger('user_id');
             $table->foreign('category_id')->references('id')->on('categories');

@@ -18,4 +18,13 @@ class Category extends Model
     {
         return $this->belongsTo('App\Seo');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function articles()
+    {
+        return $this->hasMany('App\Article');
+    }
+
 }

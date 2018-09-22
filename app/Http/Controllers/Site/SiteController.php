@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App;
 use App\About;
 use App\Contact;
-use App\Seo;
+use App\Blog;
+use App\Article;
 use App\Privacypolicy;
 
 class SiteController extends Controller
@@ -18,8 +19,10 @@ class SiteController extends Controller
 
     public function index()
     {
-        $seo = Seo::where('id', 1)->first();
-        return view('site.pages.index', compact('seo'));
+        $slider = Article::where('status', 1)->where('slide', 1)->get();
+        $paginate = Blog::find(1)->paginate;
+        $articles = Article::where('status', 1)->orderBy('id', 'desc')->paginate($paginate);
+        return view('site.pages.index', compact('slider', 'articles'));
     }
 
     /**

@@ -17,6 +17,7 @@ return [
     'nav-blog' => 'Blog',
     'nav-about' => 'About',
     'nav-contact' => 'Contact',
+    'nav-account' => 'Account',
     'nav-login' => 'Login',
     'nav-register' => 'Create an Account',
     'nav-reset-password' => 'Reset Password',
