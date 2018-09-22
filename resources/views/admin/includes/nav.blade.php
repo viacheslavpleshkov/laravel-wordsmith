@@ -41,9 +41,9 @@
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-cogs"></i> {{ __('admin.nav-settings') }}</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item {{ Request::is('*settings*') ? 'active' : '' }}"
-                           href="{{ route('admin.settings') }}"><i
-                                    class="fas fa-wrench"></i> {{ __('admin.nav-settings') }}</a>
+                        <a class="dropdown-item {{ Request::is('*seo*') ? 'active' : '' }}"
+                           href="{{ route('seo.index') }}"><i
+                                    class="fas fa-wrench"></i> {{ __('admin.nav-seo') }}</a>
                         <a class="dropdown-item {{ Request::is('*logs*') ? 'active' : '' }}"
                            href="{{ route('admin.logs') }}"><fa-cogsi
                                     class="fas fa-calendar"></fa-cogsi> {{ __('admin.nav-logs') }}</a>
@@ -52,20 +52,6 @@
             @endif
         </ul>
         <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-globe"></i> {{ __('admin.nav-site-language') }}
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item {{ Request::is('en*') ? 'active' : '' }}"
-                       href="{{ url('en/admin') }}">{{ __('admin.nav-english') }}</a>
-                    <a class="dropdown-item {{ Request::is('uk*') ? 'active' : '' }}"
-                       href="{{ url('uk/admin') }}">{{ __('admin.nav-ukrainian') }}</a>
-                    <a class="dropdown-item {{ Request::is('ru*') ? 'active' : '' }}"
-                       href="{{ url('ru/admin') }}">{{ __('admin.nav-russian') }}</a>
-                </div>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

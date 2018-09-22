@@ -13,7 +13,6 @@ class AboutController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-
     public function index()
     {
         $main = About::find(1);
@@ -25,10 +24,9 @@ class AboutController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        About::find($id)->update($request->all());
+        About::find(1)->update($request->all());
         return redirect()->route('about.index')->with('success', __('admin.updated-success'));
     }
 }

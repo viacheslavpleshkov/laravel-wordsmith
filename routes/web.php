@@ -34,8 +34,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::get('role/{id}', 'RoleController@show')->name('roles.show');
         Route::get('roles/{id}/edit', 'RoleController@edit')->name('roles.edit');
         Route::put('roles/{id}', 'RoleController@update')->name('roles.update');
-        Route::get('settings', 'AdminController@settings')->name('admin.settings');
-        Route::put('settings', 'AdminController@settingsupdate');
+        Route::resource('seo', 'SeoController');
         Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('admin.logs');
     });
 });
