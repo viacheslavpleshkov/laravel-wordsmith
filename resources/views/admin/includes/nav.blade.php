@@ -19,8 +19,19 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item {{ Request::is('*about*') ? 'active' : '' }}"
                            href="{{ route('about.index') }}"><i class="fas fa-align-center"></i> {{ __('admin.nav-about') }}</a>
+                        <a class="dropdown-item {{ Request::is('*contact*') ? 'active' : '' }}"
+                           href="{{ route('contact.index') }}"><i class="fas fa-align-center"></i> {{ __('admin.nav-contact') }}</a>
+                        <a class="dropdown-item {{ Request::is('*privacy-policy*') ? 'active' : '' }}"
+                           href="{{ route('privacy-policy.index') }}"><i class="fas fa-align-center"></i> {{ __('admin.nav-privacy-policy') }}</a>
+                        <a class="dropdown-item {{ Request::is('*privacy-policy*') ? 'active' : '' }}"
+                           href="{{ route('social-link.index') }}"><i class="fas fa-align-center"></i> {{ __('admin.nav-social-link') }}</a>
                     </div>
                 </li>
+                <li class="nav-item {{ Request::is('*subscribes*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('subscribes.index') }}"><i class="fas fa-bell"></i> {{ __('admin.nav-subscribes') }}
+                    </a>
+                </li>
+
             @endif
             @if(in_array(Auth::user()->role->name, ['Admin']))
                 <li class="nav-item dropdown">
