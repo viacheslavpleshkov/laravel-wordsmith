@@ -34,6 +34,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::put('privacy-policy', 'PrivacypolicyController@update')->name('privacy-policy.update');
         Route::resource('social-link', 'SociallinkController');
         Route::resource('subscribes', 'SubscribeController');
+        Route::resource('articles', 'ArticleController');
         Route::resource('categories', 'CategoryController');
         Route::resource('reviews', 'ReviewController');
     });
@@ -49,7 +50,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 });
 Route::namespace('Site')->group(function () {
     Route::get('/', 'SiteController@index')->name('site.index');
-    Route::get('blog', 'SiteController@blog')->name('site.blog');
+    Route::get('blog', 'ArticleController@index')->name('site.article.index');
+    Route::get('blog/{url}', 'ArticleController@view')->name('site.article.view')->where('url', '[\w\d\-\_]+');
     Route::get('styles', 'SiteController@styles')->name('site.styles');
     Route::get('about', 'SiteController@about')->name('site.about');
     Route::get('contact', 'SiteController@contact')->name('site.contact');

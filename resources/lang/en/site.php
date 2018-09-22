@@ -40,6 +40,7 @@ return [
     'footer-back-to-top' => 'Back to Top',
     'footer-about-wordsmith' => 'About Wordsmith',
 
+    'blog-title' => 'Blog',
     'about-title' => 'About',
     'contact-title' => 'Contact',
     'privacy-policy-title' => 'Privacy Policy',

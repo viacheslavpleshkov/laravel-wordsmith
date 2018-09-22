@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@if(url()->current() != route('site.index')) @yield('title') |  @endif{{__('site.name')}}</title>
-    <meta name="description" content="{{ $main->seo->description ?? 'No description' }}"/>
-    <meta name="keywords" content="{{ $main->seo->keywords ?? ''}}"/>
+    <title>@if(url()->current() != route('site.index')) @yield('title') |  @endif{{ $main->seo->titile ?? __('site.name')}}</title>
+    <meta name="description" content="{{ $main->seo->description ?? 'Wordsmith description' }}"/>
+    <meta name="keywords" content="{{ $main->seo->keywords ?? 'Wordsmith, Music'}}"/>
     <link rel="author" href="{{ asset('humans.txt') }}"/>
     <link rel="stylesheet" href="{{ asset('css/base.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor.css') }}">

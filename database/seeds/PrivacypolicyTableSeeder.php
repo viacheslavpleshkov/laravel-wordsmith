@@ -23,7 +23,7 @@ Proin egestas tellus vitae ante aliquam faucibus eget nec neque. Vivamus vitae n
 Suspendisse luctus tincidunt risus, vitae consectetur neque venenatis eu. Fusce sed egestas turpis. Vivamus luctus nulla eget pellentesque maximus. Mauris tincidunt tellus ut sapien consectetur, vehicula cursus ex fermentum. Sed eu venenatis lectus, non mollis ex. Aliquam gravida vel ante sit amet maximus. Donec ultrices velit quis enim venenatis suscipit. Sed ullamcorper, ante eget congue iaculis, libero ligula dignissim sem, ac commodo mauris erat a nunc. In sodales nibh vel purus facilisis egestas. Nulla enim massa, porta pellentesque nisl non, scelerisque eleifend ante. Mauris tortor lectus, blandit malesuada tempor commodo, sagittis ac justo. Pellentesque convallis sagittis pretium. Ut suscipit egestas mauris vel placerat.
 
 Ut pellentesque molestie volutpat. Etiam pretium semper ligula non mollis. Quisque faucibus mi dolor, ut euismod urna elementum id. Curabitur vel eros non dui pharetra viverra at nec tellus. Donec convallis commodo tortor, vel pharetra tellus facilisis ac. Nulla convallis ultrices nisi at scelerisque. Cras pellentesque enim et erat placerat vehicula. Morbi libero eros, pretium id arcu sit amet, dictum laoreet sapien. Proin tempus libero sit amet pellentesque hendrerit. In fermentum ligula arcu, ac tempor elit sodales ac. Nullam malesuada purus vitae sapien elementum, vulputate ultrices ipsum laoreet. Integer lacinia augue leo, id consequat nibh cursus ut. Aenean vel cursus ipsum. Nam quis mattis eros.</p>';
-        $privacypolicy->seo_id = 3;
+        $privacypolicy->seo_id = 5;
         $privacypolicy->save();
     }
 }

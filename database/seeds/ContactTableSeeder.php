@@ -53,7 +53,7 @@ class ContactTableSeeder extends Seeder
                         Phone: (+1) 123 456
                         </p>
                    </div>';
-        $contact->seo_id = 2;;
+        $contact->seo_id = 4;;
         $contact->save();
     }
 }

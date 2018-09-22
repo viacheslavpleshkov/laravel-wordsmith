@@ -41,7 +41,7 @@
                     <li><a href="category.html">Work</a></li>
                 </ul>
             </li>
-            <li class="{{ Request::is('*blog*') ? 'current' : '' }}"><a href="{{ route('site.blog') }}"
+            <li class="{{ Request::is('*blog*') ? 'current' : '' }}"><a href="{{ route('site.article.index') }}"
                                                                         title="">{{ __('site.nav-blog') }}</a></li>
             <li class="{{ url()->current() == route('site.about') ? 'current' : '' }}"><a
                         href="{{ route('site.about') }}" title="">{{ __('site.nav-about') }}</a></li>
