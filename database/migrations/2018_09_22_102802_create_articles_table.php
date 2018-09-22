@@ -21,6 +21,7 @@ class CreateArticlesTable extends Migration
             $table->text('text');
             $table->unsignedInteger('category_id');
             $table->unsignedInteger('seo_id');
+            $table->integer('views')->nullable();
             $table->integer('slide');
             $table->integer('status');
             $table->unsignedInteger('user_id');

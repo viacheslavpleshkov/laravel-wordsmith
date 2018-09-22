@@ -33,6 +33,8 @@ return [
     'footer-slider-contact' => 'Contact',
     'footer-slider-privacy-policy' => 'Privacy Policy',
     'footer-slider-popular-posts' => 'Popular Posts',
+    'footer-slider-by' => 'By',
+    'footer-slider-on' => 'on',
 
     'footer-our-newsletter' => 'Our Newsletter',
     'footer-our-newsletter-text' => 'Sit vel delectus amet officiis repudiandae est voluptatem. Tempora maxime provident nisi et fuga et enim exercitationem ipsam. Culpa consequatur occaecati.',
