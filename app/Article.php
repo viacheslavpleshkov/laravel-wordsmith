@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Article extends Model
 {
     /**
      * @var array
      */
-    protected $fillable = ['content_header', 'text', 'footer_about', 'seo_id'];
+    protected $fillable = ['title', 'url', 'images', 'text', 'category_id', 'seo_id', 'user_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

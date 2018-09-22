@@ -12,9 +12,9 @@ class AboutTableSeeder extends Seeder
      */
     public function run()
     {
-        $contact = new About();
-        $contact->content_header = 'Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo.';
-        $contact->text = '<p>
+        $about = new About();
+        $about->content_header = 'Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo.';
+        $about->text = '<p>
                 <img src="images/thumbs/about/about-1000.jpg" 
                      srcset="images/thumbs/about/about-2000.jpg 2000w, 
                              images/thumbs/about/about-1000.jpg 1000w, 
@@ -60,8 +60,8 @@ class AboutTableSeeder extends Seeder
                     </div>
 
                 </div>';
-        $contact->footer_about = 'Fugiat quas eveniet voluptatem natus. Placeat error temporibus magnam sunt optio aliquam. Ut ut occaecati placeat at. Fuga fugit ea autem. Dignissimos voluptate repellat occaecati minima dignissimos mollitia consequatur. Sit vel delectus amet officiis repudiandae est voluptatem. Tempora maxime provident nisi et fuga et enim exercitationem ipsam. Culpa error temporibus magnam est voluptatem.';
-
-        $contact->save();
+        $about->footer_about = 'Fugiat quas eveniet voluptatem natus. Placeat error temporibus magnam sunt optio aliquam. Ut ut occaecati placeat at. Fuga fugit ea autem. Dignissimos voluptate repellat occaecati minima dignissimos mollitia consequatur. Sit vel delectus amet officiis repudiandae est voluptatem. Tempora maxime provident nisi et fuga et enim exercitationem ipsam. Culpa error temporibus magnam est voluptatem.';
+        $about->seo_id = 1;
+        $about->save();
     }
 }

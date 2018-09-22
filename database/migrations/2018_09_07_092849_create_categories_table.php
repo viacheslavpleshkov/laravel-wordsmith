@@ -15,6 +15,11 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('url')->unique();
+            $table->unsignedInteger('seo_id');
+            $table->integer('status');
+            $table->foreign('seo_id')->references('id')->on('seos');
             $table->timestamps();
         });
     }

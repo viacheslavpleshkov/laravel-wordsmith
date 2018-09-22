@@ -8,7 +8,6 @@ use App\About;
 use App\Contact;
 use App\Seo;
 use App\Privacypolicy;
-use Illuminate\Support\Facades\URL;
 
 class SiteController extends Controller
 {
@@ -19,7 +18,7 @@ class SiteController extends Controller
 
     public function index()
     {
-        $seo = Seo::where('url', URL::current())->first();
+        $seo = Seo::where('id', 1)->first();
         return view('site.pages.index', compact('seo'));
     }
 
@@ -30,8 +29,7 @@ class SiteController extends Controller
     public function about()
     {
         $main = About::find(1);
-        $seo = Seo::where('url', URL::current())->first();
-        return view('site.pages.about', compact('main', 'seo'));
+        return view('site.pages.about', compact('main'));
     }
 
     /**
@@ -41,8 +39,7 @@ class SiteController extends Controller
     public function contact()
     {
         $main = Contact::find(1);
-        $seo = Seo::where('url', URL::current())->first();
-        return view('site.pages.contact', compact('main', 'seo'));
+        return view('site.pages.contact', compact('main'));
     }
 
     /**
@@ -52,8 +49,7 @@ class SiteController extends Controller
     public function privacypolicy()
     {
         $main = Privacypolicy::find(1);
-        $seo = Seo::where('url', URL::current())->first();
-        return view('site.pages.privacy-policy', compact('main', 'seo'));
+        return view('site.pages.privacy-policy', compact('main'));
     }
 
 }

@@ -17,6 +17,8 @@ class CreateContactsTable extends Migration
             $table->increments('id');
             $table->text('content_header');
             $table->text('text');
+            $table->unsignedInteger('seo_id');
+            $table->foreign('seo_id')->references('id')->on('seos');
             $table->timestamps();
         });
     }

@@ -20,11 +20,26 @@
                         <a class="dropdown-item {{ Request::is('*about*') ? 'active' : '' }}"
                            href="{{ route('about.index') }}"><i class="fas fa-align-center"></i> {{ __('admin.nav-about') }}</a>
                         <a class="dropdown-item {{ Request::is('*contact*') ? 'active' : '' }}"
-                           href="{{ route('contact.index') }}"><i class="fas fa-align-center"></i> {{ __('admin.nav-contact') }}</a>
+                           href="{{ route('contact.index') }}"><i class="fas fa-address-card"></i> {{ __('admin.nav-contact') }}</a>
                         <a class="dropdown-item {{ Request::is('*privacy-policy*') ? 'active' : '' }}"
-                           href="{{ route('privacy-policy.index') }}"><i class="fas fa-align-center"></i> {{ __('admin.nav-privacy-policy') }}</a>
+                           href="{{ route('privacy-policy.index') }}"><i class="fas fa-book-open"></i> {{ __('admin.nav-privacy-policy') }}</a>
                         <a class="dropdown-item {{ Request::is('*social-link*') ? 'active' : '' }}"
-                           href="{{ route('social-link.index') }}"><i class="fas fa-align-center"></i> {{ __('admin.nav-social-link') }}</a>
+                           href="{{ route('social-link.index') }}"><i class="fas fa-link"></i> {{ __('admin.nav-social-link') }}</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fab fa-blogger-b"></i> {{ __('admin.nav-blog') }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item {{ Request::is('*about*') ? 'active' : '' }}"
+                           href="{{ route('about.index') }}"><i class="fas fa-newspaper"></i> {{ __('admin.nav-articles') }}</a>
+                        <a class="dropdown-item {{ Request::is('*categories*') ? 'active' : '' }}"
+                           href="{{ route('categories.index') }}"><i
+                                    class="fab fa-amilia"></i> {{ __('admin.nav-categories') }}</a>                        <a class="dropdown-item {{ Request::is('*reviews*') ? 'active' : '' }}"
+                           href="{{ route('reviews.index') }}"><i
+                                    class="fas fa-comments"></i> {{ __('admin.nav-reviews') }}</a>
                     </div>
                 </li>
                 <li class="nav-item {{ Request::is('*subscribes*') ? 'active' : '' }}">
@@ -54,7 +69,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item {{ Request::is('*seo*') ? 'active' : '' }}"
                            href="{{ route('seo.index') }}"><i
-                                    class="fas fa-wrench"></i> {{ __('admin.nav-seo') }}</a>
+                                    class="fas fa-chart-line"></i> {{ __('admin.nav-seo') }}</a>
                         <a class="dropdown-item {{ Request::is('*logs*') ? 'active' : '' }}"
                            href="{{ route('admin.logs') }}"><fa-cogsi
                                     class="fas fa-calendar"></fa-cogsi> {{ __('admin.nav-logs') }}</a>

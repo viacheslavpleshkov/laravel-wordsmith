@@ -27,4 +27,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Role');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
+    }
 }
