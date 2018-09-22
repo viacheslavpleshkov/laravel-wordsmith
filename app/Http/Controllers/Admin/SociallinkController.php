@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Aboutme;
-use App\Http\Requests\Aboutme as Request;
+use App\Sociallink;
+use App\Http\Requests\Sociallink as Request;
 
 
-class AboutmeController extends Controller
+class SociallinkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class AboutmeController extends Controller
      */
     public function index()
     {
-        $main = Aboutme::all();
-        return view('admin.about-me.index', compact('main'));
+        $main = Sociallink::all();
+        return view('admin.social-link.index', compact('main'));
     }
 
     /**
@@ -27,7 +27,7 @@ class AboutmeController extends Controller
      */
     public function create()
     {
-        return view('admin.about-me.create');
+        return view('admin.social-link.create');
     }
 
     /**
@@ -38,8 +38,8 @@ class AboutmeController extends Controller
      */
     public function store(Request $request)
     {
-        Aboutme::create($request->all());
-        return redirect()->route('about-me.index')->with('success', __('admin.created-success'));
+        Sociallink::create($request->all());
+        return redirect()->route('social-link.index')->with('success', __('admin.created-success'));
     }
 
     /**
@@ -50,8 +50,8 @@ class AboutmeController extends Controller
      */
     public function show($id)
     {
-        $main = Aboutme::find($id);
-        return view('admin.about-me.show', compact('main'));
+        $main = Sociallink::find($id);
+        return view('admin.social-link.show', compact('main'));
     }
 
     /**
@@ -62,8 +62,8 @@ class AboutmeController extends Controller
      */
     public function edit($id)
     {
-        $main = Aboutme::find($id);
-        return view('admin.about-me.edit', compact('main'));
+        $main = Sociallink::find($id);
+        return view('admin.social-link.edit', compact('main'));
     }
 
     /**
@@ -75,8 +75,8 @@ class AboutmeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Aboutme::find($id)->update($request->all());
-        return redirect()->route('about-me.index')->with('success', __('admin.updated-success'));
+        Sociallink::find($id)->update($request->all());
+        return redirect()->route('social-link.index')->with('success', __('admin.updated-success'));
     }
 
     /**
@@ -87,7 +87,7 @@ class AboutmeController extends Controller
      */
     public function destroy($id)
     {
-        Aboutme::find($id)->delete();
-        return redirect()->route('about-me.index')->with('success', __('admin.information-deleted'));
+        Sociallink::find($id)->delete();
+        return redirect()->route('social-link.index')->with('success', __('admin.information-deleted'));
     }
 }

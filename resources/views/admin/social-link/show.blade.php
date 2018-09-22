@@ -1,14 +1,14 @@
 @extends('admin.layouts.main')
 
-@section('title',__('admin.show-contact-with-me'))
+@section('title',__('admin.show-social-link'))
 
 @section('content')
     @include('admin.includes.title')
     <ul class="nav mb-md-3">
         <li>
-            <a href="{{ route('contact-with-me.index') }}" class="btn btn-dark">{{ __('admin.back') }}</a>
-            <a href="{{ route('contact-with-me.edit', $main->id) }}" class="btn btn-primary">{{ __('admin.update') }}</a>
-            <form action="{{ route('contact-with-me.destroy', $main->id) }}" method="POST">
+            <a href="{{ route('social-link.index') }}" class="btn btn-dark">{{ __('admin.back') }}</a>
+            <a href="{{ route('social-link.edit', $main->id) }}" class="btn btn-primary">{{ __('admin.update') }}</a>
+            <form action="{{ route('social-link.destroy', $main->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">{{ __('admin.delete') }}</button>
@@ -17,20 +17,16 @@
     </ul>
     <table class="table">
         <tr>
-            <th>{{ __('admin.contact-with-me-id') }}</th>
+            <th>{{ __('admin.social-link-id') }}</th>
             <td>{{ $main->id }}</td>
         </tr>
         <tr>
-            <th>{{ __('admin.contact-with-me-titles') }}</th>
-            <td>{{ $main->title }}</td>
-        </tr>
-        <tr>
-            <th>{{ __('admin.contact-with-me-url') }}</th>
-            <td>{{ $main->url }}</td>
-        </tr>
-        <tr>
-            <th>{{ __('admin.contact-with-me-icon') }}</th>
+            <th>{{ __('admin.social-link-icon') }}</th>
             <td>{{ $main->icon }}</td>
+        </tr>
+        <tr>
+            <th>{{ __('admin.social-link-url') }}</th>
+            <td>{{ $main->url }}</td>
         </tr>
         <tr>
             <th>{{ __('admin.status') }}</th>

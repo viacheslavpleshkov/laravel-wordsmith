@@ -6,7 +6,7 @@
     @include('admin.includes.title')
     @include('admin.includes.error')
     @include('admin.includes.success')
-    <form action="{{ route('about.index',$main->id) }}" method="post">
+    <form action="{{ route('about.update',$main->id) }}" method="post">
         @csrf
         @method('PUT')
         <div class="form-group">

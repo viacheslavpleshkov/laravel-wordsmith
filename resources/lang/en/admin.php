@@ -30,6 +30,28 @@ return [
     'about-enter-content-header' => 'Enter content header',
     'about-enter-content' => 'Enter content',
     'about-enter-footer' => 'Enter footer about',
+    //Contact
+    'contact-title' => 'Contact',
+    'contact-content-header' => 'Content header',
+    'contact-content' => 'Content',
+    'contact-enter-content-header' => 'Enter content header',
+    'contact-enter-content' => 'Enter content',
+    //Privacy policy
+    'privacy-policy-title' => 'Privacy policy',
+    'privacy-policy-content-header' => 'Content header',
+    'privacy-policy-content' => 'Content',
+    'privacy-policy-enter-content-header' => 'Enter content header',
+    'privacy-policy-enter-content' => 'Enter content',
+    //Social link
+    'social-link-title' => 'Social link',
+    'create-social-link' => 'Create social link',
+    'show-social-link' => 'Show social link',
+    'edit-social-link' => 'Edit social link',
+    'social-link-id' => 'ID',
+    'social-link-icon' => 'Icon',
+    'social-link-url' => 'Url',
+    'social-link-enter-icon' => 'Enter icon',
+    'social-link-enter-url' => 'Enter Url',
     //Subscribes
     'subscribes-title' => 'Subscribes',
     'create-subscribes' => 'Create subscribe',

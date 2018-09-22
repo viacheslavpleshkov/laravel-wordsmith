@@ -23,7 +23,7 @@
                            href="{{ route('contact.index') }}"><i class="fas fa-align-center"></i> {{ __('admin.nav-contact') }}</a>
                         <a class="dropdown-item {{ Request::is('*privacy-policy*') ? 'active' : '' }}"
                            href="{{ route('privacy-policy.index') }}"><i class="fas fa-align-center"></i> {{ __('admin.nav-privacy-policy') }}</a>
-                        <a class="dropdown-item {{ Request::is('*privacy-policy*') ? 'active' : '' }}"
+                        <a class="dropdown-item {{ Request::is('*social-link*') ? 'active' : '' }}"
                            href="{{ route('social-link.index') }}"><i class="fas fa-align-center"></i> {{ __('admin.nav-social-link') }}</a>
                     </div>
                 </li>

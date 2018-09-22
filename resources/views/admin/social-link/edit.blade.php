@@ -1,29 +1,24 @@
 @extends('admin.layouts.main')
 
-@section('title',__('admin.edit-contact-with-me'))
+@section('title',__('admin.edit-social-link'))
 
 @section('content')
     @include('admin.includes.title')
     @include('admin.includes.error')
-    <form action="{{ route('contact-with-me.update',$main->id) }}" method="POST">
+    <form action="{{ route('social-link.update',$main->id) }}" method="POST">
         @csrf
         @method('PUT')
-        <div class="form-group">
-            <label>{{ __('admin.contact-with-me-titles') }}</label>
-            <input type="text" class="form-control" name="title" value="{{ $main->title }}"
-                   placeholder="{{ __('admin.contact-with-me-enter-title') }}" required>
-        </div>
 
         <div class="form-group">
-            <label>{{ __('admin.contact-with-me-url') }}</label>
-            <input type="text" class="form-control" name="url" value="{{ $main->url }}"
-                   placeholder="{{ __('admin.contact-with-me-enter-url') }}" required>
-        </div>
-
-        <div class="form-group">
-            <label>{{ __('admin.contact-with-me-icon') }}</label>
+            <label>{{ __('admin.social-link-icon') }}</label>
             <input type="text" class="form-control" name="icon" value="{{ $main->icon }}"
-                   placeholder="{{ __('admin.contact-with-me-enter-icon') }}" required>
+                   placeholder="{{ __('admin.social-link-enter-icon') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>{{ __('admin.social-link-url') }}</label>
+            <input type="text" class="form-control" name="url" value="{{ $main->url }}"
+                   placeholder="{{ __('admin.social-link-enter-url') }}" required>
         </div>
         <div class="form-group">
             <label>{{ __('admin.status') }}</label>

@@ -23,7 +23,7 @@
 </main>
 <footer class="footer">
     <div class="container text-center">
-        <span class="text-muted">Wordsmith ©2016-{{ date('Y') }}. All rights reserved.</span>
+        <span class="text-muted">Wordsmith ©{{ date('Y') }}. All rights reserved.</span>
     </div>
 </footer>
 <script src="{{ asset('js/admin.js') }}"></script>

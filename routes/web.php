@@ -24,11 +24,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     });
     Route::group(['roles' => ['Moderator', 'Admin']], function () {
         Route::get('about', 'AboutController@index')->name('about.index');
-        Route::put('about', 'AboutController@update');
+        Route::put('about', 'AboutController@update')->name('about.update');
         Route::get('contact', 'ContactController@index')->name('contact.index');
-        Route::put('contact', 'ContactController@update');
-        Route::get('privacy-policy', 'ContactController@index')->name('privacy-policy.index');
-        Route::put('privacy-policy', 'ContactController@update');
+        Route::put('contact', 'ContactController@update')->name('contact.update');
+        Route::get('privacy-policy', 'PrivacypolicyController@index')->name('privacy-policy.index');
+        Route::put('privacy-policy', 'PrivacypolicyController@update')->name('privacy-policy.update');
         Route::resource('social-link', 'SociallinkController');
         Route::resource('subscribes', 'SubscribeController');
 

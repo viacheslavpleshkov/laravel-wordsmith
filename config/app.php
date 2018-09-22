@@ -150,6 +150,7 @@ return [
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Arrilot\Widgets\ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
 
         /*
