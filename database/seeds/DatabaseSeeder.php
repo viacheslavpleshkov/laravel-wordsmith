@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(SeoTableSeeder::class);
+        $this->call(SettingsTableSeeder::class);
         $this->call(BlogTableSeeder::class);
         $this->call(AboutTableSeeder::class);
         $this->call(ContactTableSeeder::class);
@@ -21,6 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SociallinkTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(ArticlesTableSeeder::class);
-        $this->call(ReviewsTableSeeder::class);
+        $this->call(CommentsTableSeeder::class);
     }
 }

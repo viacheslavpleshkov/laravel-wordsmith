@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App;
 use App\About;
 use App\Contact;
-use App\Blog;
+use App\Setting;
 use App\Article;
 use App\Privacypolicy;
 
@@ -20,9 +20,10 @@ class SiteController extends Controller
     public function index()
     {
         $slider = Article::where('status', 1)->where('slide', 1)->get();
-        $paginate = Blog::find(1)->paginate;
+        $main = Setting::find(1);
+        $paginate = $main->paginate;
         $articles = Article::where('status', 1)->orderBy('id', 'desc')->paginate($paginate);
-        return view('site.pages.index', compact('slider', 'articles'));
+        return view('site.pages.index', compact('main', 'slider', 'articles'));
     }
 
     /**

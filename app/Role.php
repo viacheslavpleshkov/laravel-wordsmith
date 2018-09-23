@@ -9,7 +9,7 @@ class Role extends Model
     /**
      * @var array
      */
-    protected $fillable = ['description',];
+    protected $fillable = ['description'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Blog extends Model
+class Setting extends Model
 {
     /**
      * @var array
      */
-    protected $fillable = ['content_header', 'seo_id'];
+    protected $fillable = ['paginate', 'contactform', 'seo_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

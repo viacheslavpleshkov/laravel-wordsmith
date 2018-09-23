@@ -9,7 +9,7 @@ class Article extends Model
     /**
      * @var array
      */
-    protected $fillable = ['title', 'url', 'images', 'text', 'category_id', 'seo_id', 'user_id', 'status'];
+    protected $fillable = ['title', 'url', 'images', 'text', 'category_id', 'seo_id', 'views', 'slide', 'status', 'user_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

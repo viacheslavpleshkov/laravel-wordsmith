@@ -13,7 +13,7 @@ class User extends Authenticatable
     /**
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'github_id', 'google_id', 'facebook_id', 'twitter_id', 'role_id',];
+    protected $fillable = ['name', 'email', 'email_verified_at', 'password', 'about', 'github_id', 'google_id', 'facebook_id', 'twitter_id', 'role_id',];
 
     /**
      * @var array
@@ -31,9 +31,9 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function reviews()
+    public function comments()
     {
-        return $this->hasMany('App\Review');
+        return $this->hasMany('App\Comment');
     }
 
     /**

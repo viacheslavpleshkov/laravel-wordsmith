@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Blog;
 use App\Article;
-use App\Review;
+use App\Comment;
+use App\Setting;
 
 class ArticleController extends Controller
 {
@@ -16,7 +17,7 @@ class ArticleController extends Controller
     public function index()
     {
         $main = Blog::find(1);
-        $paginate = $main->paginate;
+        $paginate = Setting::find(1)->paginate;
         $articles = Article::where('status', 1)->orderBy('id', 'desc')->paginate($paginate);
         return view('site.articles.index', compact('main', 'articles'));
     }
@@ -31,7 +32,7 @@ class ArticleController extends Controller
         $main->increment('views');
         $previous = Article::where('id', '<', $main->id)->orderBy('id', 'desc')->first();
         $next = Article::where('id', '>', $main->id)->orderBy('id')->first();
-        $comments = Review::where('status', 1)->where('article_id', $main->id)->get();
+        $comments = Comment::where('status', 1)->where('article_id', $main->id)->get();
         $count = $comments->count();
         return view('site.articles.view', compact('main', 'previous', 'next', 'comments', 'count'));
     }

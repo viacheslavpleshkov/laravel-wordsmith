@@ -42,6 +42,9 @@ return [
     'footer-send' => 'Send',
     'footer-back-to-top' => 'Back to Top',
     'footer-about-wordsmith' => 'About Wordsmith',
+    //Category
+    'category-title' =>'Category',
+    'categories-title' =>'Category:',
     //Blog
     'blog-title' => 'Blog',
     //Blog view

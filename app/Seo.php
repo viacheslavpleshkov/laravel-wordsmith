@@ -14,6 +14,14 @@ class Seo extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    public function settings()
+    {
+        return $this->hasMany('App\Setting');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function abouts()
     {
         return $this->hasMany('App\About');
