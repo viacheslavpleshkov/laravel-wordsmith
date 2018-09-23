@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Blog;
 use App\Article;
+use App\Review;
 
 class ArticleController extends Controller
 {
@@ -30,6 +31,8 @@ class ArticleController extends Controller
         $main->increment('views');
         $previous = Article::where('id', '<', $main->id)->orderBy('id', 'desc')->first();
         $next = Article::where('id', '>', $main->id)->orderBy('id')->first();
-        return view('site.articles.view', compact('main', 'previous', 'next'));
+        $comments = Review::where('status', 1)->where('article_id', $main->id)->get();
+        $count = $comments->count();
+        return view('site.articles.view', compact('main', 'previous', 'next', 'comments', 'count'));
     }
 }

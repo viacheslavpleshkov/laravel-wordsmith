@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SociallinkTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(ArticlesTableSeeder::class);
+        $this->call(ReviewsTableSeeder::class);
     }
 }
