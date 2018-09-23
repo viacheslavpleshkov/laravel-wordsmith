@@ -44,6 +44,11 @@ return [
     'footer-about-wordsmith' => 'About Wordsmith',
 
     'blog-title' => 'Blog',
+    'blog-view-by' =>'By:',
+    'blog-view-posted by' =>'Posted by',
+    'blog-view-category' =>'Category:',
+    'blog-view-previous-post' =>'Previous Post:',
+    'blog-view-next-post' =>'Next Post:',
     'about-title' => 'About',
     'contact-title' => 'Contact',
     'privacy-policy-title' => 'Privacy Policy',
