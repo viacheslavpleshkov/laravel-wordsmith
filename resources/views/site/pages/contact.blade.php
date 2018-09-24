@@ -7,7 +7,7 @@
 
         <div class="row narrow">
             <div class="col-full s-content__header">
-                <h1 class="display-1 display-1--with-line-sep">{{ __('site.contact-title') }}</h1>
+                <h1 class="display-1 display-1--with-line-sep">{{ $main->title }}</h1>
                 <p class="lead">{{ $main->content_header }}</p>
             </div>
         </div>

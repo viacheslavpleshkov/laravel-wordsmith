@@ -9,7 +9,7 @@ class Page extends Model
     /**
      * @var array
      */
-    protected $fillable = ['title', 'content_header', 'text', 'seo_id'];
+    protected $fillable = ['title', 'url', 'content_header', 'text', 'seo_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

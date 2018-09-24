@@ -30,7 +30,7 @@ class SiteController extends Controller
 
     public function about()
     {
-        $main = Page::find(2);
+        $main = Page::find(3);
         return view('site.pages.about', compact('main'));
     }
 
