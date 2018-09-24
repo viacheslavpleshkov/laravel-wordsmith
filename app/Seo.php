@@ -14,38 +14,6 @@ class Seo extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function settings()
-    {
-        return $this->hasMany('App\Setting');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function abouts()
-    {
-        return $this->hasMany('App\About');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function contacts()
-    {
-        return $this->hasMany('App\Contact');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function privacypolicy()
-    {
-        return $this->hasMany('App\Privacypolicy');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function categories()
     {
         return $this->hasMany('App\Category');
@@ -62,7 +30,7 @@ class Seo extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function blog()
+    public function page()
     {
         return $this->hasMany('App\Blog');
     }

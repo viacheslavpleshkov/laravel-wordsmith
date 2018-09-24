@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Blog;
 use App\Article;
 use App\Comment;
+use App\Page;
 use App\Setting;
 
 class ArticleController extends Controller
@@ -16,7 +16,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $main = Blog::find(1);
+        $main = Page::find(1);
         $paginate = Setting::find(1)->paginate;
         $articles = Article::where('status', 1)->orderBy('id', 'desc')->paginate($paginate);
         return view('site.articles.index', compact('main', 'articles'));

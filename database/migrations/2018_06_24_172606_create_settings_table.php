@@ -17,8 +17,7 @@ class CreateSettingsTable extends Migration
             $table->increments('id');
             $table->integer('paginate');
             $table->integer('contactform');
-            $table->unsignedInteger('seo_id');
-            $table->foreign('seo_id')->references('id')->on('seos');
+            $table->text('footer_about');
             $table->timestamps();
         });
     }

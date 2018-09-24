@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Contact extends Model
+class Page extends Model
 {
     /**
      * @var array
      */
-    protected $fillable = ['content_header', 'text', 'seo_id'];
+    protected $fillable = ['title', 'content_header', 'text', 'seo_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

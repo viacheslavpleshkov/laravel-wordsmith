@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\About;
+use App\Setting;
 use App\Http\Requests\About as Request;
 
 

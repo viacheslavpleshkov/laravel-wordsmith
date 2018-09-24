@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAboutsTable extends Migration
+class CreatePagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateAboutsTable extends Migration
      */
     public function up()
     {
-        Schema::create('abouts', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('content_header');
-            $table->text('text');
-            $table->text('footer_about');
+            $table->string('title');
+            $table->text('content_header')->nullable();
+            $table->text('text')->nullable();
             $table->unsignedInteger('seo_id');
             $table->foreign('seo_id')->references('id')->on('seos');
             $table->timestamps();
@@ -31,6 +31,6 @@ class CreateAboutsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('abouts');
+        Schema::dropIfExists('pages');
     }
 }

@@ -53,12 +53,19 @@ Route::namespace('Site')->group(function () {
     Route::get('blog', 'ArticleController@index')->name('site.article.index');
     Route::get('blog/{url}', 'ArticleController@view')->name('site.article.view')->where('url', '[\w\d\-\_]+');
     Route::get('categories/{url}', 'CategoryController@view')->name('site.categories')->where('url', '[\w\d\-\_]+');
+
     Route::get('styles', 'SiteController@styles')->name('site.styles');
     Route::get('about', 'SiteController@about')->name('site.about');
     Route::get('contact', 'SiteController@contact')->name('site.contact');
     Route::get('privacy-policy', 'SiteController@privacypolicy')->name('site.privacy-policy');
+
     Route::put('comments', 'CommentsController@comments')->name('site.comments');
     Route::put('subscribe', 'SubscribeController@subscribe')->name('site.subscribe');
+
+    Route::get('sitemap.xml', 'SitemapController@index')->name('sitemap.index');
+    Route::get('sitemap/pages.xml', 'SitemapController@pages')->name('sitemap.pages');
+    Route::get('sitemap/articles.xml', 'SitemapController@articles')->name('sitemap.articles');
+    Route::get('sitemap/categories.xml', 'SitemapController@categories')->name('sitemap.categories');
 });
 
 
