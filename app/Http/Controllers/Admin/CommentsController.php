@@ -29,7 +29,9 @@ class CommentsController extends Controller
      */
     public function create()
     {
-        return view('admin.comments.create');
+        $users = User::all();
+        $articles = Article::where('status', 1)->get();
+        return view('admin.comments.create', compact('users', 'articles'));
     }
 
     /**
@@ -65,9 +67,9 @@ class CommentsController extends Controller
     public function edit($id)
     {
         $main = Comment::find($id);
-        $user = User::all();
+        $users = User::all();
         $articles = Article::where('status', 1)->get();
-        return view('admin.comments.edit', compact('main', 'user', 'articles'));
+        return view('admin.comments.edit', compact('main', 'users', 'articles'));
     }
 
     /**

@@ -34,7 +34,7 @@
                 <tr>
                     <th scope="row">{{ $item->id }}</th>
                     <td scope="row">{{ $item->user->name }}</td>
-                    <td scope="row">{{ $item->article->title }}</td>
+                    <td scope="row">{{ $item->article->title.' ('.$item->article->id.')' }}</td>
                     <td scope="row">
                         @if($item->status)
                             {{ __('admin.enabled') }}

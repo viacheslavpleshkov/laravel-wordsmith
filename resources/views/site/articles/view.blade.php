@@ -94,7 +94,6 @@
                             @endif
                             <form id="contactForm" action="{{ route('site.comments',$main->id) }}" method="post">
                                 @csrf
-                                @method('PUT')
                                 <fieldset>
                                     <div class="message form-field">
                                 <textarea name="text" id="cMessage" class="full-width"

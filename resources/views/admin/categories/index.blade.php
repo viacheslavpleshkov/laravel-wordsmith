@@ -13,7 +13,8 @@
         </div>
         <div class="col-lg-3">
             <div class="pull-right">
-                <a class="btn btn-original" href="{{ route('categories.create') }}">{{ __('admin.create-categories') }}</a>
+                <a class="btn btn-original"
+                   href="{{ route('categories.create') }}">{{ __('admin.create-categories') }}</a>
             </div>
         </div>
     </div>
@@ -25,10 +26,7 @@
                 <th scope="col">{{ __('admin.categories-id') }}</th>
                 <th scope="col">{{ __('admin.categories-name') }}</th>
                 <th scope="col">{{ __('admin.categories-url') }}</th>
-                <th scope="col">{{ __('admin.categories-men') }}</th>
-                <th scope="col">{{ __('admin.categories-women') }}</th>
-                <th scope="col">{{ __('admin.categories-kids') }}</th>
-                <th scope="col">{{ __('admin.categories-accessories') }}</th>
+                <th scope="col">{{ __('admin.categories-seo') }}</th>
                 <th scope="col">{{ __('admin.status') }}</th>
                 <th scope="col"></th>
             </tr>
@@ -38,35 +36,8 @@
                 <tr>
                     <th scope="row">{{ $item->id }}</th>
                     <td scope="row">{{ $item->name }}</td>
-                    <td scope="row">{{ $item->url }}</td>
-                    <td scope="row">
-                        @if($item->men)
-                            {{ __('admin.enabled') }}
-                        @else
-                            {{ __('admin.disabled') }}
-                        @endif
-                    </td>
-                    <td scope="row">
-                        @if($item->women)
-                            {{ __('admin.enabled') }}
-                        @else
-                            {{ __('admin.disabled') }}
-                        @endif
-                    </td>
-                    <td scope="row">
-                        @if($item->kids)
-                            {{ __('admin.enabled') }}
-                        @else
-                            {{ __('admin.disabled') }}
-                        @endif
-                    </td>
-                    <td scope="row">
-                        @if($item->accessories)
-                            {{ __('admin.enabled') }}
-                        @else
-                            {{ __('admin.disabled') }}
-                        @endif
-                    </td>
+                    <td scope="row">{{ route('site.categories',$item->url) }}</td>
+                    <td scope="row">{{ $item->seo->title.' ('.$item->seo->id.')' }}</td>
                     <td scope="row">
                         @if($item->status)
                             {{ __('admin.enabled') }}

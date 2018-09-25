@@ -45,13 +45,7 @@
         </tr>
         <tr>
             <th>{{ __('admin.pages-seo') }}</th>
-            <td>
-                @if($main->seo->id)
-                    {{ $main->seo->id }}
-                @else
-                    {{ __('admin.disabled') }}
-                @endif
-            </td>
+            <td>{{ $main->seo->title.' ('.$main->seo->id.')' }}</td>
         </tr>
         <tr>
             <th>{{ __('admin.created') }}</th>

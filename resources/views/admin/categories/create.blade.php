@@ -20,34 +20,11 @@
         </div>
 
         <div class="form-group">
-            <label>{{ __('admin.categories-men') }}</label>
-            <select class="form-control" name="men" required>
-                <option value="1">{{ __('admin.enabled') }}</option>
-                <option value="0">{{ __('admin.disabled') }}</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>{{ __('admin.categories-women') }}</label>
-            <select class="form-control" name="women" required>
-                <option value="1">{{ __('admin.enabled') }}</option>
-                <option value="0">{{ __('admin.disabled') }}</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>{{ __('admin.categories-kids') }}</label>
-            <select class="form-control" name="kids" required>
-                <option value="1">{{ __('admin.enabled') }}</option>
-                <option value="0">{{ __('admin.disabled') }}</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>{{ __('admin.categories-accessories') }}</label>
-            <select class="form-control" name="accessories" required>
-                <option value="1">{{ __('admin.enabled') }}</option>
-                <option value="0">{{ __('admin.disabled') }}</option>
+            <label>{{ __('admin.categories-seo') }}</label>
+            <select class="form-control" name="seo_id" required>
+                @foreach($seo as $item)
+                    <option value="{{ $item->id }}">{{ $item->title.' ('.$item->id.')' }}</option>
+                @endforeach
             </select>
         </div>
 

@@ -11,64 +11,23 @@
         <div class="form-group">
             <label>{{ __('admin.categories-name') }}</label>
             <input type="text" class="form-control" name="name" value="{{ $main->name }}"
-                   placeholder="{{ __('admin.categories-name') }}" required>
+                   placeholder="{{ __('admin.categories-enter-name') }}" required>
         </div>
 
         <div class="form-group">
             <label>{{ __('admin.categories-url') }}</label>
             <input type="text" class="form-control" name="url" value="{{ $main->url }}"
-                   placeholder="{{ __('admin.categories-url') }}" required>
+                   placeholder="{{ __('admin.categories-enter-url') }}" required>
         </div>
 
         <div class="form-group">
-            <label>{{ __('admin.categories-men') }}</label>
-            <select class="form-control" name="men" required>
-                @if($main->men)
-                    <option value="1">{{ __('admin.enabled') }}</option>
-                    <option value="0">{{ __('admin.disabled') }}</option>
-                @else
-                    <option value="0">{{ __('admin.disabled') }}</option>
-                    <option value="1">{{ __('admin.enabled') }}</option>
-                @endif
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>{{ __('admin.categories-women') }}</label>
-            <select class="form-control" name="women" required>
-                @if($main->women)
-                    <option value="1">{{ __('admin.enabled') }}</option>
-                    <option value="0">{{ __('admin.disabled') }}</option>
-                @else
-                    <option value="0">{{ __('admin.disabled') }}</option>
-                    <option value="1">{{ __('admin.enabled') }}</option>
-                @endif
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>{{ __('admin.categories-kids') }}</label>
-            <select class="form-control" name="kids" required>
-                @if($main->kids)
-                    <option value="1">{{ __('admin.enabled') }}</option>
-                    <option value="0">{{ __('admin.disabled') }}</option>
-                @else
-                    <option value="0">{{ __('admin.disabled') }}</option>
-                    <option value="1">{{ __('admin.enabled') }}</option>
-                @endif
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>{{ __('admin.categories-accessories') }}</label>
-            <select class="form-control" name="accessories" required>
-                @if($main->accessories)
-                    <option value="1">{{ __('admin.enabled') }}</option>
-                    <option value="0">{{ __('admin.disabled') }}</option>
-                @else
-                    <option value="0">{{ __('admin.disabled') }}</option>
-                    <option value="1">{{ __('admin.enabled') }}</option>
-                @endif
+            <label>{{ __('admin.categories-seo') }}</label>
+            <select class="form-control" name="seo_id" required>
+                <option value="{{ $main->seo->id }}">{{ $main->seo->title.' ('.$main->seo->id.')' }}</option>
+                @foreach($seo as $item)
+                    @if($main->seo->id === $item->id) @continue; @endif
+                    <option value="{{ $item->id }}">{{ $item->title.' ('.$item->id.')' }}</option>
+                @endforeach
             </select>
         </div>
 

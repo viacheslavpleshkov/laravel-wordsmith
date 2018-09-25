@@ -26,7 +26,7 @@
         </tr>
         <tr>
             <th>{{ __('admin.comments-article') }}</th>
-            <td>{{ $main->article->title }}</td>
+            <td>{{ $main->article->title.' ('.$main->article->id.')' }}</td>
         </tr>
         <tr>
             <th>{{ __('admin.comments-text') }}</th>

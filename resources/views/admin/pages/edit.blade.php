@@ -35,10 +35,10 @@
         <div class="form-group">
             <label>{{ __('admin.pages-seo') }}</label>
             <select class="form-control" name="seo_id" required>
-                <option value="{{ $main->seo->id }}">{{ $main->seo->title }}</option>
+                <option value="{{ $main->seo->id }}">{{ $main->seo->title.' ('.$main->seo->id.')' }}</option>
                 @foreach($seo as $item)
                     @if($main->seo->id === $item->id) @continue; @endif
-                    <option value="{{ $item->id }}">{{ $item->title }}</option>
+                    <option value="{{ $item->id }}">{{ $item->title.' ('.$item->id.')' }}</option>
                 @endforeach
             </select>
         </div>

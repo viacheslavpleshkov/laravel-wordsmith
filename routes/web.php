@@ -56,8 +56,8 @@ Route::namespace('Site')->group(function () {
     Route::get('contact', 'SiteController@contact')->name('site.contact');
     Route::get('privacy-policy', 'SiteController@privacypolicy')->name('site.privacy-policy');
 
-    Route::put('comments/{id}', 'CommentsController@comments')->name('site.comments')->where('id', '[\w\d\-\_]+');
-    Route::put('subscribe', 'SubscribeController@subscribe')->name('site.subscribe');
+    Route::post('comments/{id}', 'CommentsController@comments')->name('site.comments')->where('id', '[\w\d\-\_]+');
+    Route::post('subscribe', 'SubscribeController@subscribe')->name('site.subscribe');
 
     Route::get('sitemap.xml', 'SitemapController@index')->name('sitemap.index');
     Route::get('sitemap/pages.xml', 'SitemapController@pages')->name('sitemap.pages');

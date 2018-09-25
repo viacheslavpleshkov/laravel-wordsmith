@@ -29,8 +29,8 @@
                 <tr>
                     <th scope="row">{{ $item->id }}</th>
                     <td scope="row">{{ $item->title }}</td>
-                    <td scope="row">{{ $item->url }}</td>
-                    <td scope="row">{{ $item->seo->id }}</td>
+                    <td scope="row">{{ url('/').$item->url }}</td>
+                    <td scope="row">{{ $item->seo->title.' ('.$item->seo->id.')' }}</td>
                     <td scope="row">
                         <a href="{{ route('pages.show',$item->id) }}"><i class="far fa-eye"></i></a>
                         <a href="{{ route('pages.edit',$item->id) }}"><i class="fas fa-edit"></i></a>

@@ -23,7 +23,7 @@ return [
     'home-hello' => 'Hello',
     'home-welcome' => 'Improve your skills every day.)',
     'home-url' => 'Go to the site',
-    //Social link
+    //Pages
     'pages-title' => 'Pages',
     'show-pages' => 'Show page',
     'edit-pages' => 'Edit pages',
@@ -32,7 +32,7 @@ return [
     'pages-url' => 'URL',
     'pages-content_header' => 'Content header',
     'pages-text' => 'Text',
-    'pages-seo' => 'SEO ID',
+    'pages-seo' => 'SEO',
     'pages-enter-content_header' =>'Enter content header',
     'pages-enter-text' =>'Enter text',
     //Social link
@@ -45,6 +45,17 @@ return [
     'social-link-url' => 'Url',
     'social-link-enter-icon' => 'Enter icon',
     'social-link-enter-url' => 'Enter Url',
+    //categories
+    'categories-title' => 'Categories',
+    'create-categories' => 'Create categorie',
+    'show-categories' => 'Show categorie',
+    'edit-categories' => 'Edit categorie',
+    'categories-id' => 'ID',
+    'categories-name' => 'Name',
+    'categories-url' => 'URL',
+    'categories-seo' => 'SEO ',
+    'categories-enter-name' => 'Enter name',
+    'categories-enter-url' => 'Enter url',
     //Comments
     'comments-title' => 'Comments',
     'create-comments' => 'Create comment',

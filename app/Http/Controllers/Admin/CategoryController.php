@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Category;
+use App\Seo;
 use App\Http\Requests\Category as Request;
 
 
@@ -27,7 +28,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        $seo = Seo::where('status', 1)->get();
+        return view('admin.categories.create', compact('seo'));
     }
 
     /**
@@ -63,7 +65,8 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $main = Category::find($id);
-        return view('admin.categories.edit', compact('main'));
+        $seo = Seo::where('status', 1)->get();
+        return view('admin.categories.edit', compact('main', 'seo'));
     }
 
     /**

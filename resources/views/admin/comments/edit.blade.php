@@ -13,7 +13,7 @@
             <label>{{ __('admin.comments-user') }}</label>
             <select class="form-control" name="user_id" required>
                 <option value="{{ $main->user->id }}">{{ $main->user->name }}</option>
-                @foreach($user as $item)
+                @foreach($users as $item)
                     @if($main->user->id === $item->id) @continue; @endif
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                 @endforeach
@@ -23,17 +23,20 @@
         <div class="form-group">
             <label>{{ __('admin.comments-user') }}</label>
             <select class="form-control" name="article_id" required>
-                <option value="{{ $main->article->id }}">{{ $main->article->title }}</option>
+                <option value="{{ $main->article->id }}">{{ $main->article->title.' ('.$main->article->id.')' }}</option>
                 @foreach($articles as $item)
                     @if($main->article->id === $item->id) @continue; @endif
-                    <option value="{{ $item->id }}">{{ $item->title }}</option>
+                    <option value="{{ $item->id }}">{{ $item->title.' ('.$item->id.')' }}</option>
                 @endforeach
             </select>
         </div>
+
         <div class="form-group">
             <label>{{ __('admin.comments-text') }}</label>
-            <textarea class="form-control" name="text" rows="5" required>{{ $main->text }}</textarea>
+            <textarea class="form-control" name="text" rows="5" placeholder="{{ __('admin.comments-enter-text') }}"
+                      required>{{ $main->text }}</textarea>
         </div>
+
         <div class="form-group">
             <label>{{ __('admin.status') }}</label>
             <select class="form-control" name="status" required>

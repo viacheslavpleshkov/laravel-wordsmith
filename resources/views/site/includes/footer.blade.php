@@ -14,7 +14,6 @@
                     <div class="subscribe-form">
                         <form id="mc-form" class="group" action="{{ route('site.subscribe') }}" method="post">
                             @csrf
-                            @method('PUT')
                             <input type="email" name="email" class="email" id="mc-email"
                                    placeholder="{{ __('site.footer-email-address') }}" required="">
                             <input type="submit" value="{{ __('site.footer-send') }}">
