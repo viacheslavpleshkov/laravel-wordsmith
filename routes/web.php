@@ -31,7 +31,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::resource('subscribes', 'SubscribeController');
         Route::resource('articles', 'ArticleController');
         Route::resource('categories', 'CategoryController');
-        Route::resource('reviews', 'ReviewController');
+        Route::resource('comments', 'CommentsController');
     });
     Route::group(['roles' => ['Admin']], function () {
         Route::resource('users', 'UserController');

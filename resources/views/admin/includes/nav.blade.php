@@ -24,13 +24,13 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item {{ Request::is('*about*') ? 'active' : '' }}"
-                           href="{{ route('categories.index') }}"><i class="fas fa-newspaper"></i> {{ __('admin.nav-articles') }}</a>
-                        <a class="dropdown-item {{ Request::is('*categories*') ? 'active' : '' }}"
+                           href="{{ route('articles.index') }}"><i class="fas fa-newspaper"></i> {{ __('admin.nav-articles') }}</a>
+                        <a class="dropdown-item {{ Request::is('*articles*') ? 'active' : '' }}"
                            href="{{ route('categories.index') }}"><i
                                     class="fab fa-amilia"></i> {{ __('admin.nav-categories') }}</a>
-                        <a class="dropdown-item {{ Request::is('*reviews*') ? 'active' : '' }}"
-                           href="{{ route('reviews.index') }}"><i
-                                    class="fas fa-comments"></i> {{ __('admin.nav-reviews') }}</a>
+                        <a class="dropdown-item {{ Request::is('*comments*') ? 'active' : '' }}"
+                           href="{{ route('comments.index') }}"><i
+                                    class="fas fa-comments"></i> {{ __('admin.nav-comments') }}</a>
                     </div>
                 </li>
                 <li class="nav-item {{ Request::is('*subscribes*') ? 'active' : '' }}">
