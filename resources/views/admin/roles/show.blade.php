@@ -23,5 +23,13 @@
             <th>{{ __('admin.roles-description') }}</th>
             <td>{{ $main->description }}</td>
         </tr>
+        <tr>
+            <th>{{ __('admin.created') }}</th>
+            <td>{{ $main->created_at }}</td>
+        </tr>
+        <tr>
+            <th>{{ __('admin.update') }}</th>
+            <td>{{ $main->updated_at }}</td>
+        </tr>
     </table>
 @endsection

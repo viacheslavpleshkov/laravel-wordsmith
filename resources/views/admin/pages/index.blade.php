@@ -1,14 +1,43 @@
 @extends('admin.layouts.main')
 
-@section('title',__('admin.home-title'))
+@section('title',__('admin.pages-title'))
 
 @section('content')
-    @include('admin.includes.title')
-    <div class="jumbotron">
-        <h1 class="display-4">{{ __('admin.home-hello') }}, {{ Auth::user()->name }}</h1>
-        <p class="lead">{{ __('admin.home-welcome') }}</p>
-        <hr class="my-4">
-        <a class="btn btn-original btn-lg" href="{{ config('app.url') }}" role="button">{{ __('admin.home-url') }} <i
-                    class="fas fa-arrow-right"></i></a>
+    <div class="row justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <div class="col-lg-12">
+            <div class="d-flex">
+                <h1 class="h2">@yield('title')</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                </div>
+            </div>
+        </div>
+    </div>
+    @include('admin.includes.success')
+    <div class="table-responsive">
+        <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+            <tr>
+                <th scope="col">{{ __('admin.pages-id') }}</th>
+                <th scope="col">{{ __('admin.pages-name') }}</th>
+                <th scope="col">{{ __('admin.social-link-url') }}</th>
+                <th scope="col">{{ __('admin.pages-seo') }}</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($main as $item)
+                <tr>
+                    <th scope="row">{{ $item->id }}</th>
+                    <td scope="row">{{ $item->title }}</td>
+                    <td scope="row">{{ $item->url }}</td>
+                    <td scope="row">{{ $item->seo->id }}</td>
+                    <td scope="row">
+                        <a href="{{ route('pages.show',$item->id) }}"><i class="far fa-eye"></i></a>
+                        <a href="{{ route('pages.edit',$item->id) }}"><i class="fas fa-edit"></i></a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
 @endsection

@@ -81,5 +81,13 @@
             <th>{{ __('admin.users-roles') }}</th>
             <td>{{ $main->role->name }}</td>
         </tr>
+        <tr>
+            <th>{{ __('admin.created') }}</th>
+            <td>{{ $main->created_at }}</td>
+        </tr>
+        <tr>
+            <th>{{ __('admin.update') }}</th>
+            <td>{{ $main->updated_at }}</td>
+        </tr>
     </table>
 @endsection
