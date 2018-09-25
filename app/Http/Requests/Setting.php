@@ -24,9 +24,9 @@ class Setting extends FormRequest
     public function rules()
     {
         return [
-            'seo_description' => 'required',
-            'seo_keyword' => 'required',
-            'about' => 'required',
+            'paginate' => 'required',
+            'contactform' => 'required',
+            'footer_about' => 'required',
         ];
     }
 }

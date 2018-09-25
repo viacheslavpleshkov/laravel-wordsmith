@@ -11,21 +11,11 @@
                 </a>
             </li>
             @if(in_array(Auth::user()->role->name, ['Moderator','Admin']))
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-edit"></i> {{ __('admin.nav-edit-site') }}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item {{ Request::is('*about*') ? 'active' : '' }}"
-                           href="{{ route('about.index') }}"><i class="fas fa-align-center"></i> {{ __('admin.nav-about') }}</a>
-                        <a class="dropdown-item {{ Request::is('*contact*') ? 'active' : '' }}"
-                           href="{{ route('contact.index') }}"><i class="fas fa-address-card"></i> {{ __('admin.nav-contact') }}</a>
-                        <a class="dropdown-item {{ Request::is('*privacy-policy*') ? 'active' : '' }}"
-                           href="{{ route('privacy-policy.index') }}"><i class="fas fa-book-open"></i> {{ __('admin.nav-privacy-policy') }}</a>
-                        <a class="dropdown-item {{ Request::is('*social-link*') ? 'active' : '' }}"
-                           href="{{ route('social-link.index') }}"><i class="fas fa-link"></i> {{ __('admin.nav-social-link') }}</a>
-                    </div>
+                <li class="nav-item {{ Request::is('*pages*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('pages.index') }}"><i class="fas fa-file-alt"></i> {{ __('admin.nav-pages') }}</a>
+                </li>
+                <li class="nav-item {{ Request::is('*social-link*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('social-link.index') }}"><i class="fas fa-link"></i> {{ __('admin.nav-social-link') }}</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -34,10 +24,11 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item {{ Request::is('*about*') ? 'active' : '' }}"
-                           href="{{ route('about.index') }}"><i class="fas fa-newspaper"></i> {{ __('admin.nav-articles') }}</a>
+                           href="{{ route('categories.index') }}"><i class="fas fa-newspaper"></i> {{ __('admin.nav-articles') }}</a>
                         <a class="dropdown-item {{ Request::is('*categories*') ? 'active' : '' }}"
                            href="{{ route('categories.index') }}"><i
-                                    class="fab fa-amilia"></i> {{ __('admin.nav-categories') }}</a>                        <a class="dropdown-item {{ Request::is('*reviews*') ? 'active' : '' }}"
+                                    class="fab fa-amilia"></i> {{ __('admin.nav-categories') }}</a>
+                        <a class="dropdown-item {{ Request::is('*reviews*') ? 'active' : '' }}"
                            href="{{ route('reviews.index') }}"><i
                                     class="fas fa-comments"></i> {{ __('admin.nav-reviews') }}</a>
                     </div>
@@ -67,6 +58,9 @@
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-cogs"></i> {{ __('admin.nav-settings') }}</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item {{ Request::is('*settings*') ? 'active' : '' }}"
+                           href="{{ route('settings.index') }}"><i class="fas fa-wrench"></i>
+                            {{ __('admin.nav-settings') }}</a>
                         <a class="dropdown-item {{ Request::is('*seo*') ? 'active' : '' }}"
                            href="{{ route('seo.index') }}"><i
                                     class="fas fa-chart-line"></i> {{ __('admin.nav-seo') }}</a>

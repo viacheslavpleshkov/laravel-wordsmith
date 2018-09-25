@@ -26,12 +26,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::delete('profile/{id}', 'ProfileController@destroy')->name('profile.destroy');
     });
     Route::group(['roles' => ['Moderator', 'Admin']], function () {
-        Route::get('about', 'AboutController@index')->name('about.index');
-        Route::put('about', 'AboutController@update')->name('about.update');
-        Route::get('contact', 'ContactController@index')->name('contact.index');
-        Route::put('contact', 'ContactController@update')->name('contact.update');
-        Route::get('privacy-policy', 'PrivacypolicyController@index')->name('privacy-policy.index');
-        Route::put('privacy-policy', 'PrivacypolicyController@update')->name('privacy-policy.update');
+        Route::resource('pages', 'PageController');
         Route::resource('social-link', 'SociallinkController');
         Route::resource('subscribes', 'SubscribeController');
         Route::resource('articles', 'ArticleController');
@@ -45,7 +40,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::get('roles/{id}/edit', 'RoleController@edit')->name('roles.edit');
         Route::put('roles/{id}', 'RoleController@update')->name('roles.update');
         Route::resource('seo', 'SeoController');
-        Route::get('logs', 'Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('admin.logs');
+        Route::get('settings', 'SettingController@index')->name('settings.index');
+        Route::put('settings', 'SettingController@update')->name('settings.update');
+        Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('admin.logs');
     });
 });
 Route::namespace('Site')->group(function () {

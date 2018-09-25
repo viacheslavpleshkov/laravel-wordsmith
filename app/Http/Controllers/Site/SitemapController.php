@@ -14,7 +14,7 @@ class SitemapController extends Controller
      */
     public function index()
     {
-        $page = Page::where('status', 1)->orderBy('id', 'desc')->first();
+        $page = Page::orderBy('id', 'desc')->first();
         $article = Article::where('status', 1)->orderBy('id', 'desc')->first();
         $category = Category::where('status', 1)->orderBy('id', 'desc')->first();
         return response()->view('site.sitemap.index', compact('page', 'article', 'category'))->header('Content-Type', 'text/xml');

@@ -23,9 +23,10 @@
             <thead>
             <tr>
                 <th scope="col">{{ __('admin.seo-id') }}</th>
+                <th scope="col">{{ __('admin.seo-name') }}</th>
                 <th scope="col">{{ __('admin.seo-description') }}</th>
                 <th scope="col">{{ __('admin.seo-keyword') }}</th>
-                <th scope="col">{{ __('admin.seo-url') }}</th>
+                <th scope="col">{{ __('admin.status') }}</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -33,9 +34,16 @@
             @foreach($main as $item)
                 <tr>
                     <th scope="row">{{ $item->id }}</th>
+                    <td scope="row">{{ $item->title }}</td>
                     <td scope="row">{{ $item->description }}</td>
                     <td scope="row">{{ $item->keyword }}</td>
-                    <td scope="row">{{ $item->url }}</td>
+                    <td scope="row">
+                        @if($item->status)
+                            {{ __('admin.enabled') }}
+                        @else
+                            {{ __('admin.disabled') }}
+                        @endif
+                    </td>
                     <td scope="row">
                         <a href="{{ route('seo.show',$item->id) }}"><i class="far fa-eye"></i></a>
                         <a href="{{ route('seo.edit',$item->id) }}"><i class="fas fa-edit"></i></a>

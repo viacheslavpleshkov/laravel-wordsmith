@@ -24,9 +24,11 @@ class Seo extends FormRequest
     public function rules()
     {
         return [
+            'title' => 'required',
             'description' => 'required',
             'keyword' => 'required',
             'url' => 'required',
+            'status' => 'required',
         ];
     }
 }

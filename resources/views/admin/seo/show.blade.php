@@ -21,6 +21,10 @@
             <td>{{ $main->id }}</td>
         </tr>
         <tr>
+            <th>{{ __('admin.seo-name') }}</th>
+            <td>{{ $main->title }}</td>
+        </tr>
+        <tr>
             <th>{{ __('admin.seo-description') }}</th>
             <td>{{ $main->description }}</td>
         </tr>
@@ -29,8 +33,14 @@
             <td>{{ $main->keyword }}</td>
         </tr>
         <tr>
-            <th>{{ __('admin.seo-url') }}</th>
-            <td>{{ $main->url }}</td>
+            <th>{{ __('admin.status') }}</th>
+            <td>
+                @if( $main->status )
+                    {{ __('admin.enabled') }}
+                @else
+                    {{ __('admin.disabled') }}
+                @endif
+            </td>
         </tr>
         <tr>
             <th>{{ __('admin.created') }}</th>
