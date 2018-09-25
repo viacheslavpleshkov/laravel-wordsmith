@@ -59,6 +59,7 @@ return [
     'comment-add-comment' => 'Add Comment',
     'comment-add-comment-description' => 'Your email address will not be published',
     'comment-your-message' => 'Your Message*',
+    'success-comment' => 'Your comment was successfully added.',
 
     //About
     'about-title' => 'About',

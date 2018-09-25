@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Privacypolicy extends FormRequest
+class Page extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,9 @@ class Privacypolicy extends FormRequest
     public function rules()
     {
         return [
-            'content_header' => 'required',
-            'text' => 'required',
+            'title' => 'required',
+            'url' => 'required',
+            'seo_id' => 'required',
         ];
     }
 }

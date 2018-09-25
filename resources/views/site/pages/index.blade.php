@@ -1,6 +1,6 @@
 @extends('site.layouts.main')
 
-@section('title',__('site.name'))
+@section('title', $main->seo->title)
 
 @section('content')
     @include(('site.includes.featured'))

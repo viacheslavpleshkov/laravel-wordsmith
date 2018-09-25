@@ -1,6 +1,6 @@
 @extends('site.layouts.main')
 
-@section('title',__('site.privacy-policy-title'))
+@section('title', $main->seo->title)
 
 @section('content')
     <section class="s-content s-content--top-padding s-content--narrow">

@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-        @if(false)
+        @if(count($comments)>0)
             <div class="comments-wrap">
                 <div id="comments" class="row">
                     <div class="col-full">
@@ -86,7 +86,15 @@
                         <div id="respond" class="col-full">
                             <h3 class="h2">{{ __('site.comment-add-comment') }}
                                 <span>{{ __('site.comment-add-comment-description') }}</span></h3>
-                            <form id="contactForm" action="{{ route('site.comments') }}" method="post">
+                            @if (session('success-comment'))
+                                <div class="alert-box alert-box--success hideit">
+                                    <p>{{ session('success-comment') }}</p>
+                                </div>
+                                <br>
+                            @endif
+                            <form id="contactForm" action="{{ route('site.comments',$main->id) }}" method="post">
+                                @csrf
+                                @method('PUT')
                                 <fieldset>
                                     <div class="message form-field">
                                 <textarea name="text" id="cMessage" class="full-width"
@@ -101,7 +109,6 @@
                 </div>
             </div>
         @else
-            sw
         @endif
     </section>
 @endsection

@@ -3,22 +3,28 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Review;
+use App\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller
 {
-    public function comments(Request $request)
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function comments(Request $request, $id)
     {
         $request->validate([
             'text' => 'required',
         ]);
-        return $request['text'];
-        exit();
-        Review::create([
+        Comment::create([
+            'user_id' => Auth::user()->id,
+            'article_id' => $id,
             'text' => $request['text'],
             'status' => 1
         ]);
-        return redirect()->back()->with('success-submit', __('site.success-submit'));
+        return redirect()->back()->with('success-comment', __('site.success-submit'));
     }
 }

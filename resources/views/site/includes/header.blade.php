@@ -12,7 +12,8 @@
         <form role="search" method="get" class="header__search-form" action="#">
             <label>
                 <span class="hide-content">{{ __('site.nav-search-for') }}</span>
-                <input type="search" class="search-field" placeholder="{{ __('site.nav-type-keywords') }}" value="" name="s"
+                <input type="search" class="search-field" placeholder="{{ __('site.nav-type-keywords') }}" value=""
+                       name="s"
                        title="{{ __('site.nav-search-for') }}" autocomplete="off">
             </label>
             <input type="submit" class="search-submit" value="{{ __('site.nav-search') }}">
@@ -56,7 +57,8 @@
                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('site.nav-logout') }}</a>
                         </li>
                         <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">
-                        @csrf
+                            @csrf
+                        </form>
                     </ul>
                 @endif
             </li>
