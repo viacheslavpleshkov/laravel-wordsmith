@@ -21,14 +21,25 @@
             <div class="row">
                 <div class="col-full s-content__main">
                     <h4>{{ __('site.contact-contactform-title') }}</h4>
-
-                    <form class="contact-form" method="post" action="{{ route('site.contact') }}">
+                    @if (session('success'))
+                        <div class="alert-box alert-box--success hideit">
+                            <p>{{ session('success') }}</p>
+                            <i class="fa fa-times alert-box__close"></i>
+                        </div>
+                    @endif
+                    <form class="contact-form" action="{{ route('site.contact') }}" method="post">
+                        @csrf
                         <fieldset>
-
                             <div>
                                 <input name="name" class="full-width"
                                        placeholder="{{ __('site.contact-contactform-yourname') }}"
                                        value="{{ old('name') }}" type="text">
+                                @if ($errors->has('name'))
+                                    <div class="alert-box alert-box--error hideit">
+                                        <p>{{ $errors->first('name') }}</p>
+                                        <i class="fa fa-times alert-box__close"></i>
+                                    </div>
+                                @endif
                             </div>
 
                             <div class="form-field">
@@ -36,17 +47,47 @@
                                        placeholder="{{ __('site.contact-contactform-youremail') }}"
                                        value="{{ old('email') }}"
                                        type="text">
+                                @if ($errors->has('email'))
+                                    <div class="alert-box alert-box--error hideit">
+                                        <p>{{ $errors->first('email') }}</p>
+                                        <i class="fa fa-times alert-box__close"></i>
+                                    </div>
+                                @endif
                             </div>
 
                             <div class="form-field">
                                 <input name="website" class="full-width"
                                        placeholder="{{ __('site.contact-contactform-website') }}"
                                        value="{{ old('website') }}" type="text">
+                                @if ($errors->has('website'))
+                                    <div class="alert-box alert-box--error hideit">
+                                        <p>{{ $errors->first('website') }}</p>
+                                        <i class="fa fa-times alert-box__close"></i>
+                                    </div>
+                                @endif
                             </div>
 
                             <div class="message form-field">
                                 <textarea name="message" class="full-width"
                                           placeholder="{{ __('site.contact-contactform-yourmessage') }}">{{ old('message') }}</textarea>
+                                @if ($errors->has('message'))
+                                    <div class="alert-box alert-box--error hideit">
+                                        <p>{{ $errors->first('message') }}</p>
+                                        <i class="fa fa-times alert-box__close"></i>
+                                    </div>
+                                @endif
+                            </div>
+
+                            <div class="form-field">
+                                {!! NoCaptcha::renderJs('en') !!}
+                                {!! NoCaptcha::display(['data-theme' => 'light','data-size'=>'normal']) !!}
+                                <br>
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <div class="alert-box alert-box--error hideit">
+                                        <p>{{ $errors->first('g-recaptcha-response') }}</p>
+                                        <i class="fa fa-times alert-box__close"></i>
+                                    </div>
+                                @endif
                             </div>
 
                             <button type="submit"

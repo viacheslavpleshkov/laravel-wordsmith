@@ -8,7 +8,7 @@ use App\Setting;
 use App\Page;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailShipped;
-use App\Http\Requests\Contact as ContactRequest;
+use App\Http\Requests\Contact;
 
 class ContactController extends Controller
 {
@@ -23,10 +23,10 @@ class ContactController extends Controller
     }
 
     /**
-     * @param ContactRequest $request
+     * @param Contact $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function submit(ContactRequest $request)
+    public function submit(Contact $request)
     {
         Mail::send(new MailShipped($request));
         return redirect()->route('site.contact')->with('success', __('site.contact-success'));

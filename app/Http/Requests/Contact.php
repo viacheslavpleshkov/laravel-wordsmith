@@ -26,7 +26,7 @@ class Contact extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
-            'subject' => 'required|string|max:255',
+            'website' => 'required|string|max:255',
             'message' => 'required|string|max:4096',
             'g-recaptcha-response' => 'required|captcha'
         ];

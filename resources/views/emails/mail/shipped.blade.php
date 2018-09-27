@@ -1,12 +1,12 @@
 @component('mail::message')
-# Introduction
+    # Contact form | Wordsmith
 
-The body of your message.
+    **Name:** {{ $mail->name }}
 
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
+    **Email:** {{ $mail->email }}
 
-Thanks,<br>
-{{ config('app.name') }}
+    **Web site:** {{ $mail->website }}
+
+    **Message:** {{ $mail->message }}
+
 @endcomponent

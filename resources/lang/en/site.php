@@ -5,6 +5,7 @@ return [
     'name' => 'Wordsmith',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'success-submit' => 'Your subscription is complete',
+    'contact-success' => 'Your email has been sent successfully',
     //Nav
     'nav-search-for' => 'Search for:',
     'nav-search' => 'Search',
