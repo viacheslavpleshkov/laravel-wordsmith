@@ -29,11 +29,16 @@ class ArticleController extends Controller
     public function view($url)
     {
         $main = Article::where('url', $url)->first();
-        $main->increment('views');
-        $previous = Article::where('id', '<', $main->id)->orderBy('id', 'desc')->first();
-        $next = Article::where('id', '>', $main->id)->orderBy('id')->first();
-        $comments = Comment::where('status', 1)->where('article_id', $main->id)->get();
-        $count = $comments->count();
-        return view('site.articles.view', compact('main', 'previous', 'next', 'comments', 'count'));
+        if (isset($main)) {
+            $main->increment('views');
+            $previous = Article::where('id', '<', $main->id)->orderBy('id', 'desc')->first();
+            $next = Article::where('id', '>', $main->id)->orderBy('id')->first();
+            $comments = Comment::where('status', 1)->where('article_id', $main->id)->get();
+            $count = $comments->count();
+            return view('site.articles.view', compact('main', 'previous', 'next', 'comments', 'count'));
+        } else
+        {
+            abort(404);
+        }
     }
 }

@@ -16,9 +16,13 @@ class CategoryController extends Controller
     public function view($url)
     {
         $category = Category::where('url', $url)->first();
-        $title = $category->name;
-        $paginate = Setting::find(1)->paginate;
-        $main = Article::where('status', 1)->where('category_id', $category->id)->paginate($paginate);
-        return view('site.categories.view', compact('main', 'title'));
+        if (isset($category)) {
+            $title = $category->name;
+            $paginate = Setting::find(1)->paginate;
+            $main = Article::where('status', 1)->where('category_id', $category->id)->paginate($paginate);
+            return view('site.categories.view', compact('main', 'title'));
+        } else {
+            abort(404);
+        }
     }
 }
