@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\User;
@@ -19,7 +19,7 @@ class ProfileController extends Controller
     public function index()
     {
         $main = User::find(Auth::user()->id);
-        return view('admin.profile.index', compact('main'));
+        return view('site.profile.index', compact('main'));
     }
 
     /**
@@ -31,7 +31,7 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $main = User::find($id);
-        return view('admin.profile.edit', compact('main'));
+        return view('site.profile.edit', compact('main'));
     }
 
     /**
@@ -44,7 +44,7 @@ class ProfileController extends Controller
     public function updateedit(RequestEdit $request, $id)
     {
         User::find($id)->update($request->all());
-        return redirect()->route('profile.index')->with('success', __('admin.updated-success'));
+        return redirect()->route('profile.index')->with('success', __('site.updated-success'));
     }
 
     /**
@@ -56,7 +56,7 @@ class ProfileController extends Controller
     public function password($id)
     {
         $main = User::find($id);
-        return view('admin.profile.password', compact('main'));
+        return view('site.profile.password', compact('main'));
     }
 
     /**
@@ -72,9 +72,9 @@ class ProfileController extends Controller
             User::find($id)->update([
                 'password' => Hash::make($request->password),
             ]);
-            return redirect()->route('profile.index')->with('success', __('admin.profile-password-success'));
+            return redirect()->route('profile.index')->with('success', __('site.profile-password-success'));
         } else {
-            return back()->with('errors', __('admin.profile-password-error'));
+            return back()->with('errors', __('site.profile-password-error'));
         }
     }
 
@@ -87,6 +87,6 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('login')->with('success', __('admin.profile-user-deleted'));
+        return redirect()->route('login')->with('success', __('site.profile-user-deleted'));
     }
 }

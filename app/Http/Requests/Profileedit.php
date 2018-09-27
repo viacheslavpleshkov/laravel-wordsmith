@@ -26,6 +26,7 @@ class Profileedit extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required',
+            'about' => 'required',
         ];
     }
 }

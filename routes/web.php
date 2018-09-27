@@ -18,12 +18,6 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'roles'], 'block' => ['User']], function () {
     Route::group(['roles' => ['Author', 'Moderator', 'Admin']], function () {
         Route::get('/', 'AdminController@index')->name('admin.index');
-        Route::get('profile', 'ProfileController@index')->name('profile.index');
-        Route::get('profile/{id}/edit', 'ProfileController@edit')->name('profile.edit');
-        Route::put('profile/{id}/edit', 'ProfileController@updateedit');
-        Route::get('profile/{id}/password', 'ProfileController@password')->name('profile.password');
-        Route::put('profile/{id}/password', 'ProfileController@updatepassword');
-        Route::delete('profile/{id}', 'ProfileController@destroy')->name('profile.destroy');
     });
     Route::group(['roles' => ['Moderator', 'Admin']], function () {
         Route::resource('pages', 'PageController');
@@ -60,7 +54,14 @@ Route::namespace('Site')->group(function () {
     Route::post('comments/{id}', 'CommentsController@comments')->name('site.comments')->where('id', '[\w\d\-\_]+');
     Route::post('subscribe', 'SubscribeController@subscribe')->name('site.subscribe');
     Route::get('search', 'SearchController@search')->name('site.search');
-
+    Route::middleware('auth')->group(function () {
+        Route::get('profile', 'ProfileController@index')->name('profile.index');
+        Route::get('profile/{id}/edit', 'ProfileController@edit')->name('profile.edit');
+        Route::put('profile/{id}/edit', 'ProfileController@updateedit');
+        Route::get('profile/{id}/password', 'ProfileController@password')->name('profile.password');
+        Route::put('profile/{id}/password', 'ProfileController@updatepassword');
+        Route::delete('profile/{id}', 'ProfileController@destroy')->name('profile.destroy');
+    });
     Route::get('sitemap.xml', 'SitemapController@index')->name('sitemap.index');
     Route::get('sitemap/pages.xml', 'SitemapController@pages')->name('sitemap.pages');
     Route::get('sitemap/articles.xml', 'SitemapController@articles')->name('sitemap.articles');
