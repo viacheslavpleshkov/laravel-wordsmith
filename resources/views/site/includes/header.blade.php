@@ -9,11 +9,12 @@
     <a class="header__search-trigger" href="#0"></a>
     <div class="header__search">
 
-        <form role="search" method="get" class="header__search-form" action="#">
+        <form role="search" action="{{ route('site.search') }}" method="get" class="header__search-form">                    @csrf
+            @csrf
             <label>
                 <span class="hide-content">{{ __('site.nav-search-for') }}</span>
                 <input type="search" class="search-field" placeholder="{{ __('site.nav-type-keywords') }}" value=""
-                       name="s"
+                       name="search"
                        title="{{ __('site.nav-search-for') }}" autocomplete="off">
             </label>
             <input type="submit" class="search-submit" value="{{ __('site.nav-search') }}">

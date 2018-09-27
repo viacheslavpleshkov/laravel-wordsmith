@@ -73,4 +73,7 @@ return [
     'contact-contactform-sendmessage' => 'Send Message',
     //Privacy Policy
     'privacy-policy-title' => 'Privacy Policy',
+    //Search
+    'search-results' => 'Search results: ',
+    'search-sorry' => 'Sorry, but nothing matched your search terms. Please try again with some different keywords.',
 ];

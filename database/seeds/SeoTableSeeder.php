@@ -60,5 +60,12 @@ class SeoTableSeeder extends Seeder
         $article->keyword = 'Keyword article';
         $article->status = 1;
         $article->save();
+
+        $search = new Seo();
+        $search->title = 'Search';
+        $search->description = 'Description search';
+        $search->keyword = 'Keyword search';
+        $search->status = 1;
+        $search->save();
     }
 }
