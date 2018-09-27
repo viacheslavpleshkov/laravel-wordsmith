@@ -17,41 +17,47 @@
                 {!! $main->text !!}
             </div>
         </div>
-        <div class="row">
-            <div class="col-full s-content__main">
-                <h4>Get In Touch</h4>
+        @if($setting->contactform)
+            <div class="row">
+                <div class="col-full s-content__main">
+                    <h4>{{ __('site.contact-contactform-title') }}</h4>
 
-                <form name="cForm" id="cForm" class="contact-form" method="post" action="">
-                    <fieldset>
+                    <form class="contact-form" method="post" action="{{ route('site.contact') }}">
+                        <fieldset>
 
-                        <div>
-                            <input name="cName" id="cName" class="full-width" placeholder="Your Name*" value=""
-                                   type="text">
-                        </div>
+                            <div>
+                                <input name="name" class="full-width"
+                                       placeholder="{{ __('site.contact-contactform-yourname') }}"
+                                       value="{{ old('name') }}" type="text">
+                            </div>
 
-                        <div class="form-field">
-                            <input name="cEmail" id="cEmail" class="full-width" placeholder="Your Email*" value=""
-                                   type="text">
-                        </div>
+                            <div class="form-field">
+                                <input name="email" class="full-width"
+                                       placeholder="{{ __('site.contact-contactform-youremail') }}"
+                                       value="{{ old('email') }}"
+                                       type="text">
+                            </div>
 
-                        <div class="form-field">
-                            <input name="cWebsite" id="cWebsite" class="full-width" placeholder="Website" value=""
-                                   type="text">
-                        </div>
+                            <div class="form-field">
+                                <input name="website" class="full-width"
+                                       placeholder="{{ __('site.contact-contactform-website') }}"
+                                       value="{{ old('website') }}" type="text">
+                            </div>
 
-                        <div class="message form-field">
-                            <textarea name="cMessage" id="cMessage" class="full-width"
-                                      placeholder="Your Message*"></textarea>
-                        </div>
+                            <div class="message form-field">
+                                <textarea name="message" class="full-width"
+                                          placeholder="{{ __('site.contact-contactform-yourmessage') }}">{{ old('message') }}</textarea>
+                            </div>
 
-                        <button type="submit" class="submit btn btn--primary btn--large full-width">Send Message
-                        </button>
+                            <button type="submit"
+                                    class="submit btn btn--primary btn--large full-width">{{ __('site.contact-contactform-sendmessage') }}
+                            </button>
 
-                    </fieldset>
-                </form>
+                        </fieldset>
+                    </form>
 
+                </div>
             </div>
-        </div>
-
+        @endif
     </section>
 @endsection

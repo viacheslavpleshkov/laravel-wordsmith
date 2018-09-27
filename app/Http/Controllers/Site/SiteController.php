@@ -38,16 +38,6 @@ class SiteController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
-    public function contact()
-    {
-        $main = Page::find(4);
-        return view('site.pages.contact', compact('main'));
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-
     public function privacypolicy()
     {
         $main = Page::find(5);

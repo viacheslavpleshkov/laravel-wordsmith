@@ -43,16 +43,16 @@ return [
     'footer-back-to-top' => 'Back to Top',
     'footer-about-wordsmith' => 'About Wordsmith',
     //Category
-    'category-title' =>'Category',
-    'categories-title' =>'Category:',
+    'category-title' => 'Category',
+    'categories-title' => 'Category:',
     //Blog
     'blog-title' => 'Blog',
     //Blog view
-    'blog-view-by' =>'By:',
-    'blog-view-posted by' =>'Posted by',
-    'blog-view-category' =>'Category:',
-    'blog-view-previous-post' =>'Previous Post:',
-    'blog-view-next-post' =>'Next Post:',
+    'blog-view-by' => 'By:',
+    'blog-view-posted by' => 'Posted by',
+    'blog-view-category' => 'Category:',
+    'blog-view-previous-post' => 'Previous Post:',
+    'blog-view-next-post' => 'Next Post:',
     //Comment
     'comment-title' => 'Comment',
     'comment-alert-guest' => 'To leave a comment you need to log in.',
@@ -60,11 +60,16 @@ return [
     'comment-add-comment-description' => 'Your email address will not be published',
     'comment-your-message' => 'Your Message*',
     'success-comment' => 'Your comment was successfully added.',
-
     //About
     'about-title' => 'About',
     //Contact
     'contact-title' => 'Contact',
+    'contact-contactform-title' => 'Get In Touch',
+    'contact-contactform-yourname' => 'Your Name*',
+    'contact-contactform-youremail' => 'Your Email*',
+    'contact-contactform-website' => 'Website',
+    'contact-contactform-yourmessage' => 'Your Message*',
+    'contact-contactform-sendmessage' => 'Send Message',
     //Privacy Policy
     'privacy-policy-title' => 'Privacy Policy',
 ];
