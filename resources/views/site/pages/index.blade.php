@@ -14,7 +14,7 @@
                         <div class="item-entry" data-aos="zoom-in">
                             <div class="item-entry__thumb">
                                 <a href="{{ route('site.article.view',$item->url) }}" class="item-entry__thumb-link">
-                                    <img src="{{ asset('images/thumbs/post/lamp-400.jpg') }}" alt="{{ $item->title }}">
+                                    <img src="{{ asset('images/thumbs/single/standard/standard-1000.jpg') }}" alt="{{ $item->title }}">
                                 </a>
                             </div>
 

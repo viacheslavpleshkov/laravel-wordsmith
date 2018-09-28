@@ -10,7 +10,7 @@
                 <h1 class="display-1 display-1--with-line-sep">{{ __('site.profile-edit-profile') }}</h1>
             </div>
         </div>
-        @include('admin.includes.error')
+        @include('site.includes.error')
         <div class="row">
             <form action="{{ route('profile.edit',$main->id) }}" method="POST">
                 @csrf

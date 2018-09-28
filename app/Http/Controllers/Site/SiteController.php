@@ -7,6 +7,7 @@ use App;
 use App\Setting;
 use App\Article;
 use App\Page;
+use Illuminate\Support\Facades\Storage;
 
 class SiteController extends Controller
 {
@@ -43,5 +44,4 @@ class SiteController extends Controller
         $main = Page::find(5);
         return view('site.pages.privacy-policy', compact('main'));
     }
-
 }

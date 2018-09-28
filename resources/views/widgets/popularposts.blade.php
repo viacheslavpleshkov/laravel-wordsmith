@@ -4,7 +4,7 @@
         @foreach($main as $item)
         <article class="col-block popular__post">
             <a href="{{ route('site.article.view',$item->url) }}" class="popular__thumb">
-                <img src="{{ asset('images/thumbs/small/tulips-150.jpg') }}" alt="">
+                <img src="{{ asset('images/thumbs/single/standard/standard-1000.jpg') }}" alt="">
             </a>
             <h5>{{ $item->title }}</h5>
             <section class="popular__meta">

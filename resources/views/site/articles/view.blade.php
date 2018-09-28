@@ -21,7 +21,7 @@
             <div class="col-full entry__main">
                 {!! $main->text !!}
                 <div class="entry__author">
-                    <img src="{{ asset('images/avatars/user-03.jpg') }}" alt="">
+                    <img src="{{ asset('images/avatars/user.jpg') }}" alt="">
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>{{ __('site.blog-view-posted by') }}</span>
@@ -59,7 +59,7 @@
                             @foreach($comments as $item)
                                 <li class="depth-1 comment">
                                     <div class="comment__avatar">
-                                        <img class="avatar" src="{{ asset('images/avatars/user-01.jpg') }}" alt=""
+                                        <img class="avatar" src="{{ asset('images/avatars/user.jpg') }}" alt=""
                                              width="50" height="50">
                                     </div>
                                     <div class="comment__content">

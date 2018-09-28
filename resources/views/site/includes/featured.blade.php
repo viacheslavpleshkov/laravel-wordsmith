@@ -8,7 +8,7 @@
                         <div class="entry">
 
                             <div class="entry__background"
-                                 style="background-image:url('{{ asset('images/thumbs/featured/featured-guitarman.jpg') }}');"></div>
+                                 style="background-image:url('{{ asset('images/thumbs/single/standard/standard-1000.jpg') }}');"></div>
 
                             <div class="entry__content">
                                 <span class="entry__category"><a
@@ -18,7 +18,7 @@
 
                                 <div class="entry__info">
                                     <a href="#0" class="entry__profile-pic">
-                                        <img class="avatar" src="{{ asset('images/avatars/user-05.jpg') }}" alt="">
+                                        <img class="avatar" src="{{ asset('images/avatars/user.jpg') }}" alt="">
                                     </a>
                                     <ul class="entry__meta">
                                         <li><a href="#0">{{ $item->user->name }}</a></li>

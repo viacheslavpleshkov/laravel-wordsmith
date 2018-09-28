@@ -1,33 +1,43 @@
-@extends('admin.layouts.main')
+@extends('site.layouts.main')
 
-@section('title',__('admin.profile-edit-password'))
+@section('title',__('site.profile-edit-password'))
 
 @section('content')
-    @include('admin.includes.title')
-    @if (session()->has('errors'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{session('errors')}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-    <form action="{{ route('profile.password',$main->id) }}" method="POST">
-        @csrf
-        @method('PUT')
+    <section class="s-content s-content--top-padding s-content--narrow">
 
-        <div class="form-group">
-            <label>{{ __('admin.profile-new-password') }}</label>
-            <input type="password" class="form-control" name="password" placeholder="{{ __('admin.profile-enter-password') }}"
-                   required>
+        <div class="row narrow">
+            <div class="col-full s-content__header">
+                <h1 class="display-1 display-1--with-line-sep">{{ __('site.profile-edit-password') }}</h1>
+            </div>
         </div>
+        <div class="row">
 
-        <div class="form-group">
-            <label>{{ __('admin.profile-confirm-password') }}</label>
-            <input type="password" class="form-control" name="confirmpassword"
-                   placeholder="{{ __('admin.profile-enter-confirm-password') }}" required>
+            @if (session()->has('errors'))
+                <div class="alert-box alert-box--error hideit">
+                    <p>{{session('errors')}}</p>
+                    <i class="fa fa-times alert-box__close"></i>
+                </div>
+            @endif
+            <form action="{{ route('profile.password',$main->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+
+                <div>
+                    <label>{{ __('site.profile-new-password') }}</label>
+                    <input type="password" class="full-width" name="password"
+                           placeholder="{{ __('site.profile-enter-password') }}"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>{{ __('site.profile-confirm-password') }}</label>
+                    <input type="password" class="full-width" name="confirmpassword"
+                           placeholder="{{ __('site.profile-enter-confirm-password') }}" required>
+                </div>
+
+                <button class="submit btn btn--primary btn--large full-width"
+                        type="submit">{{ __('site.edit') }}</button>
+            </form>
         </div>
-
-        <button class="btn btn-lg btn-original btn-block" type="submit">{{ __('admin.edit') }}</button>
-    </form>
+    </section>
 @endsection

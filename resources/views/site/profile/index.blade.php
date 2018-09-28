@@ -10,8 +10,8 @@
                 <h1 class="display-1 display-1--with-line-sep">{{ __('site.profile-title') }}</h1>
             </div>
         </div>
-        @include('admin.includes.success')
         <div class="row">
+            @include('site.includes.success')
             <table class="table">
                 <tr>
                     <th>{{ __('site.profile-name') }}</th>
