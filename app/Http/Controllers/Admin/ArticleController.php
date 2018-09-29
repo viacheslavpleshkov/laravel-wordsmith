@@ -6,7 +6,7 @@ use App\Article;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Seo;
-use App\Http\Requests\Category as Request;
+use App\Http\Requests\Article as Request;
 use App\User;
 
 

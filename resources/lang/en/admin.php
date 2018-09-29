@@ -53,6 +53,7 @@ return [
     'articles-id' => 'ID',
     'articles-name' => 'Name',
     'articles-images' => 'Images',
+    'articles-upload' => 'Upload',
     'articles-url' => 'URL',
     'articles-text' => 'Text',
     'articles-seo' => 'SEO ',
