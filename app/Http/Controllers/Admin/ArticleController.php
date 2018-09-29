@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Category;
 use App\Seo;
 use App\Http\Requests\Category as Request;
+use App\User;
 
 
 class ArticleController extends Controller
@@ -65,9 +66,11 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        $main = Category::find($id);
+        $main = Article::find($id);
         $seo = Seo::where('status', 1)->get();
-        return view('admin.articles.edit', compact('main', 'seo'));
+        $categories = Category::where('status', 1)->get();
+        $users = User::all();
+        return view('admin.articles.edit', compact('main', 'categories', 'seo', 'users'));
     }
 
     /**

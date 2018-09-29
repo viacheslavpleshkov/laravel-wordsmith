@@ -60,6 +60,8 @@ return [
     'articles-views' => 'View ',
     'articles-slide' => 'Slide ',
     'articles-user' => 'User ',
+    'articles-enter-text' => 'Enter text',
+    'articles-enter-views' => 'Enter views',
     //Categories
     'categories-title' => 'Categories',
     'create-categories' => 'Create categori',

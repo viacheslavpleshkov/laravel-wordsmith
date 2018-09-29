@@ -9,7 +9,7 @@
         @csrf
         <div class="form-group">
             <label>{{ __('admin.categories-name') }}</label>
-            <input type="text" class="form-control" name="name" value="{{ old('name') }}"
+            <input type="text" class="form-control" name="title" value="{{ old('title') }}"
                    placeholder="{{ __('admin.categories-enter-name') }}" required>
         </div>
 
