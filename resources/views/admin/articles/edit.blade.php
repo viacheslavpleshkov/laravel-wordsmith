@@ -5,7 +5,7 @@
 @section('content')
     @include('admin.includes.title')
     @include('admin.includes.error')
-    <form action="{{ route('articles.update',$main->id) }}" method="POST">
+    <form action="{{ route('articles.update',$main->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
@@ -21,7 +21,7 @@
         </div>
 
         <label>{{ __('admin.articles-images') }}</label><br>
-        <img src="{{ asset('storage/'.$main->images) }}" width="100px" class="mb-3">
+        <img src="{{ asset('storage/'.$main->images) }}" width="300px" class="mb-3">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text">{{ __('admin.articles-upload') }}</span>
@@ -39,7 +39,7 @@
 
         <div class="form-group">
             <label>{{ __('admin.articles-category') }}</label>
-            <select class="form-control" name="seo_id" required>
+            <select class="form-control" name="category_id" required>
                 <option value="{{ $main->category->id }}">{{ $main->category->name.' ('.$main->seo->id.')' }}</option>
                 @foreach($categories as $item)
                     @if($main->category->id === $item->id) @continue; @endif

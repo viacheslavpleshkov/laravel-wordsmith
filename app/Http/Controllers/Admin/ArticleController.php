@@ -8,6 +8,7 @@ use App\Category;
 use App\Seo;
 use App\Http\Requests\Article as Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 
 class ArticleController extends Controller
@@ -31,7 +32,8 @@ class ArticleController extends Controller
     public function create()
     {
         $seo = Seo::where('status', 1)->get();
-        return view('admin.articles.create', compact('seo'));
+        $categories = Category::where('status', 1)->get();
+        return view('admin.articles.create', compact('seo', 'categories'));
     }
 
     /**
@@ -42,7 +44,18 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        Article::create($request->all());
+        Article::create([
+            'title' => $request->title,
+            'url' => $request->url,
+            'images' => $request->file('images')->store('articles', 'public'),
+            'text' => $request->text,
+            'category_id' => $request->category_id,
+            'seo_id' => $request->seo_id,
+            'views' => $request->views,
+            'slide' => $request->slide,
+            'status' => $request->status,
+            'user_id' => Auth::user()->id,
+        ]);
         return redirect()->route('articles.index')->with('success', __('admin.created-success'));
     }
 
@@ -82,7 +95,18 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Category::find($id)->update($request->all());
+        Article::find($id)->update([
+            'title' => $request->title,
+            'url' => $request->url,
+            'images' => $request->file('images')->store('articles', 'public'),
+            'text' => $request->text,
+            'category_id' => $request->category_id,
+            'seo_id' => $request->seo_id,
+            'views' => $request->views,
+            'slide' => $request->slide,
+            'status' => $request->status,
+            'user_id' => $request->user_id
+        ]);
         return redirect()->route('articles.index')->with('success', __('admin.updated-success'));
     }
 
@@ -94,7 +118,7 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        Category::find($id)->delete();
+        Article::find($id)->delete();
         return redirect()->route('articles.index')->with('success', __('admin.information-deleted'));
     }
 }

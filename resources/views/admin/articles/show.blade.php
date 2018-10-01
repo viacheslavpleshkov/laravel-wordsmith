@@ -26,7 +26,7 @@
         </tr>
         <tr>
             <th>{{ __('admin.articles-images') }}</th>
-            <td><img src="{{ asset($main->images) }}" width="100px" alt=""></td>
+            <td><img src="{{ asset('storage/'.$main->images) }}" width="100px" alt=""></td>
         </tr>
         <tr>
             <th>{{ __('admin.articles-url') }}</th>

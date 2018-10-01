@@ -39,7 +39,7 @@
                 <tr>
                     <th scope="row">{{ $item->id }}</th>
                     <td scope="row">{{ $item->title }}</td>
-                    <td scope="row"><img src="{{ asset($item->images) }}" alt=""></td>
+                    <td scope="row"><img src="{{ asset('storage/'.$item->images) }}" width="100px"></td>
                     <td scope="row">{{ route('site.article.view',$item->url) }}</td>
                     <td scope="row">{{ $item->seo->title.' ('.$item->seo->id.')' }}</td>
                     <td scope="row">{{ $item->category->title.' ('.$item->category->id.')' }}</td>

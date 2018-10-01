@@ -46,7 +46,7 @@ return [
     'social-link-enter-icon' => 'Enter icon',
     'social-link-enter-url' => 'Enter Url',
     //Articles
-    'articles-title' => 'Categories',
+    'articles-title' => 'Articles',
     'create-articles' => 'Create article',
     'show-articles' => 'Show article',
     'edit-articles' => 'Edit article',
@@ -61,6 +61,8 @@ return [
     'articles-views' => 'View ',
     'articles-slide' => 'Slide ',
     'articles-user' => 'User ',
+    'articles-enter-name' => 'Enter name',
+    'articles-enter-url' => 'Enter url',
     'articles-enter-text' => 'Enter text',
     'articles-enter-views' => 'Enter views',
     //Categories

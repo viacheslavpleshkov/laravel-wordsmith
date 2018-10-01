@@ -23,9 +23,9 @@
                         <i class="fab fa-blogger-b"></i> {{ __('admin.nav-blog') }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item {{ Request::is('*about*') ? 'active' : '' }}"
-                           href="{{ route('articles.index') }}"><i class="fas fa-newspaper"></i> {{ __('admin.nav-articles') }}</a>
                         <a class="dropdown-item {{ Request::is('*articles*') ? 'active' : '' }}"
+                           href="{{ route('articles.index') }}"><i class="fas fa-newspaper"></i> {{ __('admin.nav-articles') }}</a>
+                        <a class="dropdown-item {{ Request::is('*categories*') ? 'active' : '' }}"
                            href="{{ route('categories.index') }}"><i
                                     class="fab fa-amilia"></i> {{ __('admin.nav-categories') }}</a>
                         <a class="dropdown-item {{ Request::is('*comments*') ? 'active' : '' }}"
