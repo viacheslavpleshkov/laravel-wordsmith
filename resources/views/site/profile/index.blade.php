@@ -35,46 +35,6 @@
                         @endif</td>
                 </tr>
                 <tr>
-                    <th>{{ __('site.profile-github') }}</th>
-                    <td>
-                        @if( $main->github_id )
-                            {{ __('admin.enabled') }}
-                        @else
-                            {{ __('admin.disabled') }}
-                        @endif
-                    </td>
-                </tr>
-                <tr>
-                    <th>{{ __('site.profile-google') }}</th>
-                    <td>
-                        @if( $main->google_id )
-                            {{ __('site.enabled') }}
-                        @else
-                            {{ __('site.disabled') }}
-                        @endif
-                    </td>
-                </tr>
-                <tr>
-                    <th>{{ __('site.profile-facebook') }}</th>
-                    <td>
-                        @if( $main->facebook_id )
-                            {{ __('site.enabled') }}
-                        @else
-                            {{ __('site.disabled') }}
-                        @endif
-                    </td>
-                </tr>
-                <tr>
-                    <th>{{ __('site.profile-twitter') }}</th>
-                    <td>
-                        @if( $main->twitter_id )
-                            {{ __('site.enabled') }}
-                        @else
-                            {{ __('site.disabled') }}
-                        @endif
-                    </td>
-                </tr>
-                <tr>
                     <th>{{ __('site.profile-role') }}</th>
                     <td>{{ $main->role->name }}</td>
                 </tr>

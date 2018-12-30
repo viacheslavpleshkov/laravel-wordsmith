@@ -53,27 +53,10 @@
 
                     <div>
                         <label for="sampleInput">{{ __('auth.confirm-password') }}</label>
-                        <input type="password" id="password-confirm"
-                               class="full-width" name="password_confirmation"
-                               value="{{ old('password_confirmation') }}"
-                               placeholder="{{ __('auth.enter-confirm-password') }}" required
-                               autofocus>
-                    </div>
-
-                    <div>
-                        <label for="sampleInput">{{ __('auth.captcha') }}</label>
-                        {!! NoCaptcha::display(['data-theme' => 'light','data-size'=>'normal']) !!}
-                        <br>
-                        @if ($errors->has('g-recaptcha-response'))
-                            <div class="alert-box alert-box--error hideit">
-                                <p>{{ $errors->first('g-recaptcha-response') }}</p>
-                                <i class="fa fa-times alert-box__close"></i>
-                            </div>
-                        @endif
+                        <input type="password" id="password-confirm" class="full-width" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="{{ __('auth.enter-confirm-password') }}" required autofocus>
                     </div>
                     <div class="text-center">
-                        <button class="submit btn btn--primary btn--large full-width"
-                                type="submit">{{ __('auth.reset-password') }}</button>
+                        <button class="submit btn btn--primary btn--large full-width" type="submit">{{ __('auth.reset-password') }}</button>
                     </div>
                 </form>
             </div>

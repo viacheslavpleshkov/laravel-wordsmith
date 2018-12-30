@@ -66,33 +66,10 @@
                                    placeholder="{{ __('auth.enter-confirm-password') }}" required autofocus>
                         </div>
 
-                        <div>
-                            <label for="sampleInput">{{ __('auth.captcha') }}</label>
-                            {!! NoCaptcha::display(['data-theme' => 'light','data-size'=>'normal']) !!}
-                            <br>
-                            @if ($errors->has('g-recaptcha-response'))
-                                <div class="alert-box alert-box--error hideit">
-                                    <p>{{ $errors->first('g-recaptcha-response') }}</p>
-                                    <i class="fa fa-times alert-box__close"></i>
-                                </div>
-                            @endif
-                        </div>
-
                         <button type="submit"
                                 class="submit btn btn--primary btn--large full-width">{{ __('auth.register') }}</button>
                     </fieldset>
                 </form>
-
-                <div class="text-center">
-                    <a class="submit btn btn--primary btn--large"
-                       href="{{ url('auth/socialite/github') }}">{{ __('auth.register-with-github') }}</a>
-                    <a class="submit btn btn--primary btn--large"
-                       href="{{ url('auth/socialite/google') }}">{{ __('auth.register-with-google+') }}</a>
-                    <a class="submit btn btn--primary btn--large"
-                       href="{{ url('auth/socialite/facebook') }}">{{ __('auth.register-with-facebook') }}</a>
-                    <a class="submit btn btn--primary btn--large"
-                       href="{{ url('auth/socialite/twitter') }}">{{ __('auth.register-with-twitter') }}</a>
-                </div>
             </div>
         </div>
     </section>
