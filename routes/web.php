@@ -12,8 +12,6 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
     Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
     Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
     Route::post('password/reset', 'ResetPasswordController@reset');
-    Route::get('socialite/{provider}', 'AuthController@redirectToProvider');
-    Route::get('socialite/{provider}/callback', 'AuthController@handleProviderCallback');
 });
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'roles'], 'block' => ['User']], function () {
     Route::group(['roles' => ['Author', 'Moderator', 'Admin']], function () {
@@ -36,7 +34,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::resource('seo', 'SeoController');
         Route::get('settings', 'SettingController@index')->name('settings.index');
         Route::put('settings', 'SettingController@update')->name('settings.update');
-        Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('admin.logs');
     });
 });
 Route::namespace('Site')->group(function () {
