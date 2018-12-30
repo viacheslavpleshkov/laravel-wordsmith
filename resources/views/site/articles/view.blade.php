@@ -36,18 +36,22 @@
 		</article>
 		<div class="s-content__entry-nav">
 			<div class="row s-content__nav">
-				<div class="col-six s-content__prev">
-					<a href="{{ route('site.article.view',$previous->url) }}" rel="prev">
-						<span>{{ __('site.blog-view-previous-post') }}</span>
-						{{ $previous->title }}
-					</a>
-				</div>
-				<div class="col-six s-content__next">
-					<a href="{{ route('site.article.view',$next->url) }}" rel="next">
-						<span>{{ __('site.blog-view-next-post') }}</span>
-						{{ $next->title }}
-					</a>
-				</div>
+				@if(isset($previous))
+					<div class="col-six s-content__prev">
+						<a href="{{ route('site.article.view',$previous->url) }}" rel="prev">
+							<span>{{ __('site.blog-view-previous-post') }}</span>
+							{{ $previous->title }}
+						</a>
+					</div>
+				@endif
+				@if(isset($next))
+					<div class="col-six s-content__next">
+						<a href="{{ route('site.article.view',$next->url) }}" rel="next">
+							<span>{{ __('site.blog-view-next-post') }}</span>
+							{{ $next->title }}
+						</a>
+					</div>
+				@endif
 			</div>
 		</div>
 		@if(count($comments)>0)
