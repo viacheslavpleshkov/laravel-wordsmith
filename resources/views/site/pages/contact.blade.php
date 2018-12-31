@@ -77,21 +77,7 @@
                                     </div>
                                 @endif
                             </div>
-
-                            <div class="form-field">
-                                {!! NoCaptcha::renderJs('en') !!}
-                                {!! NoCaptcha::display(['data-theme' => 'light','data-size'=>'normal']) !!}
-                                <br>
-                                @if ($errors->has('g-recaptcha-response'))
-                                    <div class="alert-box alert-box--error hideit">
-                                        <p>{{ $errors->first('g-recaptcha-response') }}</p>
-                                        <i class="fa fa-times alert-box__close"></i>
-                                    </div>
-                                @endif
-                            </div>
-
-                            <button type="submit"
-                                    class="submit btn btn--primary btn--large full-width">{{ __('site.contact-contactform-sendmessage') }}
+                            <button type="submit" class="submit btn btn--primary btn--large full-width">{{ __('site.contact-contactform-sendmessage') }}
                             </button>
 
                         </fieldset>
