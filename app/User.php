@@ -9,6 +9,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+	/**
+	 * @var array
+	 */
+	protected $guarded = ['id'];
+	/**
+	 * @var string
+	 */
+	protected $table = 'users';
 
     /**
      * @var array
