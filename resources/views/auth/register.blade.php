@@ -1,4 +1,4 @@
-@extends('auth.layouts.auth')
+@extends('site.layouts.main')
 
 @section('title', __('auth.register-title'))
 
