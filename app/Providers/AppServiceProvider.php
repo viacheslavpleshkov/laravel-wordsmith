@@ -7,7 +7,7 @@ use App\Category;
 use App\Sociallink;
 use App\Setting;
 use App\Article;
-
+use App\Providers\TelescopeServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -34,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+		if ($this->app->isLocal()) {
+			$this->app->register(TelescopeServiceProvider::class);
+		}
     }
 }
