@@ -2,8 +2,8 @@
     <a href="https://laravel.com/" target="_blank">
         <img src="https://laravel.com/assets/img/components/logo-laravel.svg" height="100px">
     </a>
-    <a href="https://wordsmith.slavapleshkov.com/" target="_blank">
-        <img src="https://wordsmith.slavapleshkov.com/images/logo.svg" height="100px" width="300px">
+    <a href="https://laravelwordsmith.slavapleshkov.com/" target="_blank">
+        <img src="https://laravelwordsmith.slavapleshkov.com/images/logo.svg" height="100px" width="300px">
     </a>
     <h1 align="center">laravel-wordsmith</h1>
     <br>
