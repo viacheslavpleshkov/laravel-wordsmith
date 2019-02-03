@@ -16,8 +16,8 @@ class ArticleController extends Controller
 	 */
 	public function index()
 	{
-		$main = Page::find(2);
-		$paginate = Setting::find(1)->paginate;
+		$main = Page::pageblog();
+		$paginate = Setting::first()->paginate;
 		$articles = Article::status()->orderBy('id', 'desc')->paginate($paginate);
 		return view('site.articles.index', compact('main', 'articles'));
 	}
@@ -28,12 +28,12 @@ class ArticleController extends Controller
 	 */
 	public function view($url)
 	{
-		$main = Article::findurl($url);
+		$main = Article::findurl($url)->first();
 		if (isset($main)) {
 			$main->increment('views');
-			$previous = Article::previouspost($main->id);
-			$next = Article::nextpost($main->id);
-			$comments = Comment::status()->getcomments();
+			$previous = Article::previouspost($main->id)->first();
+			$next = Article::nextpost($main->id)->first();
+			$comments = Comment::status()->getcomments($main->id)->desc()->get();
 			$count = $comments->count();
 			return view('site.articles.view', compact('main', 'previous', 'next', 'comments', 'count'));
 		} else {

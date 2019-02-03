@@ -15,8 +15,8 @@ class Setting extends Model
 	 */
 	protected $table = 'settings';
 
-    /**
-     * @var array
-     */
-    protected $fillable = ['paginate', 'contactform', 'footer_about'];
+	/**
+	 * @var array
+	 */
+	protected $fillable = ['paginate', 'contactform', 'footer_about'];
 }

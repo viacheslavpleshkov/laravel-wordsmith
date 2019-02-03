@@ -19,7 +19,7 @@ class SearchController extends Controller
         if (isset($request->search)) {
             $title = $request->search;
             $paginate = Setting::find(1)->paginate;
-            $articles = Article::where('status', 1)->where('title', 'like', "%$request->search%")->orderBy('id', 'desc')->paginate($paginate);
+            $articles = Article::status()->search($request->search)->desc()->paginate($paginate);
             $main = Page::find(6);
             if (count($articles) > 0) {
                 return view('site.search.index', compact('title', 'main', 'articles'));

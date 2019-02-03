@@ -17,8 +17,8 @@ class ContactController extends Controller
      */
     public function contact()
     {
-        $main = Page::find(4);
-        $setting = Setting::find(1);
+        $main = Page::pagecontact();
+        $setting = Setting::first();
         return view('site.pages.contact', compact('main', 'setting'));
     }
 

@@ -15,8 +15,17 @@ class Sociallink extends Model
 	 */
 	protected $table = 'sociallinks';
 
-    /**
-     * @var array
-     */
-    protected $fillable = ['icon', 'url', 'status'];
+	/**
+	 * @var array
+	 */
+	protected $fillable = ['icon', 'url', 'status'];
+
+	/**
+	 * @param $query
+	 * @return mixed
+	 */
+	public function scopeStatus($query)
+	{
+		return $query->where('status', 1);
+	}
 }

@@ -55,12 +55,41 @@ class Article extends Model
 
 	/**
 	 * @param $query
+	 * @return mixed
+	 */
+	public function scopeSlide($query)
+	{
+		return $query->where('slide', 1);
+	}
+
+	/**
+	 * @param $query
+	 * @param $search
+	 * @return mixed
+	 */
+	public function scopeSearch($query, $search)
+	{
+		return $query->where('title', 'like', "%$search%");
+	}
+
+	/**
+	 * @param $query
 	 * @param $url
 	 * @return mixed
 	 */
 	public function scopeFindUrl($query, $url)
 	{
-		return $query->where('url', $url)->first();
+		return $query->where('url', $url);
+	}
+
+	/**
+	 * @param $query
+	 * @param $id
+	 * @return mixed
+	 */
+	public function scopeFindCategory($query, $id)
+	{
+		return $query->where('category_id', $id);
 	}
 
 	/**
@@ -70,7 +99,7 @@ class Article extends Model
 	 */
 	public function scopePreviousPost($query, $id)
 	{
-		return $query->where('id', '<', $id)->orderBy('id', 'desc')->first();
+		return $query->where('id', '<', $id)->orderBy('id', 'desc');
 	}
 
 	/**
@@ -80,6 +109,24 @@ class Article extends Model
 	 */
 	public function scopeNextPost($query, $id)
 	{
-		return $query->where('id', '>', $id)->orderBy('id')->first();
+		return $query->where('id', '>', $id)->orderBy('id');
+	}
+
+	/**
+	 * @param $query
+	 * @return mixed
+	 */
+	public function scopeDesc($query)
+	{
+		return $query->orderBy('id', 'desc');
+	}
+
+	/**
+	 * @param $query
+	 * @return mixed
+	 */
+	public function scopeViews($query)
+	{
+		return $query->orderBy('views', 'desc');
 	}
 }
