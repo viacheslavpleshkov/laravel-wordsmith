@@ -8,6 +8,7 @@ use App\Sociallink;
 use App\Setting;
 use App\Article;
 use App\Providers\TelescopeServiceProvider;
+use http\Url;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
+		if (config('app.env') === 'production') {
+			\URL::forceScheme('https');
+		}
 		\View::composer('site.layouts.main', function ($view) {
 			$view->with([
 				'categories' => Category::status()->get(),
