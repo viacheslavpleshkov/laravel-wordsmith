@@ -539,7 +539,6 @@
         clSmoothScroll();
         clAlertBoxes();
         clAOS();
-        clAjaxChimp();
         clBackToTop();
         clGoogleMap();
 
