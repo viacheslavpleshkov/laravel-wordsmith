@@ -1,0 +1,83 @@
+{
+  "name": "Wordsmith",
+  "description": "The blog was created using the Laravel 5.7 Framework",
+  "repository": "https://github.com/slava-pleshkov/laravel-wordsmith",
+  "logo": "https://laravelwordsmith.slavapleshkov.com/images/logo.svg",
+  "keywords": [
+    "php",
+    "laravel",
+    "blog"
+  ],
+  "env": {
+    "APP_NAME": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "value": "Wordsmith"
+    },
+    "APP_ENV": {
+      "description": "production or ",
+      "value": "production"
+    },
+    "APP_KEY": {
+      "description": "production or ",
+      "generator": "secret"
+    },
+    "APP_DEBUG": {
+      "description": "production or ",
+      "value": "false"
+    },
+    "TELESCOPE_ENABLED": {
+      "description": "production or ",
+      "value": "false"
+    },
+    "APP_URL": {
+      "description": "production or ",
+      "generator": "secret"
+    },
+    "LOG_CHANNEL": {
+      "description": "production or ",
+      "value": "stack"
+    },
+    "DB_CONNECTION": {
+      "description": "production or ",
+      "generator": "production"
+    },
+    "DB_HOST": {
+      "description": "production or ",
+      "generator": "production"
+    },
+    "DB_PORT": {
+      "description": "production or ",
+      "generator": "production"
+    },
+    "DB_DATABASE": {
+      "description": "production or ",
+      "generator": "production"
+    },
+    "DB_USERNAME": {
+      "description": "production or ",
+      "generator": "production"
+    },
+    "DB_PASSWORD": {
+      "description": "production or ",
+      "generator": "production"
+    },
+    "BROADCAST_DRIVER": {
+      "description": "production or ",
+      "generator": "production"
+    }
+  },
+  "addons": [
+    "openredis",
+    {
+      "plan": "heroku-postgresql"
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-php"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs"
+    }
+  ]
+}

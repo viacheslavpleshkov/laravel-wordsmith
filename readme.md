@@ -45,3 +45,13 @@
 1. Run this command `php artisan db:seed`
 1. Run this command `yarn install`
 1. Run this command `yarn run production`
+
+## Deploying to Heroku
+
+1. `$ heroku create`
+1. `$ git push heroku master`
+1. `$ heroku open`
+
+or
+
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
