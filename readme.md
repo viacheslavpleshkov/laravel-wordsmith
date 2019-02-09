@@ -48,9 +48,13 @@
 
 ## Deploying to Heroku
 
-1. `$ heroku create`
-1. `$ git push heroku master`
-1. `$ heroku open`
+1. Clone the repo and `cd` into it
+1. Run this command `heroku create`
+1. Run this command `heroku buildpacks:set heroku/php`
+1. Run this command `heroku buildpacks:set heroku/nodejs`
+1. Run this command `heroku addons:create heroku-postgresql:hobby-dev`
+1. Run this command `git push heroku master`
+1. Run this command `heroku open`
 
 or
 

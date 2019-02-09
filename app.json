@@ -10,66 +10,87 @@
   ],
   "env": {
     "APP_NAME": {
-      "description": "A secret key for verifying the integrity of signed cookies.",
       "value": "Wordsmith"
     },
     "APP_ENV": {
-      "description": "production or ",
       "value": "production"
     },
     "APP_KEY": {
-      "description": "production or ",
       "generator": "secret"
     },
     "APP_DEBUG": {
-      "description": "production or ",
       "value": "false"
     },
     "TELESCOPE_ENABLED": {
-      "description": "production or ",
       "value": "false"
     },
     "APP_URL": {
-      "description": "production or ",
       "generator": "secret"
     },
     "LOG_CHANNEL": {
-      "description": "production or ",
       "value": "stack"
     },
     "DB_CONNECTION": {
-      "description": "production or ",
-      "generator": "production"
+      "value": "pgsql"
     },
     "DB_HOST": {
-      "description": "production or ",
-      "generator": "production"
+      "generator": "secret"
     },
     "DB_PORT": {
-      "description": "production or ",
-      "generator": "production"
+      "generator": "secret"
     },
     "DB_DATABASE": {
-      "description": "production or ",
-      "generator": "production"
+      "generator": "secret"
     },
     "DB_USERNAME": {
-      "description": "production or ",
-      "generator": "production"
+      "generator": "secret"
     },
     "DB_PASSWORD": {
-      "description": "production or ",
-      "generator": "production"
+      "generator": "secret"
     },
     "BROADCAST_DRIVER": {
-      "description": "production or ",
-      "generator": "production"
+      "value": "log"
+    },
+    "CACHE_DRIVER": {
+      "value": "file"
+    },
+    "SESSION_DRIVER": {
+      "value": "database"
+    },
+    "SESSION_LIFETIME": {
+      "value": "120"
+    },
+    "QUEUE_DRIVER": {
+      "value": "sync"
+    },
+    "MAIL_DRIVER": {
+      "generator": "secret"
+    },
+    "MAIL_HOST": {
+      "generator": "secret"
+    },
+    "MAIL_PORT": {
+      "generator": "secret"
+    },
+    "MAIL_USERNAME": {
+      "generator": "secret"
+    },
+    "MAIL_PASSWORD": {
+      "generator": "secret"
+    },
+    "MAIL_ENCRYPTION": {
+      "generator": "secret"
+    },
+    "MAIL_FROM_ADDRESS": {
+      "generator": "secret"
+    },
+    "MAIL_FROM_NAME": {
+      "generator": "secret"
     }
   },
   "addons": [
-    "openredis",
     {
-      "plan": "heroku-postgresql"
+      "plan": "postgresql"
     }
   ],
   "buildpacks": [
