@@ -2,7 +2,7 @@
   "name": "Wordsmith",
   "description": "The blog was created using the Laravel 5.7 Framework",
   "repository": "https://github.com/slava-pleshkov/laravel-wordsmith",
-  "logo": "https://laravelwordsmith.slavapleshkov.com/images/logo.svg",
+  "logo": "https://github.com/slava-pleshkov/laravel-wordsmith/blob/master/public/images/logo.svg?raw=true",
   "keywords": [
     "php",
     "laravel",
