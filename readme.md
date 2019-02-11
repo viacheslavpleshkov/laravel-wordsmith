@@ -3,7 +3,7 @@
         <img src="https://laravel.com/assets/img/components/logo-laravel.svg" height="100px">
     </a>
     <a href="https://laravelwordsmith.slavapleshkov.com/" target="_blank">
-        <img src="https://laravelwordsmith.slavapleshkov.com/images/logo.svg" height="100px" width="300px">
+        <img src="https://github.com/slava-pleshkov/laravel-wordsmith/blob/master/public/images/logo.svg?raw=true" height="100px" width="300px">
     </a>
     <h1 align="center">laravel-wordsmith</h1>
     <br>
@@ -13,6 +13,7 @@
 ## Installation Dev
 
 1. Clone the repo and `cd` into it
+1. Create users and table in PostgreSQL
 1. Run this command `composer install`
 1. Rename or copy `.env.example` file to `.env`
 1. Run this command `php artisan key:generate`
