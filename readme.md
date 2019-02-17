@@ -2,7 +2,7 @@
     <a href="https://laravel.com/" target="_blank">
         <img src="https://laravel.com/assets/img/components/logo-laravel.svg" height="100px">
     </a>
-    <a href="https://laravelwordsmith.slavapleshkov.com/" target="_blank">
+    <a href="https://laravelwordsmithdemo.slavapleshkov.com/" target="_blank">
         <img src="https://github.com/slava-pleshkov/laravel-wordsmith/blob/master/public/images/logo.svg?raw=true" height="100px" width="300px">
     </a>
     <h1 align="center">laravel-wordsmith</h1>
@@ -18,6 +18,7 @@
 1. Rename or copy `.env.example` file to `.env`
 1. Run this command `php artisan key:generate`
 1. Set your database credentials in your `.env` file
+1. Set your redis credentials in your `.env` file
 1. Set your mail credentials in your `.env` file
 1. Set your `APP_URL` in your `.env` file
 1. Set your `APP_DEBUG` in your `.env` file with the value `true`
@@ -38,6 +39,7 @@
 1. Rename or copy `.env.example` file to `.env`
 1. Run this command `php artisan key:generate`
 1. Set your database credentials in your `.env` file
+1. Set your redis credentials in your `.env` file
 1. Set your mail credentials in your `.env` file
 1. Set your `APP_URL` in your `.env` file
 1. Set your `APP_DEBUG` in your `.env` file with the value `false`
@@ -67,9 +69,12 @@
 1. Run this command `heroku config:set DB_DATABASE=secret`
 1. Run this command `heroku config:set DB_USERNAME=secret`
 1. Run this command `heroku config:set DB_PASSWORD=secret`
+1. Run this command `heroku config:set REDIS_HOST=secret`
+1. Run this command `heroku config:set REDIS_PASSWORD=secret`
+1. Run this command `heroku config:set REDIS_PORT=secret`
 1. Run this command `heroku config:set BROADCAST_DRIVER=log`
-1. Run this command `heroku config:set CACHE_DRIVER=file`
-1. Run this command `heroku config:set SESSION_DRIVER=database`
+1. Run this command `heroku config:set CACHE_DRIVER=redis`
+1. Run this command `heroku config:set SESSION_DRIVER=redis`
 1. Run this command `heroku config:set SESSION_LIFETIME=120`
 1. Run this command `heroku config:set QUEUE_DRIVER=sync`
 1. Run this command `heroku config:set MAIL_DRIVER=secret`
