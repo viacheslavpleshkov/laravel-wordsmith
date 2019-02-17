@@ -62,10 +62,10 @@
       "value": "log"
     },
     "CACHE_DRIVER": {
-      "value": "file"
+      "value": "redis"
     },
     "SESSION_DRIVER": {
-      "value": "database"
+      "value": "redis"
     },
     "SESSION_LIFETIME": {
       "value": "120"
