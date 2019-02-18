@@ -20,7 +20,7 @@ class SiteController extends Controller
 	{
 		$slider = Article::status()->slide()->get();
 		$main = Page::pagehome();
-		$paginate = Setting::first()->paginate;
+		$paginate = Setting::first()->paginate_site;
 		$articles = Article::status()->desc()->paginate($paginate);
 		return view('site.pages.index', compact('main', 'slider', 'articles'));
 	}

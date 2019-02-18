@@ -15,7 +15,8 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('paginate');
+            $table->integer('paginate_site');
+            $table->integer('paginate_admin');
             $table->integer('contactform');
             $table->text('footer_about');
             $table->timestamps();

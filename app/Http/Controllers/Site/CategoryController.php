@@ -18,7 +18,7 @@ class CategoryController extends Controller
 		$category = Category::findurl($url)->first();
 		if (isset($category)) {
 			$title = $category->name;
-			$paginate = Setting::first()->paginate;
+			$paginate = Setting::first()->paginate_site;
 			$main = Article::status()->findcategory($category->id)->paginate($paginate);
 			return view('site.categories.view', compact('main', 'title'));
 		} else {

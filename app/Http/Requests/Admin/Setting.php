@@ -24,8 +24,9 @@ class Setting extends FormRequest
     public function rules()
     {
         return [
-            'paginate' => 'required',
-            'contactform' => 'required',
+            'paginate_site' => 'required|integer',
+            'paginate_admin' => 'required|integer',
+            'contactform' => 'required|integer',
             'footer_about' => 'required',
         ];
     }

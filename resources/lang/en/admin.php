@@ -145,10 +145,12 @@ return [
     'logs-text' => 'Log file >50M, please download it.',
     //Settings
     'settings-title' => 'Settings',
-    'settings-paginate' => 'Paginate',
+    'settings-paginate-site' => 'Paginate site',
+    'settings-paginate-admin' => 'Paginate admin',
     'settings-contactform' => 'Status contact form',
     'settings-footer_about' => 'Footer about',
-    'settings-enter-paginate' => 'Enter paginate',
+    'settings-enter-paginate-site' => 'Enter paginate site',
+    'settings-enter-paginate-admin' => 'Enter paginate admin',
     'settings-enter-contactform' => 'Enter contact form',
     'settings-enter-footer_about' => 'Enter footer about',
     //genera;

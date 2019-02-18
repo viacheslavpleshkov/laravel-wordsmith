@@ -15,7 +15,8 @@ class SettingsTableSeeder extends Seeder
 	{
 		$faker = Factory::create();
 		$setting = new Setting();
-		$setting->paginate = 15;
+		$setting->paginate_site = 15;
+		$setting->paginate_admin = 50;
 		$setting->contactform = 1;
 		$setting->footer_about = $faker->text(150);
 		$setting->save();

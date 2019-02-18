@@ -18,7 +18,7 @@ class SearchController extends Controller
     {
         if (isset($request->search)) {
             $title = $request->search;
-            $paginate = Setting::find(1)->paginate;
+            $paginate = Setting::find(1)->paginate_site;
             $articles = Article::status()->search($request->search)->desc()->paginate($paginate);
             $main = Page::find(6);
             if (count($articles) > 0) {

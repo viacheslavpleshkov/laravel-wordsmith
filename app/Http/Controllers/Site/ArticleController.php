@@ -17,7 +17,7 @@ class ArticleController extends Controller
 	public function index()
 	{
 		$main = Page::pageblog();
-		$paginate = Setting::first()->paginate;
+		$paginate = Setting::first()->paginate_site;
 		$articles = Article::status()->orderBy('id', 'desc')->paginate($paginate);
 		return view('site.articles.index', compact('main', 'articles'));
 	}

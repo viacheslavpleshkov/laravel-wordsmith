@@ -18,5 +18,5 @@ class Setting extends Model
 	/**
 	 * @var array
 	 */
-	protected $fillable = ['paginate', 'contactform', 'footer_about'];
+	protected $fillable = ['paginate_site', 'paginate_admin', 'contactform', 'footer_about'];
 }
