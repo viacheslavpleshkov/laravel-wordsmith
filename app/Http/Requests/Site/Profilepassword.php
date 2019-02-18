@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Site;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Category extends FormRequest
+class Profilepassword extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,8 @@ class Category extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'url' => 'required',
-            'seo_id' => 'required',
-            'status' => 'required',
+            'password' => 'required',
+            'confirmpassword' => 'required',
         ];
     }
 }

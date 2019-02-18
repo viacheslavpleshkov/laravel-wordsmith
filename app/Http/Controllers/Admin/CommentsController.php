@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Comment;
-use App\Http\Requests\Comment as Request;
+use App\Http\Requests\Admin\Comment as CommentRequest;
 use App\User;
 use App\Article;
 
@@ -40,7 +40,7 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CommentRequest $request)
     {
         Comment::create($request->all());
         return redirect()->route('comments.index')->with('success', __('admin.created-success'));
@@ -79,7 +79,7 @@ class CommentsController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CommentRequest $request, $id)
     {
         Comment::find($id)->update($request->all());
         return redirect()->route('comments.index')->with('success', __('admin.updated-success'));

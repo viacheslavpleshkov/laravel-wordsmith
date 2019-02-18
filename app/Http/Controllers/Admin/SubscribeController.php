@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Subscribe;
-use App\Http\Requests\Subscribe as Request;
+use App\Http\Requests\Admin\Subscribe as SubscribeRequest;
 
 
 class SubscribeController extends Controller
@@ -36,7 +36,7 @@ class SubscribeController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SubscribeRequest $request)
     {
         Subscribe::create($request->all());
         return redirect()->route('subscribes.index')->with('success', __('admin.created-success'));
@@ -73,7 +73,7 @@ class SubscribeController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SubscribeRequest $request, $id)
     {
         Subscribe::find($id)->update($request->all());
         return redirect()->route('subscribes.index')->with('success', __('admin.updated-success'));

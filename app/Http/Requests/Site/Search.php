@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Site;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Setting extends FormRequest
+class Search extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class Setting extends FormRequest
     public function rules()
     {
         return [
-            'paginate' => 'required',
-            'contactform' => 'required',
-            'footer_about' => 'required',
+            'search' => 'required|string'
         ];
     }
 }

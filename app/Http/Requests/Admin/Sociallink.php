@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Role extends FormRequest
+class Sociallink extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,9 @@ class Role extends FormRequest
     public function rules()
     {
         return [
-            'description' => 'required',
+            'icon' => 'required',
+            'url' => 'required',
+            'status' => 'required',
         ];
     }
 }

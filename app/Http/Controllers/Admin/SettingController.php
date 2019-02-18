@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App;
 use App\Setting;
-use App\Http\Requests\Setting as SettingRequest;
+use App\Http\Requests\Admin\Setting as SettingRequest;
 
 class SettingController extends Controller
 {

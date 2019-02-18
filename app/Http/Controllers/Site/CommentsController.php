@@ -4,21 +4,18 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Comment;
-use Illuminate\Http\Request;
+use App\Http\Requests\Site\Comment as CommentRequest;
 use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller
 {
 	/**
-	 * @param Request $request
+	 * @param CommentRequest $request
 	 * @param $id
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function comments(Request $request, $id)
+	public function comments(CommentRequest $request, $id)
 	{
-		$request->validate([
-			'text' => 'required',
-		]);
 		Comment::create([
 			'user_id' => Auth::user()->id,
 			'article_id' => $id,

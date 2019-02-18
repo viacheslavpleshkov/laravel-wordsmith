@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Article extends FormRequest
+class Comment extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +24,10 @@ class Article extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'url' => 'required',
-            'images' => 'required',
-            'text' => 'required',
-            'category_id' => 'required',
-            'seo_id' => 'required',
-            'views' => 'required',
-            'slide' => 'required',
-            'status' => 'required',
             'user_id' => 'required',
+            'article_id' => 'required',
+            'text' => 'required',
+            'status' => 'required',
         ];
     }
 }

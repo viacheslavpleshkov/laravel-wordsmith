@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
-use App\Http\Requests\User as Request;
+use App\Http\Requests\Admin\User as UserRequest;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -38,7 +38,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         User::create([
             'name' => $request->name,
@@ -81,7 +81,7 @@ class UserController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         User::find($id)->update([
             'name' => $request->name,

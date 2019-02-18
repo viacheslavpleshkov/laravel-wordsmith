@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Page;
-use App\Http\Requests\Page as Request;
+use App\Http\Requests\Admin\Page as PageRequest;
 use App\Seo;
 
 
@@ -53,7 +53,7 @@ class PageController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PageRequest $request, $id)
     {
         Page::find($id)->update($request->all());
         return redirect()->route('pages.index')->with('success', __('admin.updated-success'));

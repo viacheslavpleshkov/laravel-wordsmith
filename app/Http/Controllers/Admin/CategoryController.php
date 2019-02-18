@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Seo;
-use App\Http\Requests\Category as Request;
+use App\Http\Requests\Admin\Category as CategoryRequest;
 
 
 class CategoryController extends Controller
@@ -38,7 +38,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         Category::create($request->all());
         return redirect()->route('categories.index')->with('success', __('admin.created-success'));
@@ -76,7 +76,7 @@ class CategoryController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         Category::find($id)->update($request->all());
         return redirect()->route('categories.index')->with('success', __('admin.updated-success'));

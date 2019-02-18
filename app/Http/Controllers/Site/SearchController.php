@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Site\Search as SearchRequest;
 use App\Page;
 use App\Setting;
 use App\Article;
 
 class SearchController extends Controller
 {
-    /**
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function search(Request $request)
+	/**
+	 * @param SearchRequest $request
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+    public function search(SearchRequest $request)
     {
         if (isset($request->search)) {
             $title = $request->search;

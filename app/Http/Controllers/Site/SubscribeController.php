@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Subscribe;
-use App\Http\Requests\Subscribe as SubscribeRequest;
+use App\Http\Requests\Site\Subscribe as SubscribeRequest;
 
 class SubscribeController extends Controller
 {

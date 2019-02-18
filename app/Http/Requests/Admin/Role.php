@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Comment extends FormRequest
+class Role extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class Comment extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required',
-            'article_id' => 'required',
-            'text' => 'required',
-            'status' => 'required',
+            'description' => 'required',
         ];
     }
 }

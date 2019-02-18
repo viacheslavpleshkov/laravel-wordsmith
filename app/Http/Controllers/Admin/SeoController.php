@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Seo;
-use App\Http\Requests\Seo as Request;
+use App\Http\Requests\Admin\Seo as SeoRequest;
 
 
 class SeoController extends Controller
@@ -36,7 +36,7 @@ class SeoController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SeoRequest $request)
     {
         Seo::create($request->all());
         return redirect()->route('seo.index')->with('success', __('admin.created-success'));
@@ -73,7 +73,7 @@ class SeoController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SeoRequest $request, $id)
     {
         Seo::find($id)->update($request->all());
         return redirect()->route('seo.index')->with('success', __('admin.updated-success'));

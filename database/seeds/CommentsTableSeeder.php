@@ -14,7 +14,7 @@ class CommentsTableSeeder extends Seeder
 	public function run()
 	{
 		$faker = Factory::create();
-		for ($i = 0; $i < 5; $i++) {
+		for ($i = 0; $i < 2; $i++) {
 			for ($j = 1; $j < 601; $j++) {
 				$review = new Comment();
 				$review->user_id = 1;

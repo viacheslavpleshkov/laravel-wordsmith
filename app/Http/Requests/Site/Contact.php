@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Site;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Page extends FormRequest
+class Contact extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class Page extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'url' => 'required',
-            'seo_id' => 'required',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'website' => 'required|string|max:255',
+            'message' => 'required|string|max:4096',
         ];
     }
 }

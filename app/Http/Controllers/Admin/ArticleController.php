@@ -6,7 +6,7 @@ use App\Article;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Seo;
-use App\Http\Requests\Article as Request;
+use App\Http\Requests\Admin\Article as ArticleRequest;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,7 +42,7 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
         Article::create([
             'title' => $request->title,
@@ -93,7 +93,7 @@ class ArticleController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, $id)
     {
         Article::find($id)->update([
             'title' => $request->title,

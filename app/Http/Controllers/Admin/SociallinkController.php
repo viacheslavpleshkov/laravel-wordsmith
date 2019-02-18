@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Sociallink;
-use App\Http\Requests\Sociallink as Request;
+use App\Http\Requests\Admin\Sociallink as SociallinkRequest;
 
 
 class SociallinkController extends Controller
@@ -36,7 +36,7 @@ class SociallinkController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SociallinkRequest $request)
     {
         Sociallink::create($request->all());
         return redirect()->route('social-link.index')->with('success', __('admin.created-success'));
@@ -73,7 +73,7 @@ class SociallinkController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SociallinkRequest $request, $id)
     {
         Sociallink::find($id)->update($request->all());
         return redirect()->route('social-link.index')->with('success', __('admin.updated-success'));

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Role;
-use App\Http\Requests\Role as Request;
+use App\Http\Requests\Admin\Role as RoleRequest;
 
 
 class RoleController extends Controller
@@ -51,7 +51,7 @@ class RoleController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RoleRequest $request, $id)
     {
         Role::find($id)->update($request->all());
         return redirect()->route('roles.index')->with('success', __('admin.updated-success'));

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Seo extends FormRequest
+class Article extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +25,15 @@ class Seo extends FormRequest
     {
         return [
             'title' => 'required',
-            'description' => 'required',
-            'keyword' => 'required',
             'url' => 'required',
+            'images' => 'required',
+            'text' => 'required',
+            'category_id' => 'required',
+            'seo_id' => 'required',
+            'views' => 'required',
+            'slide' => 'required',
             'status' => 'required',
+            'user_id' => 'required',
         ];
     }
 }
