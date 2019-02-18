@@ -19,7 +19,7 @@
 	</div>
 	@include('admin.includes.success')
 	<div class="table-responsive">
-		<table id="datatable" class="table table-striped table-bordered" style="width:100%">
+		<table class="table table-hover">
 			<thead>
 			<tr>
 				<th scope="col">{{ __('admin.users-id') }}</th>
@@ -34,19 +34,19 @@
 			@foreach($main as $item)
 				<tr>
 					<th scope="row">{{ $item->id }}</th>
-					<td scope="row">{{ $item->name }}</td>
-					<td scope="row">{{ $item->email }}</td>
-					<td scope="row">
+					<td>{{ $item->name }}</td>
+					<td>{{ $item->email }}</td>
+					<td>
 						@if($item->password)
 							{{ __('admin.enabled') }}
 						@else
 							{{ __('admin.disabled') }}
 						@endif
 					</td>
-					<td scope="row">
+					<td>
 						{{ $item->role->name }}
 					</td>
-					<td scope="row">
+					<td>
 						<a href="{{ route('users.show',$item->id) }}"><i class="far fa-eye"></i></a>
 						<a href="{{ route('users.edit',$item->id) }}"><i class="fas fa-edit"></i></a>
 						<form action="{{ route('users.destroy',$item->id) }}" method="POST">
@@ -57,7 +57,13 @@
 					</td>
 				</tr>
 			@endforeach
+			@if(isset($main) && count($main) === 0)
+				<td colspan="100%" class="text-center">{{ __('admin.no-data-table') }}</td>
+			@endif
 			</tbody>
 		</table>
+		<div class="pagination justify-content-center">
+			{{ $main->links() }}
+		</div>
 	</div>
 @endsection

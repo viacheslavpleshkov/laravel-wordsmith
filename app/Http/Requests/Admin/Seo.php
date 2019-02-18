@@ -24,11 +24,11 @@ class Seo extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'description' => 'required',
-            'keyword' => 'required',
-            'url' => 'required',
-            'status' => 'required',
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'keyword' => 'required|string|max:255',
+            'url' => 'required|string|unique:posts|max:255',
+			'status' => 'required|integer',
         ];
     }
 }

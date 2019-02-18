@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Seo;
+use App\Setting;
 use App\Http\Requests\Admin\Seo as SeoRequest;
 
 
@@ -16,7 +17,8 @@ class SeoController extends Controller
      */
     public function index()
     {
-        $main = Seo::all();
+		$paginate = Setting::first()->paginate_admin;
+		$main = Seo::paginate($paginate);
         return view('admin.seo.index', compact('main'));
     }
 

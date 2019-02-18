@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Page;
 use App\Http\Requests\Admin\Page as PageRequest;
 use App\Seo;
-
+use App\Setting;
 
 class PageController extends Controller
 {
@@ -17,7 +17,8 @@ class PageController extends Controller
      */
     public function index()
     {
-        $main = Page::all();
+		$paginate = Setting::first()->paginate_admin;
+		$main = Page::paginate($paginate);
         return view('admin.pages.index', compact('main'));
     }
 

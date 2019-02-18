@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Seo;
+use App\Setting;
 use App\Http\Requests\Admin\Category as CategoryRequest;
 
 
@@ -17,7 +18,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $main = Category::all();
+		$paginate = Setting::first()->paginate_admin;
+		$main = Category::paginate($paginate);
         return view('admin.categories.index', compact('main'));
     }
 

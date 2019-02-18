@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Role;
+use App\Setting;
 use App\Http\Requests\Admin\Role as RoleRequest;
-
 
 class RoleController extends Controller
 {
@@ -16,7 +16,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $main = Role::all();
+		$paginate = Setting::first()->paginate_admin;
+		$main = Role::paginate($paginate);
         return view('admin.roles.index', compact('main'));
     }
 

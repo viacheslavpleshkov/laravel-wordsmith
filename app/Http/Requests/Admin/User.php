@@ -24,10 +24,10 @@ class User extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'role_id' => 'required',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users|max:255',
+            'password' => 'required|max:255',
+            'role_id' => 'required|integer',
         ];
     }
 }

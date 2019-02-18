@@ -62,6 +62,9 @@
 					</td>
 				</tr>
 			@endforeach
+			@if(isset($main) && count($main) === 0)
+				<td colspan="100%" class="text-center">{{ __('admin.no-data-table') }}</td>
+			@endif
 			</tbody>
 		</table>
 		<div class="pagination justify-content-center">

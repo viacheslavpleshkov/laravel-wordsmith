@@ -24,9 +24,9 @@ class Sociallink extends FormRequest
     public function rules()
     {
         return [
-            'icon' => 'required',
-            'url' => 'required',
-            'status' => 'required',
+            'icon' => 'required|string',
+            'url' => 'required|string',
+            'status' => 'required|integer',
         ];
     }
 }
