@@ -18,10 +18,7 @@
 					<fieldset>
 						<div>
 							<label for="sampleInput">{{ __('auth.e-mail-address') }}</label>
-							<input name="email" id="cName"
-								   class="full-width {{ $errors->has('email') ? ' is-invalid' : '' }}"
-								   value="{{ old('email') }}" placeholder="{{ __('auth.enter-e-mail-address') }}" value=""
-								   type="email" required>
+							<input name="email" id="cName" class="full-width {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{ __('auth.enter-e-mail-address') }}" value="" type="email" required>
 							@if ($errors->has('email'))
 								<div class="alert-box alert-box--error hideit">
 									<p>{{ $errors->first('email') }}</p>
@@ -32,9 +29,7 @@
 
 						<div>
 							<label for="sampleInput">{{ __('auth.password') }}</label>
-							<input id="password" type="password"
-								   class="full-width{{ $errors->has('password') ? ' is-invalid' : '' }}"
-								   name="password" placeholder="{{ __('auth.enter-password') }}" required>
+							<input id="password" type="password" class="full-width{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ __('auth.enter-password') }}" required>
 							@if ($errors->has('password'))
 								<div class="alert-box alert-box--error hideit">
 									<p>{{ $errors->first('password') }}</p>

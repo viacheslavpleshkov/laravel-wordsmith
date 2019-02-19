@@ -24,8 +24,7 @@ class Profilepassword extends FormRequest
     public function rules()
     {
         return [
-            'password' => 'required',
-            'confirmpassword' => 'required',
+            'password' => 'required|string|min:6|confirmed',
         ];
     }
 }
