@@ -24,16 +24,16 @@ class Article extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'url' => 'required',
-            'images' => 'required',
+            'title' => 'required|string|max:255',
+//            'url' => 'required|string|unique:articles|max:255',
+            'images' => 'string|max:255',
             'text' => 'required',
-            'category_id' => 'required',
-            'seo_id' => 'required',
-            'views' => 'required',
-            'slide' => 'required',
-            'status' => 'required',
-            'user_id' => 'required',
+            'category_id' => 'required|integer',
+            'seo_id' => 'required|integer',
+            'views' => 'required|integer',
+            'slide' => 'required|integer',
+            'status' => 'required|integer',
+            'user_id' => 'required|integer',
         ];
     }
 }

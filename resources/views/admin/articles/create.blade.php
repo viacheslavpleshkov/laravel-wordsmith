@@ -9,8 +9,7 @@
         @csrf
         <div class="form-group">
             <label>{{ __('admin.articles-name') }}</label>
-            <input type="text" class="form-control" name="title"
-                   placeholder="{{ __('admin.articles-enter-name') }}" required>
+            <input type="text" class="form-control" name="title" placeholder="{{ __('admin.articles-enter-name') }}" required>
         </div>
 
         <div class="form-group">
