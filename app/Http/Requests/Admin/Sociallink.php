@@ -25,7 +25,7 @@ class Sociallink extends FormRequest
 	{
 		return [
 			'icon' => 'required|string|max:255',
-			'url' => 'required|string|max:255',
+			'url' => 'required|string|unique:sociallinks|max:255',
 			'status' => 'required|integer',
 		];
 	}

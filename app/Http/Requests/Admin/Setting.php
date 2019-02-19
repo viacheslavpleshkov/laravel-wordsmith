@@ -27,7 +27,7 @@ class Setting extends FormRequest
             'paginate_site' => 'required|integer',
             'paginate_admin' => 'required|integer',
             'contactform' => 'required|integer',
-            'footer_about' => 'required',
+            'footer_about' => 'required|string|max:4096',
         ];
     }
 }

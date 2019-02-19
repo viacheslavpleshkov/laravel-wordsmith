@@ -5,7 +5,7 @@
 @section('content')
     @include('admin.includes.title')
     @include('admin.includes.error')
-    <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label>{{ __('admin.articles-name') }}</label>

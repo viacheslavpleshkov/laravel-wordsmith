@@ -24,10 +24,10 @@ class Comment extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required',
-            'article_id' => 'required',
-            'text' => 'required',
-            'status' => 'required',
+            'user_id' => 'required|integer',
+            'article_id' => 'required|integer',
+            'text' => 'required|string|max:4096',
+            'status' => 'required|integer',
         ];
     }
 }
