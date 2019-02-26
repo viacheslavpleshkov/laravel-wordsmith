@@ -51,4 +51,13 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Article');
     }
+
+	/**
+	 * @param $query
+	 * @return mixed
+	 */
+	public function scopeDesc($query)
+	{
+		return $query->orderBy('id', 'desc');
+	}
 }

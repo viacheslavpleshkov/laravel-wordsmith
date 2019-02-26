@@ -28,4 +28,13 @@ class Sociallink extends Model
 	{
 		return $query->where('status', 1);
 	}
+
+	/**
+	 * @param $query
+	 * @return mixed
+	 */
+	public function scopeDesc($query)
+	{
+		return $query->orderBy('id', 'desc');
+	}
 }

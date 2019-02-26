@@ -15,16 +15,25 @@ class Role extends Model
 	 */
 	protected $table = 'roles';
 
-    /**
-     * @var array
-     */
-    protected $fillable = ['description'];
+	/**
+	 * @var array
+	 */
+	protected $fillable = ['description'];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function users()
-    {
-        return $this->hasMany('App\Models\User');
-    }
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function users()
+	{
+		return $this->hasMany('App\Models\User');
+	}
+
+	/**
+	 * @param $query
+	 * @return mixed
+	 */
+	public function scopeDesc($query)
+	{
+		return $query->orderBy('id', 'desc');
+	}
 }
