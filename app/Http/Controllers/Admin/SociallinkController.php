@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Sociallink;
-use App\Setting;
+use App\Models\Sociallink;
+use App\Models\Setting;
 use App\Http\Requests\Admin\Sociallink as SociallinkRequest;
 
 

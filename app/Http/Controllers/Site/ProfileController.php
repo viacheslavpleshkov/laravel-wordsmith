@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\User;
 use App\Http\Requests\Site\Profileedit as RequestEdit;
 use App\Http\Requests\Site\Profilepassword as RequestPassword;
 use Illuminate\Support\Facades\Auth;

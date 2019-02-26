@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\Search as SearchRequest;
-use App\Page;
-use App\Setting;
-use App\Article;
+use App\Models\Page;
+use App\Models\Setting;
+use App\Models\Article;
 
 class SearchController extends Controller
 {

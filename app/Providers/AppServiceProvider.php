@@ -3,10 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Category;
-use App\Sociallink;
-use App\Setting;
-use App\Article;
+use App\Models\Category;
+use App\Models\Sociallink;
+use App\Models\Setting;
+use App\Models\Article;
 use App\Providers\TelescopeServiceProvider;
 use http\Url;
 

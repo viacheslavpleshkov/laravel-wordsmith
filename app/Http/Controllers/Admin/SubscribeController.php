@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Subscribe;
-use App\Setting;
+use App\Models\Subscribe;
+use App\Models\Setting;
 use App\Http\Requests\Admin\Subscribe as SubscribeRequest;
 
 class SubscribeController extends Controller

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Category;
-use App\Article;
-use App\Setting;
+use App\Models\Category;
+use App\Models\Article;
+use App\Models\Setting;
 
 class CategoryController extends Controller
 {

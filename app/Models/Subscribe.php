@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,8 +15,8 @@ class Subscribe extends Model
 	 */
 	protected $table = 'subscribes';
 
-    /**
-     * @var array
-     */
-    protected $fillable = ['email','status'];
+	/**
+	 * @var array
+	 */
+	protected $fillable = ['email', 'status'];
 }

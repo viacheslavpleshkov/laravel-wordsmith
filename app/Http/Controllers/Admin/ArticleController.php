@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Article;
+use App\Models\Article;
 use App\Http\Controllers\Controller;
-use App\Category;
-use App\Seo;
-use App\User;
-use App\Setting;
+use App\Models\Category;
+use App\Models\Seo;
+use App\Models\User;
+use App\Models\Setting;
 use App\Http\Requests\Admin\Article as ArticleRequest;
 use Illuminate\Support\Facades\Auth;
 

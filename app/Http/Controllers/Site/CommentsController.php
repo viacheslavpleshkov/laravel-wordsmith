@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Comment;
+use App\Models\Comment;
 use App\Http\Requests\Site\Comment as CommentRequest;
 use Illuminate\Support\Facades\Auth;
 

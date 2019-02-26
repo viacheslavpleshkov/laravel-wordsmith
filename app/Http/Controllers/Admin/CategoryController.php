@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Category;
-use App\Seo;
-use App\Setting;
+use App\Models\Category;
+use App\Models\Seo;
+use App\Models\Setting;
 use App\Http\Requests\Admin\Category as CategoryRequest;
 
 

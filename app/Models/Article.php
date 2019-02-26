@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,7 +25,7 @@ class Article extends Model
 	 */
 	public function seo()
 	{
-		return $this->belongsTo('App\Seo');
+		return $this->belongsTo('App\Models\Seo');
 	}
 
 	/**
@@ -33,7 +33,7 @@ class Article extends Model
 	 */
 	public function category()
 	{
-		return $this->belongsTo('App\Category');
+		return $this->belongsTo('App\Models\Category');
 	}
 
 	/**
@@ -41,7 +41,7 @@ class Article extends Model
 	 */
 	public function user()
 	{
-		return $this->belongsTo('App\User');
+		return $this->belongsTo('App\Models\User');
 	}
 
 	/**

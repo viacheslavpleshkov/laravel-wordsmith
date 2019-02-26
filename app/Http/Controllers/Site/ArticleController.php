@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Article;
-use App\Comment;
-use App\Page;
-use App\Setting;
+use App\Models\Article;
+use App\Models\Comment;
+use App\Models\Page;
+use App\Models\Setting;
 
 class ArticleController extends Controller
 {

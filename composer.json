@@ -20,6 +20,7 @@
         "nunomaduro/collision": "^2.0",
         "phpunit/phpunit": "^7.0"
     },
+
     "autoload": {
         "classmap": [
             "database/seeds",

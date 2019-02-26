@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Article;
-use App\Category;
-use App\Page;
+use App\Models\Article;
+use App\Models\Category;
+use App\Models\Page;
 use App\Http\Controllers\Controller;
 
 class SitemapController extends Controller

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App;
-use App\Setting;
-use App\Article;
-use App\Page;
+use App\Models\Setting;
+use App\Models\Article;
+use App\Models\Page;
 use Illuminate\Support\Facades\Storage;
 
 class SiteController extends Controller

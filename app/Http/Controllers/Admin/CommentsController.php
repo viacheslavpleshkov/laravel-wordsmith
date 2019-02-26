@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Comment;
+use App\Models\Comment;
 use App\Http\Requests\Admin\Comment as CommentRequest;
-use App\User;
-use App\Article;
-use App\Setting;
+use App\Models\User;
+use App\Models\Article;
+use App\Models\Setting;
 
 class CommentsController extends Controller
 {

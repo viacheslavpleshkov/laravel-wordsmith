@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App;
-use App\Setting;
-use App\Page;
+use App\Models\Setting;
+use App\Models\Page;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailShipped;
 use App\Http\Requests\SIte\Contact as ContactRequest;
