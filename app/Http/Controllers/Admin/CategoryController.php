@@ -19,7 +19,7 @@ class CategoryController extends Controller
     public function index()
     {
 		$paginate = Setting::first()->paginate_admin;
-		$main = Category::paginate($paginate);
+		$main = Category::desc()->paginate($paginate);
         return view('admin.categories.index', compact('main'));
     }
 

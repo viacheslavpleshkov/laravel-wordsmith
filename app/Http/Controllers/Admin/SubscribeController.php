@@ -17,7 +17,7 @@ class SubscribeController extends Controller
 	public function index()
 	{
 		$paginate = Setting::first()->paginate_admin;
-		$main = Subscribe::paginate($paginate);
+		$main = Subscribe::desc()->paginate($paginate);
 		return view('admin.subscribes.index', compact('main'));
 	}
 

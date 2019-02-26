@@ -18,7 +18,7 @@ class SeoController extends Controller
     public function index()
     {
 		$paginate = Setting::first()->paginate_admin;
-		$main = Seo::paginate($paginate);
+		$main = Seo::desc()->paginate($paginate);
         return view('admin.seo.index', compact('main'));
     }
 

@@ -18,7 +18,7 @@ class PageController extends Controller
     public function index()
     {
 		$paginate = Setting::first()->paginate_admin;
-		$main = Page::paginate($paginate);
+		$main = Page::desc()->paginate($paginate);
         return view('admin.pages.index', compact('main'));
     }
 

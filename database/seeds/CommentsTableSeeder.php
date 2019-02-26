@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Comment;
+use App\Models\Comment;
 use Faker\Factory;
 
 class CommentsTableSeeder extends Seeder

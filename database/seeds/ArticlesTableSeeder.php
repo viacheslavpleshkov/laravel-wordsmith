@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Article;
+use App\Models\Article;
 use Faker\Factory;
 
 class ArticlesTableSeeder extends Seeder

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Setting;
+use App\Models\Setting;
 use Faker\Factory;
 
 class SettingsTableSeeder extends Seeder

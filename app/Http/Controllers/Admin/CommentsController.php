@@ -19,7 +19,7 @@ class CommentsController extends Controller
 	public function index()
 	{
 		$paginate = Setting::first()->paginate_admin;
-		$main = Comment::paginate($paginate);
+		$main = Comment::desc()->paginate($paginate);
 		return view('admin.comments.index', compact('main'));
 	}
 

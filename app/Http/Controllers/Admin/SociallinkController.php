@@ -18,7 +18,7 @@ class SociallinkController extends Controller
 	public function index()
 	{
 		$paginate = Setting::first()->paginate_admin;
-		$main = Sociallink::paginate($paginate);
+		$main = Sociallink::desc()->paginate($paginate);
 		return view('admin.social-link.index', compact('main'));
 	}
 

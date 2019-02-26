@@ -22,7 +22,7 @@ class ArticleController extends Controller
 	public function index()
 	{
 		$paginate = Setting::first()->paginate_admin;
-		$main = Article::paginate($paginate);
+		$main = Article::desc()->paginate($paginate);
 		return view('admin.articles.index', compact('main'));
 	}
 

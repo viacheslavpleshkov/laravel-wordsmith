@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Seo;
+use App\Models\Seo;
 
 class SeoTableSeeder extends Seeder
 {

@@ -19,7 +19,7 @@ class UserController extends Controller
 	public function index()
 	{
 		$paginate = Setting::first()->paginate_admin;
-		$main = User::paginate($paginate);
+		$main = User::desc()->paginate($paginate);
 		return view('admin.users.index', compact('main'));
 	}
 

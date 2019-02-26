@@ -17,7 +17,7 @@ class RoleController extends Controller
     public function index()
     {
 		$paginate = Setting::first()->paginate_admin;
-		$main = Role::paginate($paginate);
+		$main = Role::desc()->paginate($paginate);
         return view('admin.roles.index', compact('main'));
     }
 
