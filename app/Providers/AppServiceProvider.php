@@ -7,8 +7,6 @@ use App\Models\Category;
 use App\Models\Sociallink;
 use App\Models\Setting;
 use App\Models\Article;
-use App\Providers\TelescopeServiceProvider;
-use http\Url;
 
 class AppServiceProvider extends ServiceProvider
 {
