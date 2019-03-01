@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App;
 use App\Models\Setting;
-use App\Models\Article;
+use App\Models\BlogArticle;
 use App\Models\Page;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,10 +18,10 @@ class SiteController extends Controller
 
 	public function index()
 	{
-		$slider = Article::status()->slide()->get();
+		$slider = BlogArticle::status()->slide()->get();
 		$main = Page::pagehome();
 		$paginate = Setting::first()->paginate_site;
-		$articles = Article::status()->desc()->paginate($paginate);
+		$articles = BlogArticle::status()->desc()->paginate($paginate);
 		return view('site.pages.index', compact('main', 'slider', 'articles'));
 	}
 

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Article;
+use App\Models\BlogArticle;
 use Faker\Factory;
 
 class ArticlesTableSeeder extends Seeder
@@ -15,7 +15,7 @@ class ArticlesTableSeeder extends Seeder
 	{
 		$faker = Factory::create();
 		for ($i = 1; $i < 100; $i++) {
-			$article1 = new Article();
+			$article1 = new BlogArticle();
 			$article1->title = $faker->text(15);
 			$article1->url = "article$i";
 			$article1->images = 'none';
@@ -33,7 +33,7 @@ class ArticlesTableSeeder extends Seeder
 			$article1->save();
 		}
 		for ($i = 100; $i < 200; $i++) {
-			$article2 = new Article();
+			$article2 = new BlogArticle();
 			$article2->title = $faker->text(15);
 			$article2->url = "article$i";
 			$article2->images = 'none';
@@ -51,7 +51,7 @@ class ArticlesTableSeeder extends Seeder
 			$article2->save();
 		}
 		for ($i = 200; $i < 300; $i++) {
-			$article3 = new Article();
+			$article3 = new BlogArticle();
 			$article3->title = $faker->text(15);
 			$article3->url = "article$i";
 			$article3->images = 'none';
@@ -69,7 +69,7 @@ class ArticlesTableSeeder extends Seeder
 			$article3->save();
 		}
 		for ($i = 300; $i < 400; $i++) {
-			$article4 = new Article();
+			$article4 = new BlogArticle();
 			$article4->title = $faker->text(15);
 			$article4->url = "article$i";
 			$article4->images = 'none';
@@ -87,7 +87,7 @@ class ArticlesTableSeeder extends Seeder
 			$article4->save();
 		}
 		for ($i = 400; $i < 500; $i++) {
-			$article5 = new Article();
+			$article5 = new BlogArticle();
 			$article5->title = $faker->text(15);
 			$article5->url = "article$i";
 			$article5->images = 'none';
@@ -105,7 +105,7 @@ class ArticlesTableSeeder extends Seeder
 			$article5->save();
 		}
 		for ($i = 500; $i < 601; $i++) {
-			$article6 = new Article();
+			$article6 = new BlogArticle();
 			$article6->title = $faker->text(15);
 			$article6->url = "article$i";
 			$article6->images = 'none';

@@ -25,7 +25,7 @@ class Seo extends Model
 	 */
 	public function categories()
 	{
-		return $this->hasMany('App\Models\Category');
+		return $this->hasMany(BlogCategory::class);
 	}
 
 	/**
@@ -33,7 +33,7 @@ class Seo extends Model
 	 */
 	public function articles()
 	{
-		return $this->hasMany('App\Models\Article');
+		return $this->hasMany(BlogArticle::class);
 	}
 
 	/**
@@ -41,7 +41,7 @@ class Seo extends Model
 	 */
 	public function page()
 	{
-		return $this->hasMany('App\Models\Blog');
+		return $this->hasMany(BlogArticle::class);
 	}
 
 	/**

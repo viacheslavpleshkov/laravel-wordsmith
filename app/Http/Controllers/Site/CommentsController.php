@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Models\Comment;
+use App\Models\BlogComment;
 use App\Http\Requests\Site\Comment as CommentRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +16,7 @@ class CommentsController extends Controller
 	 */
 	public function comments(CommentRequest $request, $id)
 	{
-		Comment::create([
+		BlogComment::create([
 			'user_id' => Auth::user()->id,
 			'article_id' => $id,
 			'text' => $request['text'],

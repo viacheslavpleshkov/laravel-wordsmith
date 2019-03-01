@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\Search as SearchRequest;
 use App\Models\Page;
 use App\Models\Setting;
-use App\Models\Article;
+use App\Models\BlogArticle;
 
 class SearchController extends Controller
 {
@@ -19,7 +19,7 @@ class SearchController extends Controller
         if (isset($request->search)) {
             $title = $request->search;
             $paginate = Setting::find(1)->paginate_site;
-            $articles = Article::status()->search($request->search)->desc()->paginate($paginate);
+            $articles = BlogArticle::status()->search($request->search)->desc()->paginate($paginate);
             $main = Page::find(6);
             if (count($articles) > 0) {
                 return view('site.search.index', compact('title', 'main', 'articles'));

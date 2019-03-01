@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model
+class BlogArticle extends Model
 {
 	/**
 	 * @var array
@@ -25,7 +25,7 @@ class Article extends Model
 	 */
 	public function seo()
 	{
-		return $this->belongsTo('App\Models\Seo');
+		return $this->belongsTo(Seo::class);
 	}
 
 	/**
@@ -33,7 +33,7 @@ class Article extends Model
 	 */
 	public function category()
 	{
-		return $this->belongsTo('App\Models\Category');
+		return $this->belongsTo(BlogCategory::class);
 	}
 
 	/**
@@ -41,7 +41,7 @@ class Article extends Model
 	 */
 	public function user()
 	{
-		return $this->belongsTo('App\Models\User');
+		return $this->belongsTo(User::class);
 	}
 
 	/**

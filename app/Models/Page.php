@@ -25,7 +25,7 @@ class Page extends Model
 	 */
 	public function seo()
 	{
-		return $this->belongsTo('App\Models\Seo');
+		return $this->belongsTo(Seo::class);
 	}
 
 	/**

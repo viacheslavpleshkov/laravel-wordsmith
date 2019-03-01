@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\BlogCategory;
 use App\Models\Seo;
 use App\Models\Setting;
 use App\Http\Requests\Admin\Category as CategoryRequest;
@@ -19,7 +19,7 @@ class CategoryController extends Controller
     public function index()
     {
 		$paginate = Setting::first()->paginate_admin;
-		$main = Category::desc()->paginate($paginate);
+		$main = BlogCategory::desc()->paginate($paginate);
         return view('admin.categories.index', compact('main'));
     }
 
@@ -42,7 +42,7 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        Category::create($request->all());
+        BlogCategory::create($request->all());
         return redirect()->route('categories.index')->with('success', __('admin.created-success'));
     }
 
@@ -54,7 +54,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $main = Category::find($id);
+        $main = BlogCategory::find($id);
         return view('admin.categories.show', compact('main'));
     }
 
@@ -66,7 +66,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $main = Category::find($id);
+        $main = BlogCategory::find($id);
         $seo = Seo::where('status', 1)->get();
         return view('admin.categories.edit', compact('main', 'seo'));
     }
@@ -80,7 +80,7 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
-        Category::find($id)->update($request->all());
+        BlogCategory::find($id)->update($request->all());
         return redirect()->route('categories.index')->with('success', __('admin.updated-success'));
     }
 
@@ -92,7 +92,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Category::find($id)->delete();
+        BlogCategory::find($id)->delete();
         return redirect()->route('categories.index')->with('success', __('admin.information-deleted'));
     }
 }

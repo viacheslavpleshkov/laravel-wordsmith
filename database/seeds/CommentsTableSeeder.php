@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Comment;
+use App\Models\BlogComment;
 use Faker\Factory;
 
 class CommentsTableSeeder extends Seeder
@@ -16,7 +16,7 @@ class CommentsTableSeeder extends Seeder
 		$faker = Factory::create();
 		for ($i = 0; $i < 2; $i++) {
 			for ($j = 1; $j < 601; $j++) {
-				$review = new Comment();
+				$review = new BlogComment();
 				$review->user_id = 1;
 				$review->article_id = $j;
 				$review->text = $faker->text(150);

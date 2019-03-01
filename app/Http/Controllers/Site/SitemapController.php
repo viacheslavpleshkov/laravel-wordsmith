@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Models\Article;
-use App\Models\Category;
+use App\Models\BlogArticle;
+use App\Models\BlogCategory;
 use App\Models\Page;
 use App\Http\Controllers\Controller;
 
@@ -15,8 +15,8 @@ class SitemapController extends Controller
 	public function index()
 	{
 		$page = Page::desc()->first();
-		$article = Article::status()->desc()->first();
-		$category = Category::status()->desc()->first();
+		$article = BlogArticle::status()->desc()->first();
+		$category = BlogCategory::status()->desc()->first();
 		return response()->view('site.sitemap.index', compact('page', 'article', 'category'))->header('Content-Type', 'text/xml');
 	}
 
@@ -34,7 +34,7 @@ class SitemapController extends Controller
 	 */
 	public function articles()
 	{
-		$main = Article::status()->desc()->get();
+		$main = BlogArticle::status()->desc()->get();
 		return response()->view('site.sitemap.articles', compact('main'))->header('Content-Type', 'text/xml');
 	}
 
@@ -43,7 +43,7 @@ class SitemapController extends Controller
 	 */
 	public function categories()
 	{
-		$main = Category::status()->desc()->get();
+		$main = BlogCategory::status()->desc()->get();
 		return response()->view('site.sitemap.categories', compact('main'))->header('Content-Type', 'text/xml');
 	}
 }

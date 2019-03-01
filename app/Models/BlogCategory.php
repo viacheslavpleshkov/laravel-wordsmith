@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class BlogCategory extends Model
 {
 	/**
 	 * @var array
@@ -13,27 +13,27 @@ class Comment extends Model
 	/**
 	 * @var string
 	 */
-	protected $table = 'comments';
+	protected $table = 'categories';
 
 	/**
 	 * @var array
 	 */
-	protected $fillable = ['user_id', 'article_id', 'text', 'status'];
+	protected $fillable = ['name', 'url', 'seo_id', 'status'];
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function user()
+	public function seo()
 	{
-		return $this->belongsTo('App\Models\User');
+		return $this->belongsTo(Seo::class);
 	}
 
 	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
-	public function article()
+	public function articles()
 	{
-		return $this->belongsTo('App\Models\Article');
+		return $this->hasMany(BlogArticle::class);
 	}
 
 	/**
@@ -47,12 +47,12 @@ class Comment extends Model
 
 	/**
 	 * @param $query
-	 * @param $id
+	 * @param $url
 	 * @return mixed
 	 */
-	public function scopeGetComments($query, $id)
+	public function scopeFindUrl($query, $url)
 	{
-		return $query->where('article_id', $id);
+		return $query->where('url', $url);
 	}
 
 	/**
@@ -63,5 +63,4 @@ class Comment extends Model
 	{
 		return $query->orderBy('id', 'desc');
 	}
-
 }

@@ -33,7 +33,7 @@ class User extends Authenticatable
      */
     public function role()
     {
-        return $this->belongsTo('App\Models\Role');
+        return $this->belongsTo(Role::class);
     }
 
     /**
@@ -41,7 +41,7 @@ class User extends Authenticatable
      */
     public function comments()
     {
-        return $this->hasMany('App\Models\Comment');
+        return $this->hasMany(BlogComment::class);
     }
 
     /**
@@ -49,7 +49,7 @@ class User extends Authenticatable
      */
     public function articles()
     {
-        return $this->hasMany('App\Models\Article');
+        return $this->hasMany(BlogArticle::class);
     }
 
 	/**

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Models\Article;
-use App\Models\Comment;
+use App\Models\BlogArticle;
+use App\Models\BlogComment;
 use App\Models\Page;
 use App\Models\Setting;
 
@@ -18,7 +18,7 @@ class ArticleController extends Controller
 	{
 		$main = Page::pageblog();
 		$paginate = Setting::first()->paginate_site;
-		$articles = Article::status()->orderBy('id', 'desc')->paginate($paginate);
+		$articles = BlogArticle::status()->orderBy('id', 'desc')->paginate($paginate);
 		return view('site.articles.index', compact('main', 'articles'));
 	}
 
@@ -28,12 +28,12 @@ class ArticleController extends Controller
 	 */
 	public function view($url)
 	{
-		$main = Article::findurl($url)->first();
+		$main = BlogArticle::findurl($url)->first();
 		if (isset($main)) {
 			$main->increment('views');
-			$previous = Article::previouspost($main->id)->first();
-			$next = Article::nextpost($main->id)->first();
-			$comments = Comment::status()->getcomments($main->id)->desc()->get();
+			$previous = BlogArticle::previouspost($main->id)->first();
+			$next = BlogArticle::nextpost($main->id)->first();
+			$comments = BlogComment::status()->getcomments($main->id)->desc()->get();
 			$count = $comments->count();
 			return view('site.articles.view', compact('main', 'previous', 'next', 'comments', 'count'));
 		} else {
