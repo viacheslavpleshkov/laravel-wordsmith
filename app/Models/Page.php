@@ -18,7 +18,16 @@ class Page extends Model
 	/**
 	 * @var array
 	 */
-	protected $fillable = ['title', 'url', 'content_header', 'text', 'seo_id'];
+	protected $fillable = [
+		'title',
+		'url',
+		'content_header',
+		'text',
+		'seo_id'
+	];
+
+	const CREATED_AT = 'created_at';
+	const UPDATED_AT = 'updated_at';
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

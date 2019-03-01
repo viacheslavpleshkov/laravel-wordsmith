@@ -13,12 +13,19 @@ class BlogComment extends Model
 	/**
 	 * @var string
 	 */
-	protected $table = 'comments';
-
+	protected $table = 'blog_comments';
 	/**
 	 * @var array
 	 */
-	protected $fillable = ['user_id', 'article_id', 'text', 'status'];
+	protected $fillable = [
+		'user_id',
+		'article_id',
+		'text',
+		'status'
+	];
+
+	const CREATED_AT = 'created_at';
+	const UPDATED_AT = 'updated_at';
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

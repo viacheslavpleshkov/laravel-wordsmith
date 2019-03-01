@@ -13,12 +13,26 @@ class BlogArticle extends Model
 	/**
 	 * @var string
 	 */
-	protected $table = 'articles';
+	protected $table = 'blog_articles';
 
 	/**
 	 * @var array
 	 */
-	protected $fillable = ['title', 'url', 'images', 'text', 'category_id', 'seo_id', 'views', 'slide', 'status', 'user_id'];
+	protected $fillable = [
+		'title',
+		'url',
+		'images',
+		'text',
+		'category_id',
+		'seo_id',
+		'views',
+		'slide',
+		'status',
+		'user_id'
+	];
+
+	const CREATED_AT = 'created_at';
+	const UPDATED_AT = 'updated_at';
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

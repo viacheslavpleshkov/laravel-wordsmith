@@ -18,7 +18,15 @@ class Seo extends Model
 	/**
 	 * @var array
 	 */
-	protected $fillable = ['title', 'description', 'keyword', 'status'];
+	protected $fillable = [
+		'title',
+		'description',
+		'keyword',
+		'status'
+	];
+
+	const CREATED_AT = 'created_at';
+	const UPDATED_AT = 'updated_at';
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany

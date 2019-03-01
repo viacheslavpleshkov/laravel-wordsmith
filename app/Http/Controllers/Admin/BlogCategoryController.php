@@ -9,7 +9,7 @@ use App\Models\Setting;
 use App\Http\Requests\Admin\Category as CategoryRequest;
 
 
-class CategoryController extends Controller
+class BlogCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.

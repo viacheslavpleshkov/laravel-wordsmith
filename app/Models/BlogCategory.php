@@ -13,12 +13,20 @@ class BlogCategory extends Model
 	/**
 	 * @var string
 	 */
-	protected $table = 'categories';
+	protected $table = 'blog_categories';
 
 	/**
 	 * @var array
 	 */
-	protected $fillable = ['name', 'url', 'seo_id', 'status'];
+	protected $fillable = [
+		'name',
+		'url',
+		'seo_id',
+		'status'
+	];
+
+	const CREATED_AT = 'created_at';
+	const UPDATED_AT = 'updated_at';
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

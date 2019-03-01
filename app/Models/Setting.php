@@ -18,5 +18,13 @@ class Setting extends Model
 	/**
 	 * @var array
 	 */
-	protected $fillable = ['paginate_site', 'paginate_admin', 'contactform', 'footer_about'];
+	protected $fillable = [
+		'paginate_site',
+		'paginate_admin',
+		'contactform',
+		'footer_about'
+	];
+
+	const CREATED_AT = 'created_at';
+	const UPDATED_AT = 'updated_at';
 }

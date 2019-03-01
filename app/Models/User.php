@@ -21,12 +21,25 @@ class User extends Authenticatable
     /**
      * @var array
      */
-    protected $fillable = ['name', 'email', 'email_verified_at', 'password', 'about', 'role_id',];
+    protected $fillable = [
+    	'name',
+		'email',
+		'email_verified_at',
+		'password',
+		'about',
+		'role_id'
+	];
 
     /**
      * @var array
      */
-    protected $hidden = ['password', 'remember_token',];
+    protected $hidden = [
+    	'password',
+		'remember_token'
+	];
+
+	const CREATED_AT = 'created_at';
+	const UPDATED_AT = 'updated_at';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

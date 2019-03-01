@@ -12,7 +12,7 @@ use App\Http\Requests\Admin\Article as ArticleRequest;
 use Illuminate\Support\Facades\Auth;
 
 
-class ArticleController extends Controller
+class BlogArticleController extends Controller
 {
 	/**
 	 * Display a listing of the resource.

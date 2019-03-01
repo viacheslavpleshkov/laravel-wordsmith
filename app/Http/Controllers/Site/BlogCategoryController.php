@@ -7,7 +7,7 @@ use App\Models\BlogCategory;
 use App\Models\BlogArticle;
 use App\Models\Setting;
 
-class CategoryController extends Controller
+class BlogCategoryController extends Controller
 {
 	/**
 	 * @param $url

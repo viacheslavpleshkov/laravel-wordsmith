@@ -8,7 +8,7 @@ use App\Models\BlogComment;
 use App\Models\Page;
 use App\Models\Setting;
 
-class ArticleController extends Controller
+class BlogArticleController extends Controller
 {
 
 	/**

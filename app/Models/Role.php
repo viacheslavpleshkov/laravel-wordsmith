@@ -20,6 +20,9 @@ class Role extends Model
 	 */
 	protected $fillable = ['description'];
 
+	const CREATED_AT = 'created_at';
+	const UPDATED_AT = 'updated_at';
+
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */

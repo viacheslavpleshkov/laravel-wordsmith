@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Models\BlogArticle;
 use App\Models\Setting;
 
-class CommentsController extends Controller
+class BlogCommentsController extends Controller
 {
 	/**
 	 * Display a listing of the resource.
