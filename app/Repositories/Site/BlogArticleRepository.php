@@ -35,9 +35,7 @@ class BlogArticleRepository implements RepositoryInterface
 	}
 
 	/**
-	 * Get all tasks.
-	 *
-	 * @return Illuminate\Database\Eloquent\Collection
+	 * @return Model[]|\Illuminate\Database\Eloquent\Collection
 	 */
 	public function getAll()
 	{
@@ -45,10 +43,8 @@ class BlogArticleRepository implements RepositoryInterface
 	}
 
 	/**
-	 * Get task by id.
-	 *
-	 * @param integer $id
-	 * @return App\Task
+	 * @param $id
+	 * @return mixed
 	 */
 	public function getById($id)
 	{

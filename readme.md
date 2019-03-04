@@ -10,6 +10,10 @@
 </p>
 <p align="center">The blog was created using the Laravel Framework</p>
 
+## Used technologies
+
+HTML5, CSS3, JavaScript, jQuery, Bootstrap, Font Awesome, Webpack, Yarn, PHP, Laravel, Composer, Redis, PostgreSQL.
+
 ## Installation Dev
 
 1. Clone the repo and `cd` into it
@@ -90,3 +94,7 @@
 or
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+## License
+
+Collision is an open-sourced software licensed under the [MIT license](LICENSE.md).
