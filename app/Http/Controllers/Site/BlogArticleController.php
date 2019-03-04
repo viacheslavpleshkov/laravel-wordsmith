@@ -12,15 +12,15 @@ class BlogArticleController extends Controller
 	/**
 	 * @var BlogArticleRepository
 	 */
-	public $blog_article;
+	protected $blog_article;
 	/**
 	 * @var BlogCommentRepository
 	 */
-	public $blog_comment;
+	protected $blog_comment;
 	/**
 	 * @var PageRepository
 	 */
-	public $page;
+	protected $page;
 
 	public function __construct(BlogArticleRepository $blog_article, BlogCommentRepository $blog_comment, PageRepository $page)
 	{

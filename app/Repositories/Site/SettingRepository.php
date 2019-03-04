@@ -4,6 +4,7 @@ namespace App\Repositories\Site;
 
 use App\Models\Setting as Model;
 use App\Repositories\RepositoryInterface;
+use PhpParser\Node\Expr\AssignOp\Mod;
 
 class SettingRepository implements RepositoryInterface
 {
@@ -17,9 +18,9 @@ class SettingRepository implements RepositoryInterface
 	 *
 	 * @param App\Task $model
 	 */
-	public function __construct(Model $model)
+	public function __construct()
 	{
-		$this->model = $model;
+		$this->model = new Model();
 	}
 
 	/**
@@ -75,5 +76,13 @@ class SettingRepository implements RepositoryInterface
 	public function delete($id)
 	{
 		return $this->model->find($id)->delete();
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getHome()
+	{
+		return $this->model->find(1);
 	}
 }

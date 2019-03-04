@@ -27,11 +27,11 @@ class BlogArticleRepository implements RepositoryInterface
 	 *
 	 * @param App\Task $model
 	 */
-	public function __construct(Model $model, Seo $seo, Setting $setting)
+	public function __construct()
 	{
-		$this->model = $model;
-		$this->seo = $seo;
-		$this->setting = $setting;
+		$this->model = new Model();
+		$this->seo = new Seo();
+		$this->setting = new Setting();
 	}
 
 	/**
@@ -138,31 +138,33 @@ class BlogArticleRepository implements RepositoryInterface
 
 	public function getArticle($url)
 	{
-		return $this->model->where('status', 1)->where('url', $url)->first();
+		return $this->model->where(
+			'status', 1
+		)->where(
+			'url', $url
+		)->first();
+	}
+
+	public function getPopularArticles()
+	{
+		return $this->model->where(
+			'status', 1
+		)->where(
+			'slide', 1
+		)->get();
+	}
+
+	public function getSlideAll(){
+		return $this->model->where(
+			'status', 1
+		)->orderBy(
+			'views', 'desc'
+		)->limit(6)->get();
 	}
 
 	public function setView($data)
 	{
 		return $data->increment('views');
-	}
-
-
-	/**
-	 * @param $query
-	 * @return mixed
-	 */
-	public function scopeStatus($query)
-	{
-		return $query->where('status', 1);
-	}
-
-	/**
-	 * @param $query
-	 * @return mixed
-	 */
-	public function scopeSlide($query)
-	{
-		return $query->where('slide', 1);
 	}
 
 	/**
@@ -193,33 +195,5 @@ class BlogArticleRepository implements RepositoryInterface
 	public function scopeFindCategory($query, $id)
 	{
 		return $query->where('category_id', $id);
-	}
-
-	/**
-	 * @param $query
-	 * @param $id
-	 * @return mixed
-	 */
-	public function scopeNextPost($query, $id)
-	{
-		return $query->where('id', '>', $id)->orderBy('id');
-	}
-
-	/**
-	 * @param $query
-	 * @return mixed
-	 */
-	public function scopeDesc($query)
-	{
-		return $query->orderBy('id', 'desc');
-	}
-
-	/**
-	 * @param $query
-	 * @return mixed
-	 */
-	public function scopeViews($query)
-	{
-		return $query->orderBy('views', 'desc');
 	}
 }

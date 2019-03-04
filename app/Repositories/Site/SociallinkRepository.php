@@ -10,16 +10,15 @@ class SociallinkRepository implements RepositoryInterface
 	/**
 	 * @var $model
 	 */
-	private $model;
+	public $model;
 
 	/**
-	 * EloquentTask constructor.
-	 *
-	 * @param App\Task $model
+	 * SociallinkRepository constructor.
+	 * @param Model $model
 	 */
-	public function __construct(Model $model)
+	public function __construct()
 	{
-		$this->model = $model;
+		$this->model = new Model();
 	}
 
 	/**
@@ -75,5 +74,10 @@ class SociallinkRepository implements RepositoryInterface
 	public function delete($id)
 	{
 		return $this->model->find($id)->delete();
+	}
+
+	public function getStatusAll()
+	{
+		return $this->model->where('status', 1)->get();
 	}
 }

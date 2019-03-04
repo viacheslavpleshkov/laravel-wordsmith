@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Site\BlogArticleRepository;
 use App;
 use App\Models\Setting;
 use App\Models\BlogArticle;
@@ -14,16 +15,20 @@ use App\Http\Requests\Site\Contact as ContactRequest;
 class SiteController extends Controller
 {
 
-	/**
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-	 */
+	protected $blog_article;
+
+	public function __construct(BlogArticleRepository $blog_article)
+	{
+		$this->blog_article = $blog_article;
+
+	}
 
 	public function index()
 	{
-		$slider = BlogArticle::status()->slide()->get();
+		$slider = $this->blog_article->getSlideAll();
 		$main = Page::pagehome();
 		$paginate = Setting::first()->paginate_site;
-		$articles = BlogArticle::status()->desc()->paginate($paginate);
+		$articles = $this->blog_article->getArticlesAll();
 		return view('site.pages.index', compact('main', 'slider', 'articles'));
 	}
 

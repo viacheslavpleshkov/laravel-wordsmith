@@ -17,9 +17,9 @@ class BlogCategoryRepository implements RepositoryInterface
 	 *
 	 * @param App\Task $model
 	 */
-	public function __construct(Model $model)
+	public function __construct()
 	{
-		$this->model = $model;
+		$this->model = new Model();
 	}
 
 	/**
@@ -75,5 +75,13 @@ class BlogCategoryRepository implements RepositoryInterface
 	public function delete($id)
 	{
 		return $this->model->find($id)->delete();
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getStatusAll()
+	{
+		return $this->model->where('status',1)->get();
 	}
 }

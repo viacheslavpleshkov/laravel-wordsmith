@@ -2,11 +2,12 @@
 
 namespace App\Providers;
 
+use App\Repositories\RepositoryInterface;
+use App\Repositories\Site\BlogArticleRepository;
+use App\Repositories\Site\BlogCategoryRepository;
+use App\Repositories\Site\SettingRepository;
+use App\Repositories\Site\SociallinkRepository;
 use Illuminate\Support\ServiceProvider;
-use App\Models\BlogCategory;
-use App\Models\Sociallink;
-use App\Models\Setting;
-use App\Models\BlogArticle;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,10 +23,10 @@ class AppServiceProvider extends ServiceProvider
 		}
 		\View::composer('site.layouts.main', function ($view) {
 			$view->with([
-				'categories' => BlogCategory::status()->get(),
-				'popularposts' => BlogArticle::status()->views()->limit(6)->get(),
-				'settings' => Setting::find(1),
-				'sociallinks' => Sociallink::status()->get(),
+				'categories' => (new BlogCategoryRepository())->getStatusAll(),
+				'popularposts' => (new BlogArticleRepository())->getPopularArticles(),
+				'settings' => (new SettingRepository())->getHome(),
+				'sociallinks' => (new SociallinkRepository())->getStatusAll(),
 			]);
 		});
 	}
@@ -40,5 +41,7 @@ class AppServiceProvider extends ServiceProvider
 		if ($this->app->isLocal()) {
 			$this->app->register(TelescopeServiceProvider::class);
 		}
+		$this->app->singleton(RepositoryInterface::class, BlogArticleRepository::class);
+
 	}
 }
