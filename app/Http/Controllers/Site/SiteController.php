@@ -9,7 +9,7 @@ use App\Models\BlogArticle;
 use App\Models\Page;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailShipped;
-use App\Http\Requests\SIte\Contact as ContactRequest;
+use App\Http\Requests\Site\Contact as ContactRequest;
 
 class SiteController extends Controller
 {

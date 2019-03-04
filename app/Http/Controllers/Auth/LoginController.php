@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Site\Login;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -29,8 +28,12 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/';
 
-    protected function validateLogin(Login $request)
+    protected function validateLogin(Request $request)
     {
+        $this->validate($request, [
+            $this->username() => 'required',
+            'password' => 'required',
+        ]);
     }
 
     /**
