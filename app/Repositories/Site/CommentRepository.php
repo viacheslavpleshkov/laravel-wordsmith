@@ -2,9 +2,9 @@
 
 namespace App\Repositories\Site;
 
-use App\Models\BlogComment as Model;
+use App\Models\Comment as Model;
 
-class BlogCommentRepository implements RepositoryInterface
+class CommentRepository implements RepositoryInterface
 {
 	/**
 	 * @var Model
@@ -36,6 +36,19 @@ class BlogCommentRepository implements RepositoryInterface
 		return $this->model->find($id);
 	}
 
+	/**
+	 * @param array $attributes
+	 * @return mixed
+	 */
+	public function create(array $attributes)
+	{
+		return $this->model->create([
+			'user_id' => $attributes['user_id'],
+			'article_id' => $attributes['id'],
+			'text' => $attributes['request']['text'],
+			'status' => 1
+		]);
+	}
 	/**
 	 * @param $id
 	 * @return mixed

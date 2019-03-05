@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Http\Requests\Site\Search as SearchRequest;
+use App\Http\Requests\Site\SearchRequest;
 use App\Repositories\Site\SettingRepository;
-use App\Repositories\Site\BlogArticleRepository;
+use App\Repositories\Site\ArticleRepository;
 use App\Repositories\Site\PageRepository;
 
 class SearchController extends BaseController
@@ -14,7 +14,7 @@ class SearchController extends BaseController
 	 */
 	protected $setting;
 	/**
-	 * @var BlogArticleRepository
+	 * @var ArticleRepository
 	 */
 	protected $article;
 	/**
@@ -28,7 +28,7 @@ class SearchController extends BaseController
 	public function __construct()
 	{
 		$this->setting = new SettingRepository();
-		$this->article = new BlogArticleRepository();
+		$this->article = new ArticleRepository();
 		$this->page = new PageRepository();
 	}
 

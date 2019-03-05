@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Repositories\Site\BlogArticleRepository;
-use App\Repositories\Site\BlogCategoryRepository;
+use App\Repositories\Site\ArticleRepository;
+use App\Repositories\Site\CategoryRepository;
 use App\Repositories\Site\SettingRepository;
 
 class BlogCategoryController extends BaseController
 {
 	/**
-	 * @var BlogArticleRepository
+	 * @var ArticleRepository
 	 */
 	protected $blog_article;
 	/**
-	 * @var BlogCategoryRepository
+	 * @var CategoryRepository
 	 */
 	protected $blog_category;
 	/**
@@ -26,8 +26,8 @@ class BlogCategoryController extends BaseController
 	 */
 	public function __construct()
 	{
-		$this->blog_article = new BlogArticleRepository();
-		$this->blog_category = new BlogCategoryRepository();
+		$this->blog_article = new ArticleRepository();
+		$this->blog_category = new CategoryRepository();
 		$this->setting = new SettingRepository();
 	}
 

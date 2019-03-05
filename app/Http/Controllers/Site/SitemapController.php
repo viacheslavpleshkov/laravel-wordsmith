@@ -2,20 +2,43 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Models\BlogArticle;
-use App\Models\BlogCategory;
-use App\Models\Page;
+use App\Repositories\Site\ArticleRepository;
+use App\Repositories\Site\CategoryRepository;
+use App\Repositories\Site\PageRepository;
 
 class SitemapController extends BaseController
 {
+	/**
+	 * @var
+	 */
+	protected $blog_article;
+	/**
+	 * @var CategoryRepository
+	 */
+	protected $blog_category;
+	/**
+	 * @var PageRepository
+	 */
+	protected $page;
+
+	/**
+	 * SitemapController constructor.
+	 */
+	public function __construct()
+	{
+		$this->blog_article = new ArticleRepository();
+		$this->blog_category = new CategoryRepository();
+		$this->page = new PageRepository();
+	}
+
 	/**
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index()
 	{
-		$page = Page::desc()->first();
-		$article = BlogArticle::status()->desc()->first();
-		$category = BlogCategory::status()->desc()->first();
+		$page = $this->page->getDesckAndFirst();
+		$article = $this->blog_article->getStatusAndDesckAndFirst();
+		$category = $this->blog_category->getStatusAndDesckAndFirst();
 		return response()->view('site.sitemap.index', compact('page', 'article', 'category'))
 			->header('Content-Type', 'text/xml');
 	}
@@ -25,7 +48,7 @@ class SitemapController extends BaseController
 	 */
 	public function pages()
 	{
-		$main = Page::status()->desc()->get();
+		$main = $this->page->getStatusAndDesckAndLimit(250);
 		return response()->view('site.sitemap.pages', compact('main'))
 			->header('Content-Type', 'text/xml');
 	}
@@ -35,7 +58,7 @@ class SitemapController extends BaseController
 	 */
 	public function articles()
 	{
-		$main = BlogArticle::status()->desc()->get();
+		$main = $this->blog_article->getStatusAndDesckAndLimit(250);
 		return response()->view('site.sitemap.articles', compact('main'))
 			->header('Content-Type', 'text/xml');
 	}
@@ -45,7 +68,7 @@ class SitemapController extends BaseController
 	 */
 	public function categories()
 	{
-		$main = BlogCategory::status()->desc()->get();
+		$main = $this->blog_category->getStatusAndDesckAndLimit(250);
 		return response()->view('site.sitemap.categories', compact('main'))
 			->header('Content-Type', 'text/xml');
 	}

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\BlogArticle;
-use App\Models\BlogCategory;
+use App\Models\Article;
+use App\Models\Category;
 use App\Models\Seo;
 use App\Models\User;
 use App\Models\Setting;
@@ -21,7 +21,7 @@ class BlogArticleController extends BaseController
 	public function index()
 	{
 		$paginate = Setting::first()->paginate_admin;
-		$main = BlogArticle::desc()->paginate($paginate);
+		$main = Article::desc()->paginate($paginate);
 		return view('admin.articles.index', compact('main'));
 	}
 
@@ -33,7 +33,7 @@ class BlogArticleController extends BaseController
 	public function create()
 	{
 		$seo = Seo::where('status', 1)->get();
-		$categories = BlogCategory::where('status', 1)->get();
+		$categories = Category::where('status', 1)->get();
 		return view('admin.articles.create', compact('seo', 'categories'));
 	}
 
@@ -45,7 +45,7 @@ class BlogArticleController extends BaseController
 	 */
 	public function store(ArticleRequest $request)
 	{
-		BlogArticle::create([
+		Article::create([
 			'title' => $request->title,
 			'url' => $request->url,
 			'images' => $request->file('images')->store('articles', 'public'),
@@ -68,7 +68,7 @@ class BlogArticleController extends BaseController
 	 */
 	public function show($id)
 	{
-		$main = BlogArticle::find($id);
+		$main = Article::find($id);
 		return view('admin.articles.show', compact('main'));
 	}
 
@@ -80,9 +80,9 @@ class BlogArticleController extends BaseController
 	 */
 	public function edit($id)
 	{
-		$main = BlogArticle::find($id);
+		$main = Article::find($id);
 		$seo = Seo::where('status', 1)->get();
-		$categories = BlogCategory::where('status', 1)->get();
+		$categories = Category::where('status', 1)->get();
 		$users = User::all();
 		return view('admin.articles.edit', compact('main', 'categories', 'seo', 'users'));
 	}
@@ -96,7 +96,7 @@ class BlogArticleController extends BaseController
 	 */
 	public function update(ArticleRequest $request, $id)
 	{
-		BlogArticle::find($id)->update([
+		Article::find($id)->update([
 			'title' => $request->title,
 			'url' => $request->url,
 			'images' => $request->file('images')->store('articles', 'public'),
@@ -119,7 +119,7 @@ class BlogArticleController extends BaseController
 	 */
 	public function destroy($id)
 	{
-		BlogArticle::find($id)->delete();
+		Article::find($id)->delete();
 		return redirect()->route('articles.index')->with('success', __('admin.information-deleted'));
 	}
 }

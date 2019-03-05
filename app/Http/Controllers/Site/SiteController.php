@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Site;
 
 use App;
-use App\Repositories\Site\BlogArticleRepository;
+use App\Repositories\Site\ArticleRepository;
 use App\Repositories\Site\SettingRepository;
 use App\Repositories\Site\PageRepository;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailShipped;
-use App\Http\Requests\Site\Contact as ContactRequest;
+use App\Http\Requests\Site\ContactRequest;
 
 class SiteController extends BaseController
 {
 	/**
-	 * @var BlogArticleRepository
+	 * @var ArticleRepository
 	 */
 	protected $blog_article;
 	/**
@@ -30,7 +30,7 @@ class SiteController extends BaseController
 	 */
 	public function __construct()
 	{
-		$this->blog_article = new BlogArticleRepository;
+		$this->blog_article = new ArticleRepository;
 		$this->setting = new SettingRepository();
 		$this->page = new PageRepository();
 

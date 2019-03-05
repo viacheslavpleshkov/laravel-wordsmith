@@ -4,7 +4,7 @@ namespace App\Http\Requests\Site;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Profileedit extends FormRequest
+class ProfileEditRequest extends FormRequest
 {
 	/**
 	 * Determine if the user is authorized to make this request.

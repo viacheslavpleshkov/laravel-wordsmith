@@ -2,9 +2,9 @@
 
 namespace App\Repositories\Site;
 
-use App\Models\BlogArticle as Model;
+use App\Models\Article as Model;
 
-class BlogArticleRepository implements RepositoryInterface
+class ArticleRepository implements RepositoryInterface
 {
 	/**
 	 * @var $model
@@ -241,6 +241,34 @@ class BlogArticleRepository implements RepositoryInterface
 			->orderBy('id', 'desc')
 			->with('category:id,name,url')
 			->paginate($paginate);
+
+		return $result;
+	}
+
+	/**
+	 * @param $limit
+	 * @return mixed
+	 */
+	public function getStatusAndDesckAndLimit($limit)
+	{
+		$result = $this->model
+			->where('status', 1)
+			->orderBy('id', 'desc')
+			->limit($limit)
+			->get();
+
+		return $result;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getStatusAndDesckAndFirst()
+	{
+		$result = $this->model
+			->where('status', 1)
+			->orderBy('id', 'desc')
+			->first();
 
 		return $result;
 	}

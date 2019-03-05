@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BlogCategory extends Model
+class Category extends Model
 {
 	/**
 	 * @var array
@@ -13,7 +13,7 @@ class BlogCategory extends Model
 	/**
 	 * @var string
 	 */
-	protected $table = 'blog_categories';
+	protected $table = 'categories';
 
 	/**
 	 * @var array
@@ -41,6 +41,6 @@ class BlogCategory extends Model
 	 */
 	public function articles()
 	{
-		return $this->hasMany(BlogArticle::class);
+		return $this->hasMany(Article::class);
 	}
 }

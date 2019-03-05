@@ -2,9 +2,9 @@
 
 namespace App\Repositories\Site;
 
-use App\Models\BlogCategory as Model;
+use App\Models\Category as Model;
 
-class BlogCategoryRepository implements RepositoryInterface
+class CategoryRepository implements RepositoryInterface
 {
 	/**
 	 * @var $model
@@ -51,7 +51,7 @@ class BlogCategoryRepository implements RepositoryInterface
 	 */
 	public function getStatusAll()
 	{
-		$result =  $this->model
+		$result = $this->model
 			->where('status', 1)
 			->get();
 
@@ -63,6 +63,34 @@ class BlogCategoryRepository implements RepositoryInterface
 		$result = $this->model
 			->where('status', 1)
 			->where('url', $url)
+			->first();
+
+		return $result;
+	}
+
+	/**
+	 * @param $limit
+	 * @return mixed
+	 */
+	public function getStatusAndDesckAndLimit($limit)
+	{
+		$result = $this->model
+			->where('status',1)
+			->orderBy('id', 'desc')
+			->limit($limit)
+			->get();
+
+		return $result;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getStatusAndDesckAndFirst()
+	{
+		$result = $this->model
+			->where('status', 1)
+			->orderBy('id', 'desc')
 			->first();
 
 		return $result;

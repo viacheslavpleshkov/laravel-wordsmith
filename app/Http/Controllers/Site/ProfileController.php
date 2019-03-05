@@ -3,13 +3,27 @@
 namespace App\Http\Controllers\Site;
 
 use App\Models\User;
-use App\Http\Requests\Site\Profileedit as RequestEdit;
-use App\Http\Requests\Site\Profilepassword as RequestPassword;
+use App\Http\Requests\Site\ProfileEditRequest;
+use App\Http\Requests\Site\ProfilePasswordRequest;
+use App\Repositories\Site\UserRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends BaseController
 {
+	/**
+	 * @var UserRepository
+	 */
+	protected $user;
+
+	/**
+	 * ProfileController constructor.
+	 */
+	public function __construct()
+	{
+		$this->user = new UserRepository();
+	}
+
 	/**
 	 * Display a listing of the resAboProfileProfileutmeource.
 	 *
@@ -40,7 +54,7 @@ class ProfileController extends BaseController
 	 * @param  int $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function updateedit(RequestEdit $request, $id)
+	public function updateEdit(ProfileEditRequest $request, $id)
 	{
 		User::find($id)->update($request->all());
 		return redirect()->route('profile.index')->with('success', __('site.updated-success'));
@@ -65,7 +79,7 @@ class ProfileController extends BaseController
 	 * @param  int $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function updatepassword(RequestPassword $request, $id)
+	public function updatePassword(ProfilePasswordRequest $request, $id)
 	{
 		User::find($id)->update([
 			'password' => Hash::make($request->password),

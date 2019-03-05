@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\BlogArticle;
+use App\Models\Article;
 use App\Policies\ArticlePolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;

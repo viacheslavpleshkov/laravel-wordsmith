@@ -93,4 +93,29 @@ class PageRepository implements RepositoryInterface
 		return $this->model->find(6);
 	}
 
+	/**
+	 * @param $limit
+	 * @return mixed
+	 */
+	public function getStatusAndDesckAndLimit($limit)
+	{
+		$result = $this->model
+			->orderBy('id', 'desc')
+			->limit($limit)
+			->get();
+
+		return $result;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getDesckAndFirst()
+	{
+		$result = $this->model
+			->orderBy('id', 'desc')
+			->first();
+
+		return $result;
+	}
 }

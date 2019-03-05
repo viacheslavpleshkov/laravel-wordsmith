@@ -4,7 +4,7 @@ namespace App\Http\Requests\Site;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Subscribe extends FormRequest
+class CommentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class Subscribe extends FormRequest
     public function rules()
     {
         return [
-			'email' => 'required|string|unique:subscribes|email|max:255',
-        ];
+			'text' => 'required|string|max:4096',
+		];
     }
 }

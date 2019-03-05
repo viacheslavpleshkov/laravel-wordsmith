@@ -2,33 +2,39 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Repositories\Site\BlogArticleRepository;
-use App\Repositories\Site\BlogCommentRepository;
+use App\Repositories\Site\ArticleRepository;
+use App\Repositories\Site\CommentRepository;
 use App\Repositories\Site\PageRepository;
+use App\Repositories\Site\SettingRepository;
 
 class BlogArticleController extends BaseController
 {
 	/**
-	 * @var BlogArticleRepository
+	 * @var ArticleRepository
 	 */
 	protected $blog_article;
 	/**
-	 * @var BlogCommentRepository
+	 * @var CommentRepository
 	 */
 	protected $blog_comment;
 	/**
 	 * @var PageRepository
 	 */
 	protected $page;
+	/**
+	 * @var SettingRepository
+	 */
+	protected $setting;
 
 	/**
 	 * BlogArticleController constructor.
 	 */
 	public function __construct()
 	{
-		$this->blog_article = new BlogArticleRepository;
-		$this->blog_comment = new BlogCommentRepository;
+		$this->blog_article = new ArticleRepository;
+		$this->blog_comment = new CommentRepository;
 		$this->page = new PageRepository;
+		$this->setting = new SettingRepository();
 	}
 
 	/**
@@ -36,8 +42,9 @@ class BlogArticleController extends BaseController
 	 */
 	public function index()
 	{
-		$main = $this->page->getBlog();
-		$articles = $this->blog_article->getArticlesAll();
+		$main = $this->page->getPageBlog();
+		$paginate = $this->setting->getPaginateSite();
+		$articles = $this->blog_article->getArticlesAll($paginate);
 		return view('site.articles.index', compact('main', 'articles'));
 	}
 

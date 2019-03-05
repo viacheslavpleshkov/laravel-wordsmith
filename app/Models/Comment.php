@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BlogComment extends Model
+class Comment extends Model
 {
 	/**
 	 * @var array
@@ -13,7 +13,7 @@ class BlogComment extends Model
 	/**
 	 * @var string
 	 */
-	protected $table = 'blog_comments';
+	protected $table = 'comments';
 	/**
 	 * @var array
 	 */
@@ -40,6 +40,6 @@ class BlogComment extends Model
 	 */
 	public function article()
 	{
-		return $this->belongsTo(BlogArticle::class);
+		return $this->belongsTo(Article::class);
 	}
 }

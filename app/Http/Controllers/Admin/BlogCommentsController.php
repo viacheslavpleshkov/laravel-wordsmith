@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\BlogComment;
+use App\Models\Comment;
 use App\Http\Requests\Admin\Comment as CommentRequest;
 use App\Models\User;
-use App\Models\BlogArticle;
+use App\Models\Article;
 use App\Models\Setting;
 
 class BlogCommentsController extends BaseController
@@ -18,7 +18,7 @@ class BlogCommentsController extends BaseController
 	public function index()
 	{
 		$paginate = Setting::first()->paginate_admin;
-		$main = BlogComment::desc()->paginate($paginate);
+		$main = Comment::desc()->paginate($paginate);
 		return view('admin.comments.index', compact('main'));
 	}
 
@@ -30,7 +30,7 @@ class BlogCommentsController extends BaseController
 	public function create()
 	{
 		$users = User::all();
-		$articles = BlogArticle::where('status', 1)->get();
+		$articles = Article::where('status', 1)->get();
 		return view('admin.comments.create', compact('users', 'articles'));
 	}
 
@@ -42,7 +42,7 @@ class BlogCommentsController extends BaseController
 	 */
 	public function store(CommentRequest $request)
 	{
-		BlogComment::create($request->all());
+		Comment::create($request->all());
 		return redirect()->route('comments.index')->with('success', __('admin.created-success'));
 	}
 
@@ -54,7 +54,7 @@ class BlogCommentsController extends BaseController
 	 */
 	public function show($id)
 	{
-		$main = BlogComment::find($id);
+		$main = Comment::find($id);
 		return view('admin.comments.show', compact('main'));
 	}
 
@@ -66,9 +66,9 @@ class BlogCommentsController extends BaseController
 	 */
 	public function edit($id)
 	{
-		$main = BlogComment::find($id);
+		$main = Comment::find($id);
 		$users = User::all();
-		$articles = BlogArticle::where('status', 1)->get();
+		$articles = Article::where('status', 1)->get();
 		return view('admin.comments.edit', compact('main', 'users', 'articles'));
 	}
 
@@ -81,7 +81,7 @@ class BlogCommentsController extends BaseController
 	 */
 	public function update(CommentRequest $request, $id)
 	{
-		BlogComment::find($id)->update($request->all());
+		Comment::find($id)->update($request->all());
 		return redirect()->route('comments.index')->with('success', __('admin.updated-success'));
 	}
 
@@ -93,7 +93,7 @@ class BlogCommentsController extends BaseController
 	 */
 	public function destroy($id)
 	{
-		BlogComment::find($id)->delete();
+		Comment::find($id)->delete();
 		return redirect()->route('comments.index')->with('success', __('admin.information-deleted'));
 	}
 }
