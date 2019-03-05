@@ -64,13 +64,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(BlogArticle::class);
     }
-
-	/**
-	 * @param $query
-	 * @return mixed
-	 */
-	public function scopeDesc($query)
-	{
-		return $query->orderBy('id', 'desc');
-	}
 }

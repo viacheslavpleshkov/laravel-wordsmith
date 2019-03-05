@@ -3,20 +3,16 @@
 namespace App\Repositories\Site;
 
 use App\Models\Setting as Model;
-use App\Repositories\RepositoryInterface;
-use PhpParser\Node\Expr\AssignOp\Mod;
 
 class SettingRepository implements RepositoryInterface
 {
 	/**
 	 * @var $model
 	 */
-	private $model;
+	protected $model;
 
 	/**
-	 * EloquentTask constructor.
-	 *
-	 * @param App\Task $model
+	 * SettingRepository constructor.
 	 */
 	public function __construct()
 	{
@@ -24,9 +20,7 @@ class SettingRepository implements RepositoryInterface
 	}
 
 	/**
-	 * Get all tasks.
-	 *
-	 * @return Illuminate\Database\Eloquent\Collection
+	 * @return Model[]|\Illuminate\Database\Eloquent\Collection
 	 */
 	public function getAll()
 	{
@@ -34,10 +28,8 @@ class SettingRepository implements RepositoryInterface
 	}
 
 	/**
-	 * Get task by id.
-	 *
-	 * @param integer $id
-	 * @return App\Task
+	 * @param $id
+	 * @return mixed
 	 */
 	public function getById($id)
 	{
@@ -45,33 +37,8 @@ class SettingRepository implements RepositoryInterface
 	}
 
 	/**
-	 * Create a new task.
-	 *
-	 * @param array $attributes
-	 * @return App\Task
-	 */
-	public function create(array $attributes)
-	{
-		return $this->model->create($attributes);
-	}
-
-	/**
-	 * Update a task.
-	 *
-	 * @param integer $id
-	 * @param array $attributes
-	 * @return App\Task
-	 */
-	public function update($id, array $attributes)
-	{
-		return $this->model->find($id)->update($attributes);
-	}
-
-	/**
-	 * Delete a task.
-	 *
-	 * @param integer $id
-	 * @return boolean
+	 * @param $id
+	 * @return mixed
 	 */
 	public function delete($id)
 	{
@@ -84,5 +51,10 @@ class SettingRepository implements RepositoryInterface
 	public function getHome()
 	{
 		return $this->model->find(1);
+	}
+
+	public function getPaginateSite()
+	{
+		return $this->model->find(1)->paginate_site;
 	}
 }

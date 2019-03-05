@@ -2,18 +2,31 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Http\Controllers\Controller;
-use App\Models\Subscribe;
+use App\Repositories\Site\SubscribeRepository;
 use App\Http\Requests\Site\Subscribe as SubscribeRequest;
 
-class SubscribeController extends Controller
+class SubscribeController extends BaseController
 {
+	/**
+	 * @var SubscribeRepository
+	 */
+	private $subscribe;
+
+	/**
+	 * SubscribeController constructor.
+	 */
+	public function __construct()
+	{
+		$this->subscribe = new SubscribeRepository();
+	}
+
+	/**
+	 * @param SubscribeRequest $request
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
 	public function subscribe(SubscribeRequest $request)
 	{
-		Subscribe::create([
-			'email' => $request['email'],
-			'status' => 1
-		]);
+		$this->subscribe->create($request);
 		return redirect()->back()->with('success-submit', __('site.success-submit'));
 	}
 }

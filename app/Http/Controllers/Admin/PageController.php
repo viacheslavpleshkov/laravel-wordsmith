@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Http\Requests\Admin\Page as PageRequest;
 use App\Models\Seo;
 use App\Models\Setting;
 
-class PageController extends Controller
+class PageController extends BaseController
 {
     /**
      * Display a listing of the resource.

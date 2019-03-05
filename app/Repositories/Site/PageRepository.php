@@ -2,30 +2,25 @@
 
 namespace App\Repositories\Site;
 
-use App\Models\BlogArticle as Model;
-use App\Repositories\RepositoryInterface;
+use App\Models\Page as Model;
 
 class PageRepository implements RepositoryInterface
 {
 	/**
-	 * @var $model
+	 * @var Model
 	 */
-	private $model;
+	protected $model;
 
 	/**
-	 * EloquentTask constructor.
-	 *
-	 * @param App\Task $model
+	 * PageRepository constructor.
 	 */
-	public function __construct(Model $model)
+	public function __construct()
 	{
-		$this->model = $model;
+		$this->model = new Model();
 	}
 
 	/**
-	 * Get all tasks.
-	 *
-	 * @return Illuminate\Database\Eloquent\Collection
+	 * @return Model[]|\Illuminate\Database\Eloquent\Collection
 	 */
 	public function getAll()
 	{
@@ -33,10 +28,8 @@ class PageRepository implements RepositoryInterface
 	}
 
 	/**
-	 * Get task by id.
-	 *
-	 * @param integer $id
-	 * @return App\Task
+	 * @param $id
+	 * @return mixed
 	 */
 	public function getById($id)
 	{
@@ -44,41 +37,60 @@ class PageRepository implements RepositoryInterface
 	}
 
 	/**
-	 * Create a new task.
-	 *
-	 * @param array $attributes
-	 * @return App\Task
-	 */
-	public function create(array $attributes)
-	{
-		return $this->model->create($attributes);
-	}
-
-	/**
-	 * Update a task.
-	 *
-	 * @param integer $id
-	 * @param array $attributes
-	 * @return App\Task
-	 */
-	public function update($id, array $attributes)
-	{
-		return $this->model->find($id)->update($attributes);
-	}
-
-	/**
-	 * Delete a task.
-	 *
-	 * @param integer $id
-	 * @return boolean
+	 * @param $id
+	 * @return mixed
 	 */
 	public function delete($id)
 	{
 		return $this->model->find($id)->delete();
 	}
 
-	public function getBlog()
+	/**
+	 * @return mixed
+	 */
+	public function getPageHome()
+	{
+		return $this->model->find(1);
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getPageBlog()
 	{
 		return $this->model->find(2);
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getPageAbout()
+	{
+		return $this->model->find(3);
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getPageContact()
+	{
+		return $this->model->find(4);
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getPagePrivacyPolicy()
+	{
+		return $this->model->find(5);
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getPageSearch()
+	{
+		return $this->model->find(6);
+	}
+
 }

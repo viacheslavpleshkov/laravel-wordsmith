@@ -3,29 +3,24 @@
 namespace App\Repositories\Site;
 
 use App\Models\BlogComment as Model;
-use App\Repositories\RepositoryInterface;
 
 class BlogCommentRepository implements RepositoryInterface
 {
 	/**
-	 * @var $model
+	 * @var Model
 	 */
-	private $model;
+	protected $model;
 
 	/**
-	 * EloquentTask constructor.
-	 *
-	 * @param App\Task $model
+	 * BlogCommentRepository constructor.
 	 */
-	public function __construct(Model $model)
+	public function __construct()
 	{
-		$this->model = $model;
+		$this->model = new Model();
 	}
 
 	/**
-	 * Get all tasks.
-	 *
-	 * @return Illuminate\Database\Eloquent\Collection
+	 * @return Model[]|\Illuminate\Database\Eloquent\Collection
 	 */
 	public function getAll()
 	{
@@ -33,10 +28,8 @@ class BlogCommentRepository implements RepositoryInterface
 	}
 
 	/**
-	 * Get task by id.
-	 *
-	 * @param integer $id
-	 * @return App\Task
+	 * @param $id
+	 * @return mixed
 	 */
 	public function getById($id)
 	{
@@ -44,58 +37,47 @@ class BlogCommentRepository implements RepositoryInterface
 	}
 
 	/**
-	 * Create a new task.
-	 *
-	 * @param array $attributes
-	 * @return App\Task
-	 */
-	public function create(array $attributes)
-	{
-		return $this->model->create($attributes);
-	}
-
-	/**
-	 * Update a task.
-	 *
-	 * @param integer $id
-	 * @param array $attributes
-	 * @return App\Task
-	 */
-	public function update($id, array $attributes)
-	{
-		return $this->model->find($id)->update($attributes);
-	}
-
-	/**
-	 * Delete a task.
-	 *
-	 * @param integer $id
-	 * @return boolean
+	 * @param $id
+	 * @return mixed
 	 */
 	public function delete($id)
 	{
 		return $this->model->find($id)->delete();
 	}
 
+	/**
+	 * @param $id
+	 * @return mixed
+	 */
 	public function getCommentsAll($id)
 	{
-		return $this->model->where(
-			'status', 1
-		)->where(
-			'article_id', $id
-		)->orderBy(
-			'id', 'desc'
-		)->get();
+		$result = $this->model
+			->where('status', 1)
+			->where('article_id', $id)
+			->orderBy('id', 'desc')
+			->get();
+
+		return $result;
 	}
 
+	/**
+	 * @param $id
+	 * @return mixed
+	 */
 	public function getCountCommentsAll($id)
 	{
-		return $this->model->select(
-			'id', 'article_id', 'status'
-		)->where(
-			'status', 1
-		)->where(
-			'article_id', $id
-		)->count();
+		$columns = [
+			'id',
+			'article_id',
+			'status'
+		];
+
+		$result = $this->model
+			->select($columns)
+			->where('status', 1)
+			->where('article_id', $id)
+			->count();
+
+		return $result;
 	}
 }

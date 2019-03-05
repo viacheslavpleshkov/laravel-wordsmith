@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Setting;
 use App\Http\Requests\Admin\User as UserRequest;
 use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class UserController extends BaseController
 {
 	/**
 	 * Display a listing of the resource.

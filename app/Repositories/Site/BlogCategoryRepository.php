@@ -3,19 +3,16 @@
 namespace App\Repositories\Site;
 
 use App\Models\BlogCategory as Model;
-use App\Repositories\RepositoryInterface;
 
 class BlogCategoryRepository implements RepositoryInterface
 {
 	/**
 	 * @var $model
 	 */
-	private $model;
+	protected $model;
 
 	/**
-	 * EloquentTask constructor.
-	 *
-	 * @param App\Task $model
+	 * BlogCategoryRepository constructor.
 	 */
 	public function __construct()
 	{
@@ -23,9 +20,8 @@ class BlogCategoryRepository implements RepositoryInterface
 	}
 
 	/**
-	 * Get all tasks.
+	 * @return Model[]|\Illuminate\Database\Eloquent\Collection]
 	 *
-	 * @return Illuminate\Database\Eloquent\Collection
 	 */
 	public function getAll()
 	{
@@ -33,10 +29,8 @@ class BlogCategoryRepository implements RepositoryInterface
 	}
 
 	/**
-	 * Get task by id.
-	 *
-	 * @param integer $id
-	 * @return App\Task
+	 * @param $id
+	 * @return mixed
 	 */
 	public function getById($id)
 	{
@@ -44,33 +38,8 @@ class BlogCategoryRepository implements RepositoryInterface
 	}
 
 	/**
-	 * Create a new task.
-	 *
-	 * @param array $attributes
-	 * @return App\Task
-	 */
-	public function create(array $attributes)
-	{
-		return $this->model->create($attributes);
-	}
-
-	/**
-	 * Update a task.
-	 *
-	 * @param integer $id
-	 * @param array $attributes
-	 * @return App\Task
-	 */
-	public function update($id, array $attributes)
-	{
-		return $this->model->find($id)->update($attributes);
-	}
-
-	/**
-	 * Delete a task.
-	 *
-	 * @param integer $id
-	 * @return boolean
+	 * @param $id
+	 * @return mixed
 	 */
 	public function delete($id)
 	{
@@ -82,6 +51,20 @@ class BlogCategoryRepository implements RepositoryInterface
 	 */
 	public function getStatusAll()
 	{
-		return $this->model->where('status',1)->get();
+		$result =  $this->model
+			->where('status', 1)
+			->get();
+
+		return $result;
+	}
+
+	public function getCategoryUrl($url)
+	{
+		$result = $this->model
+			->where('status', 1)
+			->where('url', $url)
+			->first();
+
+		return $result;
 	}
 }

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\Setting;
 use App\Http\Requests\Admin\Role as RoleRequest;
 
-class RoleController extends Controller
+class RoleController extends BaseController
 {
     /**
      * Display a listing of the resource.

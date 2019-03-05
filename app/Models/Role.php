@@ -30,13 +30,4 @@ class Role extends Model
 	{
 		return $this->hasMany(User::class);
 	}
-
-	/**
-	 * @param $query
-	 * @return mixed
-	 */
-	public function scopeDesc($query)
-	{
-		return $query->orderBy('id', 'desc');
-	}
 }

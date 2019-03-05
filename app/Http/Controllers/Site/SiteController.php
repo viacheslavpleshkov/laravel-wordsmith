@@ -2,53 +2,67 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Http\Controllers\Controller;
-use App\Repositories\Site\BlogArticleRepository;
 use App;
-use App\Models\Setting;
-use App\Models\BlogArticle;
-use App\Models\Page;
+use App\Repositories\Site\BlogArticleRepository;
+use App\Repositories\Site\SettingRepository;
+use App\Repositories\Site\PageRepository;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailShipped;
 use App\Http\Requests\Site\Contact as ContactRequest;
 
-class SiteController extends Controller
+class SiteController extends BaseController
 {
-
+	/**
+	 * @var BlogArticleRepository
+	 */
 	protected $blog_article;
+	/**
+	 * @var SettingRepository
+	 */
+	protected $setting;
+	/**
+	 * @var PageRepository
+	 */
+	protected $page;
 
-	public function __construct(BlogArticleRepository $blog_article)
+	/**
+	 * SiteController constructor.
+	 */
+	public function __construct()
 	{
-		$this->blog_article = $blog_article;
+		$this->blog_article = new BlogArticleRepository;
+		$this->setting = new SettingRepository();
+		$this->page = new PageRepository();
 
 	}
 
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
 	public function index()
 	{
 		$slider = $this->blog_article->getSlideAll();
-		$main = Page::pagehome();
-		$paginate = Setting::first()->paginate_site;
-		$articles = $this->blog_article->getArticlesAll();
+		$main = $this->page->getPageHome();
+		$paginate = $this->setting->getPaginateSite();
+		$articles = $this->blog_article->getArticlesAll($paginate);
 		return view('site.pages.index', compact('main', 'slider', 'articles'));
 	}
 
 	/**
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-
 	public function about()
 	{
-		$main = Page::pageabout();
+		$main = $this->page->getPageAbout();
 		return view('site.pages.about', compact('main'));
 	}
 
 	/**
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-
 	public function privacypolicy()
 	{
-		$main = Page::pageprivacypolicy();
+		$main = $this->page->getPagePrivacyPolicy();
 		return view('site.pages.privacy-policy', compact('main'));
 	}
 
@@ -57,13 +71,13 @@ class SiteController extends Controller
 	 */
 	public function contact()
 	{
-		$main = Page::pagecontact();
-		$setting = Setting::first();
+		$main = $this->page->getPageContact();
+		$setting = $this->setting->getById(1);
 		return view('site.pages.contact', compact('main', 'setting'));
 	}
 
 	/**
-	 * @param Contact $request
+	 * @param ContactRequest $request
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function submit(ContactRequest $request)

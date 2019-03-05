@@ -3,35 +3,20 @@
 namespace App\Repositories\Site;
 
 use App\Models\BlogArticle as Model;
-use App\Models\Seo;
-use App\Models\Setting;
-use App\Repositories\RepositoryInterface;
 
 class BlogArticleRepository implements RepositoryInterface
 {
 	/**
 	 * @var $model
 	 */
-	private $model;
-	/**
-	 * @var
-	 */
-	private $seo;
-	/**
-	 * @var
-	 */
-	private $setting;
+	protected $model;
 
 	/**
-	 * EloquentTask constructor.
-	 *
-	 * @param App\Task $model
+	 * BlogArticleRepository constructor.
 	 */
 	public function __construct()
 	{
 		$this->model = new Model();
-		$this->seo = new Seo();
-		$this->setting = new Setting();
 	}
 
 	/**
@@ -52,144 +37,211 @@ class BlogArticleRepository implements RepositoryInterface
 	}
 
 	/**
-	 * Create a new task.
-	 *
-	 * @param array $attributes
-	 * @return App\Task
-	 */
-	public function create(array $attributes)
-	{
-		return $this->model->create($attributes);
-	}
-
-	/**
-	 * Update a task.
-	 *
-	 * @param integer $id
-	 * @param array $attributes
-	 * @return App\Task
-	 */
-	public function update($id, array $attributes)
-	{
-		return $this->model->find($id)->update($attributes);
-	}
-
-	/**
-	 * Delete a task.
-	 *
-	 * @param integer $id
-	 * @return boolean
+	 * @param $id
+	 * @return mixed
 	 */
 	public function delete($id)
 	{
 		return $this->model->find($id)->delete();
 	}
 
-	public function getArticlesAll()
+	/**
+	 * @return mixed
+	 */
+	public function getArticlesAll($paginate)
 	{
-		$paginate = $this->setting->first()->paginate_site;
-		return $this->model->select(
+		$columns = [
 			'id',
 			'title',
 			'url',
 			'images',
 			'category_id',
-			'seo_id',
 			'status',
-			'user_id'
-		)->where(
-			'status', 1
-		)->orderBy(
-			'id', 'desc'
-		)->paginate($paginate);
+			'created_at'
+		];
+
+		$result = $this->model
+			->select($columns)
+			->where('status', 1)
+			->orderBy('id', 'desc')
+			->with('category:id,name,url')
+			->paginate($paginate);
+
+		return $result;
 	}
 
+	/**
+	 * @param $id
+	 * @return mixed
+	 */
 	public function getPreviousPost($id)
 	{
-		return $this->model->select(
+		$columns = [
 			'id',
 			'title',
 			'url',
 			'status'
-		)->where(
-			'id', '<', $id
-		)->orderBy(
-			'id', 'desc'
-		)->first();
+		];
+
+		$result = $this->model
+			->select($columns)
+			->where('id', '<', $id)
+			->orderBy('id', 'desc')
+			->first();
+
+		return $result;
 	}
 
+	/**
+	 * @param $id
+	 * @return mixed
+	 */
 	public function getNextPost($id)
 	{
-		return $this->model->select(
+		$columns = [
 			'id',
 			'title',
 			'url',
 			'status'
-		)->where(
-			'id', '>', $id
-		)->orderBy(
-			'id'
-		)->first();
+		];
+
+		$result = $this->model
+			->select($columns)
+			->where('id', '>', $id)
+			->orderBy('id')
+			->first();
+
+		return $result;
 	}
 
+	/**
+	 * @param $url
+	 * @return mixed
+	 */
 	public function getArticle($url)
 	{
-		return $this->model->where(
-			'status', 1
-		)->where(
-			'url', $url
-		)->first();
+		$result = $this->model
+			->where('status', 1)
+			->where('url', $url)
+			->first();
+
+		return $result;
 	}
 
+	/**
+	 * @return mixed
+	 */
 	public function getPopularArticles()
 	{
-		return $this->model->where(
-			'status', 1
-		)->where(
-			'slide', 1
-		)->get();
+		$columns = [
+			'id',
+			'title',
+			'url',
+			'images',
+			'status',
+			'user_id',
+			'created_at'
+		];
+
+		$result = $this->model
+			->select($columns)
+			->where('status', 1)
+			->orderBy('views', 'desc')
+			->limit(6)
+			->with('user:id,name')
+			->get();
+
+		return $result;
 	}
 
-	public function getSlideAll(){
-		return $this->model->where(
-			'status', 1
-		)->orderBy(
-			'views', 'desc'
-		)->limit(6)->get();
+	/**
+	 * @return mixed
+	 */
+	public function getSlideAll()
+	{
+		$columns = [
+			'id',
+			'title',
+			'url',
+			'images',
+			'status',
+			'category_id',
+			'user_id',
+			'created_at'
+		];
+
+		$result = $this->model
+			->select($columns)
+			->where('status', 1)
+			->where('slide', 1)
+			->with(['user:id:name', 'category:id,name,url'])
+			->get();
+
+		return $result;
 	}
 
+	/**
+	 * @param $data
+	 * @return mixed
+	 */
 	public function setView($data)
 	{
 		return $data->increment('views');
 	}
 
 	/**
-	 * @param $query
 	 * @param $search
+	 * @param $paginate
 	 * @return mixed
 	 */
-	public function scopeSearch($query, $search)
+	public function getSearch($search, $paginate)
 	{
-		return $query->where('title', 'like', "%$search%");
+		$columns = [
+			'id',
+			'title',
+			'url',
+			'images',
+			'category_id',
+			'status',
+			'created_at'
+		];
+
+		$result = $this->model
+			->select($columns)
+			->where('status', 1)
+			->where('title', 'like', "%$search%")
+			->orderBy('id', 'desc')
+			->with('category:id,name,url')
+			->paginate($paginate);
+
+		return $result;
 	}
 
 	/**
-	 * @param $query
-	 * @param $url
-	 * @return mixed
-	 */
-	public function scopeFindUrl($query, $url)
-	{
-		return $query->where('url', $url);
-	}
-
-	/**
-	 * @param $query
 	 * @param $id
+	 * @param $paginate
 	 * @return mixed
 	 */
-	public function scopeFindCategory($query, $id)
+	public function getCategoryId($id, $paginate)
 	{
-		return $query->where('category_id', $id);
+		$columns = [
+			'id',
+			'title',
+			'url',
+			'images',
+			'category_id',
+			'status',
+			'created_at'
+		];
+
+		$result = $this->model
+			->select($columns)
+			->where('status', 1)
+			->where('category_id', $id)
+			->orderBy('id', 'desc')
+			->with('category:id,name,url')
+			->paginate($paginate);
+
+		return $result;
 	}
 }

@@ -43,32 +43,4 @@ class BlogCategory extends Model
 	{
 		return $this->hasMany(BlogArticle::class);
 	}
-
-	/**
-	 * @param $query
-	 * @return mixed
-	 */
-	public function scopeStatus($query)
-	{
-		return $query->where('status', 1);
-	}
-
-	/**
-	 * @param $query
-	 * @param $url
-	 * @return mixed
-	 */
-	public function scopeFindUrl($query, $url)
-	{
-		return $query->where('url', $url);
-	}
-
-	/**
-	 * @param $query
-	 * @return mixed
-	 */
-	public function scopeDesc($query)
-	{
-		return $query->orderBy('id', 'desc');
-	}
 }

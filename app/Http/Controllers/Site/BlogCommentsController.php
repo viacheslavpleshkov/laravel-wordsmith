@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Http\Controllers\Controller;
 use App\Models\BlogComment;
 use App\Http\Requests\Site\Comment as CommentRequest;
+use App\Repositories\Site\BlogCategoryRepository;
 use Illuminate\Support\Facades\Auth;
 
-class CommentsController extends Controller
+class CommentsController extends BlogCategoryRepository
 {
 	/**
 	 * @param CommentRequest $request

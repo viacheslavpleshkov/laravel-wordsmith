@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\BlogArticle;
-use App\Http\Controllers\Controller;
 use App\Models\BlogCategory;
 use App\Models\Seo;
 use App\Models\User;
@@ -12,7 +11,7 @@ use App\Http\Requests\Admin\Article as ArticleRequest;
 use Illuminate\Support\Facades\Auth;
 
 
-class BlogArticleController extends Controller
+class BlogArticleController extends BaseController
 {
 	/**
 	 * Display a listing of the resource.

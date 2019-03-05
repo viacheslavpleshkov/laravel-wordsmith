@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Site;
 use App\Models\BlogArticle;
 use App\Models\BlogCategory;
 use App\Models\Page;
-use App\Http\Controllers\Controller;
 
-class SitemapController extends Controller
+class SitemapController extends BaseController
 {
 	/**
 	 * @return \Illuminate\Http\Response
@@ -17,7 +16,8 @@ class SitemapController extends Controller
 		$page = Page::desc()->first();
 		$article = BlogArticle::status()->desc()->first();
 		$category = BlogCategory::status()->desc()->first();
-		return response()->view('site.sitemap.index', compact('page', 'article', 'category'))->header('Content-Type', 'text/xml');
+		return response()->view('site.sitemap.index', compact('page', 'article', 'category'))
+			->header('Content-Type', 'text/xml');
 	}
 
 	/**
@@ -26,7 +26,8 @@ class SitemapController extends Controller
 	public function pages()
 	{
 		$main = Page::status()->desc()->get();
-		return response()->view('site.sitemap.pages', compact('main'))->header('Content-Type', 'text/xml');
+		return response()->view('site.sitemap.pages', compact('main'))
+			->header('Content-Type', 'text/xml');
 	}
 
 	/**
@@ -35,7 +36,8 @@ class SitemapController extends Controller
 	public function articles()
 	{
 		$main = BlogArticle::status()->desc()->get();
-		return response()->view('site.sitemap.articles', compact('main'))->header('Content-Type', 'text/xml');
+		return response()->view('site.sitemap.articles', compact('main'))
+			->header('Content-Type', 'text/xml');
 	}
 
 	/**
@@ -44,6 +46,7 @@ class SitemapController extends Controller
 	public function categories()
 	{
 		$main = BlogCategory::status()->desc()->get();
-		return response()->view('site.sitemap.categories', compact('main'))->header('Content-Type', 'text/xml');
+		return response()->view('site.sitemap.categories', compact('main'))
+			->header('Content-Type', 'text/xml');
 	}
 }

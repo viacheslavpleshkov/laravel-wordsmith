@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Sociallink;
 use App\Models\Setting;
 use App\Http\Requests\Admin\Sociallink as SociallinkRequest;
 
 
-class SociallinkController extends Controller
+class SociallinkController extends BaseController
 {
 	/**
 	 * Display a listing of the resource.

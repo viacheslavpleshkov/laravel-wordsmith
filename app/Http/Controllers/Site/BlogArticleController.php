@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Http\Controllers\Controller;
 use App\Repositories\Site\BlogArticleRepository;
 use App\Repositories\Site\BlogCommentRepository;
 use App\Repositories\Site\PageRepository;
 
-class BlogArticleController extends Controller
+class BlogArticleController extends BaseController
 {
 	/**
 	 * @var BlogArticleRepository
@@ -22,11 +21,14 @@ class BlogArticleController extends Controller
 	 */
 	protected $page;
 
-	public function __construct(BlogArticleRepository $blog_article, BlogCommentRepository $blog_comment, PageRepository $page)
+	/**
+	 * BlogArticleController constructor.
+	 */
+	public function __construct()
 	{
-		$this->blog_article = $blog_article;
-		$this->blog_comment = $blog_comment;
-		$this->page = $page;
+		$this->blog_article = new BlogArticleRepository;
+		$this->blog_comment = new BlogCommentRepository;
+		$this->page = new PageRepository;
 	}
 
 	/**

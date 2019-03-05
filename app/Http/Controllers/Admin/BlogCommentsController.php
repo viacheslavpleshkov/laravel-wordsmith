@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\BlogComment;
 use App\Http\Requests\Admin\Comment as CommentRequest;
 use App\Models\User;
 use App\Models\BlogArticle;
 use App\Models\Setting;
 
-class BlogCommentsController extends Controller
+class BlogCommentsController extends BaseController
 {
 	/**
 	 * Display a listing of the resource.

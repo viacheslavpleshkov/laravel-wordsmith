@@ -2,9 +2,10 @@
 
 namespace App\Repositories\Site;
 
-use App\Models\Seo as Model;
+use App\Models\User as Model;
+use Illuminate\Support\Facades\Hash;
 
-class SeoRepository implements RepositoryInterface
+class UserRepository implements RepositoryInterface
 {
 	/**
 	 * @var Model
@@ -12,7 +13,7 @@ class SeoRepository implements RepositoryInterface
 	protected $model;
 
 	/**
-	 * SeoRepository constructor.
+	 * UserRepository constructor.
 	 */
 	public function __construct()
 	{
@@ -34,6 +35,20 @@ class SeoRepository implements RepositoryInterface
 	public function getById($id)
 	{
 		return $this->model->find($id);
+	}
+
+	/**
+	 * @param array $attributes
+	 * @return mixed
+	 */
+	public function create(array $attributes)
+	{
+		return $this->model->create([
+			'name' => $attributes['data']['name'],
+			'email' => $attributes['data']['email'],
+			'password' => Hash::make($attributes['data']['password']),
+			'role_id' => $attributes['role']->id
+		]);
 	}
 
 	/**

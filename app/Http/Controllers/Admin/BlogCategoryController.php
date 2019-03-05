@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\BlogCategory;
 use App\Models\Seo;
 use App\Models\Setting;
 use App\Http\Requests\Admin\Category as CategoryRequest;
 
 
-class BlogCategoryController extends Controller
+class BlogCategoryController extends BaseController
 {
     /**
      * Display a listing of the resource.

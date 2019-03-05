@@ -3,29 +3,24 @@
 namespace App\Repositories\Site;
 
 use App\Models\Role as Model;
-use App\Repositories\RepositoryInterface;
 
 class RoleRepository implements RepositoryInterface
 {
 	/**
-	 * @var $model
+	 * @var Model
 	 */
-	private $model;
+	protected $model;
 
 	/**
-	 * EloquentTask constructor.
-	 *
-	 * @param App\Task $model
+	 * RoleRepository constructor.
 	 */
-	public function __construct(Model $model)
+	public function __construct()
 	{
-		$this->model = $model;
+		$this->model = new Model();
 	}
 
 	/**
-	 * Get all tasks.
-	 *
-	 * @return Illuminate\Database\Eloquent\Collection
+	 * @return Model[]|\Illuminate\Database\Eloquent\Collection
 	 */
 	public function getAll()
 	{
@@ -33,10 +28,8 @@ class RoleRepository implements RepositoryInterface
 	}
 
 	/**
-	 * Get task by id.
-	 *
-	 * @param integer $id
-	 * @return App\Task
+	 * @param $id
+	 * @return mixed
 	 */
 	public function getById($id)
 	{
@@ -44,36 +37,43 @@ class RoleRepository implements RepositoryInterface
 	}
 
 	/**
-	 * Create a new task.
-	 *
-	 * @param array $attributes
-	 * @return App\Task
-	 */
-	public function create(array $attributes)
-	{
-		return $this->model->create($attributes);
-	}
-
-	/**
-	 * Update a task.
-	 *
-	 * @param integer $id
-	 * @param array $attributes
-	 * @return App\Task
-	 */
-	public function update($id, array $attributes)
-	{
-		return $this->model->find($id)->update($attributes);
-	}
-
-	/**
-	 * Delete a task.
-	 *
-	 * @param integer $id
-	 * @return boolean
+	 * @param $id
+	 * @return mixed
 	 */
 	public function delete($id)
 	{
 		return $this->model->find($id)->delete();
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getRoleUser()
+	{
+		return $this->model->where('id', 1)->first();
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getRoleAuthor()
+	{
+		return $this->model->where('id', 2)->first();
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getRoleModerator()
+	{
+		return $this->model->where('id', 3)->first();
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getRoleAdmin()
+	{
+		return $this->model->where('id', 4)->first();
 	}
 }

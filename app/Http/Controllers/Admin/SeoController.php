@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Seo;
 use App\Models\Setting;
 use App\Http\Requests\Admin\Seo as SeoRequest;
 
 
-class SeoController extends Controller
+class SeoController extends BaseController
 {
     /**
      * Display a listing of the resource.
