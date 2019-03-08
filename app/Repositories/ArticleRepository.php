@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Site;
+namespace App\Repositories;
 
 use App\Models\Article as Model;
 
@@ -36,6 +36,24 @@ class ArticleRepository implements RepositoryInterface
 		return $this->model->find($id);
 	}
 
+	/**
+	 * @param $attributes
+	 * @return mixed
+	 */
+	public function create($attributes)
+	{
+		return $this->model->create($attributes);
+	}
+
+	/**
+	 * @param $id
+	 * @param $attributes
+	 * @return mixed
+	 */
+	public function update($id, $attributes)
+	{
+		return $this->model->find($id)->update($attributes);
+	}
 	/**
 	 * @param $id
 	 * @return mixed

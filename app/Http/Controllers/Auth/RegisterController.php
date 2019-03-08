@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
-use App\Repositories\Site\UserRepository;
-use App\Repositories\Site\RoleRepository;
+use App\Repositories\UserRepository;
+use App\Repositories\RoleRepository;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends BaseController
 {
@@ -74,8 +75,13 @@ class RegisterController extends BaseController
 	protected function create(array $data)
 	{
 		$role = $this->role->getRoleUser();
-		$attributes['data'] = $data;
-		$attributes['role'] = $role;
+
+		$attributes = [
+			'name' => $data['name'],
+			'email' => $data['email'],
+			'password' => Hash::make($data['password']),
+			'role_id' => $role
+		];
 		return $this->user->create($attributes);
 	}
 }

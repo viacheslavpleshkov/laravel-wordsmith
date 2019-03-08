@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Site;
+namespace App\Repositories;
 
 use App\Models\Role as Model;
 
@@ -34,6 +34,25 @@ class RoleRepository implements RepositoryInterface
 	public function getById($id)
 	{
 		return $this->model->find($id);
+	}
+
+	/**
+	 * @param $attributes
+	 * @return mixed
+	 */
+	public function create($attributes)
+	{
+		return $this->model->create($attributes);
+	}
+
+	/**
+	 * @param $id
+	 * @param $attributes
+	 * @return mixed
+	 */
+	public function update($id, $attributes)
+	{
+		return $this->model->find($id)->update($attributes);
 	}
 
 	/**

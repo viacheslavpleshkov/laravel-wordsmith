@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Http\Requests\Site\CommentRequest as CommentRequest;
-use App\Repositories\Site\CommentRepository;
+use App\Http\Requests\Site\CommentRequest;
+use App\Repositories\CommentRepository;
 use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends BaseController
@@ -11,14 +11,14 @@ class CommentsController extends BaseController
 	/**
 	 * @var CommentRepository
 	 */
-	protected $blog_comment;
+	protected $comment;
 
 	/**
 	 * CommentsController constructor.
 	 */
 	public function __construct()
 	{
-		$this->blog_comment = new CommentRepository();
+		$this->comment = new CommentRepository();
 	}
 
 	/**
@@ -28,10 +28,13 @@ class CommentsController extends BaseController
 	 */
 	public function comments(CommentRequest $request, $id)
 	{
-		$data['user_id'] = Auth::user()->id;
-		$data['article_id'] = $id;
-		$data['request'] = $request;
-		$this->blog_comment->create($data);
+		$attributes = [
+			'user_id' => Auth::user()->id,
+			'article_id' => $id,
+			'text' => $request,
+			'status' => 1
+		];
+		$this->comment->create($attributes);
 
 		return redirect()->back()->with('success-comment', __('site.success-submit'));
 	}

@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Repositories\Site\ArticleRepository;
-use App\Repositories\Site\CategoryRepository;
-use App\Repositories\Site\SettingRepository;
+use App\Repositories\ArticleRepository;
+use App\Repositories\CategoryRepository;
+use App\Repositories\SettingRepository;
 
 class BlogCategoryController extends BaseController
 {
 	/**
 	 * @var ArticleRepository
 	 */
-	protected $blog_article;
+	protected $article;
 	/**
 	 * @var CategoryRepository
 	 */
-	protected $blog_category;
+	protected $category;
 	/**
 	 * @var SettingRepository
 	 */
@@ -26,8 +26,8 @@ class BlogCategoryController extends BaseController
 	 */
 	public function __construct()
 	{
-		$this->blog_article = new ArticleRepository();
-		$this->blog_category = new CategoryRepository();
+		$this->article = new ArticleRepository();
+		$this->category = new CategoryRepository();
 		$this->setting = new SettingRepository();
 	}
 
@@ -37,11 +37,11 @@ class BlogCategoryController extends BaseController
 	 */
 	public function view($url)
 	{
-		$category = $this->blog_category->getCategoryUrl($url);
+		$category = $this->category->getCategoryUrl($url);
 		if (isset($category)) {
 			$title = $category->name;
 			$paginate = $this->setting->getPaginateSite();
-			$main = $this->blog_article->getCategoryId($category->id, $paginate);
+			$main = $this->article->getCategoryId($category->id, $paginate);
 			return view('site.categories.view', compact('main', 'title'));
 		} else {
 			abort(404);

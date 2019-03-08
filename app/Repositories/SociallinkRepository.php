@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Repositories\Site;
+namespace App\Repositories;
 
-use App\Models\Subscribe as Model;
+use App\Models\Sociallink as Model;
 
-class SubscribeRepository implements RepositoryInterface
+class SociallinkRepository implements RepositoryInterface
 {
 	/**
-	 * @var Model
+	 * @var $model
 	 */
-	private $model;
+	protected $model;
 
 	/**
-	 * SubscribeRepository constructor.
+	 * SociallinkRepository constructor.
 	 */
 	public function __construct()
 	{
@@ -42,14 +42,17 @@ class SubscribeRepository implements RepositoryInterface
 	 */
 	public function create($attributes)
 	{
-		$result = $this->model->create(
-			[
-				'email' => $attributes['email'],
-				'status' => 1
-			]
-		);
+		return $this->model->create($attributes);
+	}
 
-		return $result;
+	/**
+	 * @param $id
+	 * @param $attributes
+	 * @return mixed
+	 */
+	public function update($id, $attributes)
+	{
+		return $this->model->find($id)->update($attributes);
 	}
 
 	/**
@@ -59,5 +62,13 @@ class SubscribeRepository implements RepositoryInterface
 	public function delete($id)
 	{
 		return $this->model->find($id)->delete();
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getStatusAll()
+	{
+		return $this->model->where('status', 1)->get();
 	}
 }

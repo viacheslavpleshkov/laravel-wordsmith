@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Site;
+namespace App\Repositories;
 
 use App\Models\Comment as Model;
 
@@ -37,18 +37,24 @@ class CommentRepository implements RepositoryInterface
 	}
 
 	/**
-	 * @param array $attributes
+	 * @param $attributes
 	 * @return mixed
 	 */
-	public function create(array $attributes)
+	public function create($attributes)
 	{
-		return $this->model->create([
-			'user_id' => $attributes['user_id'],
-			'article_id' => $attributes['id'],
-			'text' => $attributes['request']['text'],
-			'status' => 1
-		]);
+		return $this->model->create($attributes);
 	}
+
+	/**
+	 * @param $id
+	 * @param $attributes
+	 * @return mixed
+	 */
+	public function update($id, $attributes)
+	{
+		return $this->model->find($id)->update($attributes);
+	}
+
 	/**
 	 * @param $id
 	 * @return mixed

@@ -2,17 +2,45 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Article;
-use App\Models\Category;
-use App\Models\Seo;
-use App\Models\User;
-use App\Models\Setting;
-use App\Http\Requests\Admin\Article as ArticleRequest;
+use App\Repositories\ArticleRepository;
+use App\Repositories\CategoryRepository;
+use App\Repositories\UserRepository;
+use App\Repositories\SettingRepository;
+use App\Http\Requests\Admin\ArticleStoreRequest;
+use App\Http\Requests\Admin\ArticleEditRequest;
 use Illuminate\Support\Facades\Auth;
 
 
 class BlogArticleController extends BaseController
 {
+	/**
+	 * @var ArticleRepository
+	 */
+	protected $article;
+	/**
+	 * @var CategoryRepository
+	 */
+	protected $category;
+	/**
+	 * @var SettingRepository
+	 */
+	protected $setting;
+	/**
+	 * @var UserRepository
+	 */
+	protected $user;
+
+	/**
+	 * BlogArticleController constructor.
+	 */
+	public function __construct()
+	{
+		$this->article = new ArticleRepository();
+		$this->category = new CategoryRepository();
+		$this->setting = new SettingRepository();
+		$this->user = new UserRepository();
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -20,7 +48,8 @@ class BlogArticleController extends BaseController
 	 */
 	public function index()
 	{
-		$paginate = Setting::first()->paginate_admin;
+		$paginate = $this->setting->getPaginateAdmin();
+		$main = $this->article->getArticlesAll($paginate);
 		$main = Article::desc()->paginate($paginate);
 		return view('admin.articles.index', compact('main'));
 	}
@@ -43,7 +72,7 @@ class BlogArticleController extends BaseController
 	 * @param  \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(ArticleRequest $request)
+	public function store(ArticleStoreRequest $request)
 	{
 		Article::create([
 			'title' => $request->title,
@@ -94,7 +123,7 @@ class BlogArticleController extends BaseController
 	 * @param  int $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(ArticleRequest $request, $id)
+	public function update(ArticleEditRequest $request, $id)
 	{
 		Article::find($id)->update([
 			'title' => $request->title,

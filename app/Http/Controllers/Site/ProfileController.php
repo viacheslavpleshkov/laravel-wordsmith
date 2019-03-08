@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Models\User;
 use App\Http\Requests\Site\ProfileEditRequest;
 use App\Http\Requests\Site\ProfilePasswordRequest;
-use App\Repositories\Site\UserRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -25,77 +24,65 @@ class ProfileController extends BaseController
 	}
 
 	/**
-	 * Display a listing of the resAboProfileProfileutmeource.
-	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function index()
 	{
-		$main = User::find(Auth::user()->id);
+		$id = Auth::user()->id;
+		$main = $this->user->getById($id);
 		return view('site.profile.index', compact('main'));
 	}
 
 	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function edit($id)
 	{
-		$main = User::find($id);
+		$this->user->getById($id);
 		return view('site.profile.edit', compact('main'));
 	}
 
 	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param ProfileEditRequest $request
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function updateEdit(ProfileEditRequest $request, $id)
 	{
-		User::find($id)->update($request->all());
+		$this->user->update($id, $request->all());
 		return redirect()->route('profile.index')->with('success', __('site.updated-success'));
 	}
 
 	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function password($id)
 	{
-		$main = User::find($id);
+		$this->user->getById($id);
 		return view('site.profile.password', compact('main'));
 	}
 
 	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param ProfilePasswordRequest $request
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function updatePassword(ProfilePasswordRequest $request, $id)
 	{
-		User::find($id)->update([
-			'password' => Hash::make($request->password),
-		]);
+		$attributes = ['password' => Hash::make($request->password)];
+		$this->user->update($id, $attributes);
 		return redirect()->route('profile.index')->with('success', __('site.profile-password-success'));
 	}
 
 	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function destroy($id)
 	{
-		User::find($id)->delete();
+		$this->user->delete($id);
 		return redirect()->route('login')->with('success', __('site.profile-user-deleted'));
 	}
 }

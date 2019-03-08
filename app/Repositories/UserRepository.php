@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Site;
+namespace App\Repositories;
 
 use App\Models\User as Model;
 use Illuminate\Support\Facades\Hash;
@@ -38,17 +38,22 @@ class UserRepository implements RepositoryInterface
 	}
 
 	/**
-	 * @param array $attributes
+	 * @param $attributes
 	 * @return mixed
 	 */
-	public function create(array $attributes)
+	public function create($attributes)
 	{
-		return $this->model->create([
-			'name' => $attributes['data']['name'],
-			'email' => $attributes['data']['email'],
-			'password' => Hash::make($attributes['data']['password']),
-			'role_id' => $attributes['role']->id
-		]);
+		return $this->model->create($attributes);
+	}
+
+	/**
+	 * @param $id
+	 * @param $attributes
+	 * @return mixed
+	 */
+	public function update($id, $attributes)
+	{
+		return $this->model->find($id)->update($attributes);
 	}
 
 	/**

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Site;
+namespace App\Repositories;
 
 use App\Models\Category as Model;
 
@@ -35,6 +35,25 @@ class CategoryRepository implements RepositoryInterface
 	public function getById($id)
 	{
 		return $this->model->find($id);
+	}
+
+	/**
+	 * @param $attributes
+	 * @return mixed
+	 */
+	public function create($attributes)
+	{
+		return $this->model->create($attributes);
+	}
+
+	/**
+	 * @param $id
+	 * @param $attributes
+	 * @return mixed
+	 */
+	public function update($id, $attributes)
+	{
+		return $this->model->find($id)->update($attributes);
 	}
 
 	/**
@@ -75,7 +94,7 @@ class CategoryRepository implements RepositoryInterface
 	public function getStatusAndDesckAndLimit($limit)
 	{
 		$result = $this->model
-			->where('status',1)
+			->where('status', 1)
 			->orderBy('id', 'desc')
 			->limit($limit)
 			->get();

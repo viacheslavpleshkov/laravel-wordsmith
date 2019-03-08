@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Site;
 
 use App;
-use App\Repositories\Site\ArticleRepository;
-use App\Repositories\Site\SettingRepository;
-use App\Repositories\Site\PageRepository;
+use App\Repositories\ArticleRepository;
+use App\Repositories\SettingRepository;
+use App\Repositories\PageRepository;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailShipped;
 use App\Http\Requests\Site\ContactRequest;
@@ -15,7 +15,7 @@ class SiteController extends BaseController
 	/**
 	 * @var ArticleRepository
 	 */
-	protected $blog_article;
+	protected $article;
 	/**
 	 * @var SettingRepository
 	 */
@@ -30,7 +30,7 @@ class SiteController extends BaseController
 	 */
 	public function __construct()
 	{
-		$this->blog_article = new ArticleRepository;
+		$this->article = new ArticleRepository;
 		$this->setting = new SettingRepository();
 		$this->page = new PageRepository();
 
@@ -41,10 +41,10 @@ class SiteController extends BaseController
 	 */
 	public function index()
 	{
-		$slider = $this->blog_article->getSlideAll();
+		$slider = $this->article->getSlideAll();
 		$main = $this->page->getPageHome();
 		$paginate = $this->setting->getPaginateSite();
-		$articles = $this->blog_article->getArticlesAll($paginate);
+		$articles = $this->article->getArticlesAll($paginate);
 		return view('site.pages.index', compact('main', 'slider', 'articles'));
 	}
 

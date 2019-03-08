@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Repositories\Site;
+namespace App\Repositories;
 
-use App\Models\Seo as Model;
+use App\Models\Subscribe as Model;
 
-class SeoRepository implements RepositoryInterface
+class SubscribeRepository implements RepositoryInterface
 {
 	/**
 	 * @var Model
 	 */
-	protected $model;
+	private $model;
 
 	/**
-	 * SeoRepository constructor.
+	 * SubscribeRepository constructor.
 	 */
 	public function __construct()
 	{
@@ -34,6 +34,25 @@ class SeoRepository implements RepositoryInterface
 	public function getById($id)
 	{
 		return $this->model->find($id);
+	}
+
+	/**
+	 * @param $attributes
+	 * @return mixed
+	 */
+	public function create($attributes)
+	{
+		return $this->model->create($attributes);
+	}
+
+	/**
+	 * @param $id
+	 * @param $attributes
+	 * @return mixed
+	 */
+	public function update($id, $attributes)
+	{
+		return $this->model->find($id)->update($attributes);
 	}
 
 	/**

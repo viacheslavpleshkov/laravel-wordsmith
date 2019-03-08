@@ -3,10 +3,10 @@
 namespace App\Providers;
 
 use App\Repositories\RepositoryInterface;
-use App\Repositories\Site\ArticleRepository;
-use App\Repositories\Site\CategoryRepository;
-use App\Repositories\Site\SettingRepository;
-use App\Repositories\Site\SociallinkRepository;
+use App\Repositories\ArticleRepository;
+use App\Repositories\CategoryRepository;
+use App\Repositories\SettingRepository;
+use App\Repositories\SociallinkRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -41,7 +41,5 @@ class AppServiceProvider extends ServiceProvider
 		if ($this->app->isLocal()) {
 			$this->app->register(TelescopeServiceProvider::class);
 		}
-		$this->app->singleton(RepositoryInterface::class, ArticleRepository::class);
-
 	}
 }

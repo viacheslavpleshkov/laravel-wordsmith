@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Repositories\Site\SubscribeRepository;
+use App\Repositories\SubscribeRepository;
 use App\Http\Requests\Site\SubscribeRequest;
 
 class SubscribeController extends BaseController
@@ -26,7 +26,11 @@ class SubscribeController extends BaseController
 	 */
 	public function subscribe(SubscribeRequest $request)
 	{
-		$this->subscribe->create($request);
+		$attributes = [
+			'email' => $request['email'],
+			'status' => 1
+		];
+		$this->subscribe->create($attributes);
 		return redirect()->back()->with('success-submit', __('site.success-submit'));
 	}
 }

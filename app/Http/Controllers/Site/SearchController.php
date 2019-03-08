@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Requests\Site\SearchRequest;
-use App\Repositories\Site\SettingRepository;
-use App\Repositories\Site\ArticleRepository;
-use App\Repositories\Site\PageRepository;
+use App\Repositories\SettingRepository;
+use App\Repositories\ArticleRepository;
+use App\Repositories\PageRepository;
 
 class SearchController extends BaseController
 {

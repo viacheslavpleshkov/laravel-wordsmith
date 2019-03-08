@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Repositories\Site\ArticleRepository;
-use App\Repositories\Site\CommentRepository;
-use App\Repositories\Site\PageRepository;
-use App\Repositories\Site\SettingRepository;
+use App\Repositories\ArticleRepository;
+use App\Repositories\CommentRepository;
+use App\Repositories\PageRepository;
+use App\Repositories\SettingRepository;
 
 class BlogArticleController extends BaseController
 {
 	/**
 	 * @var ArticleRepository
 	 */
-	protected $blog_article;
+	protected $article;
 	/**
 	 * @var CommentRepository
 	 */
-	protected $blog_comment;
+	protected $comment;
 	/**
 	 * @var PageRepository
 	 */
@@ -31,8 +31,8 @@ class BlogArticleController extends BaseController
 	 */
 	public function __construct()
 	{
-		$this->blog_article = new ArticleRepository;
-		$this->blog_comment = new CommentRepository;
+		$this->article = new ArticleRepository;
+		$this->comment = new CommentRepository;
 		$this->page = new PageRepository;
 		$this->setting = new SettingRepository();
 	}
@@ -44,7 +44,7 @@ class BlogArticleController extends BaseController
 	{
 		$main = $this->page->getPageBlog();
 		$paginate = $this->setting->getPaginateSite();
-		$articles = $this->blog_article->getArticlesAll($paginate);
+		$articles = $this->article->getArticlesAll($paginate);
 		return view('site.articles.index', compact('main', 'articles'));
 	}
 
@@ -54,13 +54,13 @@ class BlogArticleController extends BaseController
 	 */
 	public function view($url)
 	{
-		$main = $this->blog_article->getArticle($url);
+		$main = $this->article->getArticle($url);
 		if (isset($main)) {
-			$this->blog_article->setView($main);
-			$previous = $this->blog_article->getPreviousPost($main->id);
-			$next = $this->blog_article->getNextPost($main->id);
-			$comments = $this->blog_comment->getCommentsAll($main->id);
-			$count = $this->blog_comment->getCountCommentsAll($main->id);
+			$this->article->setView($main);
+			$previous = $this->article->getPreviousPost($main->id);
+			$next = $this->article->getNextPost($main->id);
+			$comments = $this->comment->getCommentsAll($main->id);
+			$count = $this->comment->getCountCommentsAll($main->id);
 			return view('site.articles.view', compact('main', 'previous', 'next', 'comments', 'count'));
 		} else {
 			abort(404);
