@@ -107,7 +107,6 @@ class ArticleRepository implements RepositoryInterface
 
 		$result = $this->model
 			->select($columns)
-			->where('status', 1)
 			->orderBy('id', 'desc')
 			->with('category:id,name')
 			->with('seo:id,title')

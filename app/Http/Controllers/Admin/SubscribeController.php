@@ -2,28 +2,44 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Subscribe;
-use App\Models\Setting;
-use App\Http\Requests\Admin\Subscribe as SubscribeRequest;
+use App\Repositories\SubscribeRepository;
+use App\Repositories\SettingRepository;
+use App\Http\Requests\Admin\SubscribeStoreRequest;
+use App\Http\Requests\Admin\SubscribeEditRequest;
 
 class SubscribeController extends BaseController
 {
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
+	 * @var SettingRepository
+	 */
+	protected $setting;
+	/**
+	 * @var SubscribeRepository
+	 */
+	protected $subscribe;
+
+	/**
+	 * SubscribeController constructor.
+	 */
+	public function __construct()
+	{
+		$this->setting = new SettingRepository();
+		$this->subscribe = new SubscribeRepository();
+	}
+
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function index()
 	{
-		$paginate = Setting::first()->paginate_admin;
-		$main = Subscribe::desc()->paginate($paginate);
+		$paginate = $this->setting->getPaginateAdmin();
+		$main = $this->subscribe->getSubscribeAdminAll($paginate);
+
 		return view('admin.subscribes.index', compact('main'));
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function create()
 	{
@@ -33,61 +49,57 @@ class SubscribeController extends BaseController
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request $request
+	 * @param \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(SubscribeRequest $request)
+	public function store(SubscribeStoreRequest $request)
 	{
-		Subscribe::create($request->all());
+		$this->subscribe->create($request->all());
+
 		return redirect()->route('subscribes.index')->with('success', __('admin.created-success'));
 	}
 
 	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function show($id)
 	{
-		$main = Subscribe::find($id);
+		$main = $this->subscribe->getById($id);
+
 		return view('admin.subscribes.show', compact('main'));
 	}
 
 	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function edit($id)
 	{
-		$main = Subscribe::find($id);
+		$main = $this->subscribe->getById($id);
 		return view('admin.subscribes.edit', compact('main'));
 	}
 
 	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param SubscribeEditRequest $request
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update(SubscribeRequest $request, $id)
+	public function update(SubscribeEditRequest $request, $id)
 	{
-		Subscribe::find($id)->update($request->all());
+		$this->subscribe->update($id, $request->all());
+
 		return redirect()->route('subscribes.index')->with('success', __('admin.updated-success'));
 	}
 
 	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function destroy($id)
 	{
-		Subscribe::find($id)->delete();
+		$this->subscribe->delete($id);
+
 		return redirect()->route('subscribes.index')->with('success', __('admin.information-deleted'));
 	}
 }

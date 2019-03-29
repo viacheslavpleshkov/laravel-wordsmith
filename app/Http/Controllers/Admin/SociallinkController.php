@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Sociallink;
-use App\Models\Setting;
-use App\Http\Requests\Admin\Sociallink as SociallinkRequest;
 use App\Repositories\SettingRepository;
 use App\Repositories\SociallinkRepository;
-
+use App\Http\Requests\Admin\SociallinkStoreRequest;
+use App\Http\Requests\Admin\SociallinkEditRequest;
 
 class SociallinkController extends BaseController
 {
+	/**
+	 * @var SociallinkRepository
+	 */
 	protected $sociallink;
+	/**
+	 * @var SettingRepository
+	 */
 	protected $setting;
+
+	/**
+	 * SociallinkController constructor.
+	 */
 	public function __construct()
 	{
 		$this->sociallink = new SociallinkRepository();
@@ -20,21 +28,18 @@ class SociallinkController extends BaseController
 	}
 
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function index()
 	{
-		$paginate = Setting::first()->paginate_admin;
-		$main = Sociallink::desc()->paginate($paginate);
+		$paginate = $this->setting->getPaginateAdmin();
+		$main = $this->sociallink->getSociallinkAdminAll($paginate);
+
 		return view('admin.social-link.index', compact('main'));
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function create()
 	{
@@ -42,63 +47,58 @@ class SociallinkController extends BaseController
 	}
 
 	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @return \Illuminate\Http\Response
+	 * @param SociallinkStoreRequest $request
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function store(SociallinkRequest $request)
+	public function store(SociallinkStoreRequest $request)
 	{
-		Sociallink::create($request->all());
+		$this->sociallink->create($request->all());
+
 		return redirect()->route('social-link.index')->with('success', __('admin.created-success'));
 	}
 
 	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function show($id)
 	{
-		$main = Sociallink::find($id);
+		$main = $this->sociallink->getById($id);
+
 		return view('admin.social-link.show', compact('main'));
 	}
 
 	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function edit($id)
 	{
-		$main = Sociallink::find($id);
+		$main = $this->sociallink->getById($id);
+
 		return view('admin.social-link.edit', compact('main'));
 	}
 
 	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param SociallinkEditRequest $request
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update(SociallinkRequest $request, $id)
+	public function update(SociallinkEditRequest $request, $id)
 	{
-		Sociallink::find($id)->update($request->all());
+		$this->sociallink->update($id, $request->all());
+
 		return redirect()->route('social-link.index')->with('success', __('admin.updated-success'));
 	}
 
 	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function destroy($id)
 	{
-		Sociallink::find($id)->delete();
+		$this->sociallink->getById($id);
+
 		return redirect()->route('social-link.index')->with('success', __('admin.information-deleted'));
 	}
 }

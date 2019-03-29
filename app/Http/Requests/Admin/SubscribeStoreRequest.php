@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Subscribe extends FormRequest
+class SubscribeStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

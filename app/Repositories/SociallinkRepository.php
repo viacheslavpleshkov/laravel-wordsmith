@@ -71,4 +71,25 @@ class SociallinkRepository implements RepositoryInterface
 	{
 		return $this->model->where('status', 1)->get();
 	}
+
+	/**
+	 * @param $paginate
+	 * @return mixed
+	 */
+	public function getSociallinkAdminAll($paginate)
+	{
+		$columns = [
+			'id',
+			'title',
+			'url',
+			'seo_id',
+		];
+
+		$result = $this->model
+//			->select($columns)
+//			->with('seo:id,title')
+			->paginate($paginate);
+
+		return $result;
+	}
 }

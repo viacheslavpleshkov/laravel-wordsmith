@@ -63,4 +63,24 @@ class SubscribeRepository implements RepositoryInterface
 	{
 		return $this->model->find($id)->delete();
 	}
+
+	/**
+	 * @param $paginate
+	 * @return mixed
+	 */
+	public function getSubscribeAdminAll($paginate)
+	{
+		$columns = [
+			'id',
+			'email',
+			'status',
+		];
+
+		$result = $this->model
+			->select($columns)
+			->orderBy('id', 'desc')
+			->paginate($paginate);
+
+		return $result;
+	}
 }

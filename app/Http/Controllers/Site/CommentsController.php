@@ -11,7 +11,7 @@ class CommentsController extends BaseController
 	/**
 	 * @var CommentRepository
 	 */
-	private $comment;
+	protected $comment;
 
 	/**
 	 * CommentsController constructor.
@@ -31,7 +31,7 @@ class CommentsController extends BaseController
 		$attributes = [
 			'user_id' => Auth::user()->id,
 			'article_id' => $id,
-			'text' => $request,
+			'text' => $request->text,
 			'status' => 1
 		];
 		$this->comment->create($attributes);
