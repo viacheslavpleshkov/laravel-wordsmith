@@ -114,4 +114,28 @@ class CategoryRepository implements RepositoryInterface
 
 		return $result;
 	}
+
+	/**
+	 * @param $paginate
+	 * @return mixed
+	 */
+	public function getArticlesAdminAll($paginate)
+	{
+		$columns = [
+			'id',
+			'name',
+			'url',
+			'seo_id',
+			'status',
+		];
+
+		$result = $this->model
+			->select($columns)
+			->where('status', 1)
+			->orderBy('id', 'desc')
+			->with('seo:id,title')
+			->paginate($paginate);
+
+		return $result;
+	}
 }

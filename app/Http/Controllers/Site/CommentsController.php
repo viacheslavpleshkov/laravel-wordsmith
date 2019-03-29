@@ -11,7 +11,7 @@ class CommentsController extends BaseController
 	/**
 	 * @var CommentRepository
 	 */
-	protected $comment;
+	private $comment;
 
 	/**
 	 * CommentsController constructor.

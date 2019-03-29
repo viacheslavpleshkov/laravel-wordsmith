@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Seo as Model;
 
-class SeoRepository implements RepositoryInterface
+class CacheRepository implements RepositoryInterface
 {
 	/**
 	 * @var Model
@@ -62,39 +62,5 @@ class SeoRepository implements RepositoryInterface
 	public function delete($id)
 	{
 		return $this->model->find($id)->delete();
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getStatusAll()
-	{
-		$result = $this->model
-			->where('status', 1)
-			->get();
-
-		return $result;
-	}
-
-	/**
-	 * @param $paginate
-	 * @return mixed
-	 */
-	public function getSeoAdminAll($paginate)
-	{
-		$columns = [
-			'id',
-			'title',
-			'description',
-			'keyword',
-			'status',
-		];
-
-		$result = $this->model
-			->select($columns)
-			->orderBy('id', 'desc')
-			->paginate($paginate);
-
-		return $result;
 	}
 }

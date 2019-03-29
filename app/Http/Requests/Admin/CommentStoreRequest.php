@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Seo extends FormRequest
+class CommentStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,10 @@ class Seo extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
-            'keyword' => 'required|string|max:255',
-			'status' => 'required|integer',
+            'user_id' => 'required|integer',
+            'article_id' => 'required|integer',
+            'text' => 'required|string|max:4096',
+            'status' => 'required|integer',
         ];
     }
 }

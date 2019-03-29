@@ -2,71 +2,90 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
-use App\Models\Role;
-use App\Models\Setting;
-use App\Http\Requests\Admin\User as UserRequest;
+use App\Repositories\UserRepository;
+use App\Repositories\RoleRepository;
+use App\Repositories\SettingRepository;
+use App\Http\Requests\Admin\UserEditRequest;
+use App\Http\Requests\Admin\UserStoreRequest;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends BaseController
 {
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
+	 * @var SettingRepository
+	 */
+	protected $setting;
+	/**
+	 * @var RoleRepository
+	 */
+	protected $role;
+	/**
+	 * @var UserRepository
+	 */
+	protected $user;
+
+	/**
+	 * UserController constructor.
+	 */
+	public function __construct()
+	{
+		$this->setting = new SettingRepository();
+		$this->role = new RoleRepository();
+		$this->user = new UserRepository();
+	}
+
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function index()
 	{
-		$paginate = Setting::first()->paginate_admin;
-		$main = User::desc()->paginate($paginate);
+		$paginate = $this->setting->getPaginateAdmin();
+		$main = $this->user->getUserAdminAll($paginate);
+
 		return view('admin.users.index', compact('main'));
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function create()
 	{
-		$role = Role::all();
+		$role = $this->role->getAll();
+
 		return view('admin.users.create', compact('role'));
 	}
 
 	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @return \Illuminate\Http\Response
+	 * @param UserRequest $request
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function store(UserRequest $request)
+	public function store(UserStoreRequest $request)
 	{
-		User::create([
+		$attributes = [
 			'name' => $request->name,
 			'email' => $request->email,
 			'password' => Hash::make($request->password),
 			'role_id' => $request->role_id
-		]);
+		];
+		$this->user->create($attributes);
+
 		return redirect()->route('users.index')->with('success', __('admin.created-success'));
 	}
 
 	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function show($id)
 	{
-		$main = User::find($id);
+		$main = $this->user->getById($id);
+
 		return view('admin.users.show', compact('main'));
 	}
 
 	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function edit($id)
 	{
@@ -76,32 +95,31 @@ class UserController extends BaseController
 	}
 
 	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param UserRequest $request
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update(UserRequest $request, $id)
+	public function update(UserEditRequest $request, $id)
 	{
-		User::find($id)->update([
+		$attributes = [
 			'name' => $request->name,
 			'email' => $request->email,
 			'password' => Hash::make($request->password),
 			'role_id' => $request->role_id
-		]);
+		];
+		$this->user->update($id, $attributes);
+
 		return redirect()->route('users.index')->with('success', __('admin.updated-success'));
 	}
 
 	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function destroy($id)
 	{
-		User::find($id)->delete();
+		$this->user->delete($id);
+
 		return redirect()->route('users.index')->with('success', __('admin.information-deleted'));
 	}
 }

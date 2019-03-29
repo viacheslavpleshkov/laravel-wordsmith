@@ -5,10 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Sociallink;
 use App\Models\Setting;
 use App\Http\Requests\Admin\Sociallink as SociallinkRequest;
+use App\Repositories\SettingRepository;
+use App\Repositories\SociallinkRepository;
 
 
 class SociallinkController extends BaseController
 {
+	protected $sociallink;
+	protected $setting;
+	public function __construct()
+	{
+		$this->sociallink = new SociallinkRepository();
+		$this->setting = new SettingRepository();
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *

@@ -2,93 +2,103 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Seo;
-use App\Models\Setting;
-use App\Http\Requests\Admin\Seo as SeoRequest;
-
+use App\Repositories\SeoRepository;
+use App\Repositories\SettingRepository;
+use App\Http\Requests\Admin\SeoEditRequest;
+use App\Http\Requests\Admin\SeoStoreRequest;
 
 class SeoController extends BaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+	/**
+	 * @var SeoRepository
+	 */
+	protected $seo;
+	/**
+	 * @var SettingRepository
+	 */
+	protected $setting;
+
+	/**
+	 * SeoController constructor.
+	 */
+	public function __construct()
+	{
+		$this->seo = new SeoRepository();
+		$this->setting = new SettingRepository();
+	}
+
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
     public function index()
     {
-		$paginate = Setting::first()->paginate_admin;
-		$main = Seo::desc()->paginate($paginate);
+		$paginate = $this->setting->getPaginateAdmin();
+		$main = $this->seo->getSeoAdminAll($paginate);
+
         return view('admin.seo.index', compact('main'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
     public function create()
     {
         return view('admin.seo.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(SeoRequest $request)
+	/**
+	 * @param SeoStoreRequest $request
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+    public function store(SeoStoreRequest $request)
     {
-        Seo::create($request->all());
+    	$this->seo->create($request->all());
+
         return redirect()->route('seo.index')->with('success', __('admin.created-success'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+	/**
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
     public function show($id)
     {
-        $main = Seo::find($id);
+        $main = $this->seo->getById($id);
+
         return view('admin.seo.show', compact('main'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+	/**
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
     public function edit($id)
     {
-        $main = Seo::find($id);
+        $main = $this->seo->getById($id);
+
         return view('admin.seo.edit', compact('main'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(SeoRequest $request, $id)
+	/**
+	 * @param SeoEditRequest $request
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+    public function update(SeoEditRequest $request, $id)
     {
-        Seo::find($id)->update($request->all());
+    	$this->seo->update($id, $request->all());
+
         return redirect()->route('seo.index')->with('success', __('admin.updated-success'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+	/**
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
     public function destroy($id)
     {
-        Seo::find($id)->delete();
+    	$this->seo->delete($id);
+
         return redirect()->route('seo.index')->with('success', __('admin.information-deleted'));
     }
 }

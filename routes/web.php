@@ -21,9 +21,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::resource('pages', 'PageController');
         Route::resource('social-link', 'SociallinkController');
         Route::resource('subscribes', 'SubscribeController');
-        Route::resource('articles', 'BlogArticleController');
-        Route::resource('categories', 'BlogCategoryController');
-        Route::resource('comments', 'BlogCommentsController');
+        Route::resource('articles', 'ArticleController');
+        Route::resource('categories', 'CategoryController');
+        Route::resource('comments', 'CommentsController');
     });
     Route::group(['roles' => ['Admin']], function () {
         Route::resource('users', 'UserController');
@@ -38,9 +38,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 });
 Route::namespace('Site')->group(function () {
     Route::get('/', 'SiteController@index')->name('site.index');
-    Route::get('blog', 'BlogArticleController@index')->name('site.article.index');
-    Route::get('blog/{url}', 'BlogArticleController@view')->name('site.article.view')->where('url', '[\w\d\-\_]+');
-    Route::get('categories/{url}', 'BlogCategoryController@view')->name('site.categories')->where('url', '[\w\d\-\_]+');
+    Route::get('blog', 'ArticleController@index')->name('site.article.index');
+    Route::get('blog/{url}', 'ArticleController@view')->name('site.article.view')->where('url', '[\w\d\-\_]+');
+    Route::get('categories/{url}', 'CategoryController@view')->name('site.categories')->where('url', '[\w\d\-\_]+');
 
     Route::get('styles', 'SiteController@styles')->name('site.styles');
     Route::get('about', 'SiteController@about')->name('site.about');
@@ -48,7 +48,7 @@ Route::namespace('Site')->group(function () {
     Route::post('contact', 'SiteController@submit');
     Route::get('privacy-policy', 'SiteController@privacypolicy')->name('site.privacy-policy');
 
-    Route::post('comments/{id}', 'BlogCommentsController@comments')->name('site.comments')->where('id', '[\w\d\-\_]+');
+    Route::post('comments/{id}', 'CommentsController@comments')->name('site.comments')->where('id', '[\w\d\-\_]+');
     Route::post('subscribe', 'SubscribeController@subscribe')->name('site.subscribe');
     Route::get('search', 'SearchController@search')->name('site.search');
     Route::middleware('auth')->group(function () {

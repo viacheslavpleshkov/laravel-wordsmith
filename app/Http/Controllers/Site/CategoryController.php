@@ -6,7 +6,7 @@ use App\Repositories\ArticleRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\SettingRepository;
 
-class BlogCategoryController extends BaseController
+class CategoryController extends BaseController
 {
 	/**
 	 * @var ArticleRepository

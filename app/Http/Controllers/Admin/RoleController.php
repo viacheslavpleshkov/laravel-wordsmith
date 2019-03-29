@@ -2,58 +2,72 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Role;
-use App\Models\Setting;
-use App\Http\Requests\Admin\Role as RoleRequest;
+use App\Repositories\RoleRepository;
+use App\Repositories\SettingRepository;
+use App\Http\Requests\Admin\RoleEditRequest;
 
 class RoleController extends BaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+	/**
+	 * @var RoleRepository
+	 */
+	protected $role;
+	/**
+	 * @var SettingRepository
+	 */
+	protected $setting;
+
+	/**
+	 * RoleController constructor.
+	 */
+	public function __construct()
+	{
+		$this->role = new RoleRepository();
+		$this->setting = new SettingRepository();
+	}
+
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
     public function index()
     {
-		$paginate = Setting::first()->paginate_admin;
-		$main = Role::desc()->paginate($paginate);
+		$paginate = $this->setting->getPaginateAdmin();
+		$main = $this->role->getRoleAdminAll($paginate);
+
         return view('admin.roles.index', compact('main'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+	/**
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
     public function show($id)
     {
-        $main = Role::find($id);
+        $main = $this->role->getById($id);
+
         return view('admin.roles.show', compact('main'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+	/**
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
     public function edit($id)
     {
-        $main = Role::find($id);
+        $main = $this->role->getById($id);
+
         return view('admin.roles.edit', compact('main'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(RoleRequest $request, $id)
+	/**
+	 * @param RoleEditRequest $request
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+    public function update(RoleEditRequest $request, $id)
     {
-        Role::find($id)->update($request->all());
+        $this->role->update($id, $request->all());
+
         return redirect()->route('roles.index')->with('success', __('admin.updated-success'));
     }
 }

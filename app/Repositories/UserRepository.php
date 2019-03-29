@@ -64,4 +64,38 @@ class UserRepository implements RepositoryInterface
 	{
 		return $this->model->find($id)->delete();
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCommentsList(){
+		$columns = [
+			'id',
+			'name',
+		];
+
+		$result = $this->model
+			->select($columns)
+			->get();
+
+		return $result;
+	}
+
+	public function getUserAdminAll($paginate)
+	{
+		$columns = [
+			'id',
+			'name',
+			'email',
+			'role_id',
+		];
+
+		$result = $this->model
+			->select($columns)
+			->orderBy('id', 'desc')
+			->with('role:id,name')
+			->paginate($paginate);
+
+		return $result;
+	}
 }

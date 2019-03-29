@@ -99,4 +99,28 @@ class CommentRepository implements RepositoryInterface
 
 		return $result;
 	}
+
+	/**
+	 * @param $paginate
+	 * @return mixed
+	 */
+	public function getCommentAdminAll($paginate)
+	{
+		$columns = [
+			'id',
+			'user_id',
+			'article_id',
+			'status',
+		];
+
+		$result = $this->model
+			->select($columns)
+			->where('status', 1)
+			->orderBy('id', 'desc')
+			->with('user:id,name')
+			->with('article:id,title')
+			->paginate($paginate);
+
+		return $result;
+	}
 }

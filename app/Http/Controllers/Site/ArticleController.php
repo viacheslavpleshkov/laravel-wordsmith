@@ -7,7 +7,7 @@ use App\Repositories\CommentRepository;
 use App\Repositories\PageRepository;
 use App\Repositories\SettingRepository;
 
-class BlogArticleController extends BaseController
+class ArticleController extends BaseController
 {
 	/**
 	 * @var ArticleRepository

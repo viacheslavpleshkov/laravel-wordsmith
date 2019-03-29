@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Repositories\ArticleRepository;
 use App\Repositories\CategoryRepository;
+use App\Repositories\SeoRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\ArticleStoreRequest;
@@ -11,7 +12,7 @@ use App\Http\Requests\Admin\ArticleEditRequest;
 use Illuminate\Support\Facades\Auth;
 
 
-class BlogArticleController extends BaseController
+class ArticleController extends BaseController
 {
 	/**
 	 * @var ArticleRepository
@@ -29,9 +30,13 @@ class BlogArticleController extends BaseController
 	 * @var UserRepository
 	 */
 	protected $user;
+	/**
+	 * @var SeoRepository
+	 */
+	protected $seo;
 
 	/**
-	 * BlogArticleController constructor.
+	 * ArticleController constructor.
 	 */
 	public function __construct()
 	{
@@ -39,18 +44,17 @@ class BlogArticleController extends BaseController
 		$this->category = new CategoryRepository();
 		$this->setting = new SettingRepository();
 		$this->user = new UserRepository();
+		$this->seo = new SeoRepository();
 	}
 
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function index()
 	{
 		$paginate = $this->setting->getPaginateAdmin();
-		$main = $this->article->getArticlesAll($paginate);
-		$main = Article::desc()->paginate($paginate);
+		$main = $this->article->getArticlesAdminAll($paginate);
+
 		return view('admin.articles.index', compact('main'));
 	}
 
@@ -61,20 +65,21 @@ class BlogArticleController extends BaseController
 	 */
 	public function create()
 	{
-		$seo = Seo::where('status', 1)->get();
-		$categories = Category::where('status', 1)->get();
+		$seo = $this->seo->getStatusAll();
+		$categories = $this->category->getStatusAll();
+
 		return view('admin.articles.create', compact('seo', 'categories'));
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request $request
+	 * @param \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(ArticleStoreRequest $request)
 	{
-		Article::create([
+		$attributes = [
 			'title' => $request->title,
 			'url' => $request->url,
 			'images' => $request->file('images')->store('articles', 'public'),
@@ -85,47 +90,45 @@ class BlogArticleController extends BaseController
 			'slide' => $request->slide,
 			'status' => $request->status,
 			'user_id' => Auth::user()->id,
-		]);
+		];
+		$this->article->create($attributes);
+
 		return redirect()->route('articles.index')->with('success', __('admin.created-success'));
 	}
 
 	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function show($id)
 	{
-		$main = Article::find($id);
+		$main = $this->article->getById($id);
+
 		return view('admin.articles.show', compact('main'));
 	}
 
 	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function edit($id)
 	{
-		$main = Article::find($id);
-		$seo = Seo::where('status', 1)->get();
-		$categories = Category::where('status', 1)->get();
-		$users = User::all();
+		$main = $this->article->getById($id);
+		$seo = $this->seo->getStatusAll();
+		$categories = $this->category->getStatusAll();
+		$users = $this->user->getAll();
+
 		return view('admin.articles.edit', compact('main', 'categories', 'seo', 'users'));
 	}
 
 	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param ArticleEditRequest $request
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function update(ArticleEditRequest $request, $id)
 	{
-		Article::find($id)->update([
+		$attributes = [
 			'title' => $request->title,
 			'url' => $request->url,
 			'images' => $request->file('images')->store('articles', 'public'),
@@ -136,19 +139,22 @@ class BlogArticleController extends BaseController
 			'slide' => $request->slide,
 			'status' => $request->status,
 			'user_id' => $request->user_id
-		]);
+		];
+		$this->article->update($id, $attributes);
+
 		return redirect()->route('articles.index')->with('success', __('admin.updated-success'));
 	}
 
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int $id
+	 * @param int $id
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy($id)
 	{
-		Article::find($id)->delete();
+		$this->article->delete($id);
+
 		return redirect()->route('articles.index')->with('success', __('admin.information-deleted'));
 	}
 }

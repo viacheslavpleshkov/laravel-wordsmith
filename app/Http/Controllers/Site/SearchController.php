@@ -6,6 +6,8 @@ use App\Http\Requests\Site\SearchRequest;
 use App\Repositories\SettingRepository;
 use App\Repositories\ArticleRepository;
 use App\Repositories\PageRepository;
+use App\Repositories\CacheRepository;
+use Illuminate\Support\Facades\Cache;
 
 class SearchController extends BaseController
 {
@@ -21,6 +23,10 @@ class SearchController extends BaseController
 	 * @var PageRepository
 	 */
 	protected $page;
+	/**
+	 * @var
+	 */
+	protected $cache;
 
 	/**
 	 * SearchController constructor.
@@ -30,6 +36,7 @@ class SearchController extends BaseController
 		$this->setting = new SettingRepository();
 		$this->article = new ArticleRepository();
 		$this->page = new PageRepository();
+		$this->cache = new CacheRepository();
 	}
 
 	/**
@@ -43,11 +50,21 @@ class SearchController extends BaseController
 			$paginate = $this->setting->getPaginateSite();
 			$articles = $this->article->getSearch($title, $paginate);
 			$main = $this->page->getPageSearch();
+			$cache = $this->cache->getById(1);
+
+			//Cache
+			if (Cache::has('page-search')) {
+				$main = Cache::get('page-search');
+			} else {
+				Cache::put('page-search', $main, $cache->pagesearch);
+			}
+
 			if (count($articles) > 0) {
 				return view('site.search.index', compact('title', 'main', 'articles'));
 			} else {
 				return view('site.search.sorry', compact('title', 'main'));
 			}
+
 		} else {
 			abort(404);
 		};

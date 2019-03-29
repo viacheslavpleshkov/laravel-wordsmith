@@ -137,4 +137,25 @@ class PageRepository implements RepositoryInterface
 
 		return $result;
 	}
+
+	/**
+	 * @param $paginate
+	 * @return mixed
+	 */
+	public function getPageAdminAll($paginate)
+	{
+		$columns = [
+			'id',
+			'title',
+			'url',
+			'seo_id',
+		];
+
+		$result = $this->model
+			->select($columns)
+			->with('seo:id,title')
+			->paginate($paginate);
+
+		return $result;
+	}
 }

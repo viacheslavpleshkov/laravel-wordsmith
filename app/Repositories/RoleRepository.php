@@ -95,4 +95,20 @@ class RoleRepository implements RepositoryInterface
 	{
 		return $this->model->where('id', 4)->first();
 	}
+
+	public function getRoleAdminAll($paginate)
+	{
+		$columns = [
+			'id',
+			'name',
+			'description',
+		];
+
+		$result = $this->model
+			->select($columns)
+			->orderBy('id', 'desc')
+			->paginate($paginate);
+
+		return $result;
+	}
 }

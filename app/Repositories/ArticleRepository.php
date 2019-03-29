@@ -54,6 +54,7 @@ class ArticleRepository implements RepositoryInterface
 	{
 		return $this->model->find($id)->update($attributes);
 	}
+
 	/**
 	 * @param $id
 	 * @return mixed
@@ -83,6 +84,33 @@ class ArticleRepository implements RepositoryInterface
 			->where('status', 1)
 			->orderBy('id', 'desc')
 			->with('category:id,name,url')
+			->paginate($paginate);
+
+		return $result;
+	}
+
+	/**
+	 * @param $paginate
+	 * @return mixed
+	 */
+	public function getArticlesAdminAll($paginate)
+	{
+		$columns = [
+			'id',
+			'title',
+			'url',
+			'category_id',
+			'seo_id',
+			'status',
+			'views',
+		];
+
+		$result = $this->model
+			->select($columns)
+			->where('status', 1)
+			->orderBy('id', 'desc')
+			->with('category:id,name')
+			->with('seo:id,title')
 			->paginate($paginate);
 
 		return $result;
@@ -287,6 +315,24 @@ class ArticleRepository implements RepositoryInterface
 			->where('status', 1)
 			->orderBy('id', 'desc')
 			->first();
+
+		return $result;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCommentsList(){
+		$columns = [
+			'id',
+			'title',
+			'status',
+		];
+
+		$result = $this->model
+			->select($columns)
+			->where('status', 1)
+			->get();
 
 		return $result;
 	}

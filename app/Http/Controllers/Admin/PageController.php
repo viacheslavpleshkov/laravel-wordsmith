@@ -2,21 +2,26 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Page;
-use App\Http\Requests\Admin\PageEditRequest;
-use App\Models\Seo;
-use App\Models\Setting;
 use App\Repositories\PageRepository;
 use App\Repositories\SettingRepository;
 use App\Repositories\SeoRepository;
-
+use App\Http\Requests\Admin\PageEditRequest;
 
 class PageController extends BaseController
 {
 	protected $page;
+	/**
+	 * @var SettingRepository
+	 */
 	protected $setting;
+	/**
+	 * @var SeoRepository
+	 */
 	protected $seo;
 
+	/**
+	 * PageController constructor.
+	 */
 	public function __construct()
 	{
 		$this->page = new PageRepository();
@@ -25,52 +30,48 @@ class PageController extends BaseController
 	}
 
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function index()
 	{
-		$paginate = Setting::first()->paginate_admin;
-		$main = Page::desc()->paginate($paginate);
+		$paginate = $this->setting->getPaginateAdmin();
+		$main = $this->page->getPageAdminAll($paginate);
+
 		return view('admin.pages.index', compact('main'));
 	}
 
 	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function show($id)
 	{
-		$main = Page::find($id);
+		$main = $this->page->getById($id);
+
 		return view('admin.pages.show', compact('main'));
 	}
 
 	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function edit($id)
 	{
-		$main = Page::find($id);
-		$seo = Seo::all();
+		$main = $this->page->getById($id);
+		$seo = $this->seo->getAll();
+
 		return view('admin.pages.edit', compact('main', 'seo'));
 	}
 
 	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
+	 * @param PageEditRequest $request
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function update(PageEditRequest $request, $id)
 	{
-		Page::find($id)->update($request->all());
+		$this->page->update($id, $request->all());
+
 		return redirect()->route('pages.index')->with('success', __('admin.updated-success'));
 	}
 }
