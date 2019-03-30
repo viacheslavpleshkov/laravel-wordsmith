@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PageEditRequest extends FormRequest
+class RoleUpdateRequest extends FormRequest
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -24,11 +24,7 @@ class PageEditRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'title' => 'required|string|max:255',
-			'url' => 'required|string|unique:pages|max:255',
-			'content_header' => 'nullable|string|max:4096',
-			'text' => 'nullable|string|max:4096',
-			'seo_id' => 'required|integer',
+			'description' => 'required|string|max:255',
 		];
 	}
 }

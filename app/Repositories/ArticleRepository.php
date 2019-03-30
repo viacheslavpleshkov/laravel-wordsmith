@@ -12,11 +12,12 @@ class ArticleRepository implements RepositoryInterface
 	protected $model;
 
 	/**
-	 * BlogArticleRepository constructor.
+	 * ArticleRepository constructor.
+	 * @param Model $model
 	 */
-	public function __construct()
+	public function __construct(Model $model)
 	{
-		$this->model = new Model();
+		$this->model = $model;
 	}
 
 	/**

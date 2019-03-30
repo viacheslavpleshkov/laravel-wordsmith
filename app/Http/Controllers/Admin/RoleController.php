@@ -4,26 +4,28 @@ namespace App\Http\Controllers\Admin;
 
 use App\Repositories\RoleRepository;
 use App\Repositories\SettingRepository;
-use App\Http\Requests\Admin\RoleEditRequest;
+use App\Http\Requests\Admin\RoleUpdateRequest;
 
 class RoleController extends BaseController
 {
 	/**
 	 * @var RoleRepository
 	 */
-	protected $role;
+	protected $roleRepository;
 	/**
 	 * @var SettingRepository
 	 */
-	protected $setting;
+	protected $settingRepository;
 
 	/**
 	 * RoleController constructor.
+	 * @param RoleRepository $roleRepository
+	 * @param SettingRepository $settingRepository
 	 */
-	public function __construct()
+	public function __construct(RoleRepository $roleRepository, SettingRepository $settingRepository)
 	{
-		$this->role = new RoleRepository();
-		$this->setting = new SettingRepository();
+		$this->roleRepository = $roleRepository;
+		$this->settingRepository = $settingRepository;
 	}
 
 	/**
@@ -31,8 +33,8 @@ class RoleController extends BaseController
 	 */
     public function index()
     {
-		$paginate = $this->setting->getPaginateAdmin();
-		$main = $this->role->getRoleAdminAll($paginate);
+		$paginate = $this->settingRepository->getPaginateAdmin();
+		$main = $this->roleRepository->getRoleAdminAll($paginate);
 
         return view('admin.roles.index', compact('main'));
     }
@@ -43,7 +45,7 @@ class RoleController extends BaseController
 	 */
     public function show($id)
     {
-        $main = $this->role->getById($id);
+        $main = $this->roleRepository->getById($id);
 
         return view('admin.roles.show', compact('main'));
     }
@@ -54,19 +56,19 @@ class RoleController extends BaseController
 	 */
     public function edit($id)
     {
-        $main = $this->role->getById($id);
+        $main = $this->roleRepository->getById($id);
 
         return view('admin.roles.edit', compact('main'));
     }
 
 	/**
-	 * @param RoleEditRequest $request
+	 * @param RoleUpdateRequest $request
 	 * @param $id
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-    public function update(RoleEditRequest $request, $id)
+    public function update(RoleUpdateRequest $request, $id)
     {
-        $this->role->update($id, $request->all());
+        $this->roleRepository->update($id, $request->all());
 
         return redirect()->route('roles.index')->with('success', __('admin.updated-success'));
     }

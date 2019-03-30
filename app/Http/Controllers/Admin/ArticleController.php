@@ -8,7 +8,7 @@ use App\Repositories\SeoRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\ArticleStoreRequest;
-use App\Http\Requests\Admin\ArticleEditRequest;
+use App\Http\Requests\Admin\ArticleUpdateRequest;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -17,34 +17,39 @@ class ArticleController extends BaseController
 	/**
 	 * @var ArticleRepository
 	 */
-	protected $article;
+	protected $articleRepository;
 	/**
 	 * @var CategoryRepository
 	 */
-	protected $category;
+	protected $categoryRepository;
 	/**
 	 * @var SettingRepository
 	 */
-	protected $setting;
+	protected $settingRepository;
 	/**
 	 * @var UserRepository
 	 */
-	protected $user;
+	protected $userRepository;
 	/**
 	 * @var SeoRepository
 	 */
-	protected $seo;
+	protected $seoRepository;
 
 	/**
 	 * ArticleController constructor.
+	 * @param ArticleRepository $articleRepository
+	 * @param CategoryRepository $categoryRepository
+	 * @param SettingRepository $settingRepository
+	 * @param UserRepository $userRepository
+	 * @param SeoRepository $seoRepository
 	 */
-	public function __construct()
+	public function __construct(ArticleRepository $articleRepository, CategoryRepository $categoryRepository, SettingRepository $settingRepository, UserRepository $userRepository, SeoRepository $seoRepository)
 	{
-		$this->article = new ArticleRepository();
-		$this->category = new CategoryRepository();
-		$this->setting = new SettingRepository();
-		$this->user = new UserRepository();
-		$this->seo = new SeoRepository();
+		$this->articleRepository = $articleRepository;
+		$this->categoryRepository = $categoryRepository;
+		$this->settingRepository = $settingRepository;
+		$this->userRepository = $userRepository;
+		$this->seoRepository = $seoRepository;
 	}
 
 	/**
@@ -52,8 +57,8 @@ class ArticleController extends BaseController
 	 */
 	public function index()
 	{
-		$paginate = $this->setting->getPaginateAdmin();
-		$main = $this->article->getArticlesAdminAll($paginate);
+		$paginate = $this->settingRepository->getPaginateAdmin();
+		$main = $this->articleRepository->getArticlesAdminAll($paginate);
 
 		return view('admin.articles.index', compact('main'));
 	}
@@ -65,8 +70,8 @@ class ArticleController extends BaseController
 	 */
 	public function create()
 	{
-		$seo = $this->seo->getStatusAll();
-		$categories = $this->category->getStatusAll();
+		$seo = $this->seoRepository->getStatusAll();
+		$categories = $this->categoryRepository->getStatusAll();
 
 		return view('admin.articles.create', compact('seo', 'categories'));
 	}
@@ -91,7 +96,7 @@ class ArticleController extends BaseController
 			'status' => $request->status,
 			'user_id' => Auth::user()->id,
 		];
-		$this->article->create($attributes);
+		$this->articleRepository->create($attributes);
 
 		return redirect()->route('articles.index')->with('success', __('admin.created-success'));
 	}
@@ -102,7 +107,7 @@ class ArticleController extends BaseController
 	 */
 	public function show($id)
 	{
-		$main = $this->article->getById($id);
+		$main = $this->articleRepository->getById($id);
 
 		return view('admin.articles.show', compact('main'));
 	}
@@ -113,20 +118,20 @@ class ArticleController extends BaseController
 	 */
 	public function edit($id)
 	{
-		$main = $this->article->getById($id);
-		$seo = $this->seo->getStatusAll();
-		$categories = $this->category->getStatusAll();
-		$users = $this->user->getAll();
+		$main = $this->articleRepository->getById($id);
+		$seo = $this->seoRepository->getStatusAll();
+		$categories = $this->categoryRepository->getStatusAll();
+		$users = $this->userRepository->getAll();
 
 		return view('admin.articles.edit', compact('main', 'categories', 'seo', 'users'));
 	}
 
 	/**
-	 * @param ArticleEditRequest $request
+	 * @param ArticleUpdateRequest $request
 	 * @param $id
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update(ArticleEditRequest $request, $id)
+	public function update(ArticleUpdateRequest $request, $id)
 	{
 		$attributes = [
 			'title' => $request->title,
@@ -140,7 +145,7 @@ class ArticleController extends BaseController
 			'status' => $request->status,
 			'user_id' => $request->user_id
 		];
-		$this->article->update($id, $attributes);
+		$this->articleRepository->update($id, $attributes);
 
 		return redirect()->route('articles.index')->with('success', __('admin.updated-success'));
 	}
@@ -153,7 +158,7 @@ class ArticleController extends BaseController
 	 */
 	public function destroy($id)
 	{
-		$this->article->delete($id);
+		$this->articleRepository->delete($id);
 
 		return redirect()->route('articles.index')->with('success', __('admin.information-deleted'));
 	}

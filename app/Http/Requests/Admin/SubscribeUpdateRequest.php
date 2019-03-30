@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SettingEditRequest extends FormRequest
+class SubscribeUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class SettingEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'paginate_site' => 'required|integer',
-            'paginate_admin' => 'required|integer',
-            'contactform' => 'required|integer',
-            'footer_about' => 'required|string|max:4096',
+			'email' => 'required|string|unique:subscribes|email|max:255',
         ];
     }
 }

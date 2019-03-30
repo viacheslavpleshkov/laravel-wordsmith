@@ -10,14 +10,15 @@ class SubscribeController extends BaseController
 	/**
 	 * @var SubscribeRepository
 	 */
-	private $subscribe;
+	private $subscribeRepository;
 
 	/**
 	 * SubscribeController constructor.
+	 * @param SubscribeRepository $subscribeRepository
 	 */
-	public function __construct()
+	public function __construct(SubscribeRepository $subscribeRepository)
 	{
-		$this->subscribe = new SubscribeRepository();
+		$this->subscribeRepository = $subscribeRepository;
 	}
 
 	/**
@@ -30,7 +31,8 @@ class SubscribeController extends BaseController
 			'email' => $request['email'],
 			'status' => 1
 		];
-		$this->subscribe->create($attributes);
+		$this->subscribeRepository->create($attributes);
+
 		return redirect()->back()->with('success-submit', __('site.success-submit'));
 	}
 }

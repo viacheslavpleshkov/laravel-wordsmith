@@ -12,11 +12,12 @@ class CacheRepository implements RepositoryInterface
 	protected $model;
 
 	/**
-	 * SeoRepository constructor.
+	 * CacheRepository constructor.
+	 * @param Model $model
 	 */
-	public function __construct()
+	public function __construct(Model $model)
 	{
-		$this->model = new Model();
+		$this->model = $model;
 	}
 
 	/**

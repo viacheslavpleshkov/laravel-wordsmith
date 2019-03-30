@@ -12,29 +12,33 @@ class ArticleController extends BaseController
 	/**
 	 * @var ArticleRepository
 	 */
-	protected $article;
+	protected $articleRepository;
 	/**
 	 * @var CommentRepository
 	 */
-	protected $comment;
+	protected $commentRepository;
 	/**
 	 * @var PageRepository
 	 */
-	protected $page;
+	protected $pageRepository;
 	/**
 	 * @var SettingRepository
 	 */
-	protected $setting;
+	protected $settingRepository;
 
 	/**
-	 * BlogArticleController constructor.
+	 * ArticleController constructor.
+	 * @param ArticleRepository $articleRepository
+	 * @param CommentRepository $commentRepository
+	 * @param PageRepository $pageRepository
+	 * @param SettingRepository $settingRepository
 	 */
-	public function __construct()
+	public function __construct(ArticleRepository $articleRepository, CommentRepository $commentRepository, PageRepository $pageRepository, SettingRepository $settingRepository)
 	{
-		$this->article = new ArticleRepository;
-		$this->comment = new CommentRepository;
-		$this->page = new PageRepository;
-		$this->setting = new SettingRepository();
+		$this->articleRepository = $articleRepository;
+		$this->commentRepository = $commentRepository;
+		$this->pageRepository = $pageRepository;
+		$this->settingRepository = $settingRepository;
 	}
 
 	/**
@@ -42,9 +46,10 @@ class ArticleController extends BaseController
 	 */
 	public function index()
 	{
-		$main = $this->page->getPageBlog();
-		$paginate = $this->setting->getPaginateSite();
-		$articles = $this->article->getArticlesAll($paginate);
+		$main = $this->pageRepository->getPageBlog();
+		$paginate = $this->settingRepository->getPaginateSite();
+		$articles = $this->articleRepository->getArticlesAll($paginate);
+
 		return view('site.articles.index', compact('main', 'articles'));
 	}
 
@@ -54,13 +59,14 @@ class ArticleController extends BaseController
 	 */
 	public function view($url)
 	{
-		$main = $this->article->getArticle($url);
+		$main = $this->articleRepository->getArticle($url);
 		if (isset($main)) {
-			$this->article->setView($main);
-			$previous = $this->article->getPreviousPost($main->id);
-			$next = $this->article->getNextPost($main->id);
-			$comments = $this->comment->getCommentsAll($main->id);
-			$count = $this->comment->getCountCommentsAll($main->id);
+			$this->articleRepository->setView($main);
+			$previous = $this->articleRepository->getPreviousPost($main->id);
+			$next = $this->articleRepository->getNextPost($main->id);
+			$comments = $this->commentRepository->getCommentsAll($main->id);
+			$count = $this->commentRepository->getCountCommentsAll($main->id);
+
 			return view('site.articles.view', compact('main', 'previous', 'next', 'comments', 'count'));
 		} else {
 			abort(404);

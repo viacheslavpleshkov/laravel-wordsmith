@@ -6,7 +6,7 @@ use App\Repositories\CategoryRepository;
 use App\Repositories\SeoRepository;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\CategoryStoreRequest;
-use App\Http\Requests\Admin\CategoryEditRequest;
+use App\Http\Requests\Admin\CategoryUpdateRequest;
 
 
 class CategoryController extends BaseController
@@ -14,24 +14,27 @@ class CategoryController extends BaseController
 	/**
 	 * @var CategoryRepository
 	 */
-	protected $category;
+	protected $categoryRepository;
 	/**
 	 * @var SeoRepository
 	 */
-	protected $seo;
+	protected $seoRepository;
 	/**
 	 * @var SettingRepository
 	 */
-	protected $setting;
+	protected $settingRepository;
 
 	/**
 	 * CategoryController constructor.
+	 * @param CategoryRepository $categoryRepository
+	 * @param SeoRepository $seoRepository
+	 * @param SettingRepository $settingRepository
 	 */
-	public function __construct()
+	public function __construct(CategoryRepository $categoryRepository, SeoRepository $seoRepository, SettingRepository $settingRepository)
 	{
-		$this->category = new CategoryRepository();
-		$this->seo = new SeoRepository();
-		$this->setting = new SettingRepository();
+		$this->categoryRepository = $categoryRepository;
+		$this->seoRepository =$seoRepository;
+		$this->settingRepository = $settingRepository;
 	}
 
 	/**
@@ -39,8 +42,8 @@ class CategoryController extends BaseController
 	 */
 	public function index()
 	{
-		$paginate = $this->setting->getPaginateAdmin();
-		$main = $this->category->getArticlesAdminAll($paginate);
+		$paginate = $this->settingRepository->getPaginateAdmin();
+		$main = $this->categoryRepository->getArticlesAdminAll($paginate);
 
 		return view('admin.categories.index', compact('main'));
 	}
@@ -50,7 +53,7 @@ class CategoryController extends BaseController
 	 */
 	public function create()
 	{
-		$seo = $this->seo->getStatusAll();
+		$seo = $this->seoRepository->getStatusAll();
 
 		return view('admin.categories.create', compact('seo'));
 	}
@@ -61,7 +64,7 @@ class CategoryController extends BaseController
 	 */
 	public function store(CategoryStoreRequest $request)
 	{
-		$this->category->create($request->all());
+		$this->categoryRepository->create($request->all());
 
 		return redirect()->route('categories.index')->with('success', __('admin.created-success'));
 	}
@@ -83,20 +86,20 @@ class CategoryController extends BaseController
 	 */
 	public function edit($id)
 	{
-		$main = $this->category->getById($id);
-		$seo = $this->seo->getStatusAll();
+		$main = $this->categoryRepository->getById($id);
+		$seo = $this->seoRepository->getStatusAll();
 
 		return view('admin.categories.edit', compact('main', 'seo'));
 	}
 
 	/**
-	 * @param CategoryEditRequest $request
+	 * @param CategoryUpdateRequest $request
 	 * @param $id
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update(CategoryEditRequest $request, $id)
+	public function update(CategoryUpdateRequest $request, $id)
 	{
-		$this->category->update($id, $request->all());
+		$this->categoryRepository->update($id, $request->all());
 
 		return redirect()->route('categories.index')->with('success', __('admin.updated-success'));
 	}
@@ -107,7 +110,7 @@ class CategoryController extends BaseController
 	 */
 	public function destroy($id)
 	{
-		$this->category->delete($id);
+		$this->categoryRepository->delete($id);
 
         return redirect()->route('categories.index')->with('success', __('admin.information-deleted'));
     }

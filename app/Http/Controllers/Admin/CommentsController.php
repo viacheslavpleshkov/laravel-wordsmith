@@ -7,36 +7,40 @@ use App\Repositories\UserRepository;
 use App\Repositories\ArticleRepository;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\CommentStoreRequest;
-use App\Http\Requests\Admin\CommentEditRequest;
+use App\Http\Requests\Admin\CommentUpdateRequest;
 
 class CommentsController extends BaseController
 {
 	/**
 	 * @var CommentRepository
 	 */
-	protected $comment;
+	protected $commentRepository;
 	/**
 	 * @var UserRepository
 	 */
-	protected $user;
+	protected $userRepository;
 	/**
 	 * @var ArticleRepository
 	 */
-	protected $article;
+	protected $articleRepository;
 	/**
 	 * @var SettingRepository
 	 */
-	protected $setting;
+	protected $settingRepository;
 
 	/**
 	 * CommentsController constructor.
+	 * @param CommentRepository $commentRepository
+	 * @param UserRepository $userRepository
+	 * @param ArticleRepository $articleRepository
+	 * @param SettingRepository $settingRepository
 	 */
-	public function __construct()
+	public function __construct(CommentRepository $commentRepository, UserRepository $userRepository, ArticleRepository $articleRepository, SettingRepository $settingRepository)
 	{
-		$this->comment = new CommentRepository();
-		$this->user = new UserRepository();
-		$this->article = new ArticleRepository();
-		$this->setting = new SettingRepository();
+		$this->comment = $commentRepository;
+		$this->user = $userRepository;
+		$this->article = $articleRepository;
+		$this->setting = $settingRepository;
 	}
 
 	/**
@@ -46,8 +50,8 @@ class CommentsController extends BaseController
 	 */
 	public function index()
 	{
-		$paginate = $this->setting->getPaginateAdmin();
-		$main = $this->comment->getCommentAdminAll($paginate);
+		$paginate = $this->settingRepository->getPaginateAdmin();
+		$main = $this->commentRepository->getCommentAdminAll($paginate);
 
 		return view('admin.comments.index', compact('main'));
 	}
@@ -57,8 +61,8 @@ class CommentsController extends BaseController
 	 */
 	public function create()
 	{
-		$users = $this->user->getCommentsList();
-		$articles = $this->article->getCommentsList();
+		$users = $this->userRepository->getCommentsList();
+		$articles = $this->articleRepository->getCommentsList();
 
 		return view('admin.comments.create', compact('users', 'articles'));
 	}
@@ -69,7 +73,7 @@ class CommentsController extends BaseController
 	 */
 	public function store(CommentStoreRequest $request)
 	{
-		$this->comment->create($request->all());
+		$this->commentRepository->create($request->all());
 
 		return redirect()->route('comments.index')->with('success', __('admin.created-success'));
 	}
@@ -82,7 +86,7 @@ class CommentsController extends BaseController
 	 */
 	public function show($id)
 	{
-		$main = $this->comment->getById($id);
+		$main = $this->commentRepository->getById($id);
 
 		return view('admin.comments.show', compact('main'));
 	}
@@ -94,21 +98,21 @@ class CommentsController extends BaseController
 
 	public function edit($id)
 	{
-		$main = $this->comment->getById($id);
-		$users = $this->user->getCommentsList();
-		$articles = $this->article->getCommentsList();
+		$main = $this->commentRepository->getById($id);
+		$users = $this->userRepository->getCommentsList();
+		$articles = $this->articleRepository->getCommentsList();
 
 		return view('admin.comments.edit', compact('main', 'users', 'articles'));
 	}
 
 	/**
-	 * @param CommentEditRequest $request
+	 * @param CommentUpdateRequest $request
 	 * @param $id
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update(CommentEditRequest $request, $id)
+	public function update(CommentUpdateRequest $request, $id)
 	{
-		$this->comment->update($id, $request->all());
+		$this->commentRepository->update($id, $request->all());
 
 		return redirect()->route('comments.index')->with('success', __('admin.updated-success'));
 	}
@@ -119,7 +123,7 @@ class CommentsController extends BaseController
 	 */
 	public function destroy($id)
 	{
-		$this->comment->delete($id);
+		$this->commentRepository->delete($id);
 
 		return redirect()->route('comments.index')->with('success', __('admin.information-deleted'));
 	}

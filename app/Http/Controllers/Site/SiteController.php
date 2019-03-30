@@ -15,25 +15,27 @@ class SiteController extends BaseController
 	/**
 	 * @var ArticleRepository
 	 */
-	protected $article;
+	protected $articleRepository;
 	/**
 	 * @var SettingRepository
 	 */
-	protected $setting;
+	protected $settingRepository;
 	/**
 	 * @var PageRepository
 	 */
-	protected $page;
+	protected $pageRepository;
 
 	/**
 	 * SiteController constructor.
+	 * @param ArticleRepository $articleRepository
+	 * @param SettingRepository $settingRepository
+	 * @param PageRepository $pageRepository
 	 */
-	public function __construct()
+	public function __construct(ArticleRepository $articleRepository, SettingRepository $settingRepository, PageRepository $pageRepository)
 	{
-		$this->article = new ArticleRepository;
-		$this->setting = new SettingRepository();
-		$this->page = new PageRepository();
-
+		$this->articleRepository = $articleRepository;
+		$this->settingRepository = $settingRepository;
+		$this->pageRepository = $pageRepository;
 	}
 
 	/**
@@ -41,10 +43,11 @@ class SiteController extends BaseController
 	 */
 	public function index()
 	{
-		$slider = $this->article->getSlideAll();
-		$main = $this->page->getPageHome();
-		$paginate = $this->setting->getPaginateSite();
-		$articles = $this->article->getArticlesAll($paginate);
+		$slider = $this->articleRepository->getSlideAll();
+		$main = $this->pageRepository->getPageHome();
+		$paginate = $this->settingRepository->getPaginateSite();
+		$articles = $this->articleRepository->getArticlesAll($paginate);
+
 		return view('site.pages.index', compact('main', 'slider', 'articles'));
 	}
 
@@ -53,7 +56,8 @@ class SiteController extends BaseController
 	 */
 	public function about()
 	{
-		$main = $this->page->getPageAbout();
+		$main = $this->pageRepository->getPageAbout();
+
 		return view('site.pages.about', compact('main'));
 	}
 
@@ -62,7 +66,8 @@ class SiteController extends BaseController
 	 */
 	public function privacypolicy()
 	{
-		$main = $this->page->getPagePrivacyPolicy();
+		$main = $this->pageRepository->getPagePrivacyPolicy();
+
 		return view('site.pages.privacy-policy', compact('main'));
 	}
 
@@ -71,8 +76,9 @@ class SiteController extends BaseController
 	 */
 	public function contact()
 	{
-		$main = $this->page->getPageContact();
-		$setting = $this->setting->getById(1);
+		$main = $this->pageRepository->getPageContact();
+		$setting = $this->settingRepository->getById(1);
+
 		return view('site.pages.contact', compact('main', 'setting'));
 	}
 
@@ -83,6 +89,7 @@ class SiteController extends BaseController
 	public function submit(ContactRequest $request)
 	{
 		Mail::send(new MailShipped($request));
+
 		return redirect()->route('site.contact')->with('success', __('site.contact-success'));
 	}
 }

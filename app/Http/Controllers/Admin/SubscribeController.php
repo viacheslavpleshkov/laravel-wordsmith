@@ -5,26 +5,28 @@ namespace App\Http\Controllers\Admin;
 use App\Repositories\SubscribeRepository;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\SubscribeStoreRequest;
-use App\Http\Requests\Admin\SubscribeEditRequest;
+use App\Http\Requests\Admin\SubscribeUpdateRequest;
 
 class SubscribeController extends BaseController
 {
 	/**
 	 * @var SettingRepository
 	 */
-	protected $setting;
+	protected $settingRepository;
 	/**
 	 * @var SubscribeRepository
 	 */
-	protected $subscribe;
+	protected $subscribeRepository;
 
 	/**
 	 * SubscribeController constructor.
+	 * @param SettingRepository $settingRepository
+	 * @param SubscribeRepository $subscribeRepository
 	 */
-	public function __construct()
+	public function __construct(SettingRepository $settingRepository, SubscribeRepository $subscribeRepository)
 	{
-		$this->setting = new SettingRepository();
-		$this->subscribe = new SubscribeRepository();
+		$this->settingRepository = $settingRepository;
+		$this->subscribeRepository = $subscribeRepository;
 	}
 
 	/**
@@ -32,8 +34,8 @@ class SubscribeController extends BaseController
 	 */
 	public function index()
 	{
-		$paginate = $this->setting->getPaginateAdmin();
-		$main = $this->subscribe->getSubscribeAdminAll($paginate);
+		$paginate = $this->settingRepository->getPaginateAdmin();
+		$main = $this->subscribeRepository->getSubscribeAdminAll($paginate);
 
 		return view('admin.subscribes.index', compact('main'));
 	}
@@ -54,7 +56,7 @@ class SubscribeController extends BaseController
 	 */
 	public function store(SubscribeStoreRequest $request)
 	{
-		$this->subscribe->create($request->all());
+		$this->subscribeRepository->create($request->all());
 
 		return redirect()->route('subscribes.index')->with('success', __('admin.created-success'));
 	}
@@ -65,7 +67,7 @@ class SubscribeController extends BaseController
 	 */
 	public function show($id)
 	{
-		$main = $this->subscribe->getById($id);
+		$main = $this->subscribeRepository->getById($id);
 
 		return view('admin.subscribes.show', compact('main'));
 	}
@@ -76,18 +78,18 @@ class SubscribeController extends BaseController
 	 */
 	public function edit($id)
 	{
-		$main = $this->subscribe->getById($id);
+		$main = $this->subscribeRepository->getById($id);
 		return view('admin.subscribes.edit', compact('main'));
 	}
 
 	/**
-	 * @param SubscribeEditRequest $request
+	 * @param SubscribeUpdateRequest $request
 	 * @param $id
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update(SubscribeEditRequest $request, $id)
+	public function update(SubscribeUpdateRequest $request, $id)
 	{
-		$this->subscribe->update($id, $request->all());
+		$this->subscribeRepository->update($id, $request->all());
 
 		return redirect()->route('subscribes.index')->with('success', __('admin.updated-success'));
 	}
@@ -98,7 +100,7 @@ class SubscribeController extends BaseController
 	 */
 	public function destroy($id)
 	{
-		$this->subscribe->delete($id);
+		$this->subscribeRepository->delete($id);
 
 		return redirect()->route('subscribes.index')->with('success', __('admin.information-deleted'));
 	}

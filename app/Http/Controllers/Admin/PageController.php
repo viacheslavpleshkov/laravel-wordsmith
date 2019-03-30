@@ -5,28 +5,31 @@ namespace App\Http\Controllers\Admin;
 use App\Repositories\PageRepository;
 use App\Repositories\SettingRepository;
 use App\Repositories\SeoRepository;
-use App\Http\Requests\Admin\PageEditRequest;
+use App\Http\Requests\Admin\PageUpdateRequest;
 
 class PageController extends BaseController
 {
-	protected $page;
+	protected $pageRepository;
 	/**
 	 * @var SettingRepository
 	 */
-	protected $setting;
+	protected $settingRepository;
 	/**
 	 * @var SeoRepository
 	 */
-	protected $seo;
+	protected $seoRepository;
 
 	/**
 	 * PageController constructor.
+	 * @param PageRepository $pageRepository
+	 * @param SettingRepository $settingRepository
+	 * @param SeoRepository $seoRepository
 	 */
-	public function __construct()
+	public function __construct(PageRepository $pageRepository, SettingRepository $settingRepository, SeoRepository $seoRepository)
 	{
-		$this->page = new PageRepository();
-		$this->setting = new SettingRepository();
-		$this->seo = new SeoRepository();
+		$this->pageRepository = $pageRepository;
+		$this->settingRepository = $settingRepository;
+		$this->seoRepository = $seoRepository;
 	}
 
 	/**
@@ -34,8 +37,8 @@ class PageController extends BaseController
 	 */
 	public function index()
 	{
-		$paginate = $this->setting->getPaginateAdmin();
-		$main = $this->page->getPageAdminAll($paginate);
+		$paginate = $this->settingRepository->getPaginateAdmin();
+		$main = $this->pageRepository->getPageAdminAll($paginate);
 
 		return view('admin.pages.index', compact('main'));
 	}
@@ -46,7 +49,7 @@ class PageController extends BaseController
 	 */
 	public function show($id)
 	{
-		$main = $this->page->getById($id);
+		$main = $this->pageRepository->getById($id);
 
 		return view('admin.pages.show', compact('main'));
 	}
@@ -57,20 +60,20 @@ class PageController extends BaseController
 	 */
 	public function edit($id)
 	{
-		$main = $this->page->getById($id);
-		$seo = $this->seo->getAll();
+		$main = $this->pageRepository->getById($id);
+		$seo = $this->seoRepository->getAll();
 
 		return view('admin.pages.edit', compact('main', 'seo'));
 	}
 
 	/**
-	 * @param PageEditRequest $request
+	 * @param PageUpdateRequest $request
 	 * @param $id
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update(PageEditRequest $request, $id)
+	public function update(PageUpdateRequest $request, $id)
 	{
-		$this->page->update($id, $request->all());
+		$this->pageRepository->update($id, $request->all());
 
 		return redirect()->route('pages.index')->with('success', __('admin.updated-success'));
 	}

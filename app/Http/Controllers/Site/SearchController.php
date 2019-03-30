@@ -14,29 +14,33 @@ class SearchController extends BaseController
 	/**
 	 * @var SettingRepository
 	 */
-	protected $setting;
+	protected $settingRepository;
 	/**
 	 * @var ArticleRepository
 	 */
-	protected $article;
+	protected $articleRepository;
 	/**
 	 * @var PageRepository
 	 */
-	protected $page;
+	protected $pageRepository;
 	/**
 	 * @var
 	 */
-	protected $cache;
+	protected $cacheRepository;
 
 	/**
 	 * SearchController constructor.
+	 * @param SettingRepository $settingRepository
+	 * @param ArticleRepository $articleRepository
+	 * @param PageRepository $pageRepository
+	 * @param CacheRepository $cacheRepository
 	 */
-	public function __construct()
+	public function __construct(SettingRepository $settingRepository, ArticleRepository $articleRepository, PageRepository $pageRepository, CacheRepository $cacheRepository)
 	{
-		$this->setting = new SettingRepository();
-		$this->article = new ArticleRepository();
-		$this->page = new PageRepository();
-		$this->cache = new CacheRepository();
+		$this->settingRepository = $settingRepository;
+		$this->articleRepository = $articleRepository;
+		$this->pageRepository = $pageRepository;
+		$this->cacheRepository = $cacheRepository;
 	}
 
 	/**
@@ -47,10 +51,10 @@ class SearchController extends BaseController
 	{
 		if (isset($request->search)) {
 			$title = $request->search;
-			$paginate = $this->setting->getPaginateSite();
-			$articles = $this->article->getSearch($title, $paginate);
-			$main = $this->page->getPageSearch();
-			$cache = $this->cache->getById(1);
+			$paginate = $this->settingRepository->getPaginateSite();
+			$articles = $this->articleRepository->getSearch($title, $paginate);
+			$main = $this->pageRepository->getPageSearch();
+			$cache = $this->cacheRepository->getById(1);
 
 			//Cache
 			if (Cache::has('page-search')) {

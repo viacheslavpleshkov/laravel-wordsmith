@@ -12,11 +12,12 @@ class CategoryRepository implements RepositoryInterface
 	protected $model;
 
 	/**
-	 * BlogCategoryRepository constructor.
+	 * CategoryRepository constructor.
+	 * @param Model $model
 	 */
-	public function __construct()
+	public function __construct(Model $model)
 	{
-		$this->model = new Model();
+		$this->model = $model;
 	}
 
 	/**

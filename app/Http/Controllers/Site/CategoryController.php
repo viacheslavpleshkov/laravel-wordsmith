@@ -11,24 +11,27 @@ class CategoryController extends BaseController
 	/**
 	 * @var ArticleRepository
 	 */
-	protected $article;
+	protected $articleRepository;
 	/**
 	 * @var CategoryRepository
 	 */
-	protected $category;
+	protected $categoryRepository;
 	/**
 	 * @var SettingRepository
 	 */
-	protected $setting;
+	protected $settingRepository;
 
 	/**
-	 * BlogCategoryController constructor.\
+	 * CategoryController constructor.
+	 * @param ArticleRepository $articleRepository
+	 * @param CategoryRepository $categoryRepository
+	 * @param SettingRepository $settingRepository
 	 */
-	public function __construct()
+	public function __construct(ArticleRepository $articleRepository, CategoryRepository $categoryRepository, SettingRepository $settingRepository)
 	{
-		$this->article = new ArticleRepository();
-		$this->category = new CategoryRepository();
-		$this->setting = new SettingRepository();
+		$this->articleRepository = $articleRepository;
+		$this->categoryRepository = $categoryRepository;
+		$this->settingRepository = $settingRepository;
 	}
 
 	/**
@@ -37,11 +40,12 @@ class CategoryController extends BaseController
 	 */
 	public function view($url)
 	{
-		$category = $this->category->getCategoryUrl($url);
+		$category = $this->categoryRepository->getCategoryUrl($url);
 		if (isset($category)) {
 			$title = $category->name;
-			$paginate = $this->setting->getPaginateSite();
-			$main = $this->article->getCategoryId($category->id, $paginate);
+			$paginate = $this->settingRepository->getPaginateSite();
+			$main = $this->articleRepository->getCategoryId($category->id, $paginate);
+
 			return view('site.categories.view', compact('main', 'title'));
 		} else {
 			abort(404);

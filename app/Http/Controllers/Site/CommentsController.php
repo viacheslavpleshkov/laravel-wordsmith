@@ -11,14 +11,15 @@ class CommentsController extends BaseController
 	/**
 	 * @var CommentRepository
 	 */
-	protected $comment;
+	protected $commentRepository;
 
 	/**
 	 * CommentsController constructor.
+	 * @param CommentRepository $commentRepository
 	 */
-	public function __construct()
+	public function __construct(CommentRepository $commentRepository)
 	{
-		$this->comment = new CommentRepository();
+		$this->commentRepository = $commentRepository;
 	}
 
 	/**
@@ -34,7 +35,7 @@ class CommentsController extends BaseController
 			'text' => $request->text,
 			'status' => 1
 		];
-		$this->comment->create($attributes);
+		$this->commentRepository->create($attributes);
 
 		return redirect()->back()->with('success-comment', __('site.success-submit'));
 	}

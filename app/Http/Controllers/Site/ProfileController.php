@@ -13,14 +13,15 @@ class ProfileController extends BaseController
 	/**
 	 * @var UserRepository
 	 */
-	protected $user;
+	protected $userRepository;
 
 	/**
 	 * ProfileController constructor.
+	 * @param UserRepository $userRepository
 	 */
-	public function __construct()
+	public function __construct(UserRepository $userRepository)
 	{
-		$this->user = new UserRepository();
+		$this->userRepository = $userRepository;
 	}
 
 	/**
@@ -29,7 +30,8 @@ class ProfileController extends BaseController
 	public function index()
 	{
 		$id = Auth::user()->id;
-		$main = $this->user->getById($id);
+		$main = $this->userRepository->getById($id);
+
 		return view('site.profile.index', compact('main'));
 	}
 
@@ -39,7 +41,8 @@ class ProfileController extends BaseController
 	 */
 	public function edit($id)
 	{
-		$this->user->getById($id);
+		$this->userRepository->getById($id);
+
 		return view('site.profile.edit', compact('main'));
 	}
 
@@ -50,7 +53,8 @@ class ProfileController extends BaseController
 	 */
 	public function updateEdit(ProfileEditRequest $request, $id)
 	{
-		$this->user->update($id, $request->all());
+		$this->userRepository->update($id, $request->all());
+
 		return redirect()->route('profile.index')->with('success', __('site.updated-success'));
 	}
 
@@ -60,7 +64,8 @@ class ProfileController extends BaseController
 	 */
 	public function password($id)
 	{
-		$this->user->getById($id);
+		$this->userRepository->getById($id);
+
 		return view('site.profile.password', compact('main'));
 	}
 
@@ -72,7 +77,8 @@ class ProfileController extends BaseController
 	public function updatePassword(ProfilePasswordRequest $request, $id)
 	{
 		$attributes = ['password' => Hash::make($request->password)];
-		$this->user->update($id, $attributes);
+		$this->userRepository->update($id, $attributes);
+
 		return redirect()->route('profile.index')->with('success', __('site.profile-password-success'));
 	}
 
@@ -82,7 +88,8 @@ class ProfileController extends BaseController
 	 */
 	public function destroy($id)
 	{
-		$this->user->delete($id);
+		$this->userRepository->delete($id);
+
 		return redirect()->route('login')->with('success', __('site.profile-user-deleted'));
 	}
 }

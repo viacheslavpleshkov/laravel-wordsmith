@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Repositories\UserRepository;
 use App\Repositories\RoleRepository;
 use App\Repositories\SettingRepository;
-use App\Http\Requests\Admin\UserEditRequest;
+use App\Http\Requests\Admin\UserUpdateRequest;
 use App\Http\Requests\Admin\UserStoreRequest;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,24 +14,27 @@ class UserController extends BaseController
 	/**
 	 * @var SettingRepository
 	 */
-	protected $setting;
+	protected $settingRepository;
 	/**
 	 * @var RoleRepository
 	 */
-	protected $role;
+	protected $roleRepository;
 	/**
 	 * @var UserRepository
 	 */
-	protected $user;
+	protected $userRepository;
 
 	/**
 	 * UserController constructor.
+	 * @param SettingRepository $settingRepository
+	 * @param RoleRepository $roleRepository
+	 * @param UserRepository $userRepository
 	 */
-	public function __construct()
+	public function __construct(SettingRepository $settingRepository, RoleRepository $roleRepository, UserRepository $userRepository)
 	{
-		$this->setting = new SettingRepository();
-		$this->role = new RoleRepository();
-		$this->user = new UserRepository();
+		$this->settingRepository = $settingRepository;
+		$this->roleRepository = $roleRepository;
+		$this->userRepository = $userRepository;
 	}
 
 	/**
@@ -39,8 +42,8 @@ class UserController extends BaseController
 	 */
 	public function index()
 	{
-		$paginate = $this->setting->getPaginateAdmin();
-		$main = $this->user->getUserAdminAll($paginate);
+		$paginate = $this->settingRepository->getPaginateAdmin();
+		$main = $this->userRepository->getUserAdminAll($paginate);
 
 		return view('admin.users.index', compact('main'));
 	}
@@ -50,7 +53,7 @@ class UserController extends BaseController
 	 */
 	public function create()
 	{
-		$role = $this->role->getAll();
+		$role = $this->roleRepository->getAll();
 
 		return view('admin.users.create', compact('role'));
 	}
@@ -67,7 +70,7 @@ class UserController extends BaseController
 			'password' => Hash::make($request->password),
 			'role_id' => $request->role_id
 		];
-		$this->user->create($attributes);
+		$this->userRepository->create($attributes);
 
 		return redirect()->route('users.index')->with('success', __('admin.created-success'));
 	}
@@ -78,7 +81,7 @@ class UserController extends BaseController
 	 */
 	public function show($id)
 	{
-		$main = $this->user->getById($id);
+		$main = $this->userRepository->getById($id);
 
 		return view('admin.users.show', compact('main'));
 	}
@@ -89,8 +92,9 @@ class UserController extends BaseController
 	 */
 	public function edit($id)
 	{
-		$role = Role::all();
-		$main = User::find($id);
+		$role = $this->roleRepository->getAll();
+		$main = $this->userRepository->getById($id);
+
 		return view('admin.users.edit', compact('main', 'role'));
 	}
 
@@ -99,7 +103,7 @@ class UserController extends BaseController
 	 * @param $id
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update(UserEditRequest $request, $id)
+	public function update(UserUpdateRequest $request, $id)
 	{
 		$attributes = [
 			'name' => $request->name,
@@ -107,7 +111,7 @@ class UserController extends BaseController
 			'password' => Hash::make($request->password),
 			'role_id' => $request->role_id
 		];
-		$this->user->update($id, $attributes);
+		$this->userRepository->update($id, $attributes);
 
 		return redirect()->route('users.index')->with('success', __('admin.updated-success'));
 	}
@@ -118,7 +122,7 @@ class UserController extends BaseController
 	 */
 	public function destroy($id)
 	{
-		$this->user->delete($id);
+		$this->userRepository->delete($id);
 
 		return redirect()->route('users.index')->with('success', __('admin.information-deleted'));
 	}

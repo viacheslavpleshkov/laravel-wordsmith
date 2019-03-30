@@ -12,11 +12,12 @@ class CommentRepository implements RepositoryInterface
 	protected $model;
 
 	/**
-	 * BlogCommentRepository constructor.
+	 * CommentRepository constructor.
+	 * @param Model $model
 	 */
-	public function __construct()
+	public function __construct(Model $model)
 	{
-		$this->model = new Model();
+		$this->model = $model;
 	}
 
 	/**

@@ -32,22 +32,22 @@ class RegisterController extends BaseController
 	/**
 	 * @var UserRepository
 	 */
-	private $user;
+	private $userRepository;
 	/**
 	 * @var RoleRepository
 	 */
-	private $role;
+	private $roleRepository;
 
 	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
+	 * RegisterController constructor.
+	 * @param UserRepository $userRepository
+	 * @param RoleRepository $roleRepository
 	 */
-	public function __construct()
+	public function __construct(UserRepository $userRepository, RoleRepository $roleRepository)
 	{
 		$this->middleware('guest');
-		$this->user = new UserRepository();
-		$this->role = new RoleRepository();
+		$this->userRepository = $userRepository;
+		$this->roleRepository = $roleRepository;
 
 	}
 
@@ -74,7 +74,7 @@ class RegisterController extends BaseController
 	 */
 	protected function create(array $data)
 	{
-		$role = $this->role->getRoleUser();
+		$role = $this->roleRepository->getRoleUser();
 
 		$attributes = [
 			'name' => $data['name'],
@@ -82,6 +82,6 @@ class RegisterController extends BaseController
 			'password' => Hash::make($data['password']),
 			'role_id' => $role
 		];
-		return $this->user->create($attributes);
+		return $this->userRepository->create($attributes);
 	}
 }

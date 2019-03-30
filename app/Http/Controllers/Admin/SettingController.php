@@ -4,21 +4,22 @@ namespace App\Http\Controllers\Admin;
 
 use App;
 use App\Repositories\SettingRepository;
-use App\Http\Requests\Admin\SettingEditRequest;
+use App\Http\Requests\Admin\SettingUpdateRequest;
 
 class SettingController extends BaseController
 {
 	/**
 	 * @var SettingRepository
 	 */
-	protected $setting;
+	protected $settingRepository;
 
 	/**
 	 * SettingController constructor.
+	 * @param SettingRepository $settingRepository
 	 */
-	public function __construct()
+	public function __construct(SettingRepository $settingRepository)
 	{
-		$this->setting = new SettingRepository;
+		$this->settingRepository = $settingRepository;
 	}
 
 	/**
@@ -26,7 +27,7 @@ class SettingController extends BaseController
 	 */
 	public function index()
 	{
-		$main = $this->setting->getById(1);
+		$main = $this->settingRepository->getById(1);
 
 		return view('admin.settings.index', compact('main'));
 	}
@@ -35,9 +36,9 @@ class SettingController extends BaseController
 	 * @param SettingRequest $request
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update(SettingEditRequest $request)
+	public function update(SettingUpdateRequest $request)
 	{
-		$this->setting->update(1, $request->all());
+		$this->settingRepository->update(1, $request->all());
 
         return redirect()->route('settings.index')->with('success', __('admin.updated-success'));
     }

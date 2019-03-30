@@ -11,24 +11,27 @@ class SitemapController extends BaseController
 	/**
 	 * @var
 	 */
-	protected $article;
+	protected $articleRepository;
 	/**
 	 * @var CategoryRepository
 	 */
-	protected $category;
+	protected $categoryRepository;
 	/**
 	 * @var PageRepository
 	 */
-	protected $page;
+	protected $pageRepository;
 
 	/**
 	 * SitemapController constructor.
+	 * @param ArticleRepository $articleRepository
+	 * @param CategoryRepository $categoryRepository
+	 * @param PageRepository $pageRepository
 	 */
-	public function __construct()
+	public function __construct(ArticleRepository $articleRepository, CategoryRepository $categoryRepository, PageRepository $pageRepository)
 	{
-		$this->article = new ArticleRepository();
-		$this->category = new CategoryRepository();
-		$this->page = new PageRepository();
+		$this->articleRepository = $articleRepository;
+		$this->categoryRepository = $categoryRepository;
+		$this->pageRepository = $pageRepository;
 	}
 
 	/**
@@ -36,9 +39,10 @@ class SitemapController extends BaseController
 	 */
 	public function index()
 	{
-		$page = $this->page->getDesckAndFirst();
-		$article = $this->article->getStatusAndDesckAndFirst();
-		$category = $this->category->getStatusAndDesckAndFirst();
+		$page = $this->pageRepository->getDesckAndFirst();
+		$article = $this->articleRepository->getStatusAndDesckAndFirst();
+		$category = $this->categoryRepository->getStatusAndDesckAndFirst();
+
 		return response()->view('site.sitemap.index', compact('page', 'article', 'category'))
 			->header('Content-Type', 'text/xml');
 	}
@@ -48,7 +52,8 @@ class SitemapController extends BaseController
 	 */
 	public function pages()
 	{
-		$main = $this->page->getStatusAndDesckAndLimit(250);
+		$main = $this->pageRepository->getStatusAndDesckAndLimit(250);
+
 		return response()->view('site.sitemap.pages', compact('main'))
 			->header('Content-Type', 'text/xml');
 	}
@@ -58,7 +63,8 @@ class SitemapController extends BaseController
 	 */
 	public function articles()
 	{
-		$main = $this->article->getStatusAndDesckAndLimit(250);
+		$main = $this->articleRepository->getStatusAndDesckAndLimit(250);
+
 		return response()->view('site.sitemap.articles', compact('main'))
 			->header('Content-Type', 'text/xml');
 	}
@@ -68,7 +74,8 @@ class SitemapController extends BaseController
 	 */
 	public function categories()
 	{
-		$main = $this->category->getStatusAndDesckAndLimit(250);
+		$main = $this->categoryRepository->getStatusAndDesckAndLimit(250);
+
 		return response()->view('site.sitemap.categories', compact('main'))
 			->header('Content-Type', 'text/xml');
 	}

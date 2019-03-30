@@ -5,26 +5,28 @@ namespace App\Http\Controllers\Admin;
 use App\Repositories\SettingRepository;
 use App\Repositories\SociallinkRepository;
 use App\Http\Requests\Admin\SociallinkStoreRequest;
-use App\Http\Requests\Admin\SociallinkEditRequest;
+use App\Http\Requests\Admin\SociallinkUpdateRequest;
 
 class SociallinkController extends BaseController
 {
 	/**
 	 * @var SociallinkRepository
 	 */
-	protected $sociallink;
+	protected $sociallinkRepository;
 	/**
 	 * @var SettingRepository
 	 */
-	protected $setting;
+	protected $settingRepository;
 
 	/**
 	 * SociallinkController constructor.
+	 * @param SociallinkRepository $sociallinkRepository
+	 * @param SettingRepository $settingRepository
 	 */
-	public function __construct()
+	public function __construct(SociallinkRepository $sociallinkRepository, SettingRepository $settingRepository)
 	{
-		$this->sociallink = new SociallinkRepository();
-		$this->setting = new SettingRepository();
+		$this->sociallink = $sociallinkRepository;
+		$this->setting = $settingRepository;
 	}
 
 	/**
@@ -32,8 +34,8 @@ class SociallinkController extends BaseController
 	 */
 	public function index()
 	{
-		$paginate = $this->setting->getPaginateAdmin();
-		$main = $this->sociallink->getSociallinkAdminAll($paginate);
+		$paginate = $this->settingRepository->getPaginateAdmin();
+		$main = $this->sociallinkRepository->getSociallinkAdminAll($paginate);
 
 		return view('admin.social-link.index', compact('main'));
 	}
@@ -52,7 +54,7 @@ class SociallinkController extends BaseController
 	 */
 	public function store(SociallinkStoreRequest $request)
 	{
-		$this->sociallink->create($request->all());
+		$this->sociallinkRepository->create($request->all());
 
 		return redirect()->route('social-link.index')->with('success', __('admin.created-success'));
 	}
@@ -63,7 +65,7 @@ class SociallinkController extends BaseController
 	 */
 	public function show($id)
 	{
-		$main = $this->sociallink->getById($id);
+		$main = $this->sociallinkRepository->getById($id);
 
 		return view('admin.social-link.show', compact('main'));
 	}
@@ -74,19 +76,19 @@ class SociallinkController extends BaseController
 	 */
 	public function edit($id)
 	{
-		$main = $this->sociallink->getById($id);
+		$main = $this->sociallinkRepository->getById($id);
 
 		return view('admin.social-link.edit', compact('main'));
 	}
 
 	/**
-	 * @param SociallinkEditRequest $request
+	 * @param SociallinkUpdateRequest $request
 	 * @param $id
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update(SociallinkEditRequest $request, $id)
+	public function update(SociallinkUpdateRequest $request, $id)
 	{
-		$this->sociallink->update($id, $request->all());
+		$this->sociallinkRepository->update($id, $request->all());
 
 		return redirect()->route('social-link.index')->with('success', __('admin.updated-success'));
 	}
@@ -97,7 +99,7 @@ class SociallinkController extends BaseController
 	 */
 	public function destroy($id)
 	{
-		$this->sociallink->getById($id);
+		$this->sociallinkRepository->getById($id);
 
 		return redirect()->route('social-link.index')->with('success', __('admin.information-deleted'));
 	}

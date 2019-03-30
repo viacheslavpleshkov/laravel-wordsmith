@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SociallinkEditRequest extends FormRequest
+class PageUpdateRequest extends FormRequest
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -24,9 +24,11 @@ class SociallinkEditRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'icon' => 'required|string|max:255',
-			'url' => 'required|string|unique:sociallinks|max:255',
-			'status' => 'required|integer',
+			'title' => 'required|string|max:255',
+			'url' => 'required|string|unique:pages|max:255',
+			'content_header' => 'nullable|string|max:4096',
+			'text' => 'nullable|string|max:4096',
+			'seo_id' => 'required|integer',
 		];
 	}
 }

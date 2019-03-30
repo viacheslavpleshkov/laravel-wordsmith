@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Repositories\SeoRepository;
 use App\Repositories\SettingRepository;
-use App\Http\Requests\Admin\SeoEditRequest;
+use App\Http\Requests\Admin\SeoUpdateRequest;
 use App\Http\Requests\Admin\SeoStoreRequest;
 
 class SeoController extends BaseController
@@ -12,19 +12,21 @@ class SeoController extends BaseController
 	/**
 	 * @var SeoRepository
 	 */
-	protected $seo;
+	protected $seoRepository;
 	/**
 	 * @var SettingRepository
 	 */
-	protected $setting;
+	protected $settingRepository;
 
 	/**
 	 * SeoController constructor.
+	 * @param SeoRepository $seoRepository
+	 * @param SettingRepository $settingRepository
 	 */
-	public function __construct()
+	public function __construct(SeoRepository $seoRepository, SettingRepository $settingRepository)
 	{
-		$this->seo = new SeoRepository();
-		$this->setting = new SettingRepository();
+		$this->seoRepository = $seoRepository;
+		$this->settingRepository = $settingRepository;
 	}
 
 	/**
@@ -32,8 +34,8 @@ class SeoController extends BaseController
 	 */
     public function index()
     {
-		$paginate = $this->setting->getPaginateAdmin();
-		$main = $this->seo->getSeoAdminAll($paginate);
+		$paginate = $this->settingRepository->getPaginateAdmin();
+		$main = $this->seoRepository->getSeoAdminAll($paginate);
 
         return view('admin.seo.index', compact('main'));
     }
@@ -52,7 +54,7 @@ class SeoController extends BaseController
 	 */
     public function store(SeoStoreRequest $request)
     {
-    	$this->seo->create($request->all());
+    	$this->seoRepository->create($request->all());
 
         return redirect()->route('seo.index')->with('success', __('admin.created-success'));
     }
@@ -63,7 +65,7 @@ class SeoController extends BaseController
 	 */
     public function show($id)
     {
-        $main = $this->seo->getById($id);
+        $main = $this->seoRepository->getById($id);
 
         return view('admin.seo.show', compact('main'));
     }
@@ -74,19 +76,19 @@ class SeoController extends BaseController
 	 */
     public function edit($id)
     {
-        $main = $this->seo->getById($id);
+        $main = $this->seoRepository->getById($id);
 
         return view('admin.seo.edit', compact('main'));
     }
 
 	/**
-	 * @param SeoEditRequest $request
+	 * @param SeoUpdateRequest $request
 	 * @param $id
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-    public function update(SeoEditRequest $request, $id)
+    public function update(SeoUpdateRequest $request, $id)
     {
-    	$this->seo->update($id, $request->all());
+    	$this->seoRepository->update($id, $request->all());
 
         return redirect()->route('seo.index')->with('success', __('admin.updated-success'));
     }
@@ -97,7 +99,7 @@ class SeoController extends BaseController
 	 */
     public function destroy($id)
     {
-    	$this->seo->delete($id);
+    	$this->seoRepository->delete($id);
 
         return redirect()->route('seo.index')->with('success', __('admin.information-deleted'));
     }
