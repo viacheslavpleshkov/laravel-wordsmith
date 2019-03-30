@@ -2,17 +2,17 @@
     <a href="https://laravel.com/" target="_blank">
         <img src="https://laravel.com/assets/img/components/logo-laravel.svg" height="100px">
     </a>
-    <a href="https://laravelwordsmithdemo.slavapleshkov.com/" target="_blank">
+    <a href="https://sp-laravel-wordsmith.herokuapp.com/" target="_blank">
         <img src="https://github.com/slava-pleshkov/laravel-wordsmith/blob/master/public/images/logo.svg?raw=true" height="100px" width="300px">
     </a>
     <h1 align="center">laravel-wordsmith</h1>
     <br>
 </p>
-<p align="center">The blog was created using the Laravel Framework</p>
+<p align="center">📢 The blog was created using the Laravel 5.8 Framework</p>
 
 ## Used technologies
 
-HTML5, CSS3, JavaScript, jQuery, Bootstrap, Font Awesome, Webpack, Yarn, PHP, Laravel, Composer, Redis, PostgreSQL.
+HTML5, CSS3, JavaScript, jQuery, Bootstrap, Font Awesome, Webpack, Yarn, PHP, Laravel Framework, Laravel Eloquent, Laravel Blade, Composer, Redis, PostgreSQL.
 
 ## Installation Dev
 

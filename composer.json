@@ -1,6 +1,6 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "slava-pleshkov/laravel-wordsmith",
+    "description": "The blog was created using the Laravel 5.8 Framework",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
