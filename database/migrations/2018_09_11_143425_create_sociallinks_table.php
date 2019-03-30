@@ -14,7 +14,7 @@ class CreateSociallinksTable extends Migration
     public function up()
     {
         Schema::create('sociallinks', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('icon');
             $table->string('url');
             $table->integer('status');

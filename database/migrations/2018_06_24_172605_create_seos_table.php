@@ -14,7 +14,7 @@ class CreateSeosTable extends Migration
     public function up()
     {
         Schema::create('seos', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('title');
             $table->string('description');
             $table->string('keyword');
