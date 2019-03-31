@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Repositories\RepositoryInterface;
 use App\Repositories\ArticleRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\SettingRepository;
@@ -11,22 +10,17 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-	/**
-	 * Bootstrap any application services.
-	 *
-	 * @return void
-	 */
 	public function boot()
 	{
 		if (config('app.env') === 'production') {
 			\URL::forceScheme('https');
 		}
-		\View::composer('site.layouts.main', function ($view) {
+		\View::composer('site.layouts.main', function ($view, CategoryRepository $categoryRepository, ArticleRepository $articleRepository, SettingRepository $settingRepository, SociallinkRepository $sociallinkRepository) {
 			$view->with([
-				'categories' => (new CategoryRepository())->getStatusAll(),
-				'popularposts' => (new ArticleRepository())->getPopularArticles(),
-				'settings' => (new SettingRepository())->getHome(),
-				'sociallinks' => (new SociallinkRepository())->getStatusAll(),
+				'categories' => $categoryRepository->getStatusAll(),
+				'popularposts' => $articleRepository->getPopularArticles(),
+				'settings' => $settingRepository->getHome(),
+				'sociallinks' => $sociallinkRepository->getStatusAll(),
 			]);
 		});
 	}
