@@ -13,11 +13,10 @@ class RoleRepository implements RepositoryInterface
 
 	/**
 	 * RoleRepository constructor.
-	 * @param Model $model
 	 */
-	public function __construct(Model $model)
+	public function __construct()
 	{
-		$this->model = $model;
+		$this->model = new Model;
 	}
 
 	/**

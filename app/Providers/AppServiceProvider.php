@@ -10,17 +10,22 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+	/**
+	 * Bootstrap any application services.
+	 *
+	 * @return void
+	 */
 	public function boot()
 	{
 		if (config('app.env') === 'production') {
 			\URL::forceScheme('https');
 		}
-		\View::composer('site.layouts.main', function ($view, CategoryRepository $categoryRepository, ArticleRepository $articleRepository, SettingRepository $settingRepository, SociallinkRepository $sociallinkRepository) {
+		\View::composer('site.layouts.main', function ($view) {
 			$view->with([
-				'categories' => $categoryRepository->getStatusAll(),
-				'popularposts' => $articleRepository->getPopularArticles(),
-				'settings' => $settingRepository->getHome(),
-				'sociallinks' => $sociallinkRepository->getStatusAll(),
+				'categories' => (new CategoryRepository())->getStatusAll(),
+				'popularposts' => (new ArticleRepository())->getPopularArticles(),
+				'settings' => (new SettingRepository())->getHome(),
+				'sociallinks' => (new SociallinkRepository())->getStatusAll(),
 			]);
 		});
 	}
