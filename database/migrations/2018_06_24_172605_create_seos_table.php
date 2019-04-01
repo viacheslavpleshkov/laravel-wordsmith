@@ -18,7 +18,7 @@ class CreateSeosTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('keyword');
-            $table->integer('status');
+            $table->bigInteger('status');
             $table->timestamps();
         });
     }

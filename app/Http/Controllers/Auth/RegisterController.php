@@ -82,6 +82,7 @@ class RegisterController extends BaseController
 			'password' => Hash::make($data['password']),
 			'role_id' => $role
 		];
+
 		return $this->userRepository->create($attributes);
 	}
 }

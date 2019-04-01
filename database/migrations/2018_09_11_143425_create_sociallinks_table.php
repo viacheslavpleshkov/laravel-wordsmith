@@ -17,7 +17,7 @@ class CreateSociallinksTable extends Migration
             $table->bigIncrements('id');
             $table->string('icon');
             $table->string('url');
-            $table->integer('status');
+            $table->bigInteger('status');
             $table->timestamps();
         });
     }

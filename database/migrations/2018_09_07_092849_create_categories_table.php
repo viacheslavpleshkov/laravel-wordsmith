@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('url')->unique();
             $table->unsignedInteger('seo_id');
-            $table->integer('status');
+            $table->bigInteger('status');
             $table->foreign('seo_id')->references('id')->on('seos');
             $table->timestamps();
         });

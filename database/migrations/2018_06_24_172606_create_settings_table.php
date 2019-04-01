@@ -15,9 +15,9 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('paginate_site');
-            $table->integer('paginate_admin');
-            $table->integer('contactform');
+            $table->bigInteger('paginate_site');
+            $table->bigInteger('paginate_admin');
+            $table->bigInteger('contactform');
             $table->text('footer_about');
             $table->timestamps();
         });
