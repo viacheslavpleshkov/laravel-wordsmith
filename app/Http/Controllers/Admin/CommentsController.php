@@ -37,10 +37,10 @@ class CommentsController extends BaseController
 	 */
 	public function __construct(CommentRepository $commentRepository, UserRepository $userRepository, ArticleRepository $articleRepository, SettingRepository $settingRepository)
 	{
-		$this->comment = $commentRepository;
-		$this->user = $userRepository;
-		$this->article = $articleRepository;
-		$this->setting = $settingRepository;
+		$this->commentRepository = $commentRepository;
+		$this->userRepository = $userRepository;
+		$this->articleRepository = $articleRepository;
+		$this->settingRepository = $settingRepository;
 	}
 
 	/**

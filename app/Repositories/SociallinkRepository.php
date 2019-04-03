@@ -78,16 +78,7 @@ class SociallinkRepository implements RepositoryInterface
 	 */
 	public function getSociallinkAdminAll($paginate)
 	{
-		$columns = [
-			'id',
-			'title',
-			'url',
-			'seo_id',
-		];
-
 		$result = $this->model
-//			->select($columns)
-//			->with('seo:id,title')
 			->paginate($paginate);
 
 		return $result;

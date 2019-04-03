@@ -41,7 +41,7 @@ class ProfileController extends BaseController
 	 */
 	public function edit($id)
 	{
-		$this->userRepository->getById($id);
+		$main = $this->userRepository->getById($id);
 
 		return view('site.profile.edit', compact('main'));
 	}
@@ -64,7 +64,7 @@ class ProfileController extends BaseController
 	 */
 	public function password($id)
 	{
-		$this->userRepository->getById($id);
+		$main = $this->userRepository->getById($id);
 
 		return view('site.profile.password', compact('main'));
 	}
@@ -76,7 +76,9 @@ class ProfileController extends BaseController
 	 */
 	public function updatePassword(ProfilePasswordRequest $request, $id)
 	{
-		$attributes = ['password' => Hash::make($request->password)];
+		$attributes = [
+			'password' => Hash::make($request->password)
+		];
 		$this->userRepository->update($id, $attributes);
 
 		return redirect()->route('profile.index')->with('success', __('site.profile-password-success'));

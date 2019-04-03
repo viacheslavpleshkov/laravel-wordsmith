@@ -80,7 +80,7 @@ class RegisterController extends BaseController
 			'name' => $data['name'],
 			'email' => $data['email'],
 			'password' => Hash::make($data['password']),
-			'role_id' => 1
+			'role_id' => $role->id
 		];
 
 		return $this->userRepository->create($attributes);

@@ -25,8 +25,8 @@ class SociallinkController extends BaseController
 	 */
 	public function __construct(SociallinkRepository $sociallinkRepository, SettingRepository $settingRepository)
 	{
-		$this->sociallink = $sociallinkRepository;
-		$this->setting = $settingRepository;
+		$this->sociallinkRepository = $sociallinkRepository;
+		$this->settingRepository = $settingRepository;
 	}
 
 	/**
