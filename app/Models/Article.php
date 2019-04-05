@@ -37,6 +37,14 @@ class Article extends Model
 	const UPDATED_AT = 'updated_at';
 
 	/**
+	 * @return string
+	 */
+	public function searchableAs()
+	{
+		return 'articles_index';
+	}
+
+	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
 	public function seo()
