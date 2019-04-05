@@ -237,26 +237,12 @@ class ArticleRepository implements RepositoryInterface
 	/**
 	 * @param $search
 	 * @param $paginate
-	 * @return mixed
+	 * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
 	 */
 	public function getSearch($search, $paginate)
 	{
-		$columns = [
-			'id',
-			'title',
-			'url',
-			'images',
-			'category_id',
-			'status',
-			'created_at'
-		];
-
 		$result = $this->model
-			->select($columns)
-			->where('status', 1)
-			->where('title', 'like', "%$search%")
-			->orderBy('id', 'desc')
-			->with('category:id,name,url')
+			->search($search)
 			->paginate($paginate);
 
 		return $result;

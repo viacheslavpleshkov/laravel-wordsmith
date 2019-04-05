@@ -7,7 +7,6 @@ use App\Repositories\SettingRepository;
 use App\Repositories\ArticleRepository;
 use App\Repositories\PageRepository;
 use App\Repositories\CacheRepository;
-use Illuminate\Support\Facades\Cache;
 
 class SearchController extends BaseController
 {
@@ -54,14 +53,6 @@ class SearchController extends BaseController
 			$paginate = $this->settingRepository->getPaginateSite();
 			$articles = $this->articleRepository->getSearch($title, $paginate);
 			$main = $this->pageRepository->getPageSearch();
-			$cache = $this->cacheRepository->getById(1);
-
-			//Cache
-			if (Cache::has('page-search')) {
-				$main = Cache::get('page-search');
-			} else {
-				Cache::put('page-search', $main, $cache->pagesearch);
-			}
 
 			if (count($articles) > 0) {
 				return view('site.search.index', compact('title', 'main', 'articles'));
