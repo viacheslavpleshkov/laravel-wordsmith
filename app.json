@@ -6,7 +6,10 @@
   "keywords": [
     "php",
     "laravel",
-    "blog"
+    "blog",
+    "pusher",
+    "algolia",
+    "vuejs"
   ],
   "env": {
     "APP_NAME": {
@@ -54,11 +57,26 @@
     "REDIS_PASSWORD": {
       "generator": "secret"
     },
-    "REDIS_PORT": {
+    "ALGOLIA_APP_ID": {
+      "generator": "secret"
+    },
+    "ALGOLIA_SECRET": {
+      "generator": "secret"
+    },
+    "PUSHER_APP_ID": {
+      "generator": "secret"
+    },
+    "PUSHER_APP_KEY": {
+      "generator": "secret"
+    },
+    "PUSHER_APP_SECRET": {
+      "generator": "secret"
+    },
+    "PUSHER_APP_CLUSTER": {
       "generator": "secret"
     },
     "BROADCAST_DRIVER": {
-      "value": "log"
+      "value": "pusher"
     },
     "CACHE_DRIVER": {
       "value": "redis"
@@ -70,7 +88,7 @@
       "value": "120"
     },
     "QUEUE_DRIVER": {
-      "value": "sync"
+      "value": "redis"
     },
     "MAIL_DRIVER": {
       "generator": "secret"
@@ -103,6 +121,21 @@
     },
     {
       "plan": "heroku-redis"
+    },
+    {
+      "plan": "scheduler"
+    },
+    {
+      "plan": "algoliasearch"
+    },
+    {
+      "plan": "pusher"
+    },
+    {
+      "plan": "mailtrap"
+    },
+    {
+      "plan": "timber-logging"
     }
   ],
   "buildpacks": [

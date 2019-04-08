@@ -1,3 +1,4 @@
+require('./app');
 window.Vue = require('vue');
 import InstantSearch from 'vue-instantsearch';
 

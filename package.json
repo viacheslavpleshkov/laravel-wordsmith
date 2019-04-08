@@ -17,6 +17,8 @@
     "jquery": "^3.3.1",
     "laravel-mix": "^4.0.7",
     "popper.js": "^1.14.4",
+    "pusher-js": "^4.4.0",
+    "laravel-mix": "^2.0",
     "resolve-url-loader": "^2.3.1",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.7",
