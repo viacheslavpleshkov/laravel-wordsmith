@@ -31,7 +31,7 @@
                             <div class="item-entry">
                                 <div class="item-entry__thumb">
                                     <a :href="'/blog/' + item.url" class="item-entry__thumb-link">
-                                        <img src="http://laravelwordsmith.local/images/thumbs/single/standard/standard-1000.jpg" alt="">
+                                        <img src="/images/thumbs/single/standard/standard-1000.jpg" alt="">
                                     </a>
                                 </div>
                                 <div class="item-entry__text">
