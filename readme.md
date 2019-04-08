@@ -3,7 +3,7 @@
         <img src="https://laravel.com/assets/img/components/logo-laravel.svg" height="100px">
     </a>
     <a href="https://sp-laravel-wordsmith.herokuapp.com/" target="_blank">
-        <img src="https://github.com/slava-pleshkov/laravel-wordsmith/blob/master/public/images/logo.png?raw=true" height="100px" width="300px">
+        <img src="https://github.com/slava-pleshkov/laravel-wordsmith/blob/master/public/images/logo.png?raw=true" height="100px">
     </a>
     <h1 align="center">laravel-wordsmith</h1>
     <br>
