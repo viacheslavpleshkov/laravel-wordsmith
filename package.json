@@ -18,8 +18,16 @@
     "laravel-mix": "^4.0.7",
     "popper.js": "^1.14.4",
     "resolve-url-loader": "^2.3.1",
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.7",
+    "vue-loader": "^15.7.0",
+    "algoliasearch": "3.32.1",
+    "instantsearch.css": "7.2.0",
     "sass": "^1.15.2",
-    "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.6.7"
+    "sass-loader": "^7.1.0"
+  },
+  "dependencies": {
+    "dotenv": "^7.0.0",
+    "vue-instantsearch": "^2.0.1"
   }
 }

@@ -9,9 +9,7 @@
     <meta name="description" content="{{ $main->seo->description ?? 'Wordsmith description' }}"/>
     <meta name="keywords" content="{{ $main->seo->keywords ?? 'Wordsmith, Music'}}"/>
     <link rel="author" href="{{ asset('humans.txt') }}"/>
-    <link rel="stylesheet" href="{{ asset('css/base.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/vendor.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/site.css') }}">
     <script src="{{ asset('js/modernizr.js') }}"></script>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
@@ -28,6 +26,7 @@
 @yield('content')
 @include('site.includes.footer-slide')
 @include('site.includes.footer')
+<script src="{{ asset('js/site.js') }}"></script>
 <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>

@@ -243,6 +243,7 @@ class ArticleRepository implements RepositoryInterface
 	{
 		$result = $this->model
 			->search($search)
+			->where('status', 1)
 			->paginate($paginate);
 
 		return $result;
@@ -307,7 +308,8 @@ class ArticleRepository implements RepositoryInterface
 	/**
 	 * @return mixed
 	 */
-	public function getCommentsList(){
+	public function getCommentsList()
+	{
 		$columns = [
 			'id',
 			'title',

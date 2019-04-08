@@ -1,6 +1,9 @@
 const mix = require('laravel-mix');
 
 
+mix.js('resources/js/site.js', 'public/js')
+    .sass('resources/sass/site.scss', 'public/css');
+
 mix.js('resources/js/auth.js', 'public/js')
     .sass('resources/sass/auth.scss', 'public/css');
 

@@ -1,8 +1,10 @@
 {
     "/js/admin.js": "/js/admin.js",
     "/js/auth.js": "/js/auth.js",
+    "/js/error.js": "/js/error.js",
+    "/js/site.js": "/js/site.js",
+    "/css/site.css": "/css/site.css",
     "/css/auth.css": "/css/auth.css",
     "/css/admin.css": "/css/admin.css",
-    "/css/error.css": "/css/error.css",
-    "/js/error.js": "/js/error.js"
+    "/css/error.css": "/css/error.css"
 }

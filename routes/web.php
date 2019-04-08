@@ -51,6 +51,7 @@ Route::namespace('Site')->group(function () {
     Route::post('comments/{id}', 'CommentsController@comments')->name('site.comments')->where('id', '[\w\d\-\_]+');
     Route::post('subscribe', 'SubscribeController@subscribe')->name('site.subscribe');
     Route::get('search', 'SearchController@search')->name('site.search');
+    Route::get('search-algolia', 'SearchController@algolia')->name('site.algolia');
     Route::middleware('auth')->group(function () {
         Route::get('profile', 'ProfileController@index')->name('profile.index');
         Route::get('profile/{id}/edit', 'ProfileController@edit')->name('profile.edit');

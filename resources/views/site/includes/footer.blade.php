@@ -38,6 +38,7 @@
 			<div class="col-six">
 				<div class="s-footer__copyright">
 					<span>Wordsmith ©{{ date('Y') }}. All rights reserved.</span>
+					<span>Made with <i class="fa fa-heart heart"></i> by Slava Pleshkov.</span>
 				</div>
 			</div>
 		</div>

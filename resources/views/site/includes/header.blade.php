@@ -6,21 +6,7 @@
 		</a>
 	</div>
 
-	<a class="header__search-trigger" href="#0"></a>
-	<div class="header__search">
-
-		<form role="search" action="{{ route('site.search') }}" method="get" class="header__search-form">
-			@csrf
-			<label>
-				<span class="hide-content">{{ __('site.nav-search-for') }}</span>
-				<input type="search" class="search-field" placeholder="{{ __('site.nav-type-keywords') }}" value="" name="search" title="{{ __('site.nav-search-for') }}" autocomplete="off">
-			</label>
-			<input type="submit" class="search-submit" value="{{ __('site.nav-search') }}">
-		</form>
-
-		<a href="#0" title="{{ __('site.nav-close') }}" class="header__overlay-close">{{ __('site.nav-close') }}</a>
-
-	</div>
+	<a class="header__search-trigger" href="{{ route('site.algolia') }}"></a>
 
 	<a class="header__toggle-menu" href="#0" title="{{ __('site.menu') }}"><span>{{ __('site.menu') }}</span></a>
 	<nav class="header__nav-wrap">

@@ -48,6 +48,8 @@ class SearchController extends BaseController
 	 */
 	public function search(SearchRequest $request)
 	{
+		$paginate = $this->settingRepository->getPaginateSite();
+		$main = $this->pageRepository->getPageSearch();
 		if (isset($request->search)) {
 			$title = $request->search;
 			$paginate = $this->settingRepository->getPaginateSite();
@@ -61,7 +63,17 @@ class SearchController extends BaseController
 			}
 
 		} else {
-			abort(404);
+			$articles = $this->articleRepository->getArticlesAll($paginate);
+			$title = 'Hello';
+			return view('site.search.index', compact('title', 'main', 'articles'));
 		};
+	}
+
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function algolia()
+	{
+		return view('site.search.algolia');
 	}
 }

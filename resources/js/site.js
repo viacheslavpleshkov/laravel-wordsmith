@@ -1,7 +1,10 @@
-/**
- * First we will load all of this project'languageknowledge JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+window.Vue = require('vue');
+import InstantSearch from 'vue-instantsearch';
 
-require('./bootstrap');
+Vue.use(InstantSearch);
+
+Vue.component('search-component', require('./components/SearchComponent').default);
+
+const app = new Vue({
+    el: '#app'
+});
