@@ -22,12 +22,12 @@
 		<div></div>
 	</div>
 </div>
-@include('site.includes.header')
 <div id="app">
+	@include('site.includes.header')
 	@yield('content')
+	@include('site.includes.footer-slide')
+	@include('site.includes.footer')
 </div>
-@include('site.includes.footer-slide')
-@include('site.includes.footer')
 <script src="{{ asset('js/site.js') }}"></script>
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
