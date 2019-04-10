@@ -26,7 +26,7 @@
   }"
                           :escapeHTML="false"
                           :transform-items="s">
-                    <div slot="item" slot-scope="{ item, index }">
+                    <template slot="item" slot-scope="{ item, index }">
                         <article class="col-block">
                             <div class="item-entry">
                                 <div class="item-entry__thumb">
@@ -48,7 +48,7 @@
                                 </div>
                             </div>
                         </article>
-                    </div>
+                    </template>
                 </ais-hits>
             </div>
         </div>
@@ -117,8 +117,8 @@
         data() {
             return {
                 searchClient: algoliasearch(
-                    "1XVMYPUNX4",
-                    "9976ad8b5d6127b006ceeca74a97bf98"
+                    process.env.MIX_ALGOLIA_APP_ID,
+                    process.env.MIX_ALGOLIA_SECRET
                 ),
             };
         },

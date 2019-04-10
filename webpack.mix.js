@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+require('mix-env-file');
 
 
 mix.js('resources/js/site.js', 'public/js')
