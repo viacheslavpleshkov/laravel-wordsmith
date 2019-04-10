@@ -3,9 +3,7 @@
 @section('title', "Search")
 
 <section class="s-content s-content--top-padding s-content--narrow">
-	<div id="app">
-		<search-component></search-component>
-	</div>
+	<search-component></search-component>
 </section>
 @section('content')
 @endsection
