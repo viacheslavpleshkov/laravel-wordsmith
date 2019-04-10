@@ -92,4 +92,12 @@ class SiteController extends BaseController
 
 		return redirect()->route('site.contact')->with('success', __('site.contact-success'));
 	}
+
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function search()
+	{
+		return view('site.pages.algolia');
+	}
 }
