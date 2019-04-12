@@ -6,6 +6,8 @@ use App\Repositories\SubscribeRepository;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\SubscribeStoreRequest;
 use App\Http\Requests\Admin\SubscribeUpdateRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class SubscribeController extends BaseController
 {
@@ -56,7 +58,8 @@ class SubscribeController extends BaseController
 	 */
 	public function store(SubscribeStoreRequest $request)
 	{
-		$this->subscribeRepository->create($request->all());
+		$subscribe = $this->subscribeRepository->create($request->all());
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') add subscribe id= ' . $subscribe->id . ' with params ', $request->all());
 
 		return redirect()->route('subscribes.index')->with('success', __('admin.created-success'));
 	}
@@ -68,6 +71,7 @@ class SubscribeController extends BaseController
 	public function show($id)
 	{
 		$main = $this->subscribeRepository->getById($id);
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') show subscribe id= ' . $id);
 
 		return view('admin.subscribes.show', compact('main'));
 	}
@@ -90,6 +94,7 @@ class SubscribeController extends BaseController
 	public function update(SubscribeUpdateRequest $request, $id)
 	{
 		$this->subscribeRepository->update($id, $request->all());
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') edit subscribe id= ' . $id . ' with params ', $request->all());
 
 		return redirect()->route('subscribes.index')->with('success', __('admin.updated-success'));
 	}
@@ -101,6 +106,7 @@ class SubscribeController extends BaseController
 	public function destroy($id)
 	{
 		$this->subscribeRepository->delete($id);
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') delete subscribe id= ' . $id);
 
 		return redirect()->route('subscribes.index')->with('success', __('admin.information-deleted'));
 	}

@@ -49,16 +49,6 @@ class AppServiceProvider extends ServiceProvider
 			]);
 		});
 
-		Article::observe(ArticleObserver::class);
-		Category::observe(CategoryObserver::class);
-		Comment::observe(CommentObserver::class);
-		Page::observe(PageObserver::class);
-		Role::observe(RoleObserver::class);
-		Seo::observe(SeoObserver::class);
-		Setting::observe(SettingObserver::class);
-		Sociallink::observe(SociallinkObserver::class);
-		Subscribe::observe(SettingObserver::class);
-		User::observe(UserObserver::class);
 	}
 
 	/**

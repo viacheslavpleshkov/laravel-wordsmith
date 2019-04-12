@@ -14,6 +14,10 @@
 
 HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack, Yarn, PHP, Laravel Framework, Laravel Eloquent, Laravel Blade, Composer, Redis, Algolia, Pusher, PostgreSQL.
 
+## Database schema
+
+ <img src="https://sp-laravel-wordsmith.herokuapp.com/images/db-schema.png" height="100px" width="300px">
+
 ## Installation Dev
 
 1. Clone the repo and `cd` into it

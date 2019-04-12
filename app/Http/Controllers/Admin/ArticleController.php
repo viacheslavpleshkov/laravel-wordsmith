@@ -10,7 +10,7 @@ use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\ArticleStoreRequest;
 use App\Http\Requests\Admin\ArticleUpdateRequest;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Log;
 
 class ArticleController extends BaseController
 {
@@ -64,9 +64,7 @@ class ArticleController extends BaseController
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function create()
 	{
@@ -77,10 +75,8 @@ class ArticleController extends BaseController
 	}
 
 	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param \Illuminate\Http\Request $request
-	 * @return \Illuminate\Http\Response
+	 * @param ArticleStoreRequest $request
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function store(ArticleStoreRequest $request)
 	{
@@ -96,7 +92,8 @@ class ArticleController extends BaseController
 			'status' => $request->status,
 			'user_id' => Auth::user()->id,
 		];
-		$this->articleRepository->create($attributes);
+		$article = $this->articleRepository->create($attributes);
+		Log::info('admin(role: '.Auth::user()->role->name.', email: '.Auth::user()->email.') add article id= '. $article->id . ' with params ', $request->all());
 
 		return redirect()->route('articles.index')->with('success', __('admin.created-success'));
 	}
@@ -108,6 +105,7 @@ class ArticleController extends BaseController
 	public function show($id)
 	{
 		$main = $this->articleRepository->getById($id);
+		Log::info('admin(role: '.Auth::user()->role->name.', email: '.Auth::user()->email.') show article id= '. $id);
 
 		return view('admin.articles.show', compact('main'));
 	}
@@ -146,19 +144,19 @@ class ArticleController extends BaseController
 			'user_id' => $request->user_id
 		];
 		$this->articleRepository->update($id, $attributes);
+		Log::info('admin(role: '.Auth::user()->role->name.', email: '.Auth::user()->email.') edit article id= '. $id . ' with params ', $request->all());
 
 		return redirect()->route('articles.index')->with('success', __('admin.updated-success'));
 	}
 
 	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param int $id
-	 * @return \Illuminate\Http\Response
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function destroy($id)
 	{
 		$this->articleRepository->delete($id);
+		Log::info('admin(role: '.Auth::user()->role->name.', email: '.Auth::user()->email.') delete article id= '. $id);
 
 		return redirect()->route('articles.index')->with('success', __('admin.information-deleted'));
 	}

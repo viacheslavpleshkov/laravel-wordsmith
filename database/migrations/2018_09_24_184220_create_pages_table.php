@@ -20,7 +20,7 @@ class CreatePagesTable extends Migration
             $table->text('content_header')->nullable();
             $table->text('text')->nullable();
             $table->unsignedInteger('seo_id');
-            $table->foreign('seo_id')->references('id')->on('seos');
+            $table->foreign('seo_id')->references('id')->on('seos')->onDelete('cascade');
             $table->timestamps();
         });
     }

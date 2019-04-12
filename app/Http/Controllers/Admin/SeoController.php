@@ -6,6 +6,8 @@ use App\Repositories\SeoRepository;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\SeoUpdateRequest;
 use App\Http\Requests\Admin\SeoStoreRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class SeoController extends BaseController
 {
@@ -54,9 +56,10 @@ class SeoController extends BaseController
 	 */
     public function store(SeoStoreRequest $request)
     {
-    	$this->seoRepository->create($request->all());
+    	$seo = $this->seoRepository->create($request->all());
+		Log::info('admin(role: '.Auth::user()->role->name.', email: '.Auth::user()->email.') add comment id= '. $seo->id . ' with params ', $request->all());
 
-        return redirect()->route('seo.index')->with('success', __('admin.created-success'));
+		return redirect()->route('seo.index')->with('success', __('admin.created-success'));
     }
 
 	/**
@@ -66,8 +69,9 @@ class SeoController extends BaseController
     public function show($id)
     {
         $main = $this->seoRepository->getById($id);
+		Log::info('admin(role: '.Auth::user()->role->name.', email: '.Auth::user()->email.') show seo id= '. $id);
 
-        return view('admin.seo.show', compact('main'));
+		return view('admin.seo.show', compact('main'));
     }
 
 	/**
@@ -89,8 +93,9 @@ class SeoController extends BaseController
     public function update(SeoUpdateRequest $request, $id)
     {
     	$this->seoRepository->update($id, $request->all());
+		Log::info('admin(role: '.Auth::user()->role->name.', email: '.Auth::user()->email.') edit seo id= '. $id . ' with params ', $request->all());
 
-        return redirect()->route('seo.index')->with('success', __('admin.updated-success'));
+		return redirect()->route('seo.index')->with('success', __('admin.updated-success'));
     }
 
 	/**
@@ -100,7 +105,8 @@ class SeoController extends BaseController
     public function destroy($id)
     {
     	$this->seoRepository->delete($id);
+		Log::info('admin(role: '.Auth::user()->role->name.', email: '.Auth::user()->email.') delete seo id= '. $id);
 
-        return redirect()->route('seo.index')->with('success', __('admin.information-deleted'));
+		return redirect()->route('seo.index')->with('success', __('admin.information-deleted'));
     }
 }

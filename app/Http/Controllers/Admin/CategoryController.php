@@ -7,7 +7,8 @@ use App\Repositories\SeoRepository;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\CategoryStoreRequest;
 use App\Http\Requests\Admin\CategoryUpdateRequest;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class CategoryController extends BaseController
 {
@@ -33,7 +34,7 @@ class CategoryController extends BaseController
 	public function __construct(CategoryRepository $categoryRepository, SeoRepository $seoRepository, SettingRepository $settingRepository)
 	{
 		$this->categoryRepository = $categoryRepository;
-		$this->seoRepository =$seoRepository;
+		$this->seoRepository = $seoRepository;
 		$this->settingRepository = $settingRepository;
 	}
 
@@ -64,7 +65,8 @@ class CategoryController extends BaseController
 	 */
 	public function store(CategoryStoreRequest $request)
 	{
-		$this->categoryRepository->create($request->all());
+		$category = $this->categoryRepository->create($request->all());
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') add category id= ' . $category->id . ' with params ', $request->all());
 
 		return redirect()->route('categories.index')->with('success', __('admin.created-success'));
 	}
@@ -75,7 +77,8 @@ class CategoryController extends BaseController
 	 */
 	public function show($id)
 	{
-		$main = $this->category->getById($id);
+		$main = $this->categoryRepository->getById($id);
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') show category id= ' . $id);
 
 		return view('admin.categories.show', compact('main'));
 	}
@@ -100,6 +103,7 @@ class CategoryController extends BaseController
 	public function update(CategoryUpdateRequest $request, $id)
 	{
 		$this->categoryRepository->update($id, $request->all());
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') edit category id= ' . $id . ' with params ', $request->all());
 
 		return redirect()->route('categories.index')->with('success', __('admin.updated-success'));
 	}
@@ -111,7 +115,8 @@ class CategoryController extends BaseController
 	public function destroy($id)
 	{
 		$this->categoryRepository->delete($id);
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') delete category id= ' . $id);
 
-        return redirect()->route('categories.index')->with('success', __('admin.information-deleted'));
-    }
+		return redirect()->route('categories.index')->with('success', __('admin.information-deleted'));
+	}
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Repositories\RoleRepository;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\RoleUpdateRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class RoleController extends BaseController
 {
@@ -31,45 +33,47 @@ class RoleController extends BaseController
 	/**
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-    public function index()
-    {
+	public function index()
+	{
 		$paginate = $this->settingRepository->getPaginateAdmin();
 		$main = $this->roleRepository->getRoleAdminAll($paginate);
 
-        return view('admin.roles.index', compact('main'));
-    }
+		return view('admin.roles.index', compact('main'));
+	}
 
 	/**
 	 * @param $id
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-    public function show($id)
-    {
-        $main = $this->roleRepository->getById($id);
+	public function show($id)
+	{
+		$main = $this->roleRepository->getById($id);
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') show role id= ' . $id);
 
-        return view('admin.roles.show', compact('main'));
-    }
+		return view('admin.roles.show', compact('main'));
+	}
 
 	/**
 	 * @param $id
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-    public function edit($id)
-    {
-        $main = $this->roleRepository->getById($id);
+	public function edit($id)
+	{
+		$main = $this->roleRepository->getById($id);
 
-        return view('admin.roles.edit', compact('main'));
-    }
+		return view('admin.roles.edit', compact('main'));
+	}
 
 	/**
 	 * @param RoleUpdateRequest $request
 	 * @param $id
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-    public function update(RoleUpdateRequest $request, $id)
-    {
-        $this->roleRepository->update($id, $request->all());
+	public function update(RoleUpdateRequest $request, $id)
+	{
+		$this->roleRepository->update($id, $request->all());
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') edit role id= ' . $id . ' with params ', $request->all());
 
-        return redirect()->route('roles.index')->with('success', __('admin.updated-success'));
-    }
+		return redirect()->route('roles.index')->with('success', __('admin.updated-success'));
+	}
 }

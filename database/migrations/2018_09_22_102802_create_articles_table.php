@@ -25,9 +25,9 @@ class CreateArticlesTable extends Migration
             $table->bigInteger('slide');
             $table->bigInteger('status');
             $table->unsignedInteger('user_id');
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('seo_id')->references('id')->on('seos');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('seo_id')->references('id')->on('seos')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

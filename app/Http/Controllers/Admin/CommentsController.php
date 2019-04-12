@@ -8,6 +8,8 @@ use App\Repositories\ArticleRepository;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\CommentStoreRequest;
 use App\Http\Requests\Admin\CommentUpdateRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class CommentsController extends BaseController
 {
@@ -73,7 +75,8 @@ class CommentsController extends BaseController
 	 */
 	public function store(CommentStoreRequest $request)
 	{
-		$this->commentRepository->create($request->all());
+		$comments = $this->commentRepository->create($request->all());
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') add comment id= ' . $comments->id . ' with params ', $request->all());
 
 		return redirect()->route('comments.index')->with('success', __('admin.created-success'));
 	}
@@ -81,12 +84,13 @@ class CommentsController extends BaseController
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int $id
+	 * @param int $id
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show($id)
 	{
 		$main = $this->commentRepository->getById($id);
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') show comment id= ' . $id);
 
 		return view('admin.comments.show', compact('main'));
 	}
@@ -113,6 +117,7 @@ class CommentsController extends BaseController
 	public function update(CommentUpdateRequest $request, $id)
 	{
 		$this->commentRepository->update($id, $request->all());
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') edit comment id= ' . $id . ' with params ', $request->all());
 
 		return redirect()->route('comments.index')->with('success', __('admin.updated-success'));
 	}
@@ -124,6 +129,7 @@ class CommentsController extends BaseController
 	public function destroy($id)
 	{
 		$this->commentRepository->delete($id);
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') delete comment id= ' . $id);
 
 		return redirect()->route('comments.index')->with('success', __('admin.information-deleted'));
 	}

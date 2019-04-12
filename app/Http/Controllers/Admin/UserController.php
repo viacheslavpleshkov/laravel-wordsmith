@@ -7,7 +7,9 @@ use App\Repositories\RoleRepository;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\UserUpdateRequest;
 use App\Http\Requests\Admin\UserStoreRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends BaseController
 {
@@ -70,7 +72,9 @@ class UserController extends BaseController
 			'password' => Hash::make($request->password),
 			'role_id' => $request->role_id
 		];
-		$this->userRepository->create($attributes);
+		$user = $this->userRepository->create($attributes);
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') add article id= ' . $user->id . ' with params ', $request->all());
+
 
 		return redirect()->route('users.index')->with('success', __('admin.created-success'));
 	}
@@ -82,6 +86,7 @@ class UserController extends BaseController
 	public function show($id)
 	{
 		$main = $this->userRepository->getById($id);
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') show user id= ' . $id);
 
 		return view('admin.users.show', compact('main'));
 	}
@@ -112,6 +117,7 @@ class UserController extends BaseController
 			'role_id' => $request->role_id
 		];
 		$this->userRepository->update($id, $attributes);
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') edit user id= ' . $id . ' with params ', $request->all());
 
 		return redirect()->route('users.index')->with('success', __('admin.updated-success'));
 	}
@@ -123,6 +129,8 @@ class UserController extends BaseController
 	public function destroy($id)
 	{
 		$this->userRepository->delete($id);
+		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') delete user id= ' . $id);
+
 
 		return redirect()->route('users.index')->with('success', __('admin.information-deleted'));
 	}

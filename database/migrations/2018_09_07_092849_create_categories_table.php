@@ -19,7 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->string('url')->unique();
             $table->unsignedInteger('seo_id');
             $table->bigInteger('status');
-            $table->foreign('seo_id')->references('id')->on('seos');
+            $table->foreign('seo_id')->references('id')->on('seos')->onDelete('cascade');
             $table->timestamps();
         });
     }

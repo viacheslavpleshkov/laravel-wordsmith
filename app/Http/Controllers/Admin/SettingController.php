@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\SettingUpdateRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class SettingController extends BaseController
 {
@@ -39,7 +41,8 @@ class SettingController extends BaseController
 	public function update(SettingUpdateRequest $request)
 	{
 		$this->settingRepository->update(1, $request->all());
+		Log::info('admin(role: '.Auth::user()->role->name.', email: '.Auth::user()->email.') edit setting with params ', $request->all());
 
-        return redirect()->route('settings.index')->with('success', __('admin.updated-success'));
+		return redirect()->route('settings.index')->with('success', __('admin.updated-success'));
     }
 }
