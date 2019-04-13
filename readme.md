@@ -12,11 +12,11 @@
 
 ## Used technologies
 
-HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack, Yarn, PHP, Laravel Framework, Laravel Eloquent, Laravel Blade, Composer, Redis, Algolia, Pusher, PostgreSQL.
+HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack, Yarn, Heroku, Nginx, PHP, Laravel Framework, Laravel Eloquent, Laravel Blade, Composer, Redis, Amazon S3, Algolia, Pusher, PostgreSQL, Mailgun.
 
 ## Database schema
 
- <img src="https://sp-laravel-wordsmith.herokuapp.com/images/db-schema.png" height="100px" width="300px">
+ <img src="https://github.com/slava-pleshkov/laravel-wordsmith/blob/master/public/github/db-schema.png?raw=true">
 
 ## Installation Dev
 
@@ -30,6 +30,7 @@ HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack,
 1. Set your mail credentials in your `.env` file
 1. Set your algolia credentials in your `.env` file
 1. Set your pusher credentials in your `.env` file
+1. Set your amazon s3 credentials in your `.env` file
 1. Set your `APP_URL` in your `.env` file
 1. Set your `APP_DEBUG` in your `.env` file with the value `true`
 1. Set your `TELESCOPE_ENABLED` in your `.env` file with the value `true`
@@ -54,6 +55,7 @@ HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack,
 1. Set your mail credentials in your `.env` file
 1. Set your algolia credentials in your `.env` file
 1. Set your pusher credentials in your `.env` file
+1. Set your amazon s3 credentials in your `.env` file
 1. Set your `APP_URL` in your `.env` file
 1. Set your `APP_DEBUG` in your `.env` file with the value `false`
 1. Set your `TELESCOPE_ENABLED` in your `.env` file with the value `false`

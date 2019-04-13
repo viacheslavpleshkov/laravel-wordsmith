@@ -64,5 +64,7 @@ Route::namespace('Site')->group(function () {
     Route::get('sitemap/articles.xml', 'SitemapController@articles')->name('sitemap.articles');
     Route::get('sitemap/categories.xml', 'SitemapController@categories')->name('sitemap.categories');
 });
+Route::get('s3-image-upload','S3ImageController@imageUpload');
+Route::post('s3-image-upload','S3ImageController@imageUploadPost');
 
 
