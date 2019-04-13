@@ -90,6 +90,24 @@
     "QUEUE_DRIVER": {
       "value": "redis"
     },
+    "FILESYSTEM_DRIVER": {
+      "value": "s3"
+    },
+    "AWS_ACCESS_KEY_ID": {
+      "generator": "secret"
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "generator": "secret"
+    },
+    "AWS_DEFAULT_REGION": {
+      "generator": "secret"
+    },
+    "AWS_BUCKET": {
+      "generator": "secret"
+    },
+    "AWS_URL": {
+      "generator": "secret"
+    },
     "MAIL_DRIVER": {
       "generator": "secret"
     },
@@ -132,10 +150,19 @@
       "plan": "pusher"
     },
     {
-      "plan": "mailtrap"
+      "plan": "newrelic"
     },
     {
       "plan": "timber-logging"
+    },
+    {
+      "plan": "cloudcube"
+    },
+    {
+      "plan": "mailgun"
+    },
+    {
+      "plan": "mailtrap"
     }
   ],
   "buildpacks": [

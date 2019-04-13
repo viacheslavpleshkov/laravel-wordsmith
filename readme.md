@@ -76,8 +76,11 @@ HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack,
 1. Run this command `heroku addons:create scheduler:standard`
 1. Run this command `heroku addons:create algoliasearch:free`
 1. Run this command `heroku addons:create pusher:free`
-1. Run this command `heroku addons:create mailtrap:free`
 1. Run this command `heroku addons:create timber-logging:free`
+1. Run this command `heroku addons:create newrelic:free`
+1. Run this command `heroku addons:create cloudcube:free`
+1. Run this command `heroku addons:create mailtrap:free`
+1. Run this command `heroku addons:create mailgun:free`
 1. Run this command `heroku config:set APP_NAME=Wordsmith`
 1. Run this command `heroku config:set APP_ENV=production`
 1. Run this command `heroku config:set APP_KEY=secret`
