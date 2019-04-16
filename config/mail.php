@@ -16,7 +16,7 @@ return [
 	|
 	*/
 
-	'driver' => env('MAIL_DRIVER', 'smtp'),
+	'driver' => env('MAIL_DRIVER', 'mailgun'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -132,5 +132,14 @@ return [
 	*/
 
 	'log_channel' => env('MAIL_LOG_CHANNEL'),
+
+	/**
+	 * Mailgun
+	 */
+	'mailgun' => [
+		'domain' => env('MAILGUN_DOMAIN', 'null'),
+		'secret' => env('MAILGUN_SECRET', 'null'),
+		'endpoint' => env('MAILGUN_ENDPOINT', 'null'),
+	],
 
 ];
