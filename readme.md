@@ -12,7 +12,7 @@
 
 ## Used technologies
 
-HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack, Yarn, Heroku, Nginx, PHP, Laravel Framework, Laravel Eloquent, Laravel Blade, Laravel Homestead, Laravel Dusk, Composer, Redis, Amazon S3, Algolia, Pusher, PostgreSQL, Mailgun.
+HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack, Yarn, Heroku, Nginx, PHP, Laravel Framework, Laravel Eloquent, Laravel Blade, Laravel Homestead, Laravel Dusk, Composer, Redis, Amazon S3, Algolia, Pusher, PostgreSQL, New Relic, Timber.io Logging, Mailgun, Mailtrap.
 
 ## Database schema
 
@@ -106,13 +106,18 @@ HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack,
 1. Run this command `heroku config:set SESSION_DRIVER=redis`
 1. Run this command `heroku config:set SESSION_LIFETIME=120`
 1. Run this command `heroku config:set QUEUE_DRIVER=redis`
-1. Run this command `heroku config:set MAIL_DRIVER=secret`
-1. Run this command `heroku config:set MAIL_HOST=secret`
-1. Run this command `heroku config:set MAIL_USERNAME=secret`
-1. Run this command `heroku config:set MAIL_PASSWORD=secret`
-1. Run this command `heroku config:set MAIL_ENCRYPTION=secret`
+1. Run this command `heroku config:set FILESYSTEM_DRIVER=s3`
+1. Run this command `heroku config:set AWS_ACCESS_KEY_ID=secret`
+1. Run this command `heroku config:set AWS_SECRET_ACCESS_KEY=secret`
+1. Run this command `heroku config:set AWS_DEFAULT_REGION=secret`
+1. Run this command `heroku config:set AWS_BUCKET=secret`
+1. Run this command `heroku config:set AWS_URL=secret`
+1. Run this command `heroku config:set MAIL_DRIVER=mailgun`
+1. Run this command `heroku config:set MAILGUN_DOMAIN=secret`
+1. Run this command `heroku config:set MAILGUN_SECRET=secret`
+1. Run this command `heroku config:set MAILGUN_ENDPOINT=secret`
 1. Run this command `heroku config:set MAIL_FROM_ADDRESS=secret`
-1. Run this command `heroku config:set MAIL_FROM_NAME=secret`
+1. Run this command `heroku config:set MAIL_FROM_NAME=Wordsmith Site`
 1. Run this command `git push heroku master`
 1. Run this command `heroku open`
 
