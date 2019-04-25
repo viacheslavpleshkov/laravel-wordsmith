@@ -37,9 +37,6 @@ class AppServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		if (config('app.env') === 'production') {
-			\URL::forceScheme('https');
-		}
 		\View::composer('site.layouts.main', function ($view) {
 			$view->with([
 				'categories' => (new CategoryRepository())->getStatusAll(),
