@@ -19,12 +19,12 @@ class CreateArticlesTable extends Migration
             $table->string('url')->unique();
             $table->string('images');
             $table->text('text');
-            $table->unsignedInteger('category_id');
-            $table->unsignedInteger('seo_id');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('seo_id');
             $table->bigInteger('views')->nullable();
             $table->bigInteger('slide');
             $table->bigInteger('status');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('seo_id')->references('id')->on('seos')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

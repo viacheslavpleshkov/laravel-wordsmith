@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Laravel\Scout\Searchable;
+//use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-	use Searchable;
+//	use Searchable;
 	/**
 	 * @var array
 	 */
