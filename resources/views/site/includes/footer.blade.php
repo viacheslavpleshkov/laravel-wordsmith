@@ -38,7 +38,7 @@
 			<div class="col-six">
 				<div class="s-footer__copyright">
 					<span>Wordsmith ©{{ date('Y') }}. All rights reserved.</span>
-					<span>Made with <i class="fa fa-heart heart"></i> by  <a href="https://slavapleshkov.com/" rel="nofollow" target="_blank">Slava Pleshkova</a>.</span>
+					<span>Made with <i class="fa fa-heart heart"></i> by  <a href="https://slavapleshkov.com/" rel="nofollow" target="_blank">Slava Pleshkov</a>.</span>
 				</div>
 			</div>
 		</div>
