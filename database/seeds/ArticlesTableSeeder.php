@@ -16,7 +16,7 @@ class ArticlesTableSeeder extends Seeder
 		$faker = Factory::create();
 		for ($i = 1; $i < 100; $i++) {
 			$article1 = new Article();
-			$article1->title = $faker->text(15);
+			$article1->title = $faker->text(10);
 			$article1->url = "article$i";
 			$article1->images = 'none';
 			$article1->text = '<p>' . $faker->text(10000) . '</p>';
@@ -34,7 +34,7 @@ class ArticlesTableSeeder extends Seeder
 		}
 		for ($i = 100; $i < 200; $i++) {
 			$article2 = new Article();
-			$article2->title = $faker->text(15);
+			$article2->title = $faker->text(10);
 			$article2->url = "article$i";
 			$article2->images = 'none';
 			$article2->text = '<p>' . $faker->text(10000) . '</p>';
@@ -52,7 +52,7 @@ class ArticlesTableSeeder extends Seeder
 		}
 		for ($i = 200; $i < 300; $i++) {
 			$article3 = new Article();
-			$article3->title = $faker->text(15);
+			$article3->title = $faker->text(10);
 			$article3->url = "article$i";
 			$article3->images = 'none';
 			$article3->text = '<p>' . $faker->text(10000) . '</p>';
@@ -70,7 +70,7 @@ class ArticlesTableSeeder extends Seeder
 		}
 		for ($i = 300; $i < 400; $i++) {
 			$article4 = new Article();
-			$article4->title = $faker->text(15);
+			$article4->title = $faker->text(10);
 			$article4->url = "article$i";
 			$article4->images = 'none';
 			$article4->text = '<p>' . $faker->text(10000) . '</p>';
@@ -88,7 +88,7 @@ class ArticlesTableSeeder extends Seeder
 		}
 		for ($i = 400; $i < 500; $i++) {
 			$article5 = new Article();
-			$article5->title = $faker->text(15);
+			$article5->title = $faker->text(10);
 			$article5->url = "article$i";
 			$article5->images = 'none';
 			$article5->text = '<p>' . $faker->text(10000) . '</p>';
@@ -106,7 +106,7 @@ class ArticlesTableSeeder extends Seeder
 		}
 		for ($i = 500; $i < 601; $i++) {
 			$article6 = new Article();
-			$article6->title = $faker->text(15);
+			$article6->title = $faker->text(10);
 			$article6->url = "article$i";
 			$article6->images = 'none';
 			$article6->text = '<p>' . $faker->text(10000) . '</p>';

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Events\CommentSent;
 use App\Http\Requests\Site\CommentRequest;
 use App\Repositories\CommentRepository;
 use Illuminate\Support\Facades\Auth;
@@ -35,8 +36,11 @@ class CommentsController extends BaseController
 			'text' => $request->text,
 			'status' => 1
 		];
-		$this->commentRepository->create($attributes);
+        $comment = $this->commentRepository->create($attributes);
+        $user = auth()->user();
+        broadcast(new CommentSent($user, $comment))->toOthers();
 
-		return redirect()->back()->with('success-comment', __('site.success-submit'));
+
+        return ['status' => 'Message Sent!'];
 	}
 }

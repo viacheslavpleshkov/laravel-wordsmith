@@ -37,6 +37,7 @@ import InstantSearch from 'vue-instantsearch';
 Vue.use(InstantSearch);
 
 Vue.component('search-component', require('./components/SearchComponent').default);
+Vue.component('comments-component', require('./components/Comments').default);
 
 const app = new Vue({
     el: '#app'

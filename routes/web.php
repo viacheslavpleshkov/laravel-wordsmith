@@ -40,6 +40,8 @@ Route::namespace('Site')->group(function () {
     Route::get('/', 'SiteController@index')->name('site.index');
     Route::get('blog', 'ArticleController@index')->name('site.article.index');
     Route::get('blog/{url}', 'ArticleController@view')->name('site.article.view')->where('url', '[\w\d\-\_]+');
+    Route::get('/{blog}/comments', 'CommentController@index');
+    Route::post('/{blog}/comments', 'CommentController@store');
     Route::get('categories/{url}', 'CategoryController@view')->name('site.categories')->where('url', '[\w\d\-\_]+');
 
     Route::get('styles', 'SiteController@styles')->name('site.styles');
@@ -48,7 +50,6 @@ Route::namespace('Site')->group(function () {
     Route::post('contact', 'SiteController@submit');
     Route::get('privacy-policy', 'SiteController@privacypolicy')->name('site.privacy-policy');
 
-    Route::post('comments/{id}', 'CommentsController@comments')->name('site.comments')->where('id', '[\w\d\-\_]+');
     Route::post('subscribe', 'SubscribeController@subscribe')->name('site.subscribe');
     Route::get('search', 'SiteController@search')->name('site.algolia');
     Route::middleware('auth')->group(function () {
