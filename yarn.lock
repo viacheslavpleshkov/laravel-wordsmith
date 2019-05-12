@@ -3778,10 +3778,12 @@ laravel-mix@^4.0.7:
     webpack-notifier "^1.5.1"
     yargs "^12.0.5"
 
-laravel-vue-semantic-ui-pagination@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/laravel-vue-semantic-ui-pagination/-/laravel-vue-semantic-ui-pagination-1.0.3.tgz#3df4a1811e17de3997f477ac98abe1362e59d20d"
-  integrity sha512-U76I+dIJzefSG11MZiMwUt+eF3J96y6e8rf17tj7sWhXASsypCpHMMDbrJFU3Bew6cVB6ommmkegOshKiuy7lg==
+laravel-vue-pagination@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/laravel-vue-pagination/-/laravel-vue-pagination-2.3.0.tgz#092e0abb2e942a756bd6f0ef9af295662f034a2c"
+  integrity sha512-Uzh2AufTkhayQJZiQSA8Ws0BCzrAroAu0RHt0eRaSI6buujlZ30JEEZmOOGmzW3Ri7pu9l/IPoM+5Sh3iyAvxQ==
+  dependencies:
+    vue "^2.6.7"
 
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
@@ -6583,7 +6585,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.6.10:
+vue@^2.6.10, vue@^2.6.7:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==

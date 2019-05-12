@@ -24,12 +24,15 @@
     </div>
 </template>
 <script>
+
     import Pagination from './Pagination';
 
     export default {
+
         components: {
             Pagination
         },
+
         data() {
             return {
                 articles: [],
@@ -45,7 +48,7 @@
         },
         methods: {
             fetchArticles(page = 1) {
-                axios.get('/api/v1/articles/', {
+                axios.get('/api/v1/categories/', {
                     params: {
                         page
                     }
@@ -59,3 +62,4 @@
         }
     }
 </script>
+

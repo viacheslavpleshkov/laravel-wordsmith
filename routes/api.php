@@ -14,4 +14,5 @@ use Illuminate\Http\Request;
 */
 Route::group(['prefix' => 'v1','namespace' => 'Api\v1'], function () {
     Route::get('articles', 'ArticleController@index');
+    Route::get('category/{slug}', 'CategoryController@index');
 });
