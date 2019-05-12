@@ -44,5 +44,6 @@ Vue.component('articles-list', require('./components/Articles.vue').default);
 const app = new Vue({
     el: '#app'
 });
+
 //jQuery
 window.$ = window.jQuery = require('jquery');
