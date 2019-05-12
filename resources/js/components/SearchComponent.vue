@@ -1,7 +1,8 @@
 <template>
     <ais-instant-search :search-client="searchClient" index-name="articles_index">
         <div class="row entries-wrap wide">
-            <ais-search-box placeholder="Search here…" submit-title="🔎 Submit the query" reset-title="❌ Remove the query" autofocus :class-names="{ 'ais-SearchBox-input': 'col-six tab-full', 'ais-SearchBox-submit': 'submit btn btn--primary tab-full', 'ais-SearchBox-reset': 'tab-full', 'ais-SearchBox-form': 'group row' }">
+            <ais-search-box placeholder="Search here…" submit-title="🔎 Submit the query" reset-title="❌ Remove the query" autofocus
+                            :class-names="{ 'ais-SearchBox-input': 'col-six tab-full', 'ais-SearchBox-submit': 'submit btn btn--primary tab-full', 'ais-SearchBox-reset': 'tab-full', 'ais-SearchBox-form': 'group row' }">
                 <div slot="submit-icon">🔎 Submit the query</div>
                 <div slot="reset-icon">❌ Remove the query</div>
             </ais-search-box>
@@ -80,6 +81,10 @@
     };
 </script>
 <style>
+    .MyCustomHitsList {
+        list-style: none;
+    }
+
     .paginate-hide {
         display: inline-block;
     }
