@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Site;
 use App\Repositories\ArticleRepository;
 use App\Repositories\CommentRepository;
 use App\Repositories\PageRepository;
-use App\Repositories\SettingRepository;
 
 class ArticleController extends BaseController
 {
@@ -21,36 +20,27 @@ class ArticleController extends BaseController
 	 * @var PageRepository
 	 */
 	protected $pageRepository;
-	/**
-	 * @var SettingRepository
-	 */
-	protected $settingRepository;
 
-	/**
-	 * ArticleController constructor.
-	 * @param ArticleRepository $articleRepository
-	 * @param CommentRepository $commentRepository
-	 * @param PageRepository $pageRepository
-	 * @param SettingRepository $settingRepository
-	 */
-	public function __construct(ArticleRepository $articleRepository, CommentRepository $commentRepository, PageRepository $pageRepository, SettingRepository $settingRepository)
+    /**
+     * ArticleController constructor.
+     * @param ArticleRepository $articleRepository
+     * @param CommentRepository $commentRepository
+     * @param PageRepository $pageRepository
+     */
+	public function __construct(ArticleRepository $articleRepository, CommentRepository $commentRepository, PageRepository $pageRepository)
 	{
 		$this->articleRepository = $articleRepository;
 		$this->commentRepository = $commentRepository;
 		$this->pageRepository = $pageRepository;
-		$this->settingRepository = $settingRepository;
 	}
 
-	/**
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-	 */
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
 	public function index()
 	{
 		$main = $this->pageRepository->getPageBlog();
-		$paginate = $this->settingRepository->getPaginateSite();
-		$articles = $this->articleRepository->getArticlesAll($paginate);
-
-		return view('site.articles.index', compact('main', 'articles'));
+		return view('site.articles.index', compact('main'));
 	}
 
 	/**
