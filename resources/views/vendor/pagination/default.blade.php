@@ -23,7 +23,7 @@
                                 @if ($page == $paginator->currentPage())
                                     <li><span class="pgn__num current">{{ $page }}</span></li>
                                 @else
-                                    <li><a href="{{ $url }}"><span class="pgn__num">{{ $page }}</span></a></li>
+                                    <li><a href="{{ $url }}"><span class="pgn_page-link_num">{{ $page }}</span></a></li>
                                 @endif
                             @endforeach
                         @endif

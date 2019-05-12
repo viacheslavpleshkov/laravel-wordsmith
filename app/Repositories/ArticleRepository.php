@@ -323,4 +323,26 @@ class ArticleRepository implements RepositoryInterface
 
 		return $result;
 	}
+
+    public function getApiPaginate($paginate)
+    {
+        $columns = [
+            'id',
+            'title',
+            'url',
+            'images',
+            'category_id',
+            'status',
+            'created_at'
+        ];
+
+        $result = $this->model
+            ->select($columns)
+            ->where('status', 1)
+            ->orderBy('id', 'desc')
+            ->with('category:id,name,url')
+            ->paginate($paginate);
+
+        return $result;
+    }
 }

@@ -28,6 +28,7 @@
     "vue": "^2.6.10",
     "vue-instantsearch": "2.0.1",
     "vue-loader": "^15.7.0",
+    "laravel-vue-semantic-ui-pagination": "^1.0.3",
     "vue-template-compiler": "^2.6.7"
   }
 }

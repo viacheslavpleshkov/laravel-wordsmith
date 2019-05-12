@@ -45,10 +45,7 @@ class SiteController extends BaseController
 	{
 		$slider = $this->articleRepository->getSlideAll();
 		$main = $this->pageRepository->getPageHome();
-		$paginate = $this->settingRepository->getPaginateSite();
-		$articles = $this->articleRepository->getArticlesAll($paginate);
-
-		return view('site.pages.index', compact('main', 'slider', 'articles'));
+		return view('site.pages.index', compact('main', 'slider'));
 	}
 
 	/**
