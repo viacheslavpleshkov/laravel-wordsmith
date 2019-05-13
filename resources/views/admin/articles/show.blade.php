@@ -26,7 +26,11 @@
         </tr>
         <tr>
             <th>{{ __('admin.articles-images') }}</th>
-            <td><img src="{{ asset('storage/'.$main->images) }}" width="100px" alt=""></td>
+            @if($main->images == 'none')
+                <td><img src="/images/thumbs/single/standard/standard-1000.jpg" width="100px" alt=""></td>
+            @else
+                <td><img src="{{ config('app.url_file').$main->images }}" width="100px" alt=""></td>
+            @endif
         </tr>
         <tr>
             <th>{{ __('admin.articles-url') }}</th>

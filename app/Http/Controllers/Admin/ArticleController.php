@@ -89,7 +89,7 @@ class ArticleController extends BaseController
         $attributes = [
             'title' => $request->title,
             'url' => $request->url,
-            'images' => Storage::disk('s3')->put('articles', $request->images),
+            'images' => Storage::disk()->put('articles', $request->images),
             'text' => $request->text,
             'category_id' => $request->category_id,
             'seo_id' => $request->seo_id,

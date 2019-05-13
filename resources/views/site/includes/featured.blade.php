@@ -6,10 +6,11 @@
                 @foreach($slider as $item)
                     <div class="featured__slide">
                         <div class="entry">
-
-                            <div class="entry__background"
-                                 style="background-image:url('{{ asset('images/thumbs/single/standard/standard-1000.jpg') }}');"></div>
-
+                            @if($item->images == 'none')
+                                <div class="entry__background" style="background-image:url('{{ asset('images/thumbs/single/standard/standard-1000.jpg') }}');"></div>
+                            @else
+                                <div class="entry__background" style="background-image:url('{{ config('app.url_file').$item->images }}');"></div>
+                            @endif
                             <div class="entry__content">
                                 <span class="entry__category"><a
                                             href="{{ route('site.categories',$item->category->url) }}">{{ $item->category->name }}</a></span>
