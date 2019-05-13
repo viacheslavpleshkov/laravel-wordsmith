@@ -46,9 +46,10 @@
 						<form action="{{ route('subscribes.destroy',$item->id) }}" method="POST">
 							@csrf
 							@method('DELETE')
-							<button type="submit"><i class="fas fa-trash-alt"></i></button>
+							<button type="submit" onclick="if(!confirm('{{ __('admin.trash') }}')) return false;">
+								<i class="fas fa-trash-alt"></i>
+							</button>
 						</form>
-
 					</td>
 				</tr>
 			@endforeach

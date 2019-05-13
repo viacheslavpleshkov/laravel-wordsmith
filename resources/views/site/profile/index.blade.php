@@ -41,15 +41,12 @@
             </table>
             <div class="text-center">
 
-                <a href="{{ route('profile.edit',$main->id) }}"
-                   class="submit btn btn--primary btn--large">{{ __('site.profile-edit-profile') }}</a>
-                <a href="{{ route('profile.password',$main->id) }}"
-                   class="submit btn btn--primary btn--large">{{ __('site.profile-edit-password') }}</a>
+                <a href="{{ route('profile.edit',$main->id) }}" class="submit btn btn--primary btn--large">{{ __('site.profile-edit-profile') }}</a>
+                <a href="{{ route('profile.password',$main->id) }}" class="submit btn btn--primary btn--large">{{ __('site.profile-edit-password') }}</a>
                 <form action="{{ route('profile.destroy',$main->id) }}" method="post">
                     @csrf
                     @method('DELETE')
-                    <button type="submit"
-                            class="submit btn btn--primary btn--large">{{ __('site.profile-delete-user') }}</button>
+                    <button type="submit" class="submit btn btn--primary btn--large" onclick="if(!confirm('{{ __('admin.trash') }}')) return false;">{{ __('site.profile-delete-user') }}</button>
                 </form>
             </div>
 

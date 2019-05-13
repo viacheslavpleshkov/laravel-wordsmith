@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Site;
 use App;
 use App\Repositories\ArticleRepository;
 use App\Repositories\SettingRepository;
+use App\Http\Requests\Site\ContactRequest;
 use App\Repositories\PageRepository;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailShipped;
-use App\Http\Requests\Site\ContactRequest;
 
 class SiteController extends BaseController
 {
@@ -86,6 +87,7 @@ class SiteController extends BaseController
 	public function submit(ContactRequest $request)
 	{
 		Mail::send(new MailShipped($request));
+        Log::info('site send contact with params ', $request->all());
 
 		return redirect()->route('site.contact')->with('success', __('site.contact-success'));
 	}

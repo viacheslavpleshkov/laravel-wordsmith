@@ -11,7 +11,7 @@
             <form action="{{ route('subscribes.destroy', $main->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">{{ __('admin.delete') }}</button>
+                <button type="submit" class="btn btn-danger" onclick="if(!confirm('{{ __('admin.trash') }}')) return false;">{{ __('admin.delete') }}</button>
             </form>
         </li>
     </ul>

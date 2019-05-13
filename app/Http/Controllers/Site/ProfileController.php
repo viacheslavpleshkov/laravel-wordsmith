@@ -7,7 +7,12 @@ use App\Http\Requests\Site\ProfilePasswordRequest;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
+/**
+ * Class ProfileController
+ * @package App\Http\Controllers\Site
+ */
 class ProfileController extends BaseController
 {
 	/**
@@ -54,6 +59,7 @@ class ProfileController extends BaseController
 	public function updateEdit(ProfileEditRequest $request, $id)
 	{
 		$this->userRepository->update($id, $request->all());
+        Log::info('site(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') updateEdit profile id= ' . $id . ' with params ', $request->all());
 
 		return redirect()->route('profile.index')->with('success', __('site.updated-success'));
 	}
@@ -80,6 +86,7 @@ class ProfileController extends BaseController
 			'password' => Hash::make($request->password)
 		];
 		$this->userRepository->update($id, $attributes);
+        Log::info('site(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') updatePassword profile id= ' . $id . ' with params ', $request->all());
 
 		return redirect()->route('profile.index')->with('success', __('site.profile-password-success'));
 	}
@@ -91,6 +98,7 @@ class ProfileController extends BaseController
 	public function destroy($id)
 	{
 		$this->userRepository->delete($id);
+        Log::info('site(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') destroy profile id= ' . $id);
 
 		return redirect()->route('login')->with('success', __('site.profile-user-deleted'));
 	}

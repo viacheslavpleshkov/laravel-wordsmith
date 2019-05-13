@@ -7,6 +7,10 @@ use App\Http\Requests\Site\CommentRequest;
 use App\Repositories\CommentRepository;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class CommentsController
+ * @package App\Http\Controllers\Site
+ */
 class CommentsController extends BaseController
 {
 	/**

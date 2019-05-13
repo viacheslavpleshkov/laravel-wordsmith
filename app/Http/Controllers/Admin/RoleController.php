@@ -8,6 +8,10 @@ use App\Http\Requests\Admin\RoleUpdateRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
+/**
+ * Class RoleController
+ * @package App\Http\Controllers\Admin
+ */
 class RoleController extends BaseController
 {
 	/**
@@ -48,7 +52,7 @@ class RoleController extends BaseController
 	public function show($id)
 	{
 		$main = $this->roleRepository->getById($id);
-		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') show role id= ' . $id);
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') show role id= ' . $main->id);
 
 		return view('admin.roles.show', compact('main'));
 	}
@@ -72,7 +76,7 @@ class RoleController extends BaseController
 	public function update(RoleUpdateRequest $request, $id)
 	{
 		$this->roleRepository->update($id, $request->all());
-		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') edit role id= ' . $id . ' with params ', $request->all());
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') destroy role id= ' . $id);
 
 		return redirect()->route('roles.index')->with('success', __('admin.updated-success'));
 	}

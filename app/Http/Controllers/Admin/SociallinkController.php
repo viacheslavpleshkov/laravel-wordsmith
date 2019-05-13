@@ -9,6 +9,10 @@ use App\Http\Requests\Admin\SociallinkUpdateRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
+/**
+ * Class SociallinkController
+ * @package App\Http\Controllers\Admin
+ */
 class SociallinkController extends BaseController
 {
 	/**
@@ -57,7 +61,7 @@ class SociallinkController extends BaseController
 	public function store(SociallinkStoreRequest $request)
 	{
 		$sociallink = $this->sociallinkRepository->create($request->all());
-		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') add sociallink id= ' . $sociallink->id . ' with params ', $request->all());
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') store sociallink id= ' . $sociallink->id . ' with params ', $request->all());
 
 		return redirect()->route('social-link.index')->with('success', __('admin.created-success'));
 	}
@@ -69,7 +73,7 @@ class SociallinkController extends BaseController
 	public function show($id)
 	{
 		$main = $this->sociallinkRepository->getById($id);
-		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') show sociallink id= ' . $id);
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') show sociallink id= ' . $main->id);
 
 		return view('admin.social-link.show', compact('main'));
 	}
@@ -93,7 +97,7 @@ class SociallinkController extends BaseController
 	public function update(SociallinkUpdateRequest $request, $id)
 	{
 		$this->sociallinkRepository->update($id, $request->all());
-		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') edit sociallink id= ' . $id . ' with params ', $request->all());
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') update sociallink id= ' . $id . ' with params ', $request->all());
 
 		return redirect()->route('social-link.index')->with('success', __('admin.updated-success'));
 	}
@@ -105,7 +109,7 @@ class SociallinkController extends BaseController
 	public function destroy($id)
 	{
 		$this->sociallinkRepository->getById($id);
-		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') delete sociallink id= ' . $id);
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') destroy sociallink id= ' . $id);
 
 		return redirect()->route('social-link.index')->with('success', __('admin.information-deleted'));
 	}

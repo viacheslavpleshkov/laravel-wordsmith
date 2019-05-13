@@ -170,4 +170,5 @@ return [
 	'status' => 'Status',
 	'created' => 'Created',
 	'updated' => 'Updated',
+    'trash' => 'Do you want to delete this item?',
 ];

@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
+/**
+ * Class UserController
+ * @package App\Http\Controllers\Admin
+ */
 class UserController extends BaseController
 {
 	/**
@@ -60,10 +64,10 @@ class UserController extends BaseController
 		return view('admin.users.create', compact('role'));
 	}
 
-	/**
-	 * @param UserRequest $request
-	 * @return \Illuminate\Http\RedirectResponse
-	 */
+    /**
+     * @param UserStoreRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
 	public function store(UserStoreRequest $request)
 	{
 		$attributes = [
@@ -73,7 +77,7 @@ class UserController extends BaseController
 			'role_id' => $request->role_id
 		];
 		$user = $this->userRepository->create($attributes);
-		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') add article id= ' . $user->id . ' with params ', $request->all());
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') store user id= ' . $user->id . ' with params ', $request->all());
 
 
 		return redirect()->route('users.index')->with('success', __('admin.created-success'));
@@ -86,7 +90,7 @@ class UserController extends BaseController
 	public function show($id)
 	{
 		$main = $this->userRepository->getById($id);
-		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') show user id= ' . $id);
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') show user id= ' . $main->id);
 
 		return view('admin.users.show', compact('main'));
 	}
@@ -103,11 +107,11 @@ class UserController extends BaseController
 		return view('admin.users.edit', compact('main', 'role'));
 	}
 
-	/**
-	 * @param UserRequest $request
-	 * @param $id
-	 * @return \Illuminate\Http\RedirectResponse
-	 */
+    /**
+     * @param UserUpdateRequest $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
 	public function update(UserUpdateRequest $request, $id)
 	{
 		$attributes = [
@@ -117,7 +121,7 @@ class UserController extends BaseController
 			'role_id' => $request->role_id
 		];
 		$this->userRepository->update($id, $attributes);
-		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') edit user id= ' . $id . ' with params ', $request->all());
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') update user id= ' . $id . ' with params ', $request->all());
 
 		return redirect()->route('users.index')->with('success', __('admin.updated-success'));
 	}
@@ -129,8 +133,7 @@ class UserController extends BaseController
 	public function destroy($id)
 	{
 		$this->userRepository->delete($id);
-		Log::info('admin(role: ' . Auth::user()->role->name . ', email: ' . Auth::user()->email . ') delete user id= ' . $id);
-
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') destroy user id= ' . $id);
 
 		return redirect()->route('users.index')->with('success', __('admin.information-deleted'));
 	}

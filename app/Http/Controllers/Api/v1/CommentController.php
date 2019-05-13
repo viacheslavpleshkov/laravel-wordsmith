@@ -8,6 +8,10 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Repositories\CommentRepository;
 
+/**
+ * Class CommentController
+ * @package App\Http\Controllers\Api\v1
+ */
 class CommentController extends BaseController
 {
     protected $commentRepository;

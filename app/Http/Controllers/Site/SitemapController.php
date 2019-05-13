@@ -6,6 +6,10 @@ use App\Repositories\ArticleRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\PageRepository;
 
+/**
+ * Class SitemapController
+ * @package App\Http\Controllers\Site
+ */
 class SitemapController extends BaseController
 {
 	/**

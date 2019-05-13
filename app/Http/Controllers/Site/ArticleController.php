@@ -6,6 +6,10 @@ use App\Repositories\ArticleRepository;
 use App\Repositories\CommentRepository;
 use App\Repositories\PageRepository;
 
+/**
+ * Class ArticleController
+ * @package App\Http\Controllers\Site
+ */
 class ArticleController extends BaseController
 {
 	/**

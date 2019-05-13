@@ -9,6 +9,10 @@ use App\Http\Requests\Admin\PageUpdateRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
+/**
+ * Class PageController
+ * @package App\Http\Controllers\Admin
+ */
 class PageController extends BaseController
 {
 	protected $pageRepository;
@@ -52,7 +56,7 @@ class PageController extends BaseController
 	public function show($id)
 	{
 		$main = $this->pageRepository->getById($id);
-		Log::info('admin(role: '.Auth::user()->role->name.', email: '.Auth::user()->email.') show page id= '. $id);
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') show page id= ' . $main->id);
 
 		return view('admin.pages.show', compact('main'));
 	}
@@ -77,7 +81,7 @@ class PageController extends BaseController
 	public function update(PageUpdateRequest $request, $id)
 	{
 		$this->pageRepository->update($id, $request->all());
-		Log::info('admin(role: '.Auth::user()->role->name.', email: '.Auth::user()->email.') edit page id= '. $id . ' with params ', $request->all());
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') update page id= ' . $id . ' with params ', $request->all());
 
 		return redirect()->route('pages.index')->with('success', __('admin.updated-success'));
 	}

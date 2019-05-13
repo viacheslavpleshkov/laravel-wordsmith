@@ -6,6 +6,10 @@ use App\Repositories\ArticleRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\SettingRepository;
 
+/**
+ * Class CategoryController
+ * @package App\Http\Controllers\Site
+ */
 class CategoryController extends BaseController
 {
     /**

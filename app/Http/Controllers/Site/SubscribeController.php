@@ -4,7 +4,12 @@ namespace App\Http\Controllers\Site;
 
 use App\Repositories\SubscribeRepository;
 use App\Http\Requests\Site\SubscribeRequest;
+use Illuminate\Support\Facades\Log;
 
+/**
+ * Class SubscribeController
+ * @package App\Http\Controllers\Site
+ */
 class SubscribeController extends BaseController
 {
 	/**
@@ -32,7 +37,8 @@ class SubscribeController extends BaseController
 			'status' => 1
 		];
 		$this->subscribeRepository->create($attributes);
+        Log::info('site create subscribe with params ', $request->all());
 
-		return redirect()->back()->with('success-submit', __('site.success-submit'));
+        return redirect()->back()->with('success-submit', __('site.success-submit'));
 	}
 }
