@@ -2,9 +2,13 @@
 
 namespace App\Http\Requests\Site;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\AbstractRequest;
 
-class SearchRequest extends FormRequest
+/**
+ * Class SearchRequest
+ * @package App\Http\Requests\Site
+ */
+class SearchRequest extends AbstractRequest
 {
     /**
      * Determine if the user is authorized to make this request.

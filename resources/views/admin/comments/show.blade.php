@@ -30,7 +30,7 @@
         </tr>
         <tr>
             <th>{{ __('admin.comments-text') }}</th>
-            <td>{{ $main->text }}</td>
+            <td>{{ $main->body }}</td>
         </tr>
         <tr>
             <th>{{ __('admin.status') }}</th>

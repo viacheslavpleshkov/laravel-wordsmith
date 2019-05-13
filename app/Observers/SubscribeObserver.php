@@ -4,6 +4,10 @@ namespace App\Observers;
 
 use App\Models\Subscribe;
 
+/**
+ * Class SubscribeObserver
+ * @package App\Observers
+ */
 class SubscribeObserver
 {
     /**

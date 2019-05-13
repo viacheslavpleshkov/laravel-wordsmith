@@ -38,8 +38,8 @@ Vue.use(InstantSearch);
 
 Vue.component('search-component', require('./components/SearchComponent').default);
 Vue.component('comments-component', require('./components/Comments').default);
-Vue.component('articles-list', require('./components/Articles.vue').default);
-
+Vue.component('articles-component', require('./components/Articles.vue').default);
+Vue.component('categories-component', require('./components/Categories.vue').default);
 
 const app = new Vue({
     el: '#app',

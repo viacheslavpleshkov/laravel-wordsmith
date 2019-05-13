@@ -3,6 +3,9 @@
 use Illuminate\Database\Seeder;
 use App\Models\Page;
 
+/**
+ * Class PagesTableSeeder
+ */
 class PagesTableSeeder extends Seeder
 {
     /**

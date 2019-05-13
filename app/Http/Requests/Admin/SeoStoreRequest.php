@@ -2,9 +2,13 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\AbstractRequest;
 
-class SeoStoreRequest extends FormRequest
+/**
+ * Class SeoStoreRequest
+ * @package App\Http\Requests\Admin
+ */
+class SeoStoreRequest extends AbstractRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +31,7 @@ class SeoStoreRequest extends FormRequest
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:255',
             'keyword' => 'required|string|max:255',
-			'status' => 'required|integer',
+            'status' => 'required|integer',
         ];
     }
 }

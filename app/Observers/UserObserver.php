@@ -4,6 +4,10 @@ namespace App\Observers;
 
 use App\Models\User;
 
+/**
+ * Class UserObserver
+ * @package App\Observers
+ */
 class UserObserver
 {
     /**

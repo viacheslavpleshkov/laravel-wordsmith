@@ -17,7 +17,7 @@
                                         <div class="comment__time">{{ comment.created_at }}</div>
                                     </div>
                                 </div>
-                                <div class="comment__text"><p>{{ comment.text }}</p>
+                                <div class="comment__text"><p>{{ comment.body }}</p>
                                 </div>
                             </div>
                         </li>

@@ -6,10 +6,9 @@ use App\Models\Comment;
 use App\Events\CommentSent;
 use App\Models\Article;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Repositories\CommentRepository;
 
-class CommentController extends Controller
+class CommentController extends BaseController
 {
     protected $commentRepository;
 
@@ -26,8 +25,9 @@ class CommentController extends Controller
         $user = auth()->user();
         $comment = Comment::create([
             'user_id' => $user->id,
-            'post_id' => $post->id,
+            'article_id' => $post->id,
             'body' => request('body'),
+            'status' => 1,
         ]);
         broadcast(new CommentSent($user, $comment))->toOthers();
         return ['status' => 'Message Sent!'];

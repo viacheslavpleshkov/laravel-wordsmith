@@ -2,9 +2,13 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\AbstractRequest;
 
-class CommentUpdateRequest extends FormRequest
+/**
+ * Class CommentUpdateRequest
+ * @package App\Http\Requests\Admin
+ */
+class CommentUpdateRequest extends AbstractRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +30,7 @@ class CommentUpdateRequest extends FormRequest
         return [
             'user_id' => 'required|integer',
             'article_id' => 'required|integer',
-            'text' => 'required|string|max:4096',
+            'body' => 'required|string|max:4096',
             'status' => 'required|integer',
         ];
     }

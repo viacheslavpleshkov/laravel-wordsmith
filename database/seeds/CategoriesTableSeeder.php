@@ -3,6 +3,9 @@
 use Illuminate\Database\Seeder;
 use App\Models\Category;
 
+/**
+ * Class CategoriesTableSeeder
+ */
 class CategoriesTableSeeder extends Seeder
 {
     /**

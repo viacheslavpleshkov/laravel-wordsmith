@@ -5,7 +5,7 @@
                 <div class="item-entry" data-aos="zoom-in">
                     <div class="item-entry__thumb">
                         <a :href="'/blog/'+article.url" class="item-entry__thumb-link">
-                            <img src="images/thumbs/single/standard/standard-1000.jpg" :alt="article.title">
+                            <img src="/images/thumbs/single/standard/standard-1000.jpg" :alt="article.title">
                         </a>
                     </div>
                     <div class="item-entry__text">
@@ -24,15 +24,18 @@
     </div>
 </template>
 <script>
-
     import Pagination from './Pagination';
 
     export default {
-
         components: {
             Pagination
         },
-
+        props: {
+            categoryId: {
+                type: Number,
+                required: true
+            }
+        },
         data() {
             return {
                 articles: [],
@@ -48,7 +51,7 @@
         },
         methods: {
             fetchArticles(page = 1) {
-                axios.get('/api/v1/categories/', {
+                axios.get('/api/v1/categories/' + this.categoryId, {
                     params: {
                         page
                     }
@@ -62,4 +65,3 @@
         }
     }
 </script>
-

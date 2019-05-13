@@ -4,6 +4,10 @@ namespace App\Observers;
 
 use App\Models\Article;
 
+/**
+ * Class ArticleObserver
+ * @package App\Observers
+ */
 class ArticleObserver
 {
     /**

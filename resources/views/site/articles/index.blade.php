@@ -11,7 +11,7 @@
                 <p class="lead">{{ $main->content_header }}</p>
             </div>
         </div>
-        <articles-list></articles-list>
+        <articles-component></articles-component>
 
     </section>
 @endsection

@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 Route::group(['prefix' => 'v1','namespace' => 'Api\v1'], function () {
     Route::get('articles', 'ArticleController@index');
-    Route::get('category/{id}', 'CategoryController@index');
+    Route::get('categories/{id}', 'CategoryController@index');
     Route::get('comments/{id}', 'CommentController@index');
     Route::post('comments/{id}', 'CommentController@store');
 });

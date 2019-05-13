@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
+/**
+ * Class ArticleController
+ * @package App\Http\Controllers\Admin
+ */
 class ArticleController extends BaseController
 {
 	/**

@@ -2,9 +2,13 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\AbstractRequest;
 
-class ArticleStoreRequest extends FormRequest
+/**
+ * Class ArticleStoreRequest
+ * @package App\Http\Requests\Admin
+ */
+class ArticleStoreRequest extends AbstractRequest
 {
     /**
      * Determine if the user is authorized to make this request.

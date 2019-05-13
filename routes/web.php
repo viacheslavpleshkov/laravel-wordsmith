@@ -1,6 +1,6 @@
 <?php
 /**
- * Laravel Router
+ * Auth Router
  */
 Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
     Route::get('login', 'LoginController@showLoginForm')->name('login');
@@ -13,6 +13,9 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
     Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
     Route::post('password/reset', 'ResetPasswordController@reset');
 });
+/**
+ * Admin Router
+ */
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'roles'], 'block' => ['User']], function () {
     Route::group(['roles' => ['Author', 'Moderator', 'Admin']], function () {
         Route::get('/', 'AdminController@index')->name('admin.index');
@@ -36,6 +39,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::put('settings', 'SettingController@update')->name('settings.update');
     });
 });
+/**
+ * Site Router
+ */
 Route::namespace('Site')->group(function () {
     Route::get('/', 'SiteController@index')->name('site.index');
     Route::get('blog', 'ArticleController@index')->name('site.article.index');

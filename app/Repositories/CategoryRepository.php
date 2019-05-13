@@ -139,7 +139,7 @@ class CategoryRepository implements RepositoryInterface
         return $result;
     }
 
-    public function getApiPaginate($paginate)
+    public function getApiPaginate($id, $paginate)
     {
         $columns = [
             'id',
@@ -149,10 +149,10 @@ class CategoryRepository implements RepositoryInterface
             'status',
         ];
         $result = $this->model
-            ->select($columns)
+            ->where('id', 1)
             ->where('status', 1)
             ->orderBy('id', 'desc')
-            ->with('seo:id,title')
+            ->with('articles')
             ->paginate($paginate);
 
         return $result;

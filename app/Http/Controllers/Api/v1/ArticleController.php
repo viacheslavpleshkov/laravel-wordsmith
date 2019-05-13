@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Http\Controllers\Controller;
 use App\Repositories\ArticleRepository;
 use App\Repositories\SettingRepository;
 
@@ -10,7 +9,7 @@ use App\Repositories\SettingRepository;
  * Class ArticleController
  * @package App\Http\Controllers\Api\v1
  */
-class ArticleController extends Controller
+class ArticleController extends BaseController
 {
     /**
      * @var SettingRepository

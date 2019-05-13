@@ -29,8 +29,5 @@
     "vue-instantsearch": "2.0.1",
     "vue-loader": "^15.7.0",
     "vue-template-compiler": "^2.6.7"
-  },
-  "dependencies": {
-    "laravel-vue-pagination": "^2.3.0"
   }
 }

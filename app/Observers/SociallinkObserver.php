@@ -4,6 +4,10 @@ namespace App\Observers;
 
 use App\Models\Sociallink;
 
+/**
+ * Class SociallinkObserver
+ * @package App\Observers
+ */
 class SociallinkObserver
 {
     /**

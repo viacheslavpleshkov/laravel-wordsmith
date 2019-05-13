@@ -2,9 +2,13 @@
 
 namespace App\Http\Requests\Site;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\AbstractRequest;
 
-class CommentRequest extends FormRequest
+/**
+ * Class CommentRequest
+ * @package App\Http\Requests\Site
+ */
+class CommentRequest extends AbstractRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +28,7 @@ class CommentRequest extends FormRequest
     public function rules()
     {
         return [
-			'text' => 'required|string|max:4096',
+			'body' => 'required|string|max:4096',
 		];
     }
 }

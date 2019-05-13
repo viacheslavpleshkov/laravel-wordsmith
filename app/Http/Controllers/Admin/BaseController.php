@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AbstractController;
 use App;
 
-class BaseController extends Controller
+abstract class BaseController extends AbstractController
 {
+
 }

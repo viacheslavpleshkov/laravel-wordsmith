@@ -5,6 +5,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Faker\Factory;
 
+/**
+ * Class UsersTableSeeder
+ */
 class UsersTableSeeder extends Seeder
 {
 	/**

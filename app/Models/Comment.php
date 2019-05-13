@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Comment
+ * @package App\Models
+ */
 class Comment extends Model
 {
 	/**
@@ -20,7 +24,7 @@ class Comment extends Model
 	protected $fillable = [
 		'user_id',
 		'article_id',
-		'text',
+		'body',
 		'status'
 	];
 

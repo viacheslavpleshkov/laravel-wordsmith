@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Sociallink
+ * @package App\Models
+ */
 class Sociallink extends Model
 {
 	/**

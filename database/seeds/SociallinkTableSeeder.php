@@ -3,6 +3,9 @@
 use Illuminate\Database\Seeder;
 use App\Models\Sociallink;
 
+/**
+ * Class SociallinkTableSeeder
+ */
 class SociallinkTableSeeder extends Seeder
 {
     /**

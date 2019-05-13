@@ -4,6 +4,10 @@ namespace App\Observers;
 
 use App\Models\Page;
 
+/**
+ * Class PageObserver
+ * @package App\Observers
+ */
 class PageObserver
 {
     /**

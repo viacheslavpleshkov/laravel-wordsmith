@@ -2,43 +2,42 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Http\Controllers\Controller;
-use App\Repositories\CategoryRepository;
+use App\Repositories\ArticleRepository;
 use App\Repositories\SettingRepository;
 
 /**
  * Class CategoryController
  * @package App\Http\Controllers\Api\v1
  */
-class CategoryController extends Controller
+class CategoryController extends BaseController
 {
     /**
      * @var SettingRepository
      */
     protected $settingRepository;
     /**
-     * @var CategoryRepository
+     * @var ArticleRepository
      */
-    protected $categoryRepository;
+    protected $articleRepository;
 
     /**
      * CategoryController constructor.
      * @param SettingRepository $settingRepository
-     * @param CategoryRepository $categoryRepository
+     * @param ArticleRepository $articleRepository
      */
-    public function __construct(SettingRepository $settingRepository, CategoryRepository $categoryRepository)
+    public function __construct(SettingRepository $settingRepository, ArticleRepository $articleRepository)
     {
         $this->settingRepository = $settingRepository;
-        $this->categoryRepository = $categoryRepository;
+        $this->articleRepository = $articleRepository;
     }
 
     /**
      * @return mixed
      */
-    public function index()
+    public function index($id)
     {
         $paginate = $this->settingRepository->getPaginateSite();
-        $result = $this->categoryRepository->getApiPaginate($paginate);
+        $result = $this->articleRepository->getApiCategoryAndPaginate($id, $paginate);
 
         return $result;
     }

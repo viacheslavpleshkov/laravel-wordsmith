@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AbstractController;
 
-class BaseController extends Controller
+abstract class BaseController extends AbstractController
 {
 
 }

@@ -4,6 +4,9 @@ use Illuminate\Database\Seeder;
 use App\Models\Comment;
 use Faker\Factory;
 
+/**
+ * Class CommentsTableSeeder
+ */
 class CommentsTableSeeder extends Seeder
 {
 	/**
@@ -19,7 +22,7 @@ class CommentsTableSeeder extends Seeder
 				$review = new Comment();
 				$review->user_id = 1;
 				$review->article_id = $j;
-				$review->text = $faker->text(150);
+				$review->body = $faker->text(150);
 				$review->status = 1;
 				$review->save();
 			}

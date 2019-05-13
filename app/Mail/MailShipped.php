@@ -7,15 +7,21 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+/**
+ * Class MailShipped
+ * @package App\Mail
+ */
 class MailShipped extends Mailable
 {
     use Queueable, SerializesModels;
+    /**
+     * @var
+     */
     public $mail;
 
     /**
-     * Create a new message instance.
-     *
-     * @return void
+     * MailShipped constructor.
+     * @param $mail
      */
     public function __construct($mail)
     {
@@ -23,9 +29,7 @@ class MailShipped extends Mailable
     }
 
     /**
-     * Build the message.
-     *
-     * @return $this
+     * @return MailShipped
      */
     public function build()
     {

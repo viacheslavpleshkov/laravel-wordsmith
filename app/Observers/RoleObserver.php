@@ -4,6 +4,10 @@ namespace App\Observers;
 
 use App\Models\Role;
 
+/**
+ * Class RoleObserver
+ * @package App\Observers
+ */
 class RoleObserver
 {
     /**

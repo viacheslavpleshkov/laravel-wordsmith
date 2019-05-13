@@ -4,6 +4,9 @@ use Illuminate\Database\Seeder;
 use App\Models\Setting;
 use Faker\Factory;
 
+/**
+ * Class SettingsTableSeeder
+ */
 class SettingsTableSeeder extends Seeder
 {
 	/**

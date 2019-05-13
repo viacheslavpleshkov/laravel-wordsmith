@@ -225,20 +225,20 @@ class ArticleRepository implements RepositoryInterface
 		return $result;
 	}
 
-	/**
-	 * @param $data
-	 * @return mixed
-	 */
+    /**
+     * @param $data
+     * @return mixed
+     */
 	public function setView($data)
 	{
 		return $data->increment('views');
 	}
 
-	/**
-	 * @param $search
-	 * @param $paginate
-	 * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
-	 */
+    /**
+     * @param $search
+     * @param $paginate
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
 	public function getSearch($search, $paginate)
 	{
 		$result = $this->model
@@ -249,11 +249,11 @@ class ArticleRepository implements RepositoryInterface
 		return $result;
 	}
 
-	/**
-	 * @param $id
-	 * @param $paginate
-	 * @return mixed
-	 */
+    /**
+     * @param $id
+     * @param $paginate
+     * @return mixed
+     */
 	public function getCategoryId($id, $paginate)
 	{
 		$columns = [
@@ -277,10 +277,10 @@ class ArticleRepository implements RepositoryInterface
 		return $result;
 	}
 
-	/**
-	 * @param $limit
-	 * @return mixed
-	 */
+    /**
+     * @param $limit
+     * @return mixed
+     */
 	public function getStatusAndDesckAndLimit($limit)
 	{
 		$result = $this->model
@@ -292,9 +292,9 @@ class ArticleRepository implements RepositoryInterface
 		return $result;
 	}
 
-	/**
-	 * @return mixed
-	 */
+    /**
+     * @return mixed
+     */
 	public function getStatusAndDesckAndFirst()
 	{
 		$result = $this->model
@@ -305,9 +305,9 @@ class ArticleRepository implements RepositoryInterface
 		return $result;
 	}
 
-	/**
-	 * @return mixed
-	 */
+    /**
+     * @return mixed
+     */
 	public function getCommentsList()
 	{
 		$columns = [
@@ -324,6 +324,10 @@ class ArticleRepository implements RepositoryInterface
 		return $result;
 	}
 
+    /**
+     * @param $paginate
+     * @return mixed
+     */
     public function getApiPaginate($paginate)
     {
         $columns = [
@@ -338,6 +342,34 @@ class ArticleRepository implements RepositoryInterface
 
         $result = $this->model
             ->select($columns)
+            ->where('status', 1)
+            ->orderBy('id', 'desc')
+            ->with('category:id,name,url')
+            ->paginate($paginate);
+
+        return $result;
+    }
+
+    /**
+     * @param $id
+     * @param $paginate
+     * @return mixed
+     */
+    public function getApiCategoryAndPaginate($id, $paginate)
+    {
+        $columns = [
+            'id',
+            'title',
+            'url',
+            'images',
+            'category_id',
+            'status',
+            'created_at'
+        ];
+
+        $result = $this->model
+            ->select($columns)
+            ->where('category_id', $id)
             ->where('status', 1)
             ->orderBy('id', 'desc')
             ->with('category:id,name,url')

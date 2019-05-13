@@ -4,6 +4,10 @@ namespace App\Observers;
 
 use App\Models\Seo;
 
+/**
+ * Class SeoObserver
+ * @package App\Observers
+ */
 class SeoObserver
 {
     /**

@@ -56,7 +56,7 @@
 		</div>
 			<comments-component
 					:post-id='@json($main->id)'
-					:user-name='@json(1)'>
+					:user-name='@json(auth()->user()->name)'>
 			</comments-component>
 {{--		@if(count($comments)>0)--}}
 {{--			<div class="comments-wrap">--}}

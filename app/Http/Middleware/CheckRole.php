@@ -5,6 +5,10 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class CheckRole
+ * @package App\Http\Middleware
+ */
 class CheckRole
 {
     /**

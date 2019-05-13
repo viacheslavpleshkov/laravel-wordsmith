@@ -4,6 +4,10 @@ namespace App\Observers;
 
 use App\Models\Comment;
 
+/**
+ * Class CommentObserver
+ * @package App\Observers
+ */
 class CommentObserver
 {
     /**

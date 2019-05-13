@@ -2,9 +2,13 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\AbstractRequest;
 
-class SociallinkUpdateRequest extends FormRequest
+/**
+ * Class SociallinkUpdateRequest
+ * @package App\Http\Requests\Admin
+ */
+class SociallinkUpdateRequest extends AbstractRequest
 {
 	/**
 	 * Determine if the user is authorized to make this request.

@@ -2,9 +2,13 @@
 
 namespace App\Http\Requests\Site;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\AbstractRequest;
 
-class ProfilePasswordRequest extends FormRequest
+/**
+ * Class ProfilePasswordRequest
+ * @package App\Http\Requests\Site
+ */
+class ProfilePasswordRequest extends AbstractRequest
 {
     /**
      * Determine if the user is authorized to make this request.

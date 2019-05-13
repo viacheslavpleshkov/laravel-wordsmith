@@ -28,8 +28,7 @@
 
         <div class="form-group">
             <label>{{ __('admin.comments-text') }}</label>
-            <textarea class="form-control" name="text" rows="5" placeholder="{{ __('admin.comments-enter-text') }}"
-                      required></textarea>
+            <textarea class="form-control" name="body" rows="5" placeholder="{{ __('admin.comments-enter-text') }}" required></textarea>
         </div>
 
         <div class="form-group">

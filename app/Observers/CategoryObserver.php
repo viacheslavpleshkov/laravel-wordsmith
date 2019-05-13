@@ -4,6 +4,10 @@ namespace App\Observers;
 
 use App\Models\Category;
 
+/**
+ * Class CategoryObserver
+ * @package App\Observers
+ */
 class CategoryObserver
 {
     /**

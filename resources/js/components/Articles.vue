@@ -5,7 +5,7 @@
                 <div class="item-entry" data-aos="zoom-in">
                     <div class="item-entry__thumb">
                         <a :href="'/blog/'+article.url" class="item-entry__thumb-link">
-                            <img src="images/thumbs/single/standard/standard-1000.jpg" :alt="article.title">
+                            <img src="/images/thumbs/single/standard/standard-1000.jpg" :alt="article.title">
                         </a>
                     </div>
                     <div class="item-entry__text">
@@ -20,7 +20,7 @@
                 </div>
             </article>
         </div>
-        <pagination :meta_data="meta_data" v-on:next="fetchArticles"></pagination>
+        <pagination :limit ="2" :meta_data="meta_data" v-on:next="fetchArticles"></pagination>
     </div>
 </template>
 <script>

@@ -5,7 +5,7 @@
 @section('content')
     @include(('site.includes.featured'))
     <section class="s-content">
-        <articles-list></articles-list>
+        <articles-component></articles-component>
     </section>
 @endsection
 

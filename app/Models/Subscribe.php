@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Subscribe
+ * @package App\Models
+ */
 class Subscribe extends Model
 {
 	/**

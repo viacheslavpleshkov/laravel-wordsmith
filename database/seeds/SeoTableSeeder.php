@@ -3,6 +3,9 @@
 use Illuminate\Database\Seeder;
 use App\Models\Seo;
 
+/**
+ * Class SeoTableSeeder
+ */
 class SeoTableSeeder extends Seeder
 {
     /**
