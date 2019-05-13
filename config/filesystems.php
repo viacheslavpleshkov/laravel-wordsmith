@@ -64,7 +64,6 @@ return [
 			'url' => env('AWS_URL'),
 			'visibility' => 'public'
 		],
-
 	],
 
 ];

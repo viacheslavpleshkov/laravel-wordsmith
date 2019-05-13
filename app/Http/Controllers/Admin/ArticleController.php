@@ -86,21 +86,19 @@ class ArticleController extends BaseController
      */
     public function store(ArticleStoreRequest $request)
     {
-        $attributes = new Article();
-        $attributes->title = $request->title;
-        $attributes->url = $request->url;
-        if ($request->hasFile('images')) {
-            $path = Storage::putFile('file.jpg', $request->file('images'), 'public');
-            $attributes->images = 'file.jpg';
-        }
-        $attributes->text = $request->text;
-        $attributes->category_id = $request->category_id;
-        $attributes->seo_id = $request->seo_id;
-        $attributes->views = $request->views;
-        $attributes->slide = $request->slide;
-        $attributes->status = $request->status;
-        $attributes->user_id = Auth::user()->id;
-        $main = $attributes->save();
+        $attributes = [
+            'title' => $request->title,
+            'url' => $request->url,
+            'images' => Storage::disk('s3')->put('articles', $request->images),
+            'text' => $request->text,
+            'category_id' => $request->category_id,
+            'seo_id' => $request->seo_id,
+            'views' => $request->views,
+            'slide' => $request->slide,
+            'status' => $request->status,
+            'user_id' => Auth::user()->id,
+        ];
+        $main = $this->articleRepository->create($attributes);
         Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') store article     id= ' . $main->id . ' with params ', $request->all());
 
         return redirect()->route('articles.index')->with('success', __('admin.created-success'));

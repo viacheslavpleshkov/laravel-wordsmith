@@ -5,7 +5,8 @@
                 <div class="item-entry" data-aos="zoom-in">
                     <div class="item-entry__thumb">
                         <a :href="'/blog/'+article.url" class="item-entry__thumb-link">
-                            <img src="/images/thumbs/single/standard/standard-1000.jpg" :alt="article.title">
+                            <img v-if="article.images === 'none'" src="/images/thumbs/single/standard/standard-1000.jpg" :alt="article.title">
+                            <img v-else :src="host + article.images" :alt="article.title">
                         </a>
                     </div>
                     <div class="item-entry__text">
@@ -38,6 +39,7 @@
         },
         data() {
             return {
+                host: process.env.MIX_URL_FILE,
                 articles: [],
                 meta_data: {
                     last_page: null,

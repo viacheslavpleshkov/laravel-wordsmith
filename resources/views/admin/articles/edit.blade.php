@@ -14,23 +14,6 @@
 		</div>
 
 		<div class="form-group">
-			<label>{{ __('admin.articles-url') }}</label>
-			<input type="text" class="form-control" name="url" value="{{ $main->url }}" placeholder="{{ __('admin.articles-enter-url') }}" required>
-		</div>
-
-		<label>{{ __('admin.articles-images') }}</label><br>
-		<img src="{{ asset('storage/'.$main->images) }}" width="300px" class="mb-3">
-		<div class="input-group mb-3">
-			<div class="input-group-prepend">
-				<span class="input-group-text">{{ __('admin.articles-upload') }}</span>
-			</div>
-			<div class="custom-file">
-				<input type="file" class="custom-file-input" name="images" value="{{ $main->images }}">
-				<label class="custom-file-label">{{ $main->images }}</label>
-			</div>
-		</div>
-
-		<div class="form-group">
 			<label>{{ __('admin.articles-text') }}</label>
 			<textarea name="text" class="form-control" cols="30" placeholder="{{ __('admin.articles-enter-text') }}" rows="10">{{ $main->text }}</textarea>
 		</div>

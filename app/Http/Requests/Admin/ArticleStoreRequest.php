@@ -30,6 +30,7 @@ class ArticleStoreRequest extends AbstractRequest
         return [
             'title' => 'required|string|max:255',
             'url' => 'required|string|unique:articles|max:255',
+            'images' => 'required|mimes:jpeg,png,jpg,gif,svg',
             'text' => 'required|string|max:4096',
             'category_id' => 'required|integer',
             'seo_id' => 'required|integer',

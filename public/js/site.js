@@ -6146,7 +6146,7 @@ var store = __webpack_require__(/*! ./store.js */ "./node_modules/algoliasearch/
 // proxies limit)
 var MAX_API_KEY_LENGTH = 500;
 var RESET_APP_DATA_TIMER =
-  Object({"MIX_ALGOLIA_APP_ID":"0CT9UNWZTD","MIX_ALGOLIA_SECRET":"9dacd198a2618ba28bed79350fa7cd0e","MIX_PUSHER_APP_KEY":"f9539ef56f626e8e08e6","MIX_PUSHER_APP_CLUSTER":"eu","NODE_ENV":"development"}).RESET_APP_DATA_TIMER && parseInt(Object({"MIX_ALGOLIA_APP_ID":"0CT9UNWZTD","MIX_ALGOLIA_SECRET":"9dacd198a2618ba28bed79350fa7cd0e","MIX_PUSHER_APP_KEY":"f9539ef56f626e8e08e6","MIX_PUSHER_APP_CLUSTER":"eu","NODE_ENV":"development"}).RESET_APP_DATA_TIMER, 10) ||
+  Object({"MIX_ALGOLIA_APP_ID":"0CT9UNWZTD","MIX_ALGOLIA_SECRET":"9dacd198a2618ba28bed79350fa7cd0e","MIX_PUSHER_APP_KEY":"f9539ef56f626e8e08e6","MIX_PUSHER_APP_CLUSTER":"eu","MIX_URL_FILE":"https://laravel-wordsmith.s3.eu-central-1.amazonaws.com/","NODE_ENV":"development"}).RESET_APP_DATA_TIMER && parseInt(Object({"MIX_ALGOLIA_APP_ID":"0CT9UNWZTD","MIX_ALGOLIA_SECRET":"9dacd198a2618ba28bed79350fa7cd0e","MIX_PUSHER_APP_KEY":"f9539ef56f626e8e08e6","MIX_PUSHER_APP_CLUSTER":"eu","MIX_URL_FILE":"https://laravel-wordsmith.s3.eu-central-1.amazonaws.com/","NODE_ENV":"development"}).RESET_APP_DATA_TIMER, 10) ||
   60 * 2 * 1000; // after 2 minutes reset to first host
 
 /*
@@ -10125,6 +10125,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -10132,6 +10133,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      host: "https://laravel-wordsmith.s3.eu-central-1.amazonaws.com/",
       articles: [],
       meta_data: {
         last_page: null,
@@ -10199,6 +10201,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -10212,6 +10215,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      host: "https://laravel-wordsmith.s3.eu-central-1.amazonaws.com/",
       articles: [],
       meta_data: {
         last_page: null,
@@ -10480,10 +10484,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      host: "https://laravel-wordsmith.s3.eu-central-1.amazonaws.com/",
       searchClient: algoliasearch_lite__WEBPACK_IMPORTED_MODULE_0___default()("0CT9UNWZTD", "9dacd198a2618ba28bed79350fa7cd0e")
     };
   }
@@ -10761,7 +10767,7 @@ function load() {
 
   // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
   if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = Object({"MIX_ALGOLIA_APP_ID":"0CT9UNWZTD","MIX_ALGOLIA_SECRET":"9dacd198a2618ba28bed79350fa7cd0e","MIX_PUSHER_APP_KEY":"f9539ef56f626e8e08e6","MIX_PUSHER_APP_CLUSTER":"eu","NODE_ENV":"development"}).DEBUG;
+    r = Object({"MIX_ALGOLIA_APP_ID":"0CT9UNWZTD","MIX_ALGOLIA_SECRET":"9dacd198a2618ba28bed79350fa7cd0e","MIX_PUSHER_APP_KEY":"f9539ef56f626e8e08e6","MIX_PUSHER_APP_CLUSTER":"eu","MIX_URL_FILE":"https://laravel-wordsmith.s3.eu-central-1.amazonaws.com/","NODE_ENV":"development"}).DEBUG;
   }
 
   return r;
@@ -58998,13 +59004,20 @@ var render = function() {
                       attrs: { href: "/blog/" + article.url }
                     },
                     [
-                      _c("img", {
-                        attrs: {
-                          src:
-                            "/images/thumbs/single/standard/standard-1000.jpg",
-                          alt: article.title
-                        }
-                      })
+                      article.images === "none"
+                        ? _c("img", {
+                            attrs: {
+                              src:
+                                "/images/thumbs/single/standard/standard-1000.jpg",
+                              alt: article.title
+                            }
+                          })
+                        : _c("img", {
+                            attrs: {
+                              src: _vm.host + article.images,
+                              alt: article.title
+                            }
+                          })
                     ]
                   )
                 ]),
@@ -59090,13 +59103,20 @@ var render = function() {
                       attrs: { href: "/blog/" + article.url }
                     },
                     [
-                      _c("img", {
-                        attrs: {
-                          src:
-                            "/images/thumbs/single/standard/standard-1000.jpg",
-                          alt: article.title
-                        }
-                      })
+                      article.images === "none"
+                        ? _c("img", {
+                            attrs: {
+                              src:
+                                "/images/thumbs/single/standard/standard-1000.jpg",
+                              alt: article.title
+                            }
+                          })
+                        : _c("img", {
+                            attrs: {
+                              src: _vm.host + article.images,
+                              alt: article.title
+                            }
+                          })
                     ]
                   )
                 ]),
@@ -59461,13 +59481,20 @@ var render = function() {
                                 attrs: { href: "/blog/" + item.url }
                               },
                               [
-                                _c("img", {
-                                  attrs: {
-                                    src:
-                                      "/images/thumbs/single/standard/standard-1000.jpg",
-                                    alt: ""
-                                  }
-                                })
+                                item.images === "none"
+                                  ? _c("img", {
+                                      attrs: {
+                                        src:
+                                          "/images/thumbs/single/standard/standard-1000.jpg",
+                                        alt: item.title
+                                      }
+                                    })
+                                  : _c("img", {
+                                      attrs: {
+                                        src: _vm.host + item.images,
+                                        alt: item.title
+                                      }
+                                    })
                               ]
                             )
                           ]),
@@ -72211,6 +72238,7 @@ var app = new Vue({
 }); //jQuery
 
 window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+console.log(Object({"MIX_ALGOLIA_APP_ID":"0CT9UNWZTD","MIX_ALGOLIA_SECRET":"9dacd198a2618ba28bed79350fa7cd0e","MIX_PUSHER_APP_KEY":"f9539ef56f626e8e08e6","MIX_PUSHER_APP_CLUSTER":"eu","MIX_URL_FILE":"https://laravel-wordsmith.s3.eu-central-1.amazonaws.com/","NODE_ENV":"development"}));
 
 /***/ }),
 

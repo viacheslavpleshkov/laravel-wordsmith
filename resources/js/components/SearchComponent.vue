@@ -16,7 +16,8 @@
                             <div class="item-entry">
                                 <div class="item-entry__thumb">
                                     <a :href="'/blog/' + item.url" class="item-entry__thumb-link">
-                                        <img src="/images/thumbs/single/standard/standard-1000.jpg" alt="">
+                                        <img v-if="item.images === 'none'" src="/images/thumbs/single/standard/standard-1000.jpg" :alt="item.title">
+                                        <img v-else :src="host + item.images" :alt="item.title">
                                     </a>
                                 </div>
                                 <div class="item-entry__text">
@@ -72,6 +73,7 @@
     export default {
         data() {
             return {
+                host: process.env.MIX_URL_FILE,
                 searchClient: algoliasearch(
                     process.env.MIX_ALGOLIA_APP_ID,
                     process.env.MIX_ALGOLIA_SECRET
