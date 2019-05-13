@@ -137,7 +137,7 @@ class ArticleController extends BaseController
      */
     public function update(ArticleUpdateRequest $request, $id)
     {
-        $this->articleRepository->update($id, $request->only(['title', 'text', 'category_id', 'seo_id', 'views', 'slide', 'status', 'user_id']));
+        $this->articleRepository->update($id, $request->except(['url', 'images']));
         Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') update article id= ' . $id . ' with params ', $request->all());
 
         return redirect()->route('articles.index')->with('success', __('admin.updated-success'));

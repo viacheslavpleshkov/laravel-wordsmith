@@ -29,7 +29,6 @@ class CategoryUpdateRequest extends AbstractRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'url' => 'required|string|unique:categories|max:255',
             'seo_id' => 'required|integer',
             'status' => 'required|integer',
         ];

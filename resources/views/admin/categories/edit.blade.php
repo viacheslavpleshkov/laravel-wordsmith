@@ -15,12 +15,6 @@
         </div>
 
         <div class="form-group">
-            <label>{{ __('admin.categories-url') }}</label>
-            <input type="text" class="form-control" name="url" value="{{ $main->url }}"
-                   placeholder="{{ __('admin.categories-enter-url') }}" required>
-        </div>
-
-        <div class="form-group">
             <label>{{ __('admin.categories-seo') }}</label>
             <select class="form-control" name="seo_id" required>
                 <option value="{{ $main->seo->id }}">{{ $main->seo->title.' ('.$main->seo->id.')' }}</option>

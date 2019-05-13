@@ -106,7 +106,7 @@ class CategoryController extends BaseController
      */
 	public function update(CategoryUpdateRequest $request, $id)
 	{
-		$this->categoryRepository->update($id, $request->all());
+		$this->categoryRepository->update($id, $request->except(['url']));
         Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') update category id= ' . $id . ' with params ', $request->all());
 
 		return redirect()->route('categories.index')->with('success', __('admin.updated-success'));
