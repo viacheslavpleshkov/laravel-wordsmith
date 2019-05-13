@@ -54,12 +54,10 @@
 				@endif
 			</div>
 		</div>
-		@auth
 			<comments-component
 					:post-id='@json($main->id)'
-					:user-name='@json(auth()->user()->name)'>
+					:user-name='@json(1)'>
 			</comments-component>
-		@endauth
 {{--		@if(count($comments)>0)--}}
 {{--			<div class="comments-wrap">--}}
 {{--				<div id="comments" class="row">--}}
