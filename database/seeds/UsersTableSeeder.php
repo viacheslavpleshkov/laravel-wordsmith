@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Faker\Factory;
 
 /**
@@ -19,10 +20,10 @@ class UsersTableSeeder extends Seeder
 	{
 		$faker = Factory::create();
 		$user = new User();
-		$user->name = $faker->name();
+		$user->name = "Slava Pleshkov";
 		$user->email = 'mail@slavapleshkov.com';
 		$user->about = $faker->text(150);
-		$user->password = Hash::make(str_random(100));
+		$user->password = Hash::make(Str::random(100));
 		$user->role_id = 4;
 		$user->save();
 	}

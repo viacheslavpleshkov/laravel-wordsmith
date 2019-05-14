@@ -7,8 +7,7 @@
                     <ol class="commentlist">
                         <li class="depth-1 comment" v-for="comment in comments">
                             <div class="comment__avatar">
-                                <img class="avatar" src="/images/avatars/user.jpg" alt=""
-                                     width="50" height="50">
+                                <v-gravatar class="avatar"  :email="comment.user.email" width="50" height="50"/>
                             </div>
                             <div class="comment__content">
                                 <div class="comment__info">
@@ -78,7 +77,7 @@
             },
             addComment() {
                 let body = this.$refs.body.value;
-                axios.post("/api/v1/comments/" + this.postId, {body}).then(response => {
+                axios.post("/" + this.postId + "/comments", { body }).then(response => {
                     this.comments.push({
                         user: {
                             name: this.userName

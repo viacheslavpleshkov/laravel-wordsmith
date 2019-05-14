@@ -22,10 +22,6 @@
 					</div>
 
 					<div>
-						<label>{{ __('site.profile-email') }}</label>
-						<input type="email" class="full-width" name="email" value="{{ $main->email }}" placeholder="{{ __('site.profile-enter-email') }}" required>
-					</div>
-					<div>
 						<label>{{ __('site.profile-about') }}</label>
 						<textarea class="full-width" name="about" placeholder="{{ __('site.profile-enter-about') }}">{{ $main->about }}</textarea>
 					</div>

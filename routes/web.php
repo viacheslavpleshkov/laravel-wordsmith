@@ -48,6 +48,8 @@ Route::namespace('Site')->group(function () {
     Route::get('blog/{url}', 'ArticleController@view')->name('site.article.view')->where('url', '[\w\d\-\_]+');
     Route::get('categories/{url}', 'CategoryController@view')->name('site.categories')->where('url', '[\w\d\-\_]+');
 
+    Route::post('/{post}/comments', 'CommentsController@store');
+
     Route::get('styles', 'SiteController@styles')->name('site.styles');
     Route::get('about', 'SiteController@about')->name('site.about');
     Route::get('contact', 'SiteController@contact')->name('site.contact');

@@ -25,7 +25,7 @@
             <div class="col-full entry__main">
                 {!! $main->text !!}
                 <div class="entry__author">
-                    <img src="{{ asset('images/avatars/user.jpg') }}" alt="">
+                    <img src="{{ Gravatar::src($main->user->email) }}" alt="">
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>{{ __('site.blog-view-posted by') }}</span>
@@ -58,69 +58,7 @@
                 @endif
             </div>
         </div>
-        <comments-component
-                :post-id='@json($main->id)'
-                :user-name='@json(auth()->user()->name)'>
-        </comments-component>
-        {{--		@if(count($comments)>0)--}}
-        {{--			<div class="comments-wrap">--}}
-        {{--				<div id="comments" class="row">--}}
-        {{--					<div class="col-full">--}}
-        {{--						<h3 class="h2">{{ $count.' '.__('site.comment-title') }}</h3>--}}
-        {{--						<ol class="commentlist">--}}
-        {{--							@foreach($comments as $item)--}}
-        {{--								<li class="depth-1 comment">--}}
-        {{--									<div class="comment__avatar">--}}
-        {{--										<img class="avatar" src="{{ asset('images/avatars/user.jpg') }}" alt=""--}}
-        {{--											 width="50" height="50">--}}
-        {{--									</div>--}}
-        {{--									<div class="comment__content">--}}
-        {{--										<div class="comment__info">--}}
-        {{--											<div class="comment__author">{{ $item->user->name }}</div>--}}
-        {{--											<div class="comment__meta">--}}
-        {{--												<div class="comment__time">{{ $item->created_at }}</div>--}}
-        {{--											</div>--}}
-        {{--										</div>--}}
-        {{--										<div class="comment__text"><p>{{ $item->text }}</p>--}}
-        {{--										</div>--}}
-        {{--									</div>--}}
-        {{--								</li>--}}
-        {{--							@endforeach--}}
-        {{--						</ol>--}}
-        {{--					</div>--}}
-        {{--				</div>--}}
-        {{--				<div class="row comment-respond">--}}
-        {{--					@guest--}}
-        {{--						<div class="alert-box alert-box--error hideit">--}}
-        {{--							<p>{{ __('site.comment-alert-guest') }}</p>--}}
-        {{--						</div>--}}
-        {{--					@else--}}
-        {{--						<div id="respond" class="col-full">--}}
-        {{--							<h3 class="h2">{{ __('site.comment-add-comment') }}--}}
-        {{--								<span>{{ __('site.comment-add-comment-description') }}</span></h3>--}}
-        {{--							@if (session('success-comment'))--}}
-        {{--								<div class="alert-box alert-box--success hideit">--}}
-        {{--									<p>{{ session('success-comment') }}</p>--}}
-        {{--								</div>--}}
-        {{--								<br>--}}
-        {{--							@endif--}}
-        {{--							<form id="contactForm" action="{{ route('site.comments',$main->id) }}" method="post">--}}
-        {{--								@csrf--}}
-        {{--								<fieldset>--}}
-        {{--									<div class="message form-field">--}}
-        {{--                                <textarea name="text" id="cMessage" class="full-width"--}}
-        {{--										  placeholder="{{ __('site.comment-your-message') }}"></textarea>--}}
-        {{--									</div>--}}
-        {{--									<input id="submit" class="btn btn--primary btn-wide btn--large full-width"--}}
-        {{--										   value="{{ __('site.comment-add-comment') }}" type="submit">--}}
-        {{--								</fieldset>--}}
-        {{--							</form>--}}
-        {{--						</div>--}}
-        {{--					@endif--}}
-        {{--				</div>--}}
-        {{--			</div>--}}
-        {{--		@else--}}
-        {{--		@endif--}}
+        <comments-component :post-id='@json($main->id)' :user-name='@json(auth()->user()->name)'></comments-component>
     </section>
 @endsection
 

@@ -14,6 +14,10 @@
             @include('site.includes.success')
             <table class="table">
                 <tr>
+                    <th>{{ __('site.profile-images') }}</th>
+                    <td><img src="{{ Gravatar::src($main->email) }}"></td>
+                </tr>
+                <tr>
                     <th>{{ __('site.profile-name') }}</th>
                     <td>{{ $main->name }}</td>
                 </tr>

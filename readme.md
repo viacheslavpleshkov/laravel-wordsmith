@@ -12,7 +12,7 @@
 
 ## Used technologies
 
-HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack, Yarn, Heroku, Nginx, PHP, Laravel Framework, Laravel Eloquent, Laravel Blade, Laravel Dusk, Laravel Homestead, Composer, Redis, Amazon S3, Algolia, Pusher, PostgreSQL, New Relic, Timber.io Logging, Mailgun, Mailtrap.
+HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack, Yarn, Gravatar, Heroku, Nginx, PHP, Laravel Framework, Laravel Eloquent, Laravel Blade, Laravel Dusk, Laravel Homestead, Composer, Redis, Amazon S3, Algolia, Pusher, PostgreSQL, New Relic, Timber.io Logging, Mailgun, Mailtrap.
 
 ## Database schema
 

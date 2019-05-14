@@ -85,6 +85,7 @@ return [
     'search-sorry' => 'Sorry, but nothing matched your search terms. Please try again with some different keywords.',
     //Profile
     'profile-title' => 'Profile',
+    'profile-images' => 'Images',
     'profile-name' => 'Name',
     'profile-email' => 'E-mail',
     'profile-about' => 'About',

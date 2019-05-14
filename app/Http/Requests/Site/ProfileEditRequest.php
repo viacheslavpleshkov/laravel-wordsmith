@@ -29,7 +29,6 @@ class ProfileEditRequest extends AbstractRequest
 	{
 		return [
 			'name' => 'required|string|max:255',
-			'email' => 'required|string|email|max:255|unique:users',
 			'about' => 'nullable|string|max:4096',
 		];
 	}

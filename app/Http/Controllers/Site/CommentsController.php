@@ -2,49 +2,26 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Models\Comment;
 use App\Events\CommentSent;
-use App\Http\Requests\Site\CommentRequest;
-use App\Repositories\CommentRepository;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Article;
+use Illuminate\Http\Request;
 
-/**
- * Class CommentsController
- * @package App\Http\Controllers\Site
- */
 class CommentsController extends BaseController
 {
-	/**
-	 * @var CommentRepository
-	 */
-	protected $commentRepository;
-
-	/**
-	 * CommentsController constructor.
-	 * @param CommentRepository $commentRepository
-	 */
-	public function __construct(CommentRepository $commentRepository)
-	{
-		$this->commentRepository = $commentRepository;
-	}
-
-	/**
-	 * @param CommentRequest $request
-	 * @param $id
-	 * @return \Illuminate\Http\RedirectResponse
-	 */
-	public function comments(CommentRequest $request, $id)
-	{
-		$attributes = [
-			'user_id' => Auth::user()->id,
-			'article_id' => $id,
-			'text' => $request->text,
-			'status' => 1
-		];
-        $comment = $this->commentRepository->create($attributes);
+    public function store($id)
+    {
+        $this->validate(request(), [
+            'body' => 'required',
+        ]);
         $user = auth()->user();
+        $comment = Comment::create([
+            'user_id' => $user->id,
+            'article_id' => $id,
+            'body' => request('body'),
+            'status' => 1,
+        ]);
         broadcast(new CommentSent($user, $comment))->toOthers();
-
-
         return ['status' => 'Message Sent!'];
-	}
+    }
 }

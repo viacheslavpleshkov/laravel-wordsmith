@@ -33,6 +33,7 @@ window.Echo = new Echo({
 });
 window.Vue = require('vue');
 import InstantSearch from 'vue-instantsearch';
+import Gravatar from 'vue-gravatar';
 
 Vue.use(InstantSearch);
 
@@ -40,6 +41,7 @@ Vue.component('search-component', require('./components/SearchComponent').defaul
 Vue.component('comments-component', require('./components/Comments').default);
 Vue.component('articles-component', require('./components/Articles.vue').default);
 Vue.component('categories-component', require('./components/Categories.vue').default);
+Vue.component('v-gravatar', Gravatar);
 
 const app = new Vue({
     el: '#app',

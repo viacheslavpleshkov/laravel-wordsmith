@@ -219,7 +219,7 @@ class ArticleRepository implements RepositoryInterface
 			->select($columns)
 			->where('status', 1)
 			->where('slide', 1)
-			->with(['user:id:name', 'category:id,name,url'])
+			->with(['user:id,name,email', 'category:id,name,url'])
 			->get();
 
 		return $result;

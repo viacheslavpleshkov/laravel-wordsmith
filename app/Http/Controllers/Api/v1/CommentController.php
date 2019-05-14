@@ -21,7 +21,7 @@ class CommentController extends BaseController
         $this->commentRepository = $commentRepository;
     }
 
-    public function store(Article $post)
+    public function store($id)
     {
         $this->validate(request(), [
             'body' => 'required',
@@ -29,7 +29,7 @@ class CommentController extends BaseController
         $user = auth()->user();
         $comment = Comment::create([
             'user_id' => $user->id,
-            'article_id' => $post->id,
+            'article_id' => $id,
             'body' => request('body'),
             'status' => 1,
         ]);

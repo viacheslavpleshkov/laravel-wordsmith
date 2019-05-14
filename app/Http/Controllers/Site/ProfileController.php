@@ -58,7 +58,7 @@ class ProfileController extends BaseController
 	 */
 	public function updateEdit(ProfileEditRequest $request, $id)
 	{
-		$this->userRepository->update($id, $request->all());
+		$this->userRepository->update($id, $request->except(['email']));
         Log::info('site(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') updateEdit profile id= ' . $id . ' with params ', $request->all());
 
 		return redirect()->route('profile.index')->with('success', __('site.updated-success'));

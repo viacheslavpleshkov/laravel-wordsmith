@@ -19,7 +19,7 @@
 
                                 <div class="entry__info">
                                     <a href="#0" class="entry__profile-pic">
-                                        <img class="avatar" src="{{ asset('images/avatars/user.jpg') }}" alt="">
+                                        <img class="avatar" src="{{ Gravatar::src($item->user->email) }}" alt="">
                                     </a>
                                     <ul class="entry__meta">
                                         <li><a href="#0">{{ $item->user->name }}</a></li>
