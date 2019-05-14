@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Models\Comment;
-use App\Events\CommentSent;
-use App\Models\Article;
-use Illuminate\Http\Request;
 use App\Repositories\CommentRepository;
 
 /**
@@ -14,31 +10,28 @@ use App\Repositories\CommentRepository;
  */
 class CommentController extends BaseController
 {
+    /**
+     * @var CommentRepository
+     */
     protected $commentRepository;
 
+    /**
+     * CommentController constructor.
+     * @param CommentRepository $commentRepository
+     */
     public function __construct(CommentRepository $commentRepository)
     {
         $this->commentRepository = $commentRepository;
     }
 
-    public function store($id)
-    {
-        $this->validate(request(), [
-            'body' => 'required',
-        ]);
-        $user = auth()->user();
-        $comment = Comment::create([
-            'user_id' => $user->id,
-            'article_id' => $id,
-            'body' => request('body'),
-            'status' => 1,
-        ]);
-        broadcast(new CommentSent($user, $comment))->toOthers();
-        return ['status' => 'Message Sent!'];
-    }
-
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function index($id)
     {
-        return Comment::where('status', 1)->where('article_id', $id)->with('user')->get();
+        $main = $this->commentRepository->getApiArticleCommentsAll($id);
+
+        return $main;
     }
 }

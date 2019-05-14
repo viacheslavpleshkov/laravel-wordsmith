@@ -23,19 +23,6 @@
                     </ol>
                 </div>
             </div>
-            <div class="row comment-respond">
-                <div id="respond" class="comments">
-                    <h3 class="h2">Add Comment<span>Your email address will not be published</span></h3>
-                    <form id="contactForm">
-                        <fieldset>
-                            <div class="message form-field">
-                                <textarea ref="body" id="cMessage" class="full-width" placeholder="Your Message*"></textarea>
-                            </div>
-                            <button id="submit" type="submit" @click.prevent="addComment" class="btn btn--primary btn-wide btn--large full-width">Add Comment</button>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
 </template>
@@ -44,10 +31,6 @@
 <script>
     export default {
         props: {
-            userName: {
-                type: String,
-                required: true
-            },
             articleId: {
                 type: Number,
                 required: true
@@ -75,18 +58,6 @@
                     this.comments = response.data;
                 });
             },
-            addComment() {
-                let body = this.$refs.body.value;
-                axios.post("/" + this.articleId + "/comments", { body }).then(response => {
-                    this.comments.push({
-                        user: {
-                            name: this.userName
-                        },
-                        body: this.$refs.body.value
-                    });
-                    this.$refs.body.value = "";
-                });
-            }
         }
     };
 </script>

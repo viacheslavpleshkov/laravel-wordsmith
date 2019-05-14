@@ -58,7 +58,11 @@
                 @endif
             </div>
         </div>
-        <comments-component :post-id='@json($main->id)' :user-name='@json(auth()->user()->name)'></comments-component>
+        @guest
+            <comments-list-component :article-id='@json($main->id)'></comments-list-component>
+        @else
+            <comments-component :article-id='@json($main->id)' :user-name='@json(auth()->user()->name)'></comments-component>
+        @endif
     </section>
 @endsection
 

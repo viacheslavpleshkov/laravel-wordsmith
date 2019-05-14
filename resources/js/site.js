@@ -39,6 +39,7 @@ Vue.use(InstantSearch);
 
 Vue.component('search-component', require('./components/SearchComponent').default);
 Vue.component('comments-component', require('./components/Comments').default);
+Vue.component('comments-list-component', require('./components/Comments-List').default);
 Vue.component('articles-component', require('./components/Articles.vue').default);
 Vue.component('categories-component', require('./components/Categories.vue').default);
 Vue.component('v-gravatar', Gravatar);
