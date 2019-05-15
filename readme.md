@@ -114,10 +114,16 @@ HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack,
 1. Run this command `heroku config:set REDIS_HOST=secret`
 1. Run this command `heroku config:set REDIS_PASSWORD=secret`
 1. Run this command `heroku config:set REDIS_PORT=secret`
+1. Run this command `heroku config:set ALGOLIA_APP_ID=secret`
+1. Run this command `heroku config:set ALGOLIA_SECRET=secret`
+1. Run this command `heroku config:set MIX_ALGOLIA_APP_ID=secret`
+1. Run this command `heroku config:set MIX_ALGOLIA_SECRET=secret`
 1. Run this command `heroku config:set PUSHER_APP_ID=secret`
 1. Run this command `heroku config:set PUSHER_APP_KEY=secret`
 1. Run this command `heroku config:set PUSHER_APP_SECRET=secret`
 1. Run this command `heroku config:set PUSHER_APP_CLUSTER=secret`
+1. Run this command `heroku config:set MIX_PUSHER_APP_KEY=secret`
+1. Run this command `heroku config:set MIX_PUSHER_APP_CLUSTER=secret`
 1. Run this command `heroku config:set BROADCAST_DRIVER=pusher`
 1. Run this command `heroku config:set CACHE_DRIVER=redis`
 1. Run this command `heroku config:set SESSION_DRIVER=redis`
@@ -129,12 +135,16 @@ HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack,
 1. Run this command `heroku config:set AWS_DEFAULT_REGION=secret`
 1. Run this command `heroku config:set AWS_BUCKET=secret`
 1. Run this command `heroku config:set AWS_URL=secret`
+1. Run this command `heroku config:set URL_FILE=secret`
+1. Run this command `heroku config:set MIX_URL_FILE=secret`
 1. Run this command `heroku config:set MAIL_DRIVER=mailgun`
 1. Run this command `heroku config:set MAILGUN_DOMAIN=secret`
 1. Run this command `heroku config:set MAILGUN_SECRET=secret`
 1. Run this command `heroku config:set MAILGUN_ENDPOINT=secret`
 1. Run this command `heroku config:set MAIL_FROM_ADDRESS=secret`
 1. Run this command `heroku config:set MAIL_FROM_NAME=Wordsmith Site`
+1. Run this command `heroku config:set MAILGUN_DOMAIN=Wordsmith Site`
+1. Run this command `heroku config:set MAILGUN_SECRET=Wordsmith Site`
 1. Run this command `git push heroku master`
 1. Run this command `heroku open`
 

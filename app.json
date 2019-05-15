@@ -63,6 +63,12 @@
     "ALGOLIA_SECRET": {
       "generator": "secret"
     },
+    "MIX_ALGOLIA_APP_ID": {
+      "generator": "secret"
+    },
+    "MIX_ALGOLIA_SECRET": {
+      "generator": "secret"
+    },
     "PUSHER_APP_ID": {
       "generator": "secret"
     },
@@ -73,6 +79,12 @@
       "generator": "secret"
     },
     "PUSHER_APP_CLUSTER": {
+      "generator": "secret"
+    },
+    "MIX_PUSHER_APP_KEY": {
+      "generator": "secret"
+    },
+    "MIX_PUSHER_APP_CLUSTER": {
       "generator": "secret"
     },
     "BROADCAST_DRIVER": {
@@ -108,14 +120,20 @@
     "AWS_URL": {
       "generator": "secret"
     },
-    "MAIL_DRIVER": {
+    "URL_FILE": {
       "generator": "secret"
+    },
+    "MIX_URL_FILE": {
+      "generator": "secret"
+    },
+    "MAIL_DRIVER": {
+      "value": "mailgun"
     },
     "MAIL_HOST": {
-      "generator": "secret"
+      "value": "smtp.mailgun.org"
     },
     "MAIL_PORT": {
-      "generator": "secret"
+      "value": "465"
     },
     "MAIL_USERNAME": {
       "generator": "secret"
@@ -124,12 +142,18 @@
       "generator": "secret"
     },
     "MAIL_ENCRYPTION": {
-      "generator": "secret"
+      "value": "tls"
     },
     "MAIL_FROM_ADDRESS": {
-      "generator": "secret"
+      "value": "Wordsmith Site"
     },
     "MAIL_FROM_NAME": {
+      "generator": "secret"
+    },
+    "MAILGUN_DOMAIN": {
+      "generator": "secret"
+    },
+    "MAILGUN_SECRET": {
       "generator": "secret"
     }
   },
