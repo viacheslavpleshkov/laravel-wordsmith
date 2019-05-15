@@ -38,13 +38,13 @@ class CommentsController extends BaseController
         ]);
 
         $user = auth()->user();
-        $comment = [
+        $attribute = [
             'user_id' => $user->id,
             'article_id' => $id,
             'body' => request('body'),
             'status' => 1,
         ];
-        $this->commentRepository->create($comment);
+        $comment = $this->commentRepository->create($attribute);
         broadcast(new CommentSent($user, $comment))->toOthers();
 
         return ['status' => 'Message Sent!'];

@@ -44,8 +44,8 @@
 <script>
     export default {
         props: {
-            userName: {
-                type: String,
+            user: {
+                type: Object,
                 required: true
             },
             articleId: {
@@ -63,9 +63,11 @@
             Echo.private("comment").listen("CommentSent", e => {
                 this.comments.push({
                     user: {
-                        name: e.user.name
+                        name: e.user.name,
+                        email: e.user.email
                     },
-                    body: e.comment.body
+                    body: e.comment.body,
+                    created_at: e.comment.created_at,
                 });
             });
         },
@@ -80,7 +82,8 @@
                 axios.post("/" + this.articleId + "/comments", { body }).then(response => {
                     this.comments.push({
                         user: {
-                            name: this.userName
+                            name: this.user.name,
+                            email: this.user.email
                         },
                         body: this.$refs.body.value
                     });

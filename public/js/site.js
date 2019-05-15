@@ -10379,8 +10379,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    userName: {
-      type: String,
+    user: {
+      type: Object,
       required: true
     },
     articleId: {
@@ -10400,9 +10400,11 @@ __webpack_require__.r(__webpack_exports__);
     Echo["private"]("comment").listen("CommentSent", function (e) {
       _this.comments.push({
         user: {
-          name: e.user.name
+          name: e.user.name,
+          email: e.user.email
         },
-        body: e.comment.body
+        body: e.comment.body,
+        created_at: e.comment.created_at
       });
     });
   },
@@ -10423,7 +10425,8 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this3.comments.push({
           user: {
-            name: _this3.userName
+            name: _this3.user.name,
+            email: _this3.user.email
           },
           body: _this3.$refs.body.value
         });

@@ -15,7 +15,10 @@
             <table class="table">
                 <tr>
                     <th>{{ __('site.profile-images') }}</th>
-                    <td><img src="{{ Gravatar::src($main->email) }}"></td>
+                    <td>
+                        <img src="{{ Gravatar::src($main->email) }}">
+                        <p>Manage your avatar using <a href="https://gravatar.com" target="_blank" class="hk-link">Gravatar</a>.</p>
+                    </td>
                 </tr>
                 <tr>
                     <th>{{ __('site.profile-name') }}</th>

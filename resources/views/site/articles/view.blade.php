@@ -61,7 +61,7 @@
         @guest
             <comments-list-component :article-id='@json($main->id)'></comments-list-component>
         @else
-            <comments-component :article-id='@json($main->id)' :user-name='@json(auth()->user()->name)'></comments-component>
+            <comments-component :article-id='@json($main->id)' :user='@json(auth()->user())'></comments-component>
         @endif
     </section>
 @endsection
