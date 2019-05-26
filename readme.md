@@ -5,6 +5,7 @@
     <a href="https://sp-laravel-wordsmith.herokuapp.com/" target="_blank">
         <img src="https://sp-laravel-wordsmith.herokuapp.com/images/logo.svg" height="100px" width="300px">
     </a>
+<a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fslava-pleshkov%2Flaravel-wordsmith?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fslava-pleshkov%2Flaravel-wordsmith.svg?type=shield"/></a>
     <h1 align="center">laravel-wordsmith</h1>
     <br>
 </p>
@@ -765,3 +766,5 @@ or
 ## License
 
 Collision is an open-sourced software licensed under the [MIT license](LICENSE.md).
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fslava-pleshkov%2Flaravel-wordsmith.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fslava-pleshkov%2Flaravel-wordsmith?ref=badge_large)
