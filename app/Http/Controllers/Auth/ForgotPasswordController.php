@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
+use TimeHunter\LaravelGoogleReCaptchaV3\Validations\GoogleReCaptchaV3ValidationRule;
 
 /**
  * Class ForgotPasswordController
@@ -38,6 +39,7 @@ class ForgotPasswordController extends BaseController
     {
         $this->validate($request, [
             'email' => 'required|email',
+            'g-recaptcha-response' => [new GoogleReCaptchaV3ValidationRule('password_email')]
         ]);
     }
 }

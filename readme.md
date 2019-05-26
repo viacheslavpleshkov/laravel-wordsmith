@@ -12,7 +12,7 @@
 
 ## Used technologies
 
-HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack, Yarn, Gravatar, Heroku, Nginx, PHP, Laravel Framework, Laravel Eloquent, Laravel Blade, Laravel Dusk, Laravel Homestead, Composer, Redis, Amazon S3, Algolia, Pusher, PostgreSQL, New Relic, Timber.io Logging, Mailgun, Mailtrap.
+HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack, Yarn, Google reCAPTCHA V3, Gravatar, Heroku, Nginx, PHP, Laravel Framework, Laravel Eloquent, Laravel Blade, Laravel Dusk, Laravel Homestead, Composer, Redis, Amazon S3, Algolia, Pusher, PostgreSQL, New Relic, Timber.io Logging, Mailgun, Mailtrap.
 
 ## Installation Dev (Vagrant)
 
@@ -22,6 +22,7 @@ HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack,
 1. Run this command Mac / Linux `bash init.sh` or Windows `init.bat`
 1. Rename or copy `.env.homestead` file to `.env`
 1. Set your amazon s3 credentials in your `.env` file
+1. Set your reCAPTCHA v3 credentials in your `.env` file
 1. Set your algolia credentials in your `.env` file
 1. Set your pusher credentials in your `.env` file
 1. Run this command `php artisan key:generate`
@@ -44,9 +45,10 @@ HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack,
 1. Run this command `php artisan key:generate`
 1. Set your database credentials in your `.env` file
 1. Set your redis credentials in your `.env` file
-1. Set your mail credentials in your `.env` file
+1. Set your mail credentials in your `.env` 
 1. Set your algolia credentials in your `.env` file
 1. Set your pusher credentials in your `.env` file
+1. Set your reCAPTCHA v3 credentials in your `.env` file
 1. Set your amazon s3 credentials in your `.env` file
 1. Set your `APP_URL` in your `.env` file
 1. Set your `APP_DEBUG` in your `.env` file with the value `true`
@@ -72,6 +74,7 @@ HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack,
 1. Set your mail credentials in your `.env` file
 1. Set your algolia credentials in your `.env` file
 1. Set your pusher credentials in your `.env` file
+1. Set your reCAPTCHA v3 credentials in your `.env` file
 1. Set your amazon s3 credentials in your `.env` file
 1. Set your `APP_URL` in your `.env` file
 1. Set your `APP_DEBUG` in your `.env` file with the value `false`
@@ -114,6 +117,9 @@ HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack,
 1. Run this command `heroku config:set REDIS_HOST=secret`
 1. Run this command `heroku config:set REDIS_PASSWORD=secret`
 1. Run this command `heroku config:set REDIS_PORT=secret`
+1. Run this command `heroku config:set CAPTCHA_HOSTNAME=secret`
+1. Run this command `heroku config:set MIX_CAPTCHA_SITE_KEY=secret`
+1. Run this command `heroku config:set MIX_CAPTCHA_SECRET_KEY=secret`
 1. Run this command `heroku config:set ALGOLIA_APP_ID=secret`
 1. Run this command `heroku config:set ALGOLIA_SECRET=secret`
 1. Run this command `heroku config:set MIX_ALGOLIA_APP_ID=secret`

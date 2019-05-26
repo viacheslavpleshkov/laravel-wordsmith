@@ -28,6 +28,8 @@
 	@include('site.includes.footer-slide')
 	@include('site.includes.footer')
 </div>
+@yield('requiredJS')
+{!!  GoogleReCaptchaV3::init() !!}
 <script src="{{ asset('js/site.js') }}"></script>
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>

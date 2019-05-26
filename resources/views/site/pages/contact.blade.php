@@ -2,6 +2,12 @@
 
 @section('title', $main->seo->title)
 
+@section('requiredJS')
+
+    {!!  GoogleReCaptchaV3::render(['contact_id'=>'contact']) !!}
+
+@endsection
+
 @section('content')
     <section class="s-content s-content--top-padding s-content--narrow">
 
@@ -27,56 +33,30 @@
                             <i class="fa fa-times alert-box__close"></i>
                         </div>
                     @endif
+                    @include('site.includes.error')
                     <form class="contact-form" action="{{ route('site.contact') }}" method="post">
                         @csrf
                         <fieldset>
                             <div>
-                                <input name="name" class="full-width"
-                                       placeholder="{{ __('site.contact-contactform-yourname') }}"
-                                       value="{{ old('name') }}" type="text">
-                                @if ($errors->has('name'))
-                                    <div class="alert-box alert-box--error hideit">
-                                        <p>{{ $errors->first('name') }}</p>
-                                        <i class="fa fa-times alert-box__close"></i>
-                                    </div>
-                                @endif
+                                <input name="name" class="full-width" placeholder="{{ __('site.contact-contactform-yourname') }}" value="{{ old('name') }}" type="text">
                             </div>
 
                             <div class="form-field">
-                                <input name="email" class="full-width"
-                                       placeholder="{{ __('site.contact-contactform-youremail') }}"
-                                       value="{{ old('email') }}"
-                                       type="text">
-                                @if ($errors->has('email'))
-                                    <div class="alert-box alert-box--error hideit">
-                                        <p>{{ $errors->first('email') }}</p>
-                                        <i class="fa fa-times alert-box__close"></i>
-                                    </div>
-                                @endif
+                                <input name="email" class="full-width" placeholder="{{ __('site.contact-contactform-youremail') }}" value="{{ old('email') }}" type="text">
                             </div>
 
                             <div class="form-field">
-                                <input name="website" class="full-width"
-                                       placeholder="{{ __('site.contact-contactform-website') }}"
-                                       value="{{ old('website') }}" type="text">
-                                @if ($errors->has('website'))
-                                    <div class="alert-box alert-box--error hideit">
-                                        <p>{{ $errors->first('website') }}</p>
-                                        <i class="fa fa-times alert-box__close"></i>
-                                    </div>
-                                @endif
+                                <input name="website" class="full-width" placeholder="{{ __('site.contact-contactform-website') }}" value="{{ old('website') }}" type="text">
                             </div>
 
                             <div class="message form-field">
-                                <textarea name="message" class="full-width"
-                                          placeholder="{{ __('site.contact-contactform-yourmessage') }}">{{ old('message') }}</textarea>
-                                @if ($errors->has('message'))
-                                    <div class="alert-box alert-box--error hideit">
-                                        <p>{{ $errors->first('message') }}</p>
-                                        <i class="fa fa-times alert-box__close"></i>
-                                    </div>
-                                @endif
+                                <textarea name="message" class="full-width" placeholder="{{ __('site.contact-contactform-yourmessage') }}">{{ old('message') }}</textarea>
+
                             </div>
+                            <div id="contact_id" style="display:none"></div>
+                            <p>This site is protected by reCAPTCHA and the Google
+                                <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and
+                                <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.</p>
                             <button type="submit" class="submit btn btn--primary btn--large full-width">{{ __('site.contact-contactform-sendmessage') }}
                             </button>
 

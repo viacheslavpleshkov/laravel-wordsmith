@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use TimeHunter\LaravelGoogleReCaptchaV3\Validations\GoogleReCaptchaV3ValidationRule;
 
 /**
  * Class ResetPasswordController
@@ -46,6 +47,7 @@ class ResetPasswordController extends BaseController
             'token' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed|min:6',
+            'g-recaptcha-response' => [new GoogleReCaptchaV3ValidationRule('password_reset')]
         ];
     }
 

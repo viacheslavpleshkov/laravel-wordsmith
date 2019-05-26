@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Site;
 
 use App\Http\Requests\AbstractRequest;
+use TimeHunter\LaravelGoogleReCaptchaV3\Validations\GoogleReCaptchaV3ValidationRule;
 
 /**
  * Class ContactRequest
@@ -32,6 +33,7 @@ class ContactRequest extends AbstractRequest
             'email' => 'required|string|email|max:255',
             'website' => 'required|string|max:255',
             'message' => 'required|string|max:4096',
+            'g-recaptcha-response' => [new GoogleReCaptchaV3ValidationRule('contact')]
         ];
     }
 }

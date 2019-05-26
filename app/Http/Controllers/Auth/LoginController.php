@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use TimeHunter\LaravelGoogleReCaptchaV3\Validations\GoogleReCaptchaV3ValidationRule;
 
 /**
  * Class LoginController
@@ -36,6 +37,7 @@ class LoginController extends BaseController
         $this->validate($request, [
             $this->username() => 'required',
             'password' => 'required',
+            'g-recaptcha-response' => [new GoogleReCaptchaV3ValidationRule('login')]
         ]);
     }
 

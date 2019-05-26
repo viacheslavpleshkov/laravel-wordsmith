@@ -1,3 +1,8 @@
+@section('requiredJS')
+
+	{!!  GoogleReCaptchaV3::render(['subscribe_id'=>'subscribe']) !!}
+
+@endsection
 <footer class="s-footer">
 	<div class="s-footer__main">
 		<div class="row">
@@ -20,6 +25,10 @@
 							<input type="email" name="email" class="email" id="mc-email" placeholder="{{ __('site.footer-email-address') }}" required="">
 							<input type="submit" value="{{ __('site.footer-send') }}">
 							<label for="mc-email" class="subscribe-message"></label>
+							<div id="subscribe_id" style="display:none"></div>
+							<p>This site is protected by reCAPTCHA and the Google
+								<a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and
+								<a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.</p>
 						</form>
 					</div>
 				@endif

@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Site;
 
 use App\Http\Requests\AbstractRequest;
+use TimeHunter\LaravelGoogleReCaptchaV3\Validations\GoogleReCaptchaV3ValidationRule;
 
 /**
  * Class SubscribeRequest
@@ -29,6 +30,7 @@ class SubscribeRequest extends AbstractRequest
     {
         return [
 			'email' => 'required|string|unique:subscribes|email|max:255',
+            'g-recaptcha-response' => [new GoogleReCaptchaV3ValidationRule('subscribe')]
         ];
     }
 }

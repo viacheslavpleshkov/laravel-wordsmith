@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a3564de5b05fc1a22e8c4a3ffd6d13c3",
+    "content-hash": "df65317ce6164a5656eeb9f3191d8a28",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -3482,6 +3482,76 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2017-11-27T11:13:29+00:00"
+        },
+        {
+            "name": "timehunter/laravel-google-recaptcha-v3",
+            "version": "2.2.16",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RyanDaDeng/laravel-google-recaptcha-v3.git",
+                "reference": "5350ed454c10f1bf83512ea5aadd1e12bc952701"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RyanDaDeng/laravel-google-recaptcha-v3/zipball/5350ed454c10f1bf83512ea5aadd1e12bc952701",
+                "reference": "5350ed454c10f1bf83512ea5aadd1e12bc952701",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0",
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "~7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "TimeHunter\\LaravelGoogleReCaptchaV3\\Providers\\GoogleReCaptchaV3ServiceProvider"
+                    ],
+                    "aliases": {
+                        "GoogleReCaptchaV3": "TimeHunter\\LaravelGoogleReCaptchaV3\\Facades\\GoogleReCaptchaV3"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "3.0.*-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TimeHunter\\LaravelGoogleReCaptchaV3\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Deng",
+                    "email": "ryandadeng@gmail.com",
+                    "homepage": "https://ryandeng.com"
+                }
+            ],
+            "description": "Laravel Package for google reCAPTCHA v3",
+            "homepage": "https://github.com/RyanDaDeng/laravel-google-recaptcha-v3",
+            "keywords": [
+                "Google ReCaptcha",
+                "GoogleReCaptcha",
+                "Laravel reCAPTCHA",
+                "google recaptcha v3",
+                "laravel",
+                "laravel google recaptcha",
+                "laravel google recaptcha v3",
+                "laravel recaptcha v3",
+                "recaptcha",
+                "recaptcha v3",
+                "recaptcha v3 laravel"
+            ],
+            "time": "2019-04-28T13:03:38+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
