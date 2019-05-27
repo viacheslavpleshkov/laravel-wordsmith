@@ -19,6 +19,7 @@
 					</div>
 					<br>
 				@else
+					@include('site.includes.error')
 					<div class="subscribe-form">
 						<form id="mc-form" class="group" action="{{ route('site.subscribe') }}" method="post">
 							@csrf

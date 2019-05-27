@@ -133,6 +133,11 @@ return [
             'threshold' => 0.5,
             'score_comparision' => true,
         ],
+        [
+            'action' => 'comments',
+            'threshold' => 0.5,
+            'score_comparision' => true,
+        ],
     ],
     /*
     |--------------------------------------------------------------------------

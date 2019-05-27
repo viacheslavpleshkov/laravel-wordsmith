@@ -7,7 +7,7 @@
                     <ol class="commentlist">
                         <li class="depth-1 comment" v-for="comment in comments">
                             <div class="comment__avatar">
-                                <v-gravatar class="avatar"  :email="comment.user.email" width="50" height="50"/>
+                                <v-gravatar class="avatar" :email="comment.user.email" width="50" height="50"/>
                             </div>
                             <div class="comment__content">
                                 <div class="comment__info">
@@ -31,6 +31,17 @@
                             <div class="message form-field">
                                 <textarea ref="body" id="cMessage" class="full-width" placeholder="Your Message*"></textarea>
                             </div>
+                            <google-re-captcha-v3
+                                    ref="captcha" v-model="form.gRecaptchaResponse"
+                                    :siteKey="this.siteKey"
+                                    :id="'comments_id'"
+                                    :inline="true"
+                                    :action="'comments'"
+                                    style="display: none">
+                            </google-re-captcha-v3>
+                            <p>This site is protected by reCAPTCHA and the Google
+                                <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and
+                                <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.</p>
                             <button id="submit" type="submit" @click.prevent="addComment" class="btn btn--primary btn-wide btn--large full-width">Add Comment</button>
                         </fieldset>
                     </form>
@@ -42,6 +53,8 @@
 
 
 <script>
+    import GoogleReCaptchaV3 from './googlerecaptchav3/GoogleReCaptchaV3';
+
     export default {
         props: {
             user: {
@@ -53,9 +66,16 @@
                 required: true
             }
         },
+        components: {
+            GoogleReCaptchaV3
+        },
         data() {
             return {
-                comments: []
+                comments: [],
+                form: {
+                    gRecaptchaResponse: null
+                },
+                siteKey: process.env.MIX_CAPTCHA_SITE_KEY,
             };
         },
         created() {
@@ -78,17 +98,23 @@
                 });
             },
             addComment() {
+                console.log(this.$refs.captcha.execute());
                 let body = this.$refs.body.value;
-                axios.post("/" + this.articleId + "/comments", { body }).then(response => {
+                axios.post("/" + this.articleId + "/comments", {body}).then(response => {
                     this.comments.push({
                         user: {
                             name: this.user.name,
                             email: this.user.email
                         },
                         body: this.$refs.body.value
+
                     });
                     this.$refs.body.value = "";
-                });
+                    this.$refs.captcha.execute();
+                }).catch(
+                    error => {
+                        this.$refs.captcha.execute(); // every time you submit, the reCAPTCHA token needs to be refreshed
+                    });
             }
         }
     };

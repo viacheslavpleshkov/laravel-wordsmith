@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Site;
 
 use App\Http\Requests\AbstractRequest;
+use TimeHunter\LaravelGoogleReCaptchaV3\Validations\GoogleReCaptchaV3ValidationRule;
 
 /**
  * Class CommentRequest
@@ -29,6 +30,7 @@ class CommentRequest extends AbstractRequest
     {
         return [
 			'body' => 'required|string|max:4096',
-		];
+            'g-recaptcha-response' => [new GoogleReCaptchaV3ValidationRule('comments')]
+        ];
     }
 }

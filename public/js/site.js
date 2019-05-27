@@ -6146,7 +6146,7 @@ var store = __webpack_require__(/*! ./store.js */ "./node_modules/algoliasearch/
 // proxies limit)
 var MAX_API_KEY_LENGTH = 500;
 var RESET_APP_DATA_TIMER =
-  Object({"MIX_ALGOLIA_APP_ID":"0CT9UNWZTD","MIX_ALGOLIA_SECRET":"9dacd198a2618ba28bed79350fa7cd0e","MIX_PUSHER_APP_KEY":"f9539ef56f626e8e08e6","MIX_PUSHER_APP_CLUSTER":"eu","MIX_URL_FILE":"https://laravel-wordsmith.s3.eu-central-1.amazonaws.com/","NODE_ENV":"development"}).RESET_APP_DATA_TIMER && parseInt(Object({"MIX_ALGOLIA_APP_ID":"0CT9UNWZTD","MIX_ALGOLIA_SECRET":"9dacd198a2618ba28bed79350fa7cd0e","MIX_PUSHER_APP_KEY":"f9539ef56f626e8e08e6","MIX_PUSHER_APP_CLUSTER":"eu","MIX_URL_FILE":"https://laravel-wordsmith.s3.eu-central-1.amazonaws.com/","NODE_ENV":"development"}).RESET_APP_DATA_TIMER, 10) ||
+  Object({"MIX_CAPTCHA_SITE_KEY":"6Lcik6UUAAAAAEZwMKgDq6IawnXvBokPwkGvZigd","MIX_CAPTCHA_SECRET_KEY":"6Lcik6UUAAAAALBjQB7nq3Qwtb7eqxupDf9tzUzF","MIX_ALGOLIA_APP_ID":"0CT9UNWZTD","MIX_ALGOLIA_SECRET":"9dacd198a2618ba28bed79350fa7cd0e","MIX_PUSHER_APP_KEY":"f9539ef56f626e8e08e6","MIX_PUSHER_APP_CLUSTER":"eu","MIX_URL_FILE":"https://laravel-wordsmith.s3.eu-central-1.amazonaws.com/","NODE_ENV":"development"}).RESET_APP_DATA_TIMER && parseInt(Object({"MIX_CAPTCHA_SITE_KEY":"6Lcik6UUAAAAAEZwMKgDq6IawnXvBokPwkGvZigd","MIX_CAPTCHA_SECRET_KEY":"6Lcik6UUAAAAALBjQB7nq3Qwtb7eqxupDf9tzUzF","MIX_ALGOLIA_APP_ID":"0CT9UNWZTD","MIX_ALGOLIA_SECRET":"9dacd198a2618ba28bed79350fa7cd0e","MIX_PUSHER_APP_KEY":"f9539ef56f626e8e08e6","MIX_PUSHER_APP_CLUSTER":"eu","MIX_URL_FILE":"https://laravel-wordsmith.s3.eu-central-1.amazonaws.com/","NODE_ENV":"development"}).RESET_APP_DATA_TIMER, 10) ||
   60 * 2 * 1000; // after 2 minutes reset to first host
 
 /*
@@ -10300,24 +10300,14 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    var _this = this;
-
     this.fetchComments();
-    Echo["private"]("comment").listen("CommentSent", function (e) {
-      _this.comments.push({
-        user: {
-          name: e.user.name
-        },
-        body: e.comment.body
-      });
-    });
   },
   methods: {
     fetchComments: function fetchComments() {
-      var _this2 = this;
+      var _this = this;
 
       axios.get("/api/v1/comments/" + this.articleId).then(function (response) {
-        _this2.comments = response.data;
+        _this.comments = response.data;
       });
     }
   }
@@ -10334,6 +10324,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _googlerecaptchav3_GoogleReCaptchaV3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./googlerecaptchav3/GoogleReCaptchaV3 */ "./resources/js/components/googlerecaptchav3/GoogleReCaptchaV3.vue");
 //
 //
 //
@@ -10377,6 +10368,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     user: {
@@ -10388,9 +10391,16 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
+  components: {
+    GoogleReCaptchaV3: _googlerecaptchav3_GoogleReCaptchaV3__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
-      comments: []
+      comments: [],
+      form: {
+        gRecaptchaResponse: null
+      },
+      siteKey: "6Lcik6UUAAAAAEZwMKgDq6IawnXvBokPwkGvZigd"
     };
   },
   created: function created() {
@@ -10419,6 +10429,7 @@ __webpack_require__.r(__webpack_exports__);
     addComment: function addComment() {
       var _this3 = this;
 
+      console.log(this.$refs.captcha.execute());
       var body = this.$refs.body.value;
       axios.post("/" + this.articleId + "/comments", {
         body: body
@@ -10432,6 +10443,11 @@ __webpack_require__.r(__webpack_exports__);
         });
 
         _this3.$refs.body.value = "";
+
+        _this3.$refs.captcha.execute();
+      })["catch"](function (error) {
+        _this3.$refs.captcha.execute(); // every time you submit, the reCAPTCHA token needs to be refreshed
+
       });
     }
   }
@@ -10571,6 +10587,102 @@ __webpack_require__.r(__webpack_exports__);
       host: "https://laravel-wordsmith.s3.eu-central-1.amazonaws.com/",
       searchClient: algoliasearch_lite__WEBPACK_IMPORTED_MODULE_0___default()("0CT9UNWZTD", "9dacd198a2618ba28bed79350fa7cd0e")
     };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/googlerecaptchav3/GoogleReCaptchaV3.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/googlerecaptchav3/GoogleReCaptchaV3.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'google-recaptcha-v3',
+  props: {
+    action: {
+      type: String,
+      required: false,
+      "default": 'validate_grecaptcha'
+    },
+    id: {
+      type: String,
+      required: false,
+      "default": 'grecaptcha_container'
+    },
+    siteKey: {
+      type: String,
+      required: false,
+      // set to true if you don't want to store the siteKey in this component
+      "default": '' // set siteKey here if you want to store it in this component
+
+    },
+    inline: {
+      type: Boolean,
+      required: false,
+      "default": false
+    }
+  },
+  data: function data() {
+    return {
+      captchaId: null
+    };
+  },
+  mounted: function mounted() {
+    this.init();
+  },
+  methods: {
+    init: function init() {
+      if (!document.getElementById('gRecaptchaScript')) {
+        window.gRecaptchaOnLoadCallbacks = [this.render];
+
+        window.gRecaptchaOnLoad = function () {
+          for (var i = 0; i < window.gRecaptchaOnLoadCallbacks.length; i++) {
+            window.gRecaptchaOnLoadCallbacks[i]();
+          }
+
+          delete window.gRecaptchaOnLoadCallbacks;
+          delete window.gRecaptchaOnLoad;
+        };
+
+        var recaptchaScript = document.createElement('script');
+        recaptchaScript.setAttribute('src', 'https://www.google.com/recaptcha/api.js?render=explicit&onload=gRecaptchaOnLoad');
+        recaptchaScript.setAttribute('id', 'gRecaptchaScript');
+        recaptchaScript.async = true;
+        recaptchaScript.defer = true;
+        document.head.appendChild(recaptchaScript);
+      } else if (!window.grecaptcha || !window.grecaptcha.render) {
+        window.gRecaptchaOnLoadCallbacks.push(this.render);
+      } else {
+        this.render();
+      }
+    },
+    render: function render() {
+      this.captchaId = window.grecaptcha.render(this.id, {
+        sitekey: this.siteKey,
+        badge: this.inline === true ? 'inline' : '',
+        size: 'invisible',
+        'expired-callback': this.execute
+      });
+      this.execute();
+    },
+    execute: function execute() {
+      var _this = this;
+
+      window.grecaptcha.execute(this.captchaId, {
+        action: this.action
+      }).then(function (token) {
+        _this.$emit('input', token);
+      });
+    }
   }
 });
 
@@ -10846,7 +10958,7 @@ function load() {
 
   // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
   if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = Object({"MIX_ALGOLIA_APP_ID":"0CT9UNWZTD","MIX_ALGOLIA_SECRET":"9dacd198a2618ba28bed79350fa7cd0e","MIX_PUSHER_APP_KEY":"f9539ef56f626e8e08e6","MIX_PUSHER_APP_CLUSTER":"eu","MIX_URL_FILE":"https://laravel-wordsmith.s3.eu-central-1.amazonaws.com/","NODE_ENV":"development"}).DEBUG;
+    r = Object({"MIX_CAPTCHA_SITE_KEY":"6Lcik6UUAAAAAEZwMKgDq6IawnXvBokPwkGvZigd","MIX_CAPTCHA_SECRET_KEY":"6Lcik6UUAAAAALBjQB7nq3Qwtb7eqxupDf9tzUzF","MIX_ALGOLIA_APP_ID":"0CT9UNWZTD","MIX_ALGOLIA_SECRET":"9dacd198a2618ba28bed79350fa7cd0e","MIX_PUSHER_APP_KEY":"f9539ef56f626e8e08e6","MIX_PUSHER_APP_CLUSTER":"eu","MIX_URL_FILE":"https://laravel-wordsmith.s3.eu-central-1.amazonaws.com/","NODE_ENV":"development"}).DEBUG;
   }
 
   return r;
@@ -60015,31 +60127,55 @@ var render = function() {
           _vm._m(0),
           _vm._v(" "),
           _c("form", { attrs: { id: "contactForm" } }, [
-            _c("fieldset", [
-              _c("div", { staticClass: "message form-field" }, [
-                _c("textarea", {
-                  ref: "body",
-                  staticClass: "full-width",
-                  attrs: { id: "cMessage", placeholder: "Your Message*" }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "btn btn--primary btn-wide btn--large full-width",
-                  attrs: { id: "submit", type: "submit" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.addComment($event)
-                    }
+            _c(
+              "fieldset",
+              [
+                _c("div", { staticClass: "message form-field" }, [
+                  _c("textarea", {
+                    ref: "body",
+                    staticClass: "full-width",
+                    attrs: { id: "cMessage", placeholder: "Your Message*" }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("google-re-captcha-v3", {
+                  ref: "captcha",
+                  staticStyle: { display: "none" },
+                  attrs: {
+                    siteKey: this.siteKey,
+                    id: "comments_id",
+                    inline: true,
+                    action: "comments"
+                  },
+                  model: {
+                    value: _vm.form.gRecaptchaResponse,
+                    callback: function($$v) {
+                      _vm.$set(_vm.form, "gRecaptchaResponse", $$v)
+                    },
+                    expression: "form.gRecaptchaResponse"
                   }
-                },
-                [_vm._v("Add Comment")]
-              )
-            ])
+                }),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "btn btn--primary btn-wide btn--large full-width",
+                    attrs: { id: "submit", type: "submit" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.addComment($event)
+                      }
+                    }
+                  },
+                  [_vm._v("Add Comment")]
+                )
+              ],
+              1
+            )
           ])
         ])
       ])
@@ -60054,6 +60190,35 @@ var staticRenderFns = [
     return _c("h3", { staticClass: "h2" }, [
       _vm._v("Add Comment"),
       _c("span", [_vm._v("Your email address will not be published")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _vm._v(
+        "This site is protected by reCAPTCHA and the Google\n                            "
+      ),
+      _c(
+        "a",
+        {
+          attrs: {
+            href: "https://policies.google.com/privacy",
+            target: "_blank"
+          }
+        },
+        [_vm._v("Privacy Policy")]
+      ),
+      _vm._v(" and\n                            "),
+      _c(
+        "a",
+        {
+          attrs: { href: "https://policies.google.com/terms", target: "_blank" }
+        },
+        [_vm._v("Terms of Service")]
+      ),
+      _vm._v(" apply.")
     ])
   }
 ]
@@ -60454,6 +60619,30 @@ var render = function() {
       ])
     ]
   )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/googlerecaptchav3/GoogleReCaptchaV3.vue?vue&type=template&id=6299eecc&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/googlerecaptchav3/GoogleReCaptchaV3.vue?vue&type=template&id=6299eecc& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: _vm.id } })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -73025,6 +73214,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchComponent_vue_vue_type_template_id_89b0c3cc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchComponent_vue_vue_type_template_id_89b0c3cc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/googlerecaptchav3/GoogleReCaptchaV3.vue":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/googlerecaptchav3/GoogleReCaptchaV3.vue ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _GoogleReCaptchaV3_vue_vue_type_template_id_6299eecc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GoogleReCaptchaV3.vue?vue&type=template&id=6299eecc& */ "./resources/js/components/googlerecaptchav3/GoogleReCaptchaV3.vue?vue&type=template&id=6299eecc&");
+/* harmony import */ var _GoogleReCaptchaV3_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GoogleReCaptchaV3.vue?vue&type=script&lang=js& */ "./resources/js/components/googlerecaptchav3/GoogleReCaptchaV3.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _GoogleReCaptchaV3_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _GoogleReCaptchaV3_vue_vue_type_template_id_6299eecc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _GoogleReCaptchaV3_vue_vue_type_template_id_6299eecc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/googlerecaptchav3/GoogleReCaptchaV3.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/googlerecaptchav3/GoogleReCaptchaV3.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/googlerecaptchav3/GoogleReCaptchaV3.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GoogleReCaptchaV3_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./GoogleReCaptchaV3.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/googlerecaptchav3/GoogleReCaptchaV3.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GoogleReCaptchaV3_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/googlerecaptchav3/GoogleReCaptchaV3.vue?vue&type=template&id=6299eecc&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/googlerecaptchav3/GoogleReCaptchaV3.vue?vue&type=template&id=6299eecc& ***!
+  \********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GoogleReCaptchaV3_vue_vue_type_template_id_6299eecc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./GoogleReCaptchaV3.vue?vue&type=template&id=6299eecc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/googlerecaptchav3/GoogleReCaptchaV3.vue?vue&type=template&id=6299eecc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GoogleReCaptchaV3_vue_vue_type_template_id_6299eecc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GoogleReCaptchaV3_vue_vue_type_template_id_6299eecc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

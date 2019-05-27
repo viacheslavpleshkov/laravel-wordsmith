@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Repositories\CommentRepository;
 use App\Events\CommentSent;
 use Illuminate\Http\Request;
+use TimeHunter\LaravelGoogleReCaptchaV3\Validations\GoogleReCaptchaV3ValidationRule;
 
 /**
  * Class CommentsController
@@ -34,7 +35,9 @@ class CommentsController extends BaseController
     public function store($id)
     {
         $this->validate(request(), [
-            'body' => 'required',
+            'body' => 'required|string|max:4096',
+            'g-recaptcha-response' => [new GoogleReCaptchaV3ValidationRule('comments')]
+
         ]);
 
         $user = auth()->user();

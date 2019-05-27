@@ -43,14 +43,6 @@
         },
         created() {
             this.fetchComments();
-            Echo.private("comment").listen("CommentSent", e => {
-                this.comments.push({
-                    user: {
-                        name: e.user.name
-                    },
-                    body: e.comment.body
-                });
-            });
         },
         methods: {
             fetchComments() {
