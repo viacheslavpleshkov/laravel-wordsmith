@@ -36,7 +36,7 @@ class CommentsController extends BaseController
     {
         $this->validate(request(), [
             'body' => 'required|string|max:4096',
-            'g-recaptcha-response' => [new GoogleReCaptchaV3ValidationRule('comments')]
+//            'g-recaptcha-response' => [new GoogleReCaptchaV3ValidationRule('comments')]
 
         ]);
 
