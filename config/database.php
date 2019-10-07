@@ -1,5 +1,20 @@
 <?php
-
+//Redis URL
+if (getenv('REDIS_URL')) {
+    $redis_url = parse_url(getenv('REDIS_URL'));
+    putenv('REDIS_HOST='.$redis_url['host']);
+    putenv('REDIS_PORT='.$redis_url['port']);
+    putenv('REDIS_PASSWORD='.$redis_url['pass']);
+}
+//PostgreSQL URL
+if (getenv('DATABASE_URL')) {
+    $postgresql_url = parse_url(getenv('DATABASE_URL'));
+    putenv('DB_HOST='.$postgresql_url['host']);
+    putenv('DB_PORT='.$postgresql_url['port']);
+    putenv('DB_USERNAME='.$postgresql_url['user']);
+    putenv('DB_DATABASE='.$postgresql_url['path']);
+    putenv('DB_PASSWORD='.$postgresql_url['pass']);
+}
 return [
 
 	/*

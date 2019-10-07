@@ -57,27 +57,6 @@
     "DB_CONNECTION": {
       "value": "pgsql"
     },
-    "DB_HOST": {
-      "generator": "secret"
-    },
-    "DB_PORT": {
-      "generator": "secret"
-    },
-    "DB_DATABASE": {
-      "generator": "secret"
-    },
-    "DB_USERNAME": {
-      "generator": "secret"
-    },
-    "DB_PASSWORD": {
-      "generator": "secret"
-    },
-    "REDIS_HOST": {
-      "generator": "secret"
-    },
-    "REDIS_PASSWORD": {
-      "generator": "secret"
-    },
     "CAPTCHA_HOSTNAME": {
       "generator": "secret"
     },

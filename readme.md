@@ -109,14 +109,6 @@ HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack,
 1. Run this command `heroku config:set APP_URL=secret`
 1. Run this command `heroku config:set LOG_CHANNEL=errorlog`
 1. Run this command `heroku config:set DB_CONNECTION=pgsql`
-1. Run this command `heroku config:set DB_HOST=secret`
-1. Run this command `heroku config:set DB_PORT=secret`
-1. Run this command `heroku config:set DB_DATABASE=secret`
-1. Run this command `heroku config:set DB_USERNAME=secret`
-1. Run this command `heroku config:set DB_PASSWORD=secret`
-1. Run this command `heroku config:set REDIS_HOST=secret`
-1. Run this command `heroku config:set REDIS_PASSWORD=secret`
-1. Run this command `heroku config:set REDIS_PORT=secret`
 1. Run this command `heroku config:set CAPTCHA_HOSTNAME=secret`
 1. Run this command `heroku config:set MIX_CAPTCHA_SITE_KEY=secret`
 1. Run this command `heroku config:set MIX_CAPTCHA_SECRET_KEY=secret`
