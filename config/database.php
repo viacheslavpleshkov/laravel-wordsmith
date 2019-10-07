@@ -12,7 +12,7 @@ if (getenv('DATABASE_URL')) {
     putenv('DB_HOST='.$postgresql_url['host']);
     putenv('DB_PORT='.$postgresql_url['port']);
     putenv('DB_USERNAME='.$postgresql_url['user']);
-    putenv('DB_DATABASE='.substr($postgresql_url["path"], 1);
+    putenv('DB_DATABASE='.substr($postgresql_url["path"]));
     putenv('DB_PASSWORD='.$postgresql_url['pass']);
 }
 return [
