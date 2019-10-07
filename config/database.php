@@ -9,10 +9,12 @@ if (getenv('REDIS_URL')) {
 //PostgreSQL URL
 if (getenv('DATABASE_URL')) {
     $postgresql_url = parse_url(getenv('DATABASE_URL'));
+    $postgresql_database = substr($postgresql_url["path"], 1);
+
     putenv('DB_HOST='.$postgresql_url['host']);
     putenv('DB_PORT='.$postgresql_url['port']);
     putenv('DB_USERNAME='.$postgresql_url['user']);
-    putenv('DB_DATABASE='.substr($postgresql_url["path"]));
+    putenv('DB_DATABASE='.$postgresql_database);
     putenv('DB_PASSWORD='.$postgresql_url['pass']);
 }
 return [
