@@ -25,7 +25,7 @@
             <div class="col-full entry__main">
                 {!! $main->text !!}
                 <div class="entry__author">
-                    <img src="{{ Gravatar::src($main->user->email) }}" alt="">
+                    <img src="{{ Gravatar::get($main->user->email) }}" alt="">
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>{{ __('site.blog-view-posted by') }}</span>

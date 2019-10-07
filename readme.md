@@ -8,7 +8,7 @@
     <h1 align="center">laravel-wordsmith</h1>
     <br>
 </p>
-<p align="center">📢 The blog was created using the Laravel 5.8 Framework</p>
+<p align="center">📢 The blog was created using the Laravel 6.0 Framework</p>
 
 ## Used technologies
 

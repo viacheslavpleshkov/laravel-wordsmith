@@ -16,7 +16,7 @@
                 <tr>
                     <th>{{ __('site.profile-images') }}</th>
                     <td>
-                        <img src="{{ Gravatar::src($main->email) }}">
+                        <img src="{{ Gravatar::get($main->email) }}">
                         <p>Manage your avatar using <a href="https://gravatar.com" target="_blank" class="hk-link">Gravatar</a>.</p>
                     </td>
                 </tr>
