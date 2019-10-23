@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://laravel.com/" target="_blank">
-        <img src="https://laravel.com/assets/img/components/logo-laravel.svg" height="100px">
+        <img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" height="100px">
     </a>
     <a href="https://sp-laravel-wordsmith.herokuapp.com/" target="_blank">
         <img src="https://sp-laravel-wordsmith.herokuapp.com/images/logo.svg" height="100px" width="300px">
@@ -12,15 +12,16 @@
 
 ## Used technologies
 
-HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack, Yarn, Gravatar, Heroku, Nginx, PHP, Laravel Framework, Laravel Eloquent, Laravel Blade, Laravel Dusk, Laravel Homestead, Composer, Redis, Google reCAPTCHA V3, Amazon S3, Algolia, Pusher, PostgreSQL, New Relic, Timber.io Logging, Mailgun, Mailtrap.
+HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack, Yarn, Gravatar, Heroku, Nginx, PHP, Laravel Framework, Laravel Eloquent, Laravel Socialite, Laravel Blade, Laravel Dusk, Laravel Homestead, Laravel Backup, Composer, Redis, Google reCAPTCHA V3, Amazon S3, Algolia, Pusher, PostgreSQL, New Relic, Timber.io Logging, Mailgun, Mailtrap.
 
 ## Installation Dev (Vagrant)
 
 1. Clone the repo and `cd` into it
 1. Run this command `vagrant box add laravel/homestead`
 1. Run this command `composer install`
-1. Run this command Mac / Linux `bash init.sh` or Windows `init.bat`
+1. Run this command Mac / Linux `php vendor/bin/homestead make` or Windows `vendor\\bin\\homestead make`
 1. Rename or copy `.env.homestead` file to `.env`
+1. Set your GitHub app credentials in your `.env` file
 1. Set your amazon s3 credentials in your `.env` file
 1. Set your reCAPTCHA v3 credentials in your `.env` file
 1. Set your algolia credentials in your `.env` file
@@ -50,6 +51,7 @@ HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack,
 1. Set your pusher credentials in your `.env` file
 1. Set your reCAPTCHA v3 credentials in your `.env` file
 1. Set your amazon s3 credentials in your `.env` file
+1. Set your GitHub app credentials in your `.env` file
 1. Set your `APP_URL` in your `.env` file
 1. Set your `APP_DEBUG` in your `.env` file with the value `true`
 1. Set your `TELESCOPE_ENABLED` in your `.env` file with the value `true`
@@ -76,6 +78,7 @@ HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack,
 1. Set your pusher credentials in your `.env` file
 1. Set your reCAPTCHA v3 credentials in your `.env` file
 1. Set your amazon s3 credentials in your `.env` file
+1. Set your GitHub app credentials in your `.env` file
 1. Set your `APP_URL` in your `.env` file
 1. Set your `APP_DEBUG` in your `.env` file with the value `false`
 1. Set your `TELESCOPE_ENABLED` in your `.env` file with the value `false`
@@ -127,6 +130,9 @@ HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack,
 1. Run this command `heroku config:set SESSION_DRIVER=redis`
 1. Run this command `heroku config:set SESSION_LIFETIME=120`
 1. Run this command `heroku config:set QUEUE_DRIVER=redis`
+1. Run this command `heroku config:set GITHUB_CLIENT_ID=secret`
+1. Run this command `heroku config:set GITHUB_CLIENT_SECRET=secret`
+1. Run this command `heroku config:set GITHUB_CLIENT_URL=secret`
 1. Run this command `heroku config:set FILESYSTEM_DRIVER=s3`
 1. Run this command `heroku config:set AWS_ACCESS_KEY_ID=secret`
 1. Run this command `heroku config:set AWS_SECRET_ACCESS_KEY=secret`

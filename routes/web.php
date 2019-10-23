@@ -12,6 +12,8 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
     Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
     Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
     Route::post('password/reset', 'ResetPasswordController@reset');
+    Route::get('social/github', 'SocialController@redirectToProvider')->name('social.github');
+    Route::get('social/github/callback', 'SocialController@handleProviderCallback');
 });
 /**
  * Admin Router

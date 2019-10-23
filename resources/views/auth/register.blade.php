@@ -47,7 +47,8 @@
 							<a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and
 							<a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.</p>
 						<button type="submit" class="submit btn btn--primary btn--large full-width">{{ __('auth.register') }}</button>
-					</fieldset>
+                        <a href="{{ route('social.github') }}" class="submit btn btn-github btn--large full-width" target="_blank">{{ __('auth.register-with-github') }}</a>
+                    </fieldset>
 				</form>
 			</div>
 		</div>
