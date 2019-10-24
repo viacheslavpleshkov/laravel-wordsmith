@@ -30,7 +30,7 @@ HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack,
 1. Set your algolia credentials in your `.env` file
 1. Set your pusher credentials in your `.env` file
 1. Run this command `php artisan key:generate`
-1. Run this command `php artisan config:cache`1. Run this command `composer install`
+1. Run this command `php artisan config:cache`
 1. Run this command `php artisan migration`
 1. Run this command `php artisan db:seed`
 1. Run this command `yarn install`
