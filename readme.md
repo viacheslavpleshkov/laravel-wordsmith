@@ -12,7 +12,30 @@
 
 ## Used technologies
 
-HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack, Yarn, Gravatar, Heroku, Nginx, PHP, Laravel Framework, Laravel Eloquent, Laravel Socialite, Laravel Blade, Laravel Dusk, Laravel Homestead, Laravel Backup, Composer, Redis, Google reCAPTCHA V3, Amazon S3, Algolia, Pusher, PostgreSQL, New Relic, Timber.io Logging, Mailgun, Mailtrap.
+HTML5, CSS3, SCSS, JavaScript, Vue.js, jQuery, Bootstrap, Font Awesome, Webpack, Yarn, Gravatar, Heroku, Nginx, PHP, Laravel Framework, Laravel Eloquent, Laravel Socialite, Laravel Blade, Laravel Dusk, Laravel Homestead, Laravel Backup, Composer, Redis, Google reCAPTCHA V3, Amazon S3, Algolia, Pusher, PostgreSQL, New Relic, Timber.io Logging, Mailgun, Mailtrap, Vagrant, Docker.
+
+## Installation Dev (Docker)
+
+1. Clone the repo and `cd` into it
+1. Run this command `cd laradock`
+1. Run this command `cp env-example .env`
+1. Run this command `docker-compose up -d nginx postgres phpmyadmin redis workspace `
+1. Run this command `docker-compose exec workspace bash`
+1. Run this command `cd var/www/`
+1. Run this command `composer install`
+1. Rename or copy `.env.docker` file to `.env`
+1. Set your GitHub app credentials in your `.env` file
+1. Set your amazon s3 credentials in your `.env` file
+1. Set your reCAPTCHA v3 credentials in your `.env` file
+1. Set your algolia credentials in your `.env` file
+1. Set your pusher credentials in your `.env` file
+1. Run this command `php artisan key:generate`
+1. Run this command `php artisan config:cache`1. Run this command `composer install`
+1. Run this command `php artisan migration`
+1. Run this command `php artisan db:seed`
+1. Run this command `yarn install`
+1. Run this command `yarn run dev`
+1. Visit `laravel-wordsmith.test` in your browser
 
 ## Installation Dev (Vagrant)
 
